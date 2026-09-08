@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Brisk — Digitaal bureau voor websites, webshops, software en apps",
+    "description": "Brisk ontwerpt en bouwt websites op maat, webshops, software en mobiele apps die opvallen én presteren. Van strategie tot lancering, vanuit België."
+  },
+  "brand": {
+    "tagline": "Digitaal bureau",
+    "claim": "Wij bouwen digitale producten die bewegen."
+  },
+  "cta": {
+    "primary": "Gesprek inplannen",
+    "work": "Bekijk ons werk",
+    "services": "Ontdek onze diensten",
+    "email": "Of mail rechtstreeks naar",
+    "more": "Meer ontdekken",
+    "visit": "Bekijk live",
+    "readMore": "Lees meer",
+    "back": "Terug"
+  },
+  "ctaBand": {
+    "eyebrow": "Laten we praten",
+    "title": "Klaar om iets <em>gedurfd</em> te bouwen?",
+    "body": "Vertel ons waar je naartoe wil. Binnen 24 uur plannen we een vrijblijvend gesprek van 30 minuten in, zonder verkooppraat.",
+    "button": "Gesprek inplannen",
+    "note": "Gratis. Vrijblijvend. Eerlijk advies."
+  },
+  "services": {
+    "websites": { "title": "Website op maat", "short": "Websites" },
+    "webshops": { "title": "Webshop op maat", "short": "Webshops" },
+    "software": { "title": "Software op maat", "short": "Software" },
+    "apps": { "title": "Mobiele apps", "short": "Apps" }
+  },
+  "otherServices": {
+    "eyebrow": "Meer van Brisk",
+    "title": "Ook op maat"
+  },
+  "notFound": {
+    "title": "Deze pagina bestaat niet, maar wat jij zoekt bouwen we wel.",
+    "body": "De link is verouderd of verkeerd getypt. Ga terug naar de startpagina of plan meteen een gesprek in.",
+    "cta": "Naar de startpagina"
+  },
+  "skip": "Ga naar de inhoud",
+  "lang": {
+    "label": "Taal",
+    "nl": "Nederlands",
+    "en": "English",
+    "switchTo": "Schakel naar {lang}"
+  },
+  "poweredBy": "Live screenshots via Microlink · Motion via Remotion"
+}

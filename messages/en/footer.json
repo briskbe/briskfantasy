@@ -1,0 +1,29 @@
+{
+  "tagline": "Let's build something <em>beautiful</em>.",
+  "body": "Brisk is a digital agency from Belgium. We design and build websites, webshops, software and apps for brands that want to move forward.",
+  "columns": {
+    "services": "Services",
+    "company": "Studio",
+    "contact": "Contact"
+  },
+  "links": {
+    "websites": "Custom websites",
+    "webshops": "Custom webshops",
+    "software": "Custom software",
+    "apps": "Mobile apps",
+    "references": "Work",
+    "about": "About",
+    "contact": "Book a call",
+    "privacy": "Privacy"
+  },
+  "newsletter": {
+    "title": "An occasional email",
+    "body": "New work, insights and what we're learning. No spam.",
+    "placeholder": "you@company.com",
+    "button": "Subscribe"
+  },
+  "legal": "© {year} Brisk. All rights reserved.",
+  "madeIn": "Designed and built in Belgium",
+  "backToTop": "Back to top",
+  "status": "Available for new projects"
+}

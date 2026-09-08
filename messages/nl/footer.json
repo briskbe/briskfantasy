@@ -1,0 +1,29 @@
+{
+  "tagline": "Laten we iets <em>moois</em> bouwen.",
+  "body": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en apps voor merken die vooruit willen.",
+  "columns": {
+    "services": "Diensten",
+    "company": "Bureau",
+    "contact": "Contact"
+  },
+  "links": {
+    "websites": "Website op maat",
+    "webshops": "Webshop op maat",
+    "software": "Software op maat",
+    "apps": "Mobiele apps",
+    "references": "Referenties",
+    "about": "Over ons",
+    "contact": "Gesprek inplannen",
+    "privacy": "Privacy"
+  },
+  "newsletter": {
+    "title": "Af en toe een mail",
+    "body": "Nieuw werk, inzichten en wat we leren. Geen spam.",
+    "placeholder": "je@bedrijf.be",
+    "button": "Inschrijven"
+  },
+  "legal": "© {year} Brisk. Alle rechten voorbehouden.",
+  "madeIn": "Ontworpen en gebouwd in België",
+  "backToTop": "Terug naar boven",
+  "status": "Beschikbaar voor nieuwe projecten"
+}

@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Brisk — Digital agency for websites, webshops, software and apps",
+    "description": "Brisk designs and builds custom websites, webshops, software and mobile apps that stand out and perform. From strategy to launch, from Belgium."
+  },
+  "brand": {
+    "tagline": "Digital agency",
+    "claim": "We build digital products that move."
+  },
+  "cta": {
+    "primary": "Book a call",
+    "work": "See our work",
+    "services": "Explore our services",
+    "email": "Or email us directly at",
+    "more": "Discover more",
+    "visit": "View live",
+    "readMore": "Read more",
+    "back": "Back"
+  },
+  "ctaBand": {
+    "eyebrow": "Let's talk",
+    "title": "Ready to build something <em>bold</em>?",
+    "body": "Tell us where you want to go. Within 24 hours we'll schedule a free 30-minute call, no sales pitch.",
+    "button": "Book a call",
+    "note": "Free. No strings. Honest advice."
+  },
+  "services": {
+    "websites": { "title": "Custom websites", "short": "Websites" },
+    "webshops": { "title": "Custom webshops", "short": "Webshops" },
+    "software": { "title": "Custom software", "short": "Software" },
+    "apps": { "title": "Mobile apps", "short": "Apps" }
+  },
+  "otherServices": {
+    "eyebrow": "More from Brisk",
+    "title": "Also made to measure"
+  },
+  "notFound": {
+    "title": "This page doesn't exist, but what you're looking for, we can build.",
+    "body": "The link is outdated or mistyped. Head back to the homepage or book a call right away.",
+    "cta": "Back to the homepage"
+  },
+  "skip": "Skip to content",
+  "lang": {
+    "label": "Language",
+    "nl": "Nederlands",
+    "en": "English",
+    "switchTo": "Switch to {lang}"
+  },
+  "poweredBy": "Live screenshots via Microlink · Motion via Remotion"
+}
