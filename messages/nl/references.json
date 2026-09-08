@@ -1,1 +1,85 @@
-{}
+{
+  "meta": {
+    "title": "Referenties",
+    "description": "Bekijk alle websites, webshops en platformen die Brisk ontwierp en bouwde, live gescreenshot op het moment dat je kijkt. Plus meer dan 50 productschermen: dashboards, apps en marketingpagina's."
+  },
+  "hero": {
+    "eyebrow": "Referenties",
+    "title": "{count} websites die <em>live</em> staan.",
+    "lead": "Geen mockups en geen mooier-dan-echt. Elke screenshot op deze pagina wordt gemaakt op het moment dat je ze bekijkt. Wat je ziet, staat vandaag online.",
+    "note": "Live screenshots via Microlink",
+    "reelLabel": "Showreel van vier live websites",
+    "facts": {
+      "sites": "{count} websites live",
+      "screens": "{count}+ productschermen",
+      "reply": "Antwoord binnen 24 uur"
+    }
+  },
+  "grid": {
+    "eyebrow": "Live websites",
+    "title": "Elk project, zoals het vandaag <em>online</em> staat.",
+    "intro": "Filter op type of scrol gewoon door. Elke kaart opent de echte site in een nieuw tabblad.",
+    "filterLabel": "Filter op type",
+    "filters": {
+      "all": "Alle",
+      "website": "Websites",
+      "webshop": "Webshops",
+      "platform": "Platformen"
+    },
+    "count": "{count, plural, =1 {# project} other {# projecten}}",
+    "visit": "Bekijk live",
+    "alt": "{name}, ontworpen en gebouwd door Brisk",
+    "types": {
+      "website": "Website",
+      "webshop": "Webshop",
+      "platform": "Platform"
+    },
+    "next": {
+      "eyebrow": "Volgend project",
+      "title": "Het volgende kan van <em>jou</em> zijn.",
+      "body": "Vertel ons waar je naartoe wil. Binnen 24 uur plannen we een gratis gesprek van 30 minuten in.",
+      "cta": "Gesprek inplannen"
+    },
+    "servicesLabel": "Diensten"
+  },
+  "services": {
+    "design": "Design",
+    "development": "Development",
+    "seo": "SEO",
+    "copy": "Copy",
+    "ecommerce": "E-commerce",
+    "booking": "Boekingen",
+    "branding": "Branding"
+  },
+  "product": {
+    "eyebrow": "Product design",
+    "title": "Schermen die we <em>ontwierpen</em>.",
+    "body": "Dashboards, mobiele apps en marketingpagina's voor SaaS-producten. Elk scherm is ontworpen om gebruikt te worden, niet enkel om mooi te zijn in een portfolio.",
+    "total": "{count} schermen en video's",
+    "showing": "{shown} van {total}",
+    "more": "Toon meer",
+    "moreCount": "Toon meer ({count})",
+    "video": "Video",
+    "videoAlt": "Video: {title}"
+  },
+  "start": {
+    "eyebrow": "Zo begint een project",
+    "title": "Van eerste gesprek tot <em>eerste</em> scherm.",
+    "steps": {
+      "1": {
+        "title": "Gesprek",
+        "body": "Dertig minuten, gratis en zonder verkooppraat. Je vertelt waar je naartoe wil, wij stellen de vragen die ertoe doen."
+      },
+      "2": {
+        "title": "Voorstel",
+        "body": "Binnen enkele dagen krijg je een helder voorstel: wat we bouwen, in welke stappen en wat het kost. Geen verrassingen achteraf."
+      },
+      "3": {
+        "title": "Start",
+        "body": "We ontwerpen en bouwen in korte cycli, zodat je snel iets ziet en bijstuurt. Code en design zijn van jou, vanaf dag één."
+      }
+    },
+    "cta": "Gesprek inplannen",
+    "note": "Antwoord binnen 24 uur · Vanuit België"
+  }
+}

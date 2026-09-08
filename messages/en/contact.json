@@ -1,1 +1,125 @@
-{}
+{
+  "meta": {
+    "title": "Book a call",
+    "description": "Book a free 30-minute call with Brisk. Tell us what you want to build and hear back within 24 hours."
+  },
+  "hero": {
+    "eyebrow": "Book a call",
+    "titleLine1": "Let's have",
+    "titleLine2": "a <em>conversation</em>.",
+    "lead": "Tell us what you want to build. Within 24 hours you'll hear back from the people who will actually make it.",
+    "expectTitle": "What to expect",
+    "steps": {
+      "1": {
+        "title": "30 minutes",
+        "body": "We listen and ask questions. You don't have to sell anything, and neither do we."
+      },
+      "2": {
+        "title": "A proposal within 48 hours",
+        "body": "A plan with a fixed price per phase. No surprises later on."
+      },
+      "3": {
+        "title": "Start when you're ready",
+        "body": "The proposal stays on the table until you are. You set the pace."
+      }
+    },
+    "emailLabel": "Email",
+    "locationLabel": "Based in",
+    "booking": "Pick a time right away",
+    "responseBadge": "Reply within 24 hours"
+  },
+  "form": {
+    "title": "Tell us what you have in mind",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "optional": "optional",
+    "service": {
+      "label": "What is it about?",
+      "hint": "Pick more than one if you like.",
+      "options": {
+        "website": "Website",
+        "webshop": "Webshop",
+        "software": "Software",
+        "app": "App",
+        "other": "Something else"
+      }
+    },
+    "budget": {
+      "label": "Budget",
+      "hint": "A rough figure helps us suggest the right approach straight away.",
+      "options": {
+        "a": "< 5k",
+        "b": "5–15k",
+        "c": "15–50k",
+        "d": "50k+",
+        "e": "Not sure yet"
+      }
+    },
+    "message": "Message",
+    "messagePlaceholder": "What do you want to build, for whom, and by when?",
+    "submit": "Send",
+    "submitting": "Sending",
+    "note": "By sending this you agree to our <link>privacy policy</link>. We never share your details.",
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "message": "Tell us in a few sentences what it's about, at least ten characters.",
+      "server": "Your message didn't go through. Try again, or email us directly at {email}."
+    },
+    "success": {
+      "title": "Thanks, we'll email you within 24 hours.",
+      "body": "Your message has arrived. We read everything ourselves and reply with a concrete proposal for a first call.",
+      "home": "Back to the homepage",
+      "again": "Send another message"
+    }
+  },
+  "alternatives": {
+    "eyebrow": "Other routes",
+    "title": "More than one way to get started.",
+    "cards": {
+      "mail": {
+        "title": "Prefer email?",
+        "body": "Send us a message, short or long. Within 24 hours you'll hear back from someone who understands your question.",
+        "link": "Email us"
+      },
+      "briefing": {
+        "title": "Already have a brief?",
+        "body": "Summarise it in the form and attach the document when you reply to our first email. We read everything, forty-page appendix included.",
+        "link": "Go to the form"
+      },
+      "unsure": {
+        "title": "Not sure yet?",
+        "body": "Have a look at what we built for others first: 17 live websites, webshops and platforms, with the code and design owned by the client.",
+        "link": "See our work"
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked",
+    "title": "About the first call",
+    "items": {
+      "1": {
+        "q": "Is it free?",
+        "a": "Yes. The first 30-minute call costs nothing and commits you to nothing. Paid work only starts once you approve our proposal."
+      },
+      "2": {
+        "q": "Do I need to prepare anything?",
+        "a": "Not necessarily. It helps if you know what you want to achieve and by when. If you have a brief, sketches or examples of sites you like, bring them along. If not, we'll ask the questions."
+      },
+      "3": {
+        "q": "Do you work remotely or outside Belgium?",
+        "a": "Yes. We're based in Limburg and do most of our work remotely, for Belgian clients too. A video call works just as well as a coffee. For larger projects we're happy to come by."
+      },
+      "4": {
+        "q": "How soon can we start?",
+        "a": "That depends on the scope and on our schedule at the time. After the call you'll receive a proposal within 48 hours with a start date that fits your deadline and our calendar."
+      }
+    }
+  },
+  "closing": {
+    "eyebrow": "Direct",
+    "note": "We reply in Dutch and English.",
+    "locationLabel": "Based in"
+  }
+}

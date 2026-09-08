@@ -1,1 +1,171 @@
-{}
+{
+  "meta": {
+    "title": "Webshop op maat",
+    "description": "Brisk ontwerpt en bouwt webshops op maat: conversiegericht design, een checkout die klopt, koppelingen met je boekhouding en voorraad, en techniek die snel blijft. Vanuit België."
+  },
+  "hero": {
+    "eyebrow": "Webshop op maat",
+    "title": "Een webshop die <em>verkoopt</em>, ook als jij slaapt.",
+    "lead": "Geen standaardthema met een winkelmandje erop geplakt. We ontwerpen en bouwen je shop van nul: elke productpagina, elke stap in de checkout, elke koppeling met je administratie.",
+    "primary": "Gesprek inplannen",
+    "secondary": "Bekijk webshops",
+    "shotAlt": "{name}, een webshop ontworpen en gebouwd door Brisk",
+    "facts": {
+      "sites": "{count} websites live",
+      "reply": "Antwoord binnen 24 uur",
+      "intro": "Gratis kennismaking van 30 minuten"
+    },
+    "card": {
+      "label": "Productkaart",
+      "name": "Roetfilter Euro 6",
+      "stock": "Op voorraad",
+      "delivery": "Levering 1–2 werkdagen",
+      "variantLabel": "Uitvoering",
+      "variants": {
+        "1": "Origineel",
+        "2": "Gereviseerd"
+      },
+      "priceLabel": "Prijs incl. btw",
+      "add": "In winkelmand",
+      "added": "Toegevoegd",
+      "cartLabel": "Artikelen in winkelmand",
+      "cartStatus": "{count} artikelen in je winkelmand"
+    }
+  },
+  "pillars": {
+    "eyebrow": "Wat je krijgt",
+    "title": "Van eerste klik tot <em>herhaalaankoop</em>.",
+    "intro": "Vier pijlers, één geheel. We bouwen ze niet los van elkaar, maar als één systeem dat je klant van productpagina tot bevestigingsmail begeleidt.",
+    "items": {
+      "1": {
+        "title": "Conversiegericht design",
+        "body": "Elke productpagina beantwoordt de vragen die een koper stelt voor hij op de knop drukt: past dit, wanneer heb ik het, wat als het niet klopt. Geen afleiding, wel richting.",
+        "tags": "Productpagina's · Filters · Vertrouwen"
+      },
+      "2": {
+        "title": "Betalingen & checkout",
+        "body": "Een checkout met zo weinig mogelijk stappen en de betaalmethodes die je klanten verwachten. We werken met Mollie of Stripe en ondersteunen Bancontact, Apple Pay, kaart en betaling op factuur.",
+        "tags": "Mollie · Bancontact · Apple Pay"
+      },
+      "3": {
+        "title": "Koppelingen",
+        "body": "Je shop praat met de rest van je bedrijf: boekhouding, voorraad, verzendlabels, e-mail. Voor Roetfilterkopen bouwden we een kentekenzoeker die meteen de juiste filter toont.",
+        "tags": "Boekhouding · Voorraad · Verzending"
+      },
+      "4": {
+        "title": "Snelheid & SEO",
+        "body": "Productpagina's die in een fractie van een seconde laden en door Google gevonden worden. Gestructureerde data, schone URL's en een sitemap die meegroeit met je catalogus.",
+        "tags": "Core Web Vitals · Gestructureerde data · Sitemap"
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "De checkout",
+    "title": "Drie schermen tussen kijken en <em>kopen</em>.",
+    "intro": "We ontwerpen elke stap alsof het de enige is. Zo weinig mogelijk vragen, zo veel mogelijk zekerheid.",
+    "steps": {
+      "1": {
+        "label": "Ontdekken",
+        "body": "Filters die aanvoelen als een goed gesprek met een verkoper. Zoek op merk, bouwjaar of kenteken en zie meteen wat past."
+      },
+      "2": {
+        "label": "Kiezen",
+        "body": "De productpagina neemt elke twijfel weg: voorraad, levertijd, compatibiliteit en retour staan zichtbaar boven de knop."
+      },
+      "3": {
+        "label": "Afrekenen",
+        "body": "Eén pagina, drie stappen, geen verplichte account. Betalen met wat je klant al gebruikt, bevestiging binnen een seconde."
+      }
+    },
+    "screens": {
+      "1": {
+        "name": "Catalogus",
+        "search": "Zoek op kenteken",
+        "filter1": "Merk",
+        "filter2": "Bouwjaar",
+        "filter3": "Brandstof",
+        "results": "Resultaten"
+      },
+      "2": {
+        "name": "Productpagina",
+        "badge": "Op voorraad",
+        "title": "Roetfilter Euro 6",
+        "spec1": "Past op je kenteken",
+        "spec2": "Levering 1–2 werkdagen",
+        "spec3": "30 dagen retour",
+        "cta": "In winkelmand"
+      },
+      "3": {
+        "name": "Checkout",
+        "step1": "Gegevens",
+        "step2": "Verzending",
+        "step3": "Betaling",
+        "method1": "Bancontact",
+        "method2": "Apple Pay",
+        "method3": "Kaart",
+        "total": "Totaal",
+        "cta": "Betaal nu"
+      }
+    }
+  },
+  "references": {
+    "eyebrow": "Webshops & platformen",
+    "title": "Gebouwd, gelanceerd en live.",
+    "intro": "Twee webshops en twee bestelplatformen, elk op maat gemaakt voor een specifieke markt. Klik door, ze draaien vandaag.",
+    "visit": "Bekijk live",
+    "shotAlt": "Startpagina van {name}",
+    "types": {
+      "webshop": "Webshop",
+      "platform": "Platform"
+    },
+    "all": "Alle referenties"
+  },
+  "growth": {
+    "eyebrow": "Na de lancering",
+    "title": "Live gaan is dag <em>één</em>.",
+    "intro": "Een shop wordt pas echt goed als je hem blijft verbeteren. Daarom blijven we na de lancering aan boord, met drie diensten die je omzet stap voor stap opbouwen.",
+    "items": {
+      "1": {
+        "title": "Conversie-optimalisatie",
+        "body": "We meten waar bezoekers afhaken en testen betere versies van die pagina's. Kleine aanpassingen aan productfoto's, knoppen of de checkout, gestaafd door data."
+      },
+      "2": {
+        "title": "E-mailflows & automatisering",
+        "body": "Verlaten winkelmandjes, bestelbevestigingen, reviews na levering, terugkomacties. Eén keer opgezet, daarna werkt het vanzelf."
+      },
+      "3": {
+        "title": "Analytics & rapportering",
+        "body": "Een dashboard dat toont wat verkoopt, waar je klanten vandaan komen en wat een bestelling je kost. Elke maand een korte samenvatting in je mailbox."
+      }
+    },
+    "cta": "Bespreek je shop",
+    "note": "Antwoord binnen 24 uur"
+  },
+  "faq": {
+    "eyebrow": "Veelgestelde vragen",
+    "title": "Wat je nog wil weten.",
+    "aside": "Staat je vraag er niet bij? Mail ons, je krijgt binnen 24 uur antwoord.",
+    "items": {
+      "1": {
+        "q": "Op maat, of toch Shopify of WooCommerce?",
+        "a": "We bouwen op maat, omdat je dan nooit vastloopt op wat een plugin toevallig kan. Maar eerlijk is eerlijk: verkoop je een beperkt aanbod zonder bijzondere logica, dan is een standaardplatform soms de betere keuze. Dat zeggen we je in het eerste gesprek, nog voor er een offerte ligt."
+      },
+      "2": {
+        "q": "Welke betaalmethodes kan ik aanbieden?",
+        "a": "Alles wat je klanten verwachten: Bancontact, kredietkaart, Apple Pay, Google Pay, iDEAL, overschrijving en betaling op factuur voor zakelijke klanten. We werken met Mollie of Stripe, afhankelijk van je markt en je volume."
+      },
+      "3": {
+        "q": "Kan mijn shop koppelen met mijn boekhouding en voorraad?",
+        "a": "Ja. Boekhoudpakketten, voorraadsystemen, verzendplatformen en e-mailtools praten via API's met je shop. Bestaat er geen koppeling, dan bouwen we ze. Zo typ je nooit twee keer dezelfde bestelling in."
+      },
+      "4": {
+        "q": "Hoelang duurt het voor mijn shop live staat?",
+        "a": "Dat hangt af van je catalogus en het aantal koppelingen. Na het eerste gesprek krijg je een planning met vaste mijlpalen, en die houden we. Ondertussen zie je elke week wat er gebouwd is."
+      },
+      "5": {
+        "q": "Van wie is de shop na oplevering?",
+        "a": "Van jou. Code, design en data worden opgeleverd als jouw eigendom, met documentatie en toegang tot alles. Wil je later met iemand anders verder, dan kan dat zonder discussie."
+      }
+    }
+  }
+}

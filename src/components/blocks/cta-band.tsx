@@ -30,7 +30,7 @@ export async function CtaBand() {
           </Button>
           <p className="text-[0.9rem] text-muted">
             {t("cta.email")}{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-fg underline-offset-6 hover:underline">
+            <a href={`mailto:${siteConfig.email}`} className="inline-block py-2 text-fg underline-offset-6 hover:underline">
               {siteConfig.email}
             </a>
           </p>

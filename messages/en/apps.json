@@ -1,1 +1,159 @@
-{}
+{
+  "meta": {
+    "title": "Mobile apps",
+    "description": "Brisk designs and builds mobile apps for iOS and Android from a single codebase, with React Native and Expo. From tappable prototype to the App Store and Google Play, built in Belgium."
+  },
+  "hero": {
+    "eyebrow": "Mobile apps",
+    "title": "Apps people open <em>every day</em>.",
+    "lead": "For iOS and Android, from one codebase. We design and build apps that feel native, keep working without signal and make it through the stores without drama.",
+    "primary": "Book a call",
+    "secondary": "See the screens",
+    "reelLabel": "Rotating app screens designed by Brisk, shown on an iPhone",
+    "facts": {
+      "platforms": "iOS & Android",
+      "screens": "50+ product screens designed",
+      "reply": "Reply within 24 hours"
+    }
+  },
+  "codebase": {
+    "eyebrow": "One codebase",
+    "title": "Native feel, <em>one</em> codebase.",
+    "intro": "Building two separate apps costs twice as much and rarely pays off twice. With React Native and Expo we write once and ship to both platforms, without giving up speed or feel.",
+    "items": {
+      "1": {
+        "title": "iOS and Android from one codebase",
+        "body": "One team, one roadmap, one source of truth. New features land on iPhone and Android at the same time, and a bug only needs fixing once.",
+        "tags": "React Native · Expo · TypeScript"
+      },
+      "2": {
+        "title": "Native feel",
+        "body": "Gestures that follow your finger, haptics at the right moment and screens that hold 60 fps. The difference between an app you open and an app you use.",
+        "tags": "Gestures · Haptics · 60 fps"
+      },
+      "3": {
+        "title": "Store-ready",
+        "body": "We guide you through the App Store and Google Play: accounts, screenshots, review guidelines and TestFlight builds for your testers. You approve, we submit.",
+        "tags": "App Store · Google Play · TestFlight"
+      }
+    }
+  },
+  "screens": {
+    "eyebrow": "Screens",
+    "title": "Designed for the thumb.",
+    "intro": "A selection from more than 50 product screens: onboarding, payments, settings and everything in between.",
+    "hint": "Scroll to browse",
+    "alt": "{caption}, app design by Brisk",
+    "items": {
+      "1": {
+        "caption": "Managing charge cards and vehicles"
+      },
+      "2": {
+        "caption": "Settings and premium upgrade"
+      },
+      "3": {
+        "caption": "Filtering charging stations by speed"
+      },
+      "4": {
+        "caption": "Revenue widget on the home screen"
+      },
+      "5": {
+        "caption": "Joining a video lesson"
+      },
+      "6": {
+        "caption": "Starting a charging session"
+      },
+      "7": {
+        "caption": "Creating and restoring backups"
+      },
+      "8": {
+        "caption": "Pairing a device over Bluetooth"
+      }
+    }
+  },
+  "included": {
+    "eyebrow": "Included",
+    "title": "Everything that makes an app <em>complete</em>.",
+    "intro": "No add-ons, no surprises afterwards. This comes standard in every app we build, tuned to what your users actually need.",
+    "items": {
+      "1": {
+        "title": "Push notifications",
+        "body": "Targeted messages that bring people back instead of driving them away."
+      },
+      "2": {
+        "title": "Offline-first & sync",
+        "body": "Works without signal and syncs the moment the network is back."
+      },
+      "3": {
+        "title": "Payments & subscriptions",
+        "body": "In-app purchases, subscriptions and card payments, handled correctly in both stores."
+      },
+      "4": {
+        "title": "Login & accounts",
+        "body": "Apple, Google, email or magic link. Secure, fast and free of password frustration."
+      },
+      "5": {
+        "title": "Analytics & crash reporting",
+        "body": "You see what people do and where things break, before they come to tell you."
+      },
+      "6": {
+        "title": "Integration with your existing software",
+        "body": "Your CRM, ERP, accounting or own API talks directly to the app."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Approach",
+    "title": "From idea to <em>App Store</em>.",
+    "intro": "Five steps, each ending in something you can hold. You always know where we are and what comes next.",
+    "steps": {
+      "1": {
+        "title": "Discovery",
+        "body": "We map your users, your goals and the systems you already run. The result is a sharp scope and a plan you can build on."
+      },
+      "2": {
+        "title": "A prototype you can touch",
+        "body": "Before a single line of code, the app is already on your phone as a tappable prototype. We test the flow, not the idea of it."
+      },
+      "3": {
+        "title": "Build in sprints",
+        "body": "A new build every two weeks via TestFlight or an internal Play track. You watch the app grow instead of waiting for one big reveal."
+      },
+      "4": {
+        "title": "Testing with real users",
+        "body": "We watch people use the app on their own devices. Whatever gets in the way, we smooth out before launch."
+      },
+      "5": {
+        "title": "Launch & updates",
+        "body": "We submit to Apple and Google, keep an eye on crashes and numbers, and plan the next updates. An app is never finished, and that is good news."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "What you still want to know.",
+    "aside": "Something else? Email us. We reply within 24 hours.",
+    "items": {
+      "1": {
+        "q": "Native or cross-platform?",
+        "a": "For most apps, cross-platform with React Native is the smart choice: one codebase, two platforms, native components under the hood. Only heavy 3D, AR or specific hardware integrations call for a fully native build. We talk that through honestly in the first call."
+      },
+      "2": {
+        "q": "What does an app cost?",
+        "a": "It depends on the number of screens, integrations and platforms. After a free 30-minute intro call you get a fixed price with a clear scope, no open end. You pay in phases, each time after something you can see and test."
+      },
+      "3": {
+        "q": "How long until the app is in the stores?",
+        "a": "That depends on the scope, but the tappable prototype is on your phone within the first weeks. From there we build in two-week sprints towards a first store release. We agree on milestones up front and stick to them."
+      },
+      "4": {
+        "q": "What if Apple or Google rejects the app?",
+        "a": "It rarely happens when you respect the guidelines from day one, and we do. If a reviewer does flag something, we fix it and resubmit. Store guidance is part of every project."
+      },
+      "5": {
+        "q": "Who maintains the app after launch?",
+        "a": "We do, if you want us to. New iOS and Android versions, libraries and store requirements call for regular updates, so we agree on a maintenance rhythm that suits you. The code and the design are yours and stay yours, so you are never locked in."
+      }
+    }
+  }
+}

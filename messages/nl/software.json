@@ -1,1 +1,126 @@
-{}
+{
+  "meta": {
+    "title": "Software op maat",
+    "description": "Brisk bouwt software op maat: klantportalen, dashboards, automatisering, integraties en SaaS-producten. Vaste prijs per fase, code en data in jouw eigendom. Vanuit België."
+  },
+  "hero": {
+    "eyebrow": "Software op maat",
+    "title": "Software die <em>past</em> bij hoe je werkt.",
+    "lead": "Klantportalen, dashboards, automatisering en integraties. We bouwen wat standaardsoftware niet kan, met code en data die van jou zijn.",
+    "primary": "Gesprek inplannen",
+    "secondary": "Bekijk interfaces",
+    "gridLabel": "Dashboards en SaaS-interfaces ontworpen door Brisk",
+    "facts": {
+      "screens": "50+ productschermen ontworpen",
+      "reply": "Antwoord binnen 24 uur",
+      "ownership": "Code en design worden jouw eigendom"
+    }
+  },
+  "build": {
+    "eyebrow": "Wat we bouwen",
+    "title": "Vijf soorten software. Eén manier van <em>bouwen</em>.",
+    "intro": "Elke opdracht start met een concreet probleem in je bedrijf. Daarna kiezen we de kleinste oplossing die het volledig oplost, en bouwen we die zo dat ze kan groeien.",
+    "items": {
+      "1": {
+        "title": "Klantportalen",
+        "body": "Een beveiligde plek waar klanten bestellingen volgen, bestanden ophalen en zelf hun gegevens beheren. Minder mails, minder telefoons, meer overzicht.",
+        "tags": { "1": "Login", "2": "Rollen", "3": "Selfservice" }
+      },
+      "2": {
+        "title": "Dashboards & rapportering",
+        "body": "Cijfers uit al je systemen op één scherm, live en op maat van wie ernaar kijkt. Van dagelijkse opvolging tot maandrapport in één klik.",
+        "tags": { "1": "Live data", "2": "Filters", "3": "Export" }
+      },
+      "3": {
+        "title": "Automatisering van processen",
+        "body": "Terugkerend werk dat vandaag door handen gaat, laten we door software doen. Goedkeuringen, notificaties, planning en facturatie lopen vanzelf.",
+        "tags": { "1": "Workflows", "2": "Triggers", "3": "Notificaties" }
+      },
+      "4": {
+        "title": "Integraties & API's",
+        "body": "We koppelen wat nu naast elkaar leeft: boekhouding, CRM, webshop, ERP. Data stroomt automatisch en in twee richtingen, zonder overtypen.",
+        "tags": { "1": "REST", "2": "Webhooks", "3": "Sync" }
+      },
+      "5": {
+        "title": "SaaS-producten",
+        "body": "Een eigen product dat je aan klanten verkoopt. Van een eerste versie tot een multi-tenant platform met abonnementen en betalingen.",
+        "tags": { "1": "Multi-tenant", "2": "Abonnementen", "3": "Stripe" }
+      }
+    }
+  },
+  "cases": {
+    "eyebrow": "Case",
+    "title": "Twee platformen die elke dag <em>draaien</em>.",
+    "intro": "Voor twee spelers in de chiptuningwereld bouwden we elk een eigen platform. Werkplaatsen bestellen, betalen en halen hun bestanden op zonder dat er iemand tussen moet komen.",
+    "builtLabel": "Wat we bouwden",
+    "specs": { "1": "Klantportaal", "2": "Bestelflow", "3": "Klantzone", "4": "Betalingen" },
+    "visit": "Bekijk live",
+    "shotAlt": "{name}, een platform ontworpen en gebouwd door Brisk"
+  },
+  "motion": {
+    "eyebrow": "Van idee tot werkende software",
+    "title": "Vier fasen. Geen <em>verrassingen</em>.",
+    "body": "We knippen elk project in fasen met een vaste prijs. Na elke sprint zie je werkende software, geen presentatie. En jij beslist wanneer de volgende fase start.",
+    "reelEyebrow": "Hoe we bouwen",
+    "steps": {
+      "1": { "title": "Analyse", "body": "We brengen je processen, data en systemen in kaart en leggen vast wat de software precies moet doen." },
+      "2": { "title": "Architectuur", "body": "Datamodel, integraties en techniek staan op papier voor er gebouwd wordt. Zo blijft de bouw voorspelbaar." },
+      "3": { "title": "Bouw in sprints", "body": "Elke twee weken een werkende versie die je zelf test en waarop je bijstuurt." },
+      "4": { "title": "Overdracht", "body": "Code, documentatie en toegang worden van jou. Wij blijven bereikbaar." }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Interfaces die we ontwierpen",
+    "title": "Schermen die je team <em>graag</em> gebruikt.",
+    "intro": "Een greep uit meer dan 50 productschermen: dashboards, instellingen, facturatie, e-mail en AI-tools. Ontworpen tot op de pixel, gebouwd om elke dag mee te werken.",
+    "more": "Meer product design",
+    "imageAlt": "{title}, een interface ontworpen door Brisk"
+  },
+  "stack": {
+    "eyebrow": "Stack & principes",
+    "title": "Bewezen techniek, heldere <em>afspraken</em>.",
+    "intro": "We bouwen op een stack die we door en door kennen en die over vijf jaar nog onderhouden wordt. Geen exotische keuzes, wel de juiste.",
+    "marqueeLabel": "Technologieën waarmee we bouwen",
+    "principles": {
+      "1": {
+        "title": "Vaste prijs per fase",
+        "body": "Elke fase krijgt vooraf een scope en een prijs. Je weet wat je betaalt voor er gebouwd wordt, en je beslist per fase of we doorgaan."
+      },
+      "2": {
+        "title": "Eigen code en data",
+        "body": "Alles wat we bouwen is van jou: de code, de database, de accounts. Geen licenties, geen lock-in, geen afhankelijkheid van ons."
+      },
+      "3": {
+        "title": "Documentatie & overdracht",
+        "body": "Elk project eindigt met documentatie, een overdrachtssessie en toegang tot alles. Een ander team kan verder als dat ooit moet."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Veelgestelde vragen",
+    "title": "Goed om te weten.",
+    "aside": "Staat je vraag er niet bij? Mail ons, je krijgt binnen 24 uur antwoord.",
+    "items": {
+      "1": {
+        "q": "Wat kost software op maat?",
+        "a": "Dat hangt af van wat de software moet doen en met welke systemen ze praat. Na een analyse van je processen krijg je een voorstel per fase, met een vaste prijs. Zo weet je vooraf waar je aan toe bent en kan je klein starten."
+      },
+      "2": {
+        "q": "Bouwen jullie ook op bestaande systemen?",
+        "a": "Ja. Vaak is het slimste wat we kunnen doen een laag bouwen bovenop wat je al hebt: een portaal op je ERP, een dashboard op je boekhouding, een koppeling tussen twee tools. Herbouwen doen we alleen als het echt nodig is."
+      },
+      "3": {
+        "q": "Wie host de software?",
+        "a": "Meestal wij, op infrastructuur zoals Vercel en Supabase, op accounts die op jouw naam staan. Wil je liever zelf hosten of bij een eigen partij? Dat kan ook, de code is sowieso van jou."
+      },
+      "4": {
+        "q": "Hoe zit het met onderhoud?",
+        "a": "Software vraagt onderhoud: updates, monitoring en kleine verbeteringen. We spreken een onderhoudsformule af die past bij hoe kritisch de software voor je bedrijf is. Geen verplichting, wel een aanrader."
+      },
+      "5": {
+        "q": "Kunnen we klein starten?",
+        "a": "Absoluut. We starten graag met een MVP: de kleinste versie die één probleem volledig oplost. Die gaat snel live, levert meteen iets op en toont wat de volgende stap moet zijn."
+      }
+    }
+  }
+}

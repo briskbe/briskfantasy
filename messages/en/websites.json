@@ -1,1 +1,136 @@
-{}
+{
+  "meta": {
+    "title": "Custom websites",
+    "description": "Brisk designs and builds custom websites: no themes, just a structure that wins customers and a codebase that stays fast and accessible. Based in Belgium, with a fixed price after the first call."
+  },
+  "hero": {
+    "eyebrow": "Custom websites",
+    "title": "A website that <em>works</em> while you work.",
+    "lead": "No theme, no page builder. We design and build your site from scratch, with a structure that wins customers and technology that lasts for years.",
+    "primary": "Book a call",
+    "secondary": "See the websites",
+    "shotAlt": "{name}, a website designed and built by Brisk",
+    "facts": {
+      "sites": "{count} websites live",
+      "reply": "Reply within 24 hours",
+      "intro": "Free 30-minute intro call"
+    }
+  },
+  "whatYouGet": {
+    "eyebrow": "What you get",
+    "title": "Everything a website needs. <em>Nothing</em> that slows it down.",
+    "intro": "Every site we build goes through the same five layers. Not a set of loose parts, but one whole that holds up from strategy to maintenance.",
+    "items": {
+      "1": {
+        "title": "Strategy & structure",
+        "body": "We start with what your customers are looking for and what you want to achieve. From there we shape a sitemap and page structure that makes sense to visitors and search engines alike.",
+        "tags": "Sitemap · Wireframes · Content"
+      },
+      "2": {
+        "title": "Bespoke design",
+        "body": "No themes, no templates. Every screen is designed around your brand, your offer and the way people actually use your site.",
+        "tags": "Identity · Interface · Prototype"
+      },
+      "3": {
+        "title": "Development",
+        "body": "We build with Next.js and a headless CMS: fast, accessible and ready to grow. Every page is tested on every screen before it goes live.",
+        "tags": "Next.js · Headless CMS · Testing"
+      },
+      "4": {
+        "title": "SEO & performance",
+        "body": "Speed and findability are built in, not bolted on with a plug-in afterwards. Clean code, correct structure and images that load before you notice.",
+        "tags": "Core Web Vitals · Structured data · Analytics"
+      },
+      "5": {
+        "title": "Maintenance & growth",
+        "body": "After launch we stay close. Updates, new pages and improvements based on what the numbers tell us.",
+        "tags": "Updates · Hosting · Iteration"
+      }
+    }
+  },
+  "speed": {
+    "eyebrow": "Built for speed",
+    "title": "This is what we build for.",
+    "lead": "A beautiful site that loads slowly is an expensive brochure. So every project is held to the same bar: fast, usable by everyone and easy to find.",
+    "targetLabel": "Target",
+    "when": "Before every launch",
+    "gauges": {
+      "performance": "Performance",
+      "accessibility": "Accessibility",
+      "seo": "SEO"
+    },
+    "note": "Targets every project is checked against before launch. Not measured scores of client sites.",
+    "args": {
+      "1": {
+        "title": "Core Web Vitals",
+        "body": "Load time, interaction and visual stability are measured during the build, not after it. Green scores are the starting point, not the goal."
+      },
+      "2": {
+        "title": "Accessible to everyone",
+        "body": "Semantic structure, contrast and keyboard navigation come standard in every design. Good for visitors, good for Google."
+      },
+      "3": {
+        "title": "A CMS that grows with you",
+        "body": "Headless and decoupled from the design. Adding a language, a page or an integration later never means a rebuild."
+      }
+    }
+  },
+  "references": {
+    "eyebrow": "Our work",
+    "title": "{count} websites that are <em>live</em> today.",
+    "intro": "No mockups, just real sites for real clients. The screenshots are fetched live, so what you see here is what their visitors see today.",
+    "reelLabel": "Showreel",
+    "visit": "View live",
+    "shotAlt": "Homepage of {name}"
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "From first call to <em>launch</em>.",
+    "intro": "Four steps and one fixed price after the first conversation. You know where we stand at every moment.",
+    "steps": {
+      "1": {
+        "title": "Intro call",
+        "body": "A 30-minute conversation about your goals, your customers and what isn't working today. You then receive a clear proposal with a fixed price."
+      },
+      "2": {
+        "title": "Design",
+        "body": "Structure and copy first, then the visual design. You review a clickable prototype before a single line of code is written."
+      },
+      "3": {
+        "title": "Build",
+        "body": "We build the site on Next.js with a headless CMS, test it on every screen and fill in the content together."
+      },
+      "4": {
+        "title": "Launch",
+        "body": "Domain, hosting and analytics are ready to go. After going live we follow the numbers and stay within reach."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked",
+    "title": "Good to know.",
+    "aside": "Can't find your question? Email us and you'll hear back within 24 hours.",
+    "items": {
+      "1": {
+        "q": "What does a custom website cost?",
+        "a": "It depends on the scope: the number of pages, the features and whether we also take care of copy and imagery. After the intro call you receive a proposal with a fixed price, with no surprises later on."
+      },
+      "2": {
+        "q": "How long does it take?",
+        "a": "A compact site is usually live within a few weeks. A larger site with multiple languages or integrations takes longer. The proposal includes a timeline we keep track of together."
+      },
+      "3": {
+        "q": "Can I edit the content myself?",
+        "a": "Yes. Every site comes with a CMS where you manage copy, images and pages yourself. We walk you through it at handover, and you can always come back to us afterwards."
+      },
+      "4": {
+        "q": "What about hosting and maintenance?",
+        "a": "We handle hosting, domain and security updates if you want us to. You decide whether we keep building after launch: on a maintenance plan or per project."
+      },
+      "5": {
+        "q": "Who owns the code?",
+        "a": "You do. Design, code and content become your property at handover. You're not tied to anything and can always continue with another team."
+      }
+    }
+  }
+}

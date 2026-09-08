@@ -1,1 +1,133 @@
-{}
+{
+  "meta": {
+    "title": "Brisk — Custom websites, webshops, software and apps",
+    "description": "Brisk is a digital agency based in Belgium. We design and build custom websites, webshops, software and mobile apps. 17 live websites, 50+ product screens, replies within 24 hours."
+  },
+  "hero": {
+    "eyebrow": "Digital agency · Belgium",
+    "titleLine1": "Digital products",
+    "titleLine2": "that <em>move</em>.",
+    "lead": "Custom websites, webshops, software and mobile apps. Designed and built by one agency in Belgium, for companies that want to get ahead.",
+    "ctaPrimary": "Book a call",
+    "ctaSecondary": "See our work",
+    "scroll": "Scroll",
+    "navLabel": "Services",
+    "videoLabel": "Mood film: someone working on a laptop on a cliff above the clouds",
+    "links": {
+      "websites": "Websites",
+      "webshops": "Webshops",
+      "software": "Software",
+      "apps": "Apps"
+    }
+  },
+  "trust": {
+    "liveLabel": "live websites",
+    "screensLabel": "product screens",
+    "marqueeLabel": "Clients live today"
+  },
+  "services": {
+    "eyebrow": "What we make",
+    "title": "Four things. All of them custom.",
+    "lead": "No themes, no page builders. Every project starts with what your customer needs and ends in code you own outright.",
+    "previewAlt": "Example of {service}",
+    "items": {
+      "websites": {
+        "title": "Custom websites",
+        "description": "Fast, findable and built around what your customer came for."
+      },
+      "webshops": {
+        "title": "Custom webshops",
+        "description": "An ordering flow without friction, from product page to payment."
+      },
+      "software": {
+        "title": "Custom software",
+        "description": "Portals, dashboards and tools that shorten your working day."
+      },
+      "apps": {
+        "title": "Mobile apps",
+        "description": "Apps for iOS and Android that feel like they belong on the phone."
+      }
+    }
+  },
+  "work": {
+    "eyebrow": "Selected work",
+    "title": "Work that is <em>live</em> today.",
+    "lead": "Seventeen websites, webshops and platforms running right now for clients in Belgium and beyond. No concepts, no mockups.",
+    "visit": "View live",
+    "cursor": "View",
+    "all": "All references",
+    "shotAlt": "Screenshot of the {name} website"
+  },
+  "motion": {
+    "eyebrow": "Work in motion",
+    "title": "From homepage to checkout.",
+    "body": "A quick tour of six references, exactly as they are online today."
+  },
+  "product": {
+    "eyebrow": "Product design",
+    "title": "Interfaces people enjoy <em>working</em> in.",
+    "lead": "More than fifty screens for dashboards, apps and internal tools. Designed to the pixel and then built exactly as designed.",
+    "hint": "Scroll to see more",
+    "hintMobile": "Swipe to see more"
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "Four steps, no surprises.",
+    "body": "You talk directly to the people who design and build. Every step ends with something you can see, click and judge for yourself.",
+    "cta": "Book a call",
+    "reelEyebrow": "How we work",
+    "steps": {
+      "discover": {
+        "index": "01",
+        "title": "Discover",
+        "short": "Call, goal and scope",
+        "body": "We start with a free thirty-minute call. What you want to achieve, for whom, and what is standing in the way. From that comes a clear proposal with scope and timeline."
+      },
+      "design": {
+        "index": "02",
+        "title": "Design",
+        "short": "Structure, then visuals",
+        "body": "Structure first, visuals second. You see real screens instead of vague moodboards and give feedback on something you can click through."
+      },
+      "build": {
+        "index": "03",
+        "title": "Build",
+        "short": "Own code, staging site",
+        "body": "We build in our own code, without themes or plugins that work against you later. Fast, accessible and ready to grow. You follow progress on a staging site."
+      },
+      "launch": {
+        "index": "04",
+        "title": "Launch & grow",
+        "short": "Live, measure, improve",
+        "body": "Going live is the start. We measure what works, improve what can be improved and stay reachable. Any question gets an answer within 24 hours."
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Why Brisk",
+    "title": "Small team, short lines, our own code.",
+    "items": {
+      "contact": {
+        "index": "01",
+        "title": "Direct contact, no account managers",
+        "body": "You email or call the people doing the work. Questions get an answer within 24 hours, from someone who knows your project inside out."
+      },
+      "ownership": {
+        "index": "02",
+        "title": "Our code, your property",
+        "body": "Everything we design and build is yours: design files, code and domain. No subscription to your own website."
+      },
+      "pace": {
+        "index": "03",
+        "title": "Fast, never rushed",
+        "body": "We work in short, visible steps. You see results early and decide based on real screens instead of assumptions."
+      }
+    },
+    "metrics": {
+      "sites": "Live websites",
+      "screens": "Product screens",
+      "reply": "Response time",
+      "languages": "Languages"
+    }
+  }
+}

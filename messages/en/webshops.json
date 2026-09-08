@@ -1,1 +1,171 @@
-{}
+{
+  "meta": {
+    "title": "Custom webshops",
+    "description": "Brisk designs and builds custom webshops: conversion-focused design, a checkout that just works, integrations with your accounting and stock, and technology that stays fast. From Belgium."
+  },
+  "hero": {
+    "eyebrow": "Custom webshops",
+    "title": "A webshop that <em>sells</em> while you sleep.",
+    "lead": "Not an off-the-shelf theme with a cart bolted on. We design and build your shop from scratch: every product page, every step of the checkout, every link to your back office.",
+    "primary": "Book a call",
+    "secondary": "See our webshops",
+    "shotAlt": "{name}, a webshop designed and built by Brisk",
+    "facts": {
+      "sites": "{count} websites live",
+      "reply": "Reply within 24 hours",
+      "intro": "Free 30-minute intro call"
+    },
+    "card": {
+      "label": "Product card",
+      "name": "DPF filter Euro 6",
+      "stock": "In stock",
+      "delivery": "Ships in 1–2 working days",
+      "variantLabel": "Version",
+      "variants": {
+        "1": "Original",
+        "2": "Remanufactured"
+      },
+      "priceLabel": "Price incl. VAT",
+      "add": "Add to cart",
+      "added": "Added",
+      "cartLabel": "Items in cart",
+      "cartStatus": "{count} items in your cart"
+    }
+  },
+  "pillars": {
+    "eyebrow": "What you get",
+    "title": "From first click to <em>repeat order</em>.",
+    "intro": "Four pillars, one whole. We don't build them in isolation but as a single system that walks your customer from product page to order confirmation.",
+    "items": {
+      "1": {
+        "title": "Conversion-focused design",
+        "body": "Every product page answers the questions a buyer asks before pressing the button: will it fit, when will I have it, what if it's wrong. No distractions, just direction.",
+        "tags": "Product pages · Filters · Trust"
+      },
+      "2": {
+        "title": "Payments & checkout",
+        "body": "A checkout with as few steps as possible and the payment methods your customers expect. We work with Mollie or Stripe and support Bancontact, Apple Pay, cards and pay-by-invoice.",
+        "tags": "Mollie · Bancontact · Apple Pay"
+      },
+      "3": {
+        "title": "Integrations",
+        "body": "Your shop talks to the rest of your business: accounting, stock, shipping labels, email. For Roetfilterkopen we built a licence-plate lookup that shows the right filter instantly.",
+        "tags": "Accounting · Stock · Shipping"
+      },
+      "4": {
+        "title": "Speed & SEO",
+        "body": "Product pages that load in a fraction of a second and get found on Google. Structured data, clean URLs and a sitemap that grows with your catalogue.",
+        "tags": "Core Web Vitals · Structured data · Sitemap"
+      }
+    }
+  },
+  "story": {
+    "eyebrow": "The checkout",
+    "title": "Three screens between browsing and <em>buying</em>.",
+    "intro": "We design every step as if it were the only one. As few questions as possible, as much certainty as possible.",
+    "steps": {
+      "1": {
+        "label": "Discover",
+        "body": "Filters that feel like a good conversation with a salesperson. Search by brand, model year or licence plate and see what fits straight away."
+      },
+      "2": {
+        "label": "Choose",
+        "body": "The product page removes every doubt: stock, delivery time, compatibility and returns sit right above the button."
+      },
+      "3": {
+        "label": "Pay",
+        "body": "One page, three steps, no forced account. Pay with whatever your customer already uses, confirmation within a second."
+      }
+    },
+    "screens": {
+      "1": {
+        "name": "Catalogue",
+        "search": "Search by licence plate",
+        "filter1": "Brand",
+        "filter2": "Model year",
+        "filter3": "Fuel",
+        "results": "Results"
+      },
+      "2": {
+        "name": "Product page",
+        "badge": "In stock",
+        "title": "DPF filter Euro 6",
+        "spec1": "Fits your licence plate",
+        "spec2": "Ships in 1–2 working days",
+        "spec3": "30-day returns",
+        "cta": "Add to cart"
+      },
+      "3": {
+        "name": "Checkout",
+        "step1": "Details",
+        "step2": "Shipping",
+        "step3": "Payment",
+        "method1": "Bancontact",
+        "method2": "Apple Pay",
+        "method3": "Card",
+        "total": "Total",
+        "cta": "Pay now"
+      }
+    }
+  },
+  "references": {
+    "eyebrow": "Webshops & platforms",
+    "title": "Built, launched and live.",
+    "intro": "Two webshops and two ordering platforms, each made for a specific market. Click through, they're taking orders today.",
+    "visit": "View live",
+    "shotAlt": "Homepage of {name}",
+    "types": {
+      "webshop": "Webshop",
+      "platform": "Platform"
+    },
+    "all": "All our work"
+  },
+  "growth": {
+    "eyebrow": "After launch",
+    "title": "Going live is day <em>one</em>.",
+    "intro": "A shop only gets really good when you keep improving it. That's why we stay on board after launch, with three services that build your revenue step by step.",
+    "items": {
+      "1": {
+        "title": "Conversion optimisation",
+        "body": "We measure where visitors drop off and test better versions of those pages. Small changes to product photos, buttons or the checkout, backed by data."
+      },
+      "2": {
+        "title": "Email flows & automation",
+        "body": "Abandoned carts, order confirmations, review requests after delivery, win-back campaigns. Set up once, then it runs on its own."
+      },
+      "3": {
+        "title": "Analytics & reporting",
+        "body": "A dashboard that shows what sells, where your customers come from and what an order costs you. A short summary in your inbox every month."
+      }
+    },
+    "cta": "Talk about your shop",
+    "note": "Reply within 24 hours"
+  },
+  "faq": {
+    "eyebrow": "Frequently asked",
+    "title": "What you still want to know.",
+    "aside": "Question not listed? Email us and you'll hear back within 24 hours.",
+    "items": {
+      "1": {
+        "q": "Custom, or should I just use Shopify or WooCommerce?",
+        "a": "We build custom, because then you never get stuck on what a plugin happens to support. But honestly: if you sell a small range without any special logic, a standard platform is sometimes the better choice. We'll tell you so in the first call, before there's a quote on the table."
+      },
+      "2": {
+        "q": "Which payment methods can I offer?",
+        "a": "Everything your customers expect: Bancontact, credit card, Apple Pay, Google Pay, iDEAL, bank transfer and pay-by-invoice for business customers. We work with Mollie or Stripe, depending on your market and volume."
+      },
+      "3": {
+        "q": "Can my shop connect to my accounting and stock systems?",
+        "a": "Yes. Accounting packages, inventory systems, shipping platforms and email tools talk to your shop through APIs. If an integration doesn't exist, we build it. You never type the same order in twice."
+      },
+      "4": {
+        "q": "How long until my shop is live?",
+        "a": "That depends on your catalogue and the number of integrations. After the first call you get a schedule with fixed milestones, and we stick to it. Along the way you see what's been built every week."
+      },
+      "5": {
+        "q": "Who owns the shop once it's delivered?",
+        "a": "You do. Code, design and data are handed over as your property, with documentation and access to everything. If you ever want to continue with someone else, you can, no discussion."
+      }
+    }
+  }
+}

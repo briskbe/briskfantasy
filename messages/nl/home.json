@@ -1,1 +1,133 @@
-{}
+{
+  "meta": {
+    "title": "Brisk — Websites, webshops, software en apps op maat",
+    "description": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. 17 live websites, 50+ productschermen, antwoord binnen 24 uur."
+  },
+  "hero": {
+    "eyebrow": "Digitaal bureau · België",
+    "titleLine1": "Digitale producten",
+    "titleLine2": "die <em>bewegen</em>.",
+    "lead": "Websites, webshops, software en mobiele apps op maat. Ontworpen en gebouwd door één bureau uit België, voor bedrijven die vooruit willen.",
+    "ctaPrimary": "Gesprek inplannen",
+    "ctaSecondary": "Bekijk ons werk",
+    "scroll": "Scroll",
+    "navLabel": "Diensten",
+    "videoLabel": "Sfeerfilm: iemand werkt op een laptop op een klif boven de wolken",
+    "links": {
+      "websites": "Websites",
+      "webshops": "Webshops",
+      "software": "Software",
+      "apps": "Apps"
+    }
+  },
+  "trust": {
+    "liveLabel": "live websites",
+    "screensLabel": "productschermen",
+    "marqueeLabel": "Klanten die vandaag live staan"
+  },
+  "services": {
+    "eyebrow": "Wat we maken",
+    "title": "Vier dingen. Allemaal op maat.",
+    "lead": "Geen thema's, geen bouwpakketten. Elk project begint bij wat jouw klant nodig heeft en eindigt in eigen code die van jou is.",
+    "previewAlt": "Voorbeeld van {service}",
+    "items": {
+      "websites": {
+        "title": "Website op maat",
+        "description": "Snel, vindbaar en gebouwd rond wat je klant komt zoeken."
+      },
+      "webshops": {
+        "title": "Webshop op maat",
+        "description": "Een bestelflow zonder ruis, van productpagina tot betaling."
+      },
+      "software": {
+        "title": "Software op maat",
+        "description": "Portalen, dashboards en tools die je werkdag korter maken."
+      },
+      "apps": {
+        "title": "Mobiele apps",
+        "description": "Apps voor iOS en Android die aanvoelen alsof ze er thuishoren."
+      }
+    }
+  },
+  "work": {
+    "eyebrow": "Geselecteerd werk",
+    "title": "Werk dat vandaag <em>live</em> staat.",
+    "lead": "Zeventien websites, webshops en platformen die nu draaien voor klanten in België en daarbuiten. Geen concepten, geen mockups.",
+    "visit": "Bekijk live",
+    "cursor": "Bekijk",
+    "all": "Alle referenties",
+    "shotAlt": "Screenshot van de website van {name}"
+  },
+  "motion": {
+    "eyebrow": "Werk in beweging",
+    "title": "Van homepage tot checkout.",
+    "body": "Een korte ronde langs zes referenties, precies zoals ze vandaag online staan."
+  },
+  "product": {
+    "eyebrow": "Product design",
+    "title": "Interfaces waar mensen graag in <em>werken</em>.",
+    "lead": "Meer dan vijftig schermen voor dashboards, apps en interne tools. Ontworpen tot op de pixel en daarna gebouwd zoals ontworpen.",
+    "hint": "Scroll om verder te kijken",
+    "hintMobile": "Veeg om verder te kijken"
+  },
+  "process": {
+    "eyebrow": "Hoe we werken",
+    "title": "Vier stappen, geen verrassingen.",
+    "body": "Je praat rechtstreeks met de mensen die ontwerpen en bouwen. Elke stap eindigt met iets dat je kan zien, aanklikken en beoordelen.",
+    "cta": "Gesprek inplannen",
+    "reelEyebrow": "Hoe we werken",
+    "steps": {
+      "discover": {
+        "index": "01",
+        "title": "Ontdekken",
+        "short": "Gesprek, doel en scope",
+        "body": "We starten met een gratis gesprek van dertig minuten. Wat wil je bereiken, voor wie, en wat staat er in de weg. Daaruit volgt een helder voorstel met scope en planning."
+      },
+      "design": {
+        "index": "02",
+        "title": "Ontwerpen",
+        "short": "Structuur, dan beeld",
+        "body": "Eerst de structuur, dan het beeld. Je krijgt echte schermen te zien in plaats van vage moodboards en geeft feedback op iets dat je kan aanklikken."
+      },
+      "build": {
+        "index": "03",
+        "title": "Bouwen",
+        "short": "Eigen code, testomgeving",
+        "body": "We bouwen in eigen code, zonder thema's of plugins die je later tegenwerken. Snel, toegankelijk en klaar om te groeien. Je volgt de voortgang op een testomgeving."
+      },
+      "launch": {
+        "index": "04",
+        "title": "Lanceren & groeien",
+        "short": "Live, meten, verbeteren",
+        "body": "Live gaan is het begin. We meten wat werkt, verbeteren wat kan en blijven bereikbaar. Op een vraag krijg je binnen 24 uur antwoord."
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Waarom Brisk",
+    "title": "Klein team, korte lijnen, eigen code.",
+    "items": {
+      "contact": {
+        "index": "01",
+        "title": "Direct contact, geen accountmanagers",
+        "body": "Je mailt of belt met wie het werk doet. Vragen krijgen binnen 24 uur antwoord, van iemand die je project van binnenuit kent."
+      },
+      "ownership": {
+        "index": "02",
+        "title": "Eigen code, jouw eigendom",
+        "body": "Alles wat we ontwerpen en bouwen is van jou: ontwerpbestanden, code en domein. Geen abonnement op je eigen website."
+      },
+      "pace": {
+        "index": "03",
+        "title": "Snel, zonder haast",
+        "body": "We werken in korte, zichtbare stappen. Je ziet vroeg resultaat en beslist op basis van echte schermen in plaats van aannames."
+      }
+    },
+    "metrics": {
+      "sites": "Live websites",
+      "screens": "Productschermen",
+      "reply": "Reactietijd",
+      "languages": "Talen"
+    }
+  }
+}

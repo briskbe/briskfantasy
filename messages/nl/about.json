@@ -1,1 +1,90 @@
-{}
+{
+  "meta": {
+    "title": "Over Brisk — Digitaal bureau uit België",
+    "description": "Brisk ontwerpt en bouwt websites, webshops, software en mobiele apps op maat. Je praat rechtstreeks met de mensen die het bouwen. 17 live websites, 50+ productschermen, antwoord binnen 24 uur."
+  },
+  "hero": {
+    "eyebrow": "Over Brisk",
+    "titleLine1": "Klein team.",
+    "titleLine2": "Grote <em>zorg</em>.",
+    "lead": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. Je praat rechtstreeks met de mensen die het bouwen, van het eerste gesprek tot lang na de lancering.",
+    "ctaPrimary": "Gesprek inplannen",
+    "ctaSecondary": "Bekijk ons werk",
+    "tagline": "Ontworpen en gebouwd in België",
+    "reelCaption": "Brisk, in beweging"
+  },
+  "manifesto": {
+    "eyebrow": "Waar we voor staan",
+    "p1": {
+      "opening": "We bouwen wat past.",
+      "rest": "Geen thema's, geen bouwpakketten, geen plugin die bijna doet wat je nodig hebt. Elk project begint bij jouw klant en eindigt in eigen code, ontworpen rond hoe jij werkt."
+    },
+    "p2": {
+      "opening": "We zeggen wat we denken.",
+      "rest": "Als een idee niet werkt, hoor je dat in het eerste gesprek en niet op de factuur. Je krijgt eerlijk advies, ook als dat betekent dat je minder nodig hebt dan je dacht."
+    },
+    "p3": {
+      "opening": "We leveren snel, zonder te haasten.",
+      "rest": "Korte fases, een werkende versie die je al kan gebruiken voor de laatste pixel staat. En alles wat we maken is van jou: ontwerp, code en data."
+    }
+  },
+  "principles": {
+    "eyebrow": "Principes",
+    "title": "Vijf dingen die we niet <em>loslaten</em>.",
+    "items": {
+      "one": {
+        "title": "Eerst begrijpen, dan bouwen.",
+        "body": "Elk project begint met vragen, niet met een offerte. Wat moet je klant kunnen doen, en wat houdt hem vandaag tegen."
+      },
+      "two": {
+        "title": "Snelheid is een feature.",
+        "body": "Een trage site kost klanten. Elke pagina die we bouwen wordt gemeten voor ze live gaat, op een echte telefoon."
+      },
+      "three": {
+        "title": "Detail is geen afwerking.",
+        "body": "De overgangen, de foutmelding, het lege scherm. De laatste vijf procent bepaalt hoe iets aanvoelt."
+      },
+      "four": {
+        "title": "Geen ruis.",
+        "body": "Eén boodschap per scherm, één accent. Wat niet helpt om te begrijpen of te beslissen, gaat eruit."
+      },
+      "five": {
+        "title": "Van jou, niet van ons.",
+        "body": "Ontwerp, code en data zijn jouw eigendom. Je kan altijd verder zonder ons, ook al hopen we van niet."
+      }
+    },
+    "videoCaption": "Interface in beweging",
+    "videoLabel": "Een interface uit ons portfolio, in beweging"
+  },
+  "how": {
+    "eyebrow": "Hoe we werken",
+    "title": "Zo verloopt een project met Brisk.",
+    "items": {
+      "contact": {
+        "title": "Direct contact",
+        "body": "Je praat met wie het bouwt. Geen accountmanager tussenin, geen briefing die drie keer wordt doorgegeven."
+      },
+      "price": {
+        "title": "Vaste prijs per fase",
+        "body": "Elke fase heeft een duidelijke scope en een prijs die vooraf vastligt. Je weet wat je krijgt voor je ja zegt."
+      },
+      "custom": {
+        "title": "Op maat, altijd",
+        "body": "Geen templates, geen thema's. Elk scherm is ontworpen voor jouw klant en gebouwd in eigen code."
+      }
+    },
+    "toolsLabel": "Waarmee we bouwen"
+  },
+  "numbers": {
+    "eyebrow": "In cijfers",
+    "title": "Wat vandaag <em>live</em> staat.",
+    "items": {
+      "sites": "live websites",
+      "screens": "productschermen",
+      "languages": "talen",
+      "reply": "reactietijd"
+    },
+    "replySuffix": "u",
+    "note": "Geteld op onze eigen referenties en portfolio, niets bijgeteld."
+  }
+}

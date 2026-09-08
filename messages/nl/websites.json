@@ -1,1 +1,136 @@
-{}
+{
+  "meta": {
+    "title": "Website op maat",
+    "description": "Brisk ontwerpt en bouwt websites op maat: geen thema's, wel een structuur die klanten binnenhaalt en techniek die snel en toegankelijk blijft. Vanuit België, met een vaste prijs na het eerste gesprek."
+  },
+  "hero": {
+    "eyebrow": "Website op maat",
+    "title": "Een website die <em>werkt</em> terwijl jij werkt.",
+    "lead": "Geen thema, geen bouwpakket. We ontwerpen en bouwen je site van nul, met een structuur die klanten binnenhaalt en techniek die jaren meegaat.",
+    "primary": "Gesprek inplannen",
+    "secondary": "Bekijk websites",
+    "shotAlt": "{name}, een website ontworpen en gebouwd door Brisk",
+    "facts": {
+      "sites": "{count} websites live",
+      "reply": "Antwoord binnen 24 uur",
+      "intro": "Gratis kennismaking van 30 minuten"
+    }
+  },
+  "whatYouGet": {
+    "eyebrow": "Wat je krijgt",
+    "title": "Alles wat een website nodig heeft. <em>Niets</em> wat ze traag maakt.",
+    "intro": "Elke site die we bouwen doorloopt dezelfde vijf lagen. Geen losse onderdelen, maar één geheel dat klopt van strategie tot onderhoud.",
+    "items": {
+      "1": {
+        "title": "Strategie & structuur",
+        "body": "We beginnen bij wat je klanten zoeken en wat jij wil bereiken. Daaruit volgt een sitemap en een paginastructuur die logisch aanvoelt voor bezoekers en zoekmachines.",
+        "tags": "Sitemap · Wireframes · Content"
+      },
+      "2": {
+        "title": "Design op maat",
+        "body": "Geen thema's, geen sjablonen. Elk scherm wordt ontworpen rond jouw merk, je aanbod en de manier waarop mensen je site echt gebruiken.",
+        "tags": "Identiteit · Interface · Prototype"
+      },
+      "3": {
+        "title": "Development",
+        "body": "We bouwen met Next.js en een headless CMS: snel, toegankelijk en klaar om te groeien. Elke pagina wordt getest op elk scherm voor ze live gaat.",
+        "tags": "Next.js · Headless CMS · Testing"
+      },
+      "4": {
+        "title": "SEO & performance",
+        "body": "Snelheid en vindbaarheid zitten in de bouw, niet in een plug-in achteraf. Schone code, een correcte structuur en beelden die laden voor je het merkt.",
+        "tags": "Core Web Vitals · Structured data · Analytics"
+      },
+      "5": {
+        "title": "Onderhoud & groei",
+        "body": "Na de lancering blijven we in de buurt. Updates, nieuwe pagina's en verbeteringen op basis van wat de cijfers vertellen.",
+        "tags": "Updates · Hosting · Doorontwikkeling"
+      }
+    }
+  },
+  "speed": {
+    "eyebrow": "Gebouwd op snelheid",
+    "title": "Dit is waar we voor bouwen.",
+    "lead": "Een mooie site die traag laadt, is een dure folder. Daarom leggen we voor elk project dezelfde lat: snel, bruikbaar voor iedereen en vindbaar.",
+    "targetLabel": "Richtwaarde",
+    "when": "Voor elke lancering",
+    "gauges": {
+      "performance": "Performance",
+      "accessibility": "Toegankelijkheid",
+      "seo": "SEO"
+    },
+    "note": "Richtwaarden waaraan we elk project toetsen voor de lancering. Geen gemeten scores van klantensites.",
+    "args": {
+      "1": {
+        "title": "Core Web Vitals",
+        "body": "Laadtijd, interactie en visuele stabiliteit meten we tijdens de bouw, niet erna. Groene scores zijn het vertrekpunt, niet het doel."
+      },
+      "2": {
+        "title": "Toegankelijk voor iedereen",
+        "body": "Semantische structuur, contrast en toetsenbordnavigatie zitten standaard in elk ontwerp. Goed voor bezoekers, goed voor Google."
+      },
+      "3": {
+        "title": "Een CMS dat meegroeit",
+        "body": "Headless en losgekoppeld van het design. Later een taal, een pagina of een koppeling toevoegen vraagt geen herbouw."
+      }
+    }
+  },
+  "references": {
+    "eyebrow": "Referenties",
+    "title": "{count} websites die vandaag <em>live</em> staan.",
+    "intro": "Geen mockups, wel echte sites van echte klanten. De schermafbeeldingen worden live opgehaald, dus wat je hier ziet, zien hun bezoekers vandaag ook.",
+    "reelLabel": "Showreel",
+    "visit": "Bekijk live",
+    "shotAlt": "Startpagina van {name}"
+  },
+  "process": {
+    "eyebrow": "Hoe we werken",
+    "title": "Van kennismaking tot <em>lancering</em>.",
+    "intro": "Vier stappen en één vaste prijs na het eerste gesprek. Je weet op elk moment waar we staan.",
+    "steps": {
+      "1": {
+        "title": "Kennismaking",
+        "body": "Een gesprek van 30 minuten over je doelen, je klanten en wat er nu niet werkt. Daarna krijg je een helder voorstel met een vaste prijs."
+      },
+      "2": {
+        "title": "Ontwerp",
+        "body": "Structuur en teksten eerst, dan het visuele ontwerp. Je kijkt mee in een klikbaar prototype voor er één lijn code staat."
+      },
+      "3": {
+        "title": "Bouw",
+        "body": "We bouwen de site op Next.js met een headless CMS, testen op elk scherm en vullen samen de content."
+      },
+      "4": {
+        "title": "Lancering",
+        "body": "Domein, hosting en analytics staan klaar. Na de livegang volgen we de cijfers en blijven we bereikbaar."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Veelgestelde vragen",
+    "title": "Goed om te weten.",
+    "aside": "Staat je vraag er niet bij? Mail ons, je krijgt binnen 24 uur antwoord.",
+    "items": {
+      "1": {
+        "q": "Wat kost een website op maat?",
+        "a": "Dat hangt af van de omvang: het aantal pagina's, de functies en of we ook de teksten en beelden verzorgen. Na het kennismakingsgesprek krijg je een voorstel met een vaste prijs, zonder verrassingen achteraf."
+      },
+      "2": {
+        "q": "Hoe lang duurt het?",
+        "a": "Een compacte site staat doorgaans binnen enkele weken live. Een uitgebreide site met meerdere talen of koppelingen vraagt meer tijd. In het voorstel staat een planning die we samen bewaken."
+      },
+      "3": {
+        "q": "Kan ik zelf teksten aanpassen?",
+        "a": "Ja. Elke site krijgt een CMS waarin je teksten, beelden en pagina's zelf beheert. Bij de oplevering leggen we uit hoe het werkt, en daarna kan je altijd bij ons terecht."
+      },
+      "4": {
+        "q": "Hoe zit het met hosting en onderhoud?",
+        "a": "We regelen hosting, domein en beveiligingsupdates als je dat wil. Je kiest zelf of we na de lancering meebouwen: met een onderhoudsformule of per opdracht."
+      },
+      "5": {
+        "q": "Van wie is de code?",
+        "a": "Van jou. Ontwerp, code en content worden bij de oplevering jouw eigendom. Je zit nergens aan vast en kan altijd met een ander team verder."
+      }
+    }
+  }
+}

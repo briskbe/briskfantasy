@@ -1,1 +1,159 @@
-{}
+{
+  "meta": {
+    "title": "Mobiele apps",
+    "description": "Brisk ontwerpt en bouwt mobiele apps voor iOS en Android uit één codebase, met React Native en Expo. Van klikbaar prototype tot App Store en Google Play, vanuit België."
+  },
+  "hero": {
+    "eyebrow": "Mobiele apps",
+    "title": "Apps die mensen <em>elke dag</em> openen.",
+    "lead": "Voor iOS en Android, uit één codebase. We ontwerpen en bouwen apps die native aanvoelen, zonder bereik blijven werken en zonder gedoe door de stores raken.",
+    "primary": "Gesprek inplannen",
+    "secondary": "Bekijk schermen",
+    "reelLabel": "Wisselende appschermen ontworpen door Brisk, getoond op een iPhone",
+    "facts": {
+      "platforms": "iOS & Android",
+      "screens": "50+ productschermen ontworpen",
+      "reply": "Antwoord binnen 24 uur"
+    }
+  },
+  "codebase": {
+    "eyebrow": "Eén codebase",
+    "title": "Native gevoel, <em>één</em> codebase.",
+    "intro": "Twee aparte apps bouwen kost dubbel en levert zelden dubbel op. Met React Native en Expo schrijven we één keer en leveren we op beide platformen, zonder in te leveren op snelheid of gevoel.",
+    "items": {
+      "1": {
+        "title": "iOS en Android uit één codebase",
+        "body": "Eén team, één planning, één versie van de waarheid. Nieuwe functies landen tegelijk op iPhone en Android, en een bug los je één keer op.",
+        "tags": "React Native · Expo · TypeScript"
+      },
+      "2": {
+        "title": "Native gevoel",
+        "body": "Gestures die meebewegen met je vinger, haptics op het juiste moment en schermen die op 60 fps blijven. Het verschil tussen een app die je opent en een app die je gebruikt.",
+        "tags": "Gestures · Haptics · 60 fps"
+      },
+      "3": {
+        "title": "Klaar voor de stores",
+        "body": "We begeleiden je door App Store en Google Play: accounts, screenshots, reviewrichtlijnen en TestFlight-builds voor je testers. Jij keurt goed, wij dienen in.",
+        "tags": "App Store · Google Play · TestFlight"
+      }
+    }
+  },
+  "screens": {
+    "eyebrow": "Schermen",
+    "title": "Ontworpen voor de duim.",
+    "intro": "Een greep uit meer dan 50 productschermen: onboarding, betalingen, instellingen en alles daartussen.",
+    "hint": "Scroll om te bladeren",
+    "alt": "{caption}, appontwerp door Brisk",
+    "items": {
+      "1": {
+        "caption": "Laadpassen en voertuigen beheren"
+      },
+      "2": {
+        "caption": "Instellingen en premium-upgrade"
+      },
+      "3": {
+        "caption": "Laadstations filteren op laadsnelheid"
+      },
+      "4": {
+        "caption": "Omzetwidget op het beginscherm"
+      },
+      "5": {
+        "caption": "Een videoles joinen"
+      },
+      "6": {
+        "caption": "Een laadsessie starten"
+      },
+      "7": {
+        "caption": "Back-ups maken en terugzetten"
+      },
+      "8": {
+        "caption": "Een toestel koppelen via Bluetooth"
+      }
+    }
+  },
+  "included": {
+    "eyebrow": "Inbegrepen",
+    "title": "Alles wat een app <em>af</em> maakt.",
+    "intro": "Geen add-ons, geen verrassingen achteraf. Dit zit standaard in elke app die we bouwen, afgestemd op wat jouw gebruikers echt nodig hebben.",
+    "items": {
+      "1": {
+        "title": "Push-notificaties",
+        "body": "Gerichte meldingen die mensen terugbrengen in plaats van wegjagen."
+      },
+      "2": {
+        "title": "Offline-first & sync",
+        "body": "Werkt zonder bereik en synchroniseert zodra er weer netwerk is."
+      },
+      "3": {
+        "title": "Betalingen & abonnementen",
+        "body": "In-app aankopen, abonnementen en kaartbetalingen, correct afgehandeld in beide stores."
+      },
+      "4": {
+        "title": "Login & accounts",
+        "body": "Apple, Google, e-mail of magic link. Veilig, snel en zonder wachtwoordfrustratie."
+      },
+      "5": {
+        "title": "Analytics & crash reporting",
+        "body": "Je ziet wat mensen doen en waar het misloopt, voor ze het je komen vertellen."
+      },
+      "6": {
+        "title": "Koppeling met je bestaande software",
+        "body": "Je CRM, ERP, boekhouding of eigen API praat rechtstreeks met de app."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Aanpak",
+    "title": "Van idee tot <em>App Store</em>.",
+    "intro": "Vijf stappen, elk met iets tastbaars aan het einde. Je weet altijd waar we staan en wat er daarna komt.",
+    "steps": {
+      "1": {
+        "title": "Discovery",
+        "body": "We brengen je gebruikers, je doelen en je bestaande systemen in kaart. Het resultaat is een scherpe scope en een planning waar je op kunt bouwen."
+      },
+      "2": {
+        "title": "Prototype dat je kunt aanraken",
+        "body": "Voor er één regel code staat, staat de app al op je telefoon als klikbaar prototype. Zo testen we de flow, niet de fantasie."
+      },
+      "3": {
+        "title": "Bouw in sprints",
+        "body": "Om de twee weken een nieuwe build via TestFlight of een interne Play-track. Je ziet de app groeien in plaats van te wachten op één grote onthulling."
+      },
+      "4": {
+        "title": "Testen met echte gebruikers",
+        "body": "We kijken mee terwijl mensen de app gebruiken, op hun eigen toestel. Wat schuurt, schaven we bij voor de lancering."
+      },
+      "5": {
+        "title": "Lancering & updates",
+        "body": "We dienen in bij Apple en Google, volgen crashes en cijfers op en plannen de volgende updates. Een app is nooit af, en dat is goed nieuws."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Vragen",
+    "title": "Wat je nog wil weten.",
+    "aside": "Iets anders? Mail ons. We antwoorden binnen 24 uur.",
+    "items": {
+      "1": {
+        "q": "Native of cross-platform?",
+        "a": "Voor de meeste apps is cross-platform met React Native de slimste keuze: één codebase, twee platformen, native componenten onder de motorkap. Alleen bij zware 3D, AR of specifieke hardware-integraties raden we volledig native aan. Dat bespreken we eerlijk in het eerste gesprek."
+      },
+      "2": {
+        "q": "Wat kost een app?",
+        "a": "Dat hangt af van het aantal schermen, koppelingen en platformen. Na een gratis kennismaking van 30 minuten krijg je een vaste prijs met een duidelijke scope, geen open einde. Je betaalt in fases, telkens na iets dat je kunt zien en testen."
+      },
+      "3": {
+        "q": "Hoelang duurt het voor de app in de stores staat?",
+        "a": "Dat hangt af van de scope, maar het klikbare prototype heb je al na de eerste weken op je telefoon. Daarna bouwen we in sprints van twee weken naar een eerste versie voor de stores. We spreken vooraf mijlpalen af en houden ons eraan."
+      },
+      "4": {
+        "q": "Wat als Apple of Google de app afkeurt?",
+        "a": "Dat gebeurt zelden als je de richtlijnen vanaf dag één respecteert, en dat doen we. Komt er toch een opmerking, dan lossen we die op en dienen we opnieuw in. Storebegeleiding zit in elk project."
+      },
+      "5": {
+        "q": "Wie onderhoudt de app na de lancering?",
+        "a": "Wij, als je dat wil. Nieuwe iOS- en Android-versies, bibliotheken en storevereisten vragen geregeld een update, dus we spreken een onderhoudsritme af dat bij je past. De code en het design zijn en blijven van jou, dus je zit nergens aan vast."
+      }
+    }
+  }
+}

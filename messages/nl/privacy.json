@@ -1,1 +1,88 @@
-{}
+{
+  "meta": {
+    "title": "Privacy",
+    "description": "Hoe Brisk omgaat met je gegevens: wat we verzamelen, waarvoor we het gebruiken, hoe lang we het bewaren en welke rechten je hebt."
+  },
+  "hero": {
+    "eyebrow": "Privacybeleid",
+    "title": "Privacy",
+    "updated": "Laatst bijgewerkt: september 2026",
+    "summaryTitle": "In het kort",
+    "summary": {
+      "1": "We verzamelen alleen wat we nodig hebben om je te antwoorden.",
+      "2": "We plaatsen standaard geen tracking cookies.",
+      "3": "We verkopen of delen je gegevens niet, met niemand."
+    }
+  },
+  "toc": "Inhoud",
+  "sections": {
+    "who": {
+      "title": "Wie we zijn",
+      "body": [
+        "Brisk is een digitaal bureau uit Limburg, België. We ontwerpen en bouwen websites, webshops, software en mobiele apps. Deze pagina legt uit welke persoonsgegevens we verwerken via deze website en waarom.",
+        "Brisk is de verwerkingsverantwoordelijke voor de gegevens die je hier achterlaat. Vragen hierover stel je aan {email}."
+      ],
+      "list": []
+    },
+    "collect": {
+      "title": "Welke gegevens we verzamelen",
+      "body": [
+        "We houden het bij het minimum. Op deze website verzamelen we gegevens op drie manieren."
+      ],
+      "list": [
+        "Contactformulier: je naam, e-mailadres, eventueel je bedrijfsnaam, het type project, een budgetindicatie en je bericht. Alleen naam, e-mail en bericht zijn verplicht.",
+        "Serverlogs: onze hostingpartner registreert technische gegevens zoals IP-adres, browser, tijdstip en opgevraagde pagina. Dat gebeurt om de site veilig en stabiel te houden.",
+        "Cookies: we plaatsen standaard geen tracking- of advertentiecookies. Enkel wat technisch nodig is om de site te laten werken, zoals je taalkeuze."
+      ]
+    },
+    "use": {
+      "title": "Waarvoor we ze gebruiken",
+      "body": [
+        "Je formuliergegevens gebruiken we om je bericht te beantwoorden en, als je dat wil, een gesprek in te plannen en een voorstel op te maken. Serverlogs gebruiken we om storingen op te sporen en misbruik tegen te gaan.",
+        "We gebruiken je gegevens niet voor nieuwsbrieven of andere marketing, tenzij je daar zelf om vraagt."
+      ],
+      "list": []
+    },
+    "retain": {
+      "title": "Hoe lang we ze bewaren",
+      "body": [
+        "Berichten via het contactformulier bewaren we zolang het nodig is om je vraag op te volgen. Wordt het een samenwerking, dan bewaren we de correspondentie voor de duur van het project en de wettelijke bewaartermijn daarna. Wordt het geen samenwerking, dan verwijderen we je gegevens binnen twaalf maanden.",
+        "Serverlogs worden door onze hostingpartner automatisch verwijderd na een korte periode."
+      ],
+      "list": []
+    },
+    "third": {
+      "title": "Derde partijen",
+      "body": [
+        "We delen je gegevens alleen met de dienstverleners die we nodig hebben om deze site te laten draaien. Zij verwerken ze uitsluitend in onze opdracht."
+      ],
+      "list": [
+        "Hosting: de website en het contactformulier draaien bij een hostingpartner die de serverlogs bijhoudt.",
+        "E-mailbezorging: berichten uit het contactformulier worden via een e-maildienst naar onze mailbox gestuurd.",
+        "Microlink: op enkele pagina's tonen we live screenshots van publieke websites van onze klanten. Die worden opgehaald via Microlink. Daarbij worden geen gegevens over jou doorgegeven, behalve wat een browser standaard meestuurt bij het laden van een afbeelding."
+      ]
+    },
+    "rights": {
+      "title": "Je rechten",
+      "body": [
+        "Onder de AVG (GDPR) heb je een aantal rechten over je persoonsgegevens. Je kan ze uitoefenen door ons te mailen. We antwoorden binnen een maand."
+      ],
+      "list": [
+        "Inzage: opvragen welke gegevens we van je hebben.",
+        "Verbetering: onjuiste gegevens laten aanpassen.",
+        "Verwijdering: je gegevens laten wissen.",
+        "Bezwaar en beperking: bezwaar maken tegen een verwerking of ze laten beperken.",
+        "Overdraagbaarheid: je gegevens in een leesbaar formaat ontvangen.",
+        "Klacht: een klacht indienen bij de Gegevensbeschermingsautoriteit als je vindt dat we je gegevens niet correct verwerken."
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "body": [
+        "Vragen over dit beleid of over je gegevens? Mail naar {email}. We zijn gevestigd in {location}.",
+        "We passen dit beleid aan als onze werking verandert. De datum bovenaan zegt wanneer dat voor het laatst gebeurde."
+      ],
+      "list": []
+    }
+  }
+}

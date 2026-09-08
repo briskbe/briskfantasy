@@ -8,6 +8,9 @@ export const routing = defineRouting({
   locales: ["nl", "en"],
   defaultLocale: "nl",
   localePrefix: "as-needed",
+  // URL is the single source of truth: no Accept-Language / cookie redirects.
+  // Many Belgian visitors browse with English UI; they should still land on NL.
+  localeDetection: false,
   pathnames: {
     "/": "/",
     "/website-op-maat": { nl: "/website-op-maat", en: "/custom-websites" },

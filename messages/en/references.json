@@ -1,1 +1,85 @@
-{}
+{
+  "meta": {
+    "title": "Work",
+    "description": "Every website, webshop and platform Brisk designed and built, screenshotted live the moment you look. Plus 50+ product screens: dashboards, apps and marketing pages."
+  },
+  "hero": {
+    "eyebrow": "Work",
+    "title": "{count} websites, all of them <em>live</em>.",
+    "lead": "No mockups, nothing polished after the fact. Every screenshot on this page is captured the moment you view it. What you see is what is online today.",
+    "note": "Live screenshots via Microlink",
+    "reelLabel": "Showreel of four live websites",
+    "facts": {
+      "sites": "{count} websites live",
+      "screens": "{count}+ product screens",
+      "reply": "Reply within 24 hours"
+    }
+  },
+  "grid": {
+    "eyebrow": "Live websites",
+    "title": "Every project, exactly as it is <em>online</em> today.",
+    "intro": "Filter by type or just keep scrolling. Each card opens the real site in a new tab.",
+    "filterLabel": "Filter by type",
+    "filters": {
+      "all": "All",
+      "website": "Websites",
+      "webshop": "Webshops",
+      "platform": "Platforms"
+    },
+    "count": "{count, plural, =1 {# project} other {# projects}}",
+    "visit": "View live",
+    "alt": "{name}, designed and built by Brisk",
+    "types": {
+      "website": "Website",
+      "webshop": "Webshop",
+      "platform": "Platform"
+    },
+    "next": {
+      "eyebrow": "Next project",
+      "title": "The next one could be <em>yours</em>.",
+      "body": "Tell us where you want to go. Within 24 hours we schedule a free 30-minute call.",
+      "cta": "Book a call"
+    },
+    "servicesLabel": "Services"
+  },
+  "services": {
+    "design": "Design",
+    "development": "Development",
+    "seo": "SEO",
+    "copy": "Copy",
+    "ecommerce": "E-commerce",
+    "booking": "Booking",
+    "branding": "Branding"
+  },
+  "product": {
+    "eyebrow": "Product design",
+    "title": "Screens we <em>designed</em>.",
+    "body": "Dashboards, mobile apps and marketing pages for SaaS products. Every screen is designed to be used, not just to look good in a portfolio.",
+    "total": "{count} screens and videos",
+    "showing": "{shown} of {total}",
+    "more": "Show more",
+    "moreCount": "Show more ({count})",
+    "video": "Video",
+    "videoAlt": "Video: {title}"
+  },
+  "start": {
+    "eyebrow": "How a project starts",
+    "title": "From first call to <em>first</em> screen.",
+    "steps": {
+      "1": {
+        "title": "Call",
+        "body": "Thirty minutes, free and without a sales pitch. You tell us where you want to go, we ask the questions that matter."
+      },
+      "2": {
+        "title": "Proposal",
+        "body": "Within a few days you get a clear proposal: what we build, in which steps and what it costs. No surprises later."
+      },
+      "3": {
+        "title": "Kick-off",
+        "body": "We design and build in short cycles, so you see something early and steer as we go. The code and design are yours from day one."
+      }
+    },
+    "cta": "Book a call",
+    "note": "Reply within 24 hours · Based in Belgium"
+  }
+}

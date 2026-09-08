@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState, type FC } from "react";
+import { useCallback, useEffect, useRef, useState, type FC } from "react";
 import type { PlayerRef } from "@remotion/player";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +12,11 @@ const Player = dynamic(() => import("@remotion/player").then((m) => m.Player), {
  * `src/components/remotion/compositions/*` and are pure React (no browser-only
  * APIs) so they can also be rendered to MP4 with the Remotion CLI.
  * The player only plays while visible to save CPU.
+ *
+ * The Player is imported dynamically (`ssr: false`), so its ref attaches after
+ * the first in-view measurement; playback is (re)started once both the ref and
+ * the in-view state are known, so a reel that is already on screen on load
+ * starts without a scroll nudge.
  */
 export function RemotionPlayer<T extends Record<string, unknown>>({
   component,
@@ -34,9 +39,15 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
   loop?: boolean;
   playbackRate?: number;
 }) {
-  const ref = useRef<PlayerRef>(null);
+  const playerRef = useRef<PlayerRef | null>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
   const [inView, setInView] = useState(false);
+
+  const attach = useCallback((p: PlayerRef | null) => {
+    playerRef.current = p;
+    setReady(p !== null);
+  }, []);
 
   useEffect(() => {
     const el = wrapRef.current;
@@ -47,16 +58,16 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
   }, []);
 
   useEffect(() => {
-    const p = ref.current;
-    if (!p) return;
+    const p = playerRef.current;
+    if (!ready || !p) return;
     if (inView) p.play();
     else p.pause();
-  }, [inView]);
+  }, [inView, ready]);
 
   return (
     <div ref={wrapRef} className={cn("relative w-full", className)} style={{ aspectRatio: `${width} / ${height}` }} data-cursor="hide">
       <Player
-        ref={ref}
+        ref={attach}
         component={component as FC<Record<string, unknown>>}
         inputProps={inputProps}
         durationInFrames={durationInFrames}

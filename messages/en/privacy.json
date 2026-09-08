@@ -1,1 +1,88 @@
-{}
+{
+  "meta": {
+    "title": "Privacy",
+    "description": "How Brisk handles your data: what we collect, what we use it for, how long we keep it and which rights you have."
+  },
+  "hero": {
+    "eyebrow": "Privacy policy",
+    "title": "Privacy",
+    "updated": "Last updated: September 2026",
+    "summaryTitle": "In short",
+    "summary": {
+      "1": "We only collect what we need to reply to you.",
+      "2": "We don't set tracking cookies by default.",
+      "3": "We never sell or share your data with anyone."
+    }
+  },
+  "toc": "Contents",
+  "sections": {
+    "who": {
+      "title": "Who we are",
+      "body": [
+        "Brisk is a digital agency based in Limburg, Belgium. We design and build websites, webshops, software and mobile apps. This page explains which personal data we process through this website and why.",
+        "Brisk is the data controller for the information you leave here. Questions about it go to {email}."
+      ],
+      "list": []
+    },
+    "collect": {
+      "title": "What we collect",
+      "body": [
+        "We keep it to a minimum. This website collects data in three ways."
+      ],
+      "list": [
+        "Contact form: your name, email address, optionally your company name, the type of project, a budget indication and your message. Only name, email and message are required.",
+        "Server logs: our hosting provider records technical details such as IP address, browser, timestamp and requested page. This keeps the site secure and stable.",
+        "Cookies: we don't set tracking or advertising cookies by default. Only what is technically needed to make the site work, such as your language preference."
+      ]
+    },
+    "use": {
+      "title": "What we use it for",
+      "body": [
+        "We use your form details to answer your message and, if you want, to schedule a call and write a proposal. Server logs help us trace outages and prevent abuse.",
+        "We don't use your data for newsletters or other marketing unless you ask us to."
+      ],
+      "list": []
+    },
+    "retain": {
+      "title": "How long we keep it",
+      "body": [
+        "Messages sent through the contact form are kept for as long as it takes to follow up on your question. If it turns into a project, we keep the correspondence for the duration of the project and the legal retention period afterwards. If it doesn't, we delete your data within twelve months.",
+        "Server logs are deleted automatically by our hosting provider after a short period."
+      ],
+      "list": []
+    },
+    "third": {
+      "title": "Third parties",
+      "body": [
+        "We only share your data with the service providers we need to run this site. They process it solely on our behalf."
+      ],
+      "list": [
+        "Hosting: the website and the contact form run with a hosting provider that keeps the server logs.",
+        "Email delivery: messages from the contact form are sent to our inbox through an email service.",
+        "Microlink: on a few pages we show live screenshots of our clients' public websites, fetched through Microlink. No data about you is passed along, apart from what a browser sends by default when loading an image."
+      ]
+    },
+    "rights": {
+      "title": "Your rights",
+      "body": [
+        "Under the GDPR you have a number of rights over your personal data. You can exercise them by emailing us. We reply within a month."
+      ],
+      "list": [
+        "Access: ask which data we hold about you.",
+        "Rectification: have incorrect data corrected.",
+        "Erasure: have your data deleted.",
+        "Objection and restriction: object to a processing activity or have it restricted.",
+        "Portability: receive your data in a readable format.",
+        "Complaint: file a complaint with the Belgian Data Protection Authority if you believe we're not handling your data correctly."
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "body": [
+        "Questions about this policy or your data? Email {email}. We're based in {location}.",
+        "We update this policy when the way we work changes. The date at the top tells you when that last happened."
+      ],
+      "list": []
+    }
+  }
+}

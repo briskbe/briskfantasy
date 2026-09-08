@@ -1,1 +1,126 @@
-{}
+{
+  "meta": {
+    "title": "Custom software",
+    "description": "Brisk builds custom software: client portals, dashboards, automation, integrations and SaaS products. Fixed price per phase, and you own the code and the data. Based in Belgium."
+  },
+  "hero": {
+    "eyebrow": "Custom software",
+    "title": "Software that <em>fits</em> the way you work.",
+    "lead": "Client portals, dashboards, automation and integrations. We build what off-the-shelf software can't, with code and data that belong to you.",
+    "primary": "Book a call",
+    "secondary": "See the interfaces",
+    "gridLabel": "Dashboards and SaaS interfaces designed by Brisk",
+    "facts": {
+      "screens": "50+ product screens designed",
+      "reply": "Reply within 24 hours",
+      "ownership": "You own the code and the design"
+    }
+  },
+  "build": {
+    "eyebrow": "What we build",
+    "title": "Five kinds of software. One way of <em>building</em>.",
+    "intro": "Every project starts with a concrete problem in your business. We then pick the smallest solution that solves it completely, and build it so it can grow.",
+    "items": {
+      "1": {
+        "title": "Client portals",
+        "body": "A secure place where clients track orders, download files and manage their own details. Fewer emails, fewer phone calls, more overview.",
+        "tags": { "1": "Login", "2": "Roles", "3": "Self-service" }
+      },
+      "2": {
+        "title": "Dashboards & reporting",
+        "body": "Numbers from all your systems on one screen, live and tailored to whoever is looking. From daily follow-up to a monthly report in a single click.",
+        "tags": { "1": "Live data", "2": "Filters", "3": "Export" }
+      },
+      "3": {
+        "title": "Process automation",
+        "body": "Repetitive work that still passes through human hands, handled by software instead. Approvals, notifications, scheduling and invoicing run on their own.",
+        "tags": { "1": "Workflows", "2": "Triggers", "3": "Notifications" }
+      },
+      "4": {
+        "title": "Integrations & APIs",
+        "body": "We connect what currently lives side by side: accounting, CRM, webshop, ERP. Data flows automatically and in both directions, with nothing retyped.",
+        "tags": { "1": "REST", "2": "Webhooks", "3": "Sync" }
+      },
+      "5": {
+        "title": "SaaS products",
+        "body": "A product of your own that you sell to customers. From a first version to a multi-tenant platform with subscriptions and payments.",
+        "tags": { "1": "Multi-tenant", "2": "Subscriptions", "3": "Stripe" }
+      }
+    }
+  },
+  "cases": {
+    "eyebrow": "Case",
+    "title": "Two platforms that run <em>every day</em>.",
+    "intro": "For two players in the chiptuning world we built a dedicated platform each. Workshops order, pay and collect their files without anyone having to step in.",
+    "builtLabel": "What we built",
+    "specs": { "1": "Client portal", "2": "Ordering flow", "3": "Client area", "4": "Payments" },
+    "visit": "View live",
+    "shotAlt": "{name}, a platform designed and built by Brisk"
+  },
+  "motion": {
+    "eyebrow": "From idea to working software",
+    "title": "Four phases. No <em>surprises</em>.",
+    "body": "We split every project into phases with a fixed price. After each sprint you see working software, not a slide deck. And you decide when the next phase starts.",
+    "reelEyebrow": "How we build",
+    "steps": {
+      "1": { "title": "Discovery", "body": "We map your processes, data and systems and pin down exactly what the software has to do." },
+      "2": { "title": "Architecture", "body": "Data model, integrations and tech are on paper before anything is built. That keeps the build predictable." },
+      "3": { "title": "Build in sprints", "body": "A working version every two weeks that you test yourself and steer as we go." },
+      "4": { "title": "Handover", "body": "Code, documentation and access become yours. We stay within reach." }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Interfaces we designed",
+    "title": "Screens your team will <em>enjoy</em> using.",
+    "intro": "A selection from more than 50 product screens: dashboards, settings, invoicing, email and AI tools. Designed to the pixel, built to be used every day.",
+    "more": "More product design",
+    "imageAlt": "{title}, an interface designed by Brisk"
+  },
+  "stack": {
+    "eyebrow": "Stack & principles",
+    "title": "Proven technology, clear <em>agreements</em>.",
+    "intro": "We build on a stack we know inside out and that will still be maintained five years from now. No exotic choices, just the right ones.",
+    "marqueeLabel": "Technologies we build with",
+    "principles": {
+      "1": {
+        "title": "Fixed price per phase",
+        "body": "Every phase gets a scope and a price up front. You know what you pay before anything is built, and you decide phase by phase whether we continue."
+      },
+      "2": {
+        "title": "Your own code and data",
+        "body": "Everything we build is yours: the code, the database, the accounts. No licences, no lock-in, no dependency on us."
+      },
+      "3": {
+        "title": "Documentation & handover",
+        "body": "Every project ends with documentation, a handover session and access to everything. Another team can pick it up if that ever becomes necessary."
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked",
+    "title": "Good to know.",
+    "aside": "Can't find your question? Email us and you'll hear back within 24 hours.",
+    "items": {
+      "1": {
+        "q": "What does custom software cost?",
+        "a": "It depends on what the software has to do and which systems it talks to. After an analysis of your processes you receive a proposal per phase, with a fixed price. You know where you stand before we start, and you can start small."
+      },
+      "2": {
+        "q": "Do you also build on top of existing systems?",
+        "a": "Yes. Often the smartest thing we can do is add a layer on top of what you already have: a portal on your ERP, a dashboard on your accounting, a link between two tools. We only rebuild when it's genuinely needed."
+      },
+      "3": {
+        "q": "Who hosts the software?",
+        "a": "Usually we do, on infrastructure such as Vercel and Supabase, on accounts registered in your name. Prefer to host it yourself or with your own provider? That works too, the code is yours either way."
+      },
+      "4": {
+        "q": "What about maintenance?",
+        "a": "Software needs maintenance: updates, monitoring and small improvements. We agree on a maintenance plan that matches how critical the software is for your business. Not an obligation, but strongly recommended."
+      },
+      "5": {
+        "q": "Can we start small?",
+        "a": "Absolutely. We like to start with an MVP: the smallest version that solves one problem completely. It goes live quickly, delivers value right away and shows what the next step should be."
+      }
+    }
+  }
+}
