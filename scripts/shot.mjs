@@ -49,7 +49,7 @@ const viewports = [
   { name: "mobile", width: 390, height: 844, mobile: true },
 ].filter((v) => !only || v.name === only);
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? "/opt/pw-browsers/chromium" });
 const problems = [];
 for (const [locale, url] of Object.entries(targets)) {
   if (localeOnly && locale !== localeOnly) continue;

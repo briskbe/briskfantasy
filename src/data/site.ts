@@ -13,5 +13,6 @@ export const siteConfig = {
     { label: "Instagram", href: "https://www.instagram.com/" },
     { label: "Dribbble", href: "https://dribbble.com/" },
   ],
-  founded: 2016,
+  /** Optional external booking link (Cal.com / Calendly). Empty = hidden, form is used instead. */
+  bookingUrl: "",
 } as const;

@@ -60,7 +60,7 @@ export function Preloader() {
         >
           <div className="flex items-center justify-between eyebrow text-muted">
             <span>Brisk — Digital agency</span>
-            <span>Antwerp · Limburg · Remote</span>
+            <span>België · Remote</span>
           </div>
           <div className="flex items-end justify-between">
             <motion.div

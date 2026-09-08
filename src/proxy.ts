@@ -5,5 +5,5 @@ export default createMiddleware(routing);
 
 export const config = {
   // Skip API routes, Next internals, Vercel internals and all static files.
-  matcher: "/((?!api|_next|_vercel|.*\\..*).*)",
+  matcher: "/((?!api|_next|_vercel|apple-icon|.*\\..*).*)",
 };
