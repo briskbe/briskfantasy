@@ -67,13 +67,13 @@ function WorkCard({
             </span>
           </div>
         ) : (
-          <div className="mt-4 flex items-baseline justify-between gap-4">
-            <h3 className="text-h4 flex items-center gap-1.5 text-fg">
+          <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h3 className="text-h4 flex min-w-0 items-center gap-1.5 text-fg">
               {r.name}
               <ArrowUpRight className="size-4 shrink-0 text-muted transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
               <span className="sr-only">— {visit}</span>
             </h3>
-            <p className="whitespace-nowrap font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted">{r.industry[locale]}</p>
+            <p className="font-mono text-[0.64rem] uppercase tracking-[0.18em] text-muted">{r.industry[locale]}</p>
           </div>
         )}
       </a>
@@ -117,7 +117,7 @@ export async function SelectedWork() {
         <WorkCard {...shared(fifth)} className="lg:col-span-6" />
       </RevealGroup>
 
-      {/* Closing beat: the same sites, scrolling, plus the way through to all 17. */}
+      {/* Closing beat: five more live sites, scrolling, plus the way through to all 17. */}
       <div className="mt-16 border-t border-line pt-12 lg:mt-24 lg:pt-16">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-4">

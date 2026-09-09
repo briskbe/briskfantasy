@@ -59,7 +59,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </Section>
 
       {/* 5. Product design — light */}
-      <section className="theme-light relative bg-bg text-fg" id="product-design">
+      {/* lg:min-h-screen reserves the sticky scroller's height in the server HTML, so the desktop
+          upgrade from the native row does not shift the page on hydration. */}
+      <section className="theme-light relative bg-bg text-fg lg:min-h-screen" id="product-design">
         <ProductStrip />
       </section>
 

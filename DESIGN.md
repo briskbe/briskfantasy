@@ -42,6 +42,8 @@ Colors (Tailwind classes)
 Typography
 - Sans: Geist (`font-sans`, default). Mono: Geist Mono (`font-mono`). Serif accent: Instrument Serif italic (`font-serif` / `.serif` / `<em>` inside headline classes).
 - Scale classes: `.text-display` (hero only, 1 per page), `.text-h1`, `.text-h2`, `.text-h3`, `.text-h4`, `.text-lead`, `.text-body`, `.eyebrow`.
+- **Stepped hierarchy is binding.** `.text-display` belongs to the hero and nowhere else. Section headings are `.text-h2`; the shared `CtaBand` closes at `.text-h1`. Setting every section headline near hero scale flattens the page into a stack of repeated heroes — the most common failure the reviewers found. Give a section weight with space and a lead paragraph in the opposite column, not with a bigger headline.
+- **Amber budget: one accent moment per viewport.** Amber belongs to the primary CTA, the logo period, and one deliberate highlight per screen. When amber lands on eyebrow dots, caption dots, stat labels, marquee separators and arrows at once, the accent stops meaning anything. Everything else is `text-muted` / `text-fg`.
 - Headlines: weight 500, tight tracking (already in the classes). Max ~12 words. Use `text-balance`.
 - Serif italic accent: one emphasized word per headline, via `<em>` in the message string and `t.rich(key, richTags)`. Example NL: `"Websites die <em>bewegen</em>."` Don't overuse: max one `<em>` per headline, not on every headline.
 - Body: `text-body text-muted` on dark, `text-fg-2` for emphasized paragraphs. Max width ~60ch (`max-w-xl`/`max-w-2xl`).
@@ -52,6 +54,8 @@ Spacing & layout
 - 12-column grid at `lg:` for editorial layouts: `grid lg:grid-cols-12 gap-8`. Asymmetry is encouraged (5/7, 4/8, offset columns), centered layouts only for the hero and the CTA band.
 - Radii: cards `rounded-2xl`/`rounded-3xl`, pills `rounded-full`, images `rounded-xl`. Borders are hairlines (`border-line`), never heavy.
 - Section rhythm: every page starts with a **dark hero**, then alternates dark/light (`<Section theme="light">`) at least once, and ends with `<OtherServices />` (service pages) + `<CtaBand />` (every page).
+- **Never more than two consecutive dark sections.** `CtaBand` and the footer are both dark, so the last section *before* them should be light on every page — otherwise the page ends in a 2,000px dark slab.
+- **No dead columns or vertical voids.** Every grid column earns its place. If a column would be empty, collapse the grid instead of leaving a hairline around emptiness, and never fill a void with filler copy.
 
 Texture
 - `.grain` (adds a subtle noise overlay to a `relative` parent), `.glow-amber`, `.glow-sky` (radial glows, absolutely positioned, `opacity-30..60`), `.glass` (blurred surface), `.browser-frame` (screenshot chrome), `.stroke-text` (outlined giant text), `.mask-fade-x/-b`.

@@ -21,7 +21,7 @@ export async function SpeedStandard() {
   const t = await getTranslations("Websites");
 
   return (
-    <section className="theme-dark relative bg-ink text-paper section-y grain" aria-labelledby="websites-speed-title">
+    <section className="theme-dark relative bg-ink text-paper grain pt-[clamp(5rem,10vw,11rem)] pb-[clamp(4rem,7vw,7rem)]" aria-labelledby="websites-speed-title">
       <div className="container-x relative">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
