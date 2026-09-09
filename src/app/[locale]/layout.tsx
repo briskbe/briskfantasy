@@ -10,6 +10,9 @@ import { Footer } from "@/components/layout/footer";
 import { Cursor } from "@/components/layout/cursor";
 import { Preloader } from "@/components/layout/preloader";
 import { siteConfig } from "@/data/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { jsonLdGraph, organizationSchema, websiteSchema } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 import "../globals.css";
 
 const geist = Geist({
@@ -75,6 +78,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       suppressHydrationWarning
     >
       <body className="min-h-dvh flex flex-col bg-ink text-paper">
+        {/* Site-wide graph. Page templates add their own Service, Breadcrumb
+            and FAQ nodes, all pointing back at this organisation's @id. */}
+        <JsonLd data={jsonLdGraph([organizationSchema(locale as AppLocale), websiteSchema(locale as AppLocale)])} />
         <NextIntlClientProvider>
           <SmoothScroll>
             <Preloader />

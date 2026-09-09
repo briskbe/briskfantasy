@@ -11,11 +11,18 @@ import { SpeedStandard } from "@/components/pages/websites/speed-standard";
 import { WebsiteReferences } from "@/components/pages/websites/references";
 import { ProcessTimeline } from "@/components/pages/websites/process-timeline";
 import { WebsitesFaq } from "@/components/pages/websites/faq";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/website-op-maat">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Websites" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/website-op-maat",
+    locale: locale as AppLocale,
+  });
 }
 
 /** Front frame first, then the frame that peeks from behind it. */

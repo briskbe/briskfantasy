@@ -74,5 +74,36 @@
       "years": "{years}+ years of experience",
       "reply": "We reply within 24 hours"
     }
+  },
+  "seo": {
+    "home": "Home",
+    "faqEyebrow": "Frequently asked",
+    "faqTitle": "Worth knowing.",
+    "ctaLabel": "Book a call",
+    "servicesHub": {
+      "eyebrow": "Services",
+      "title": "Everything we build, by <em>question</em>.",
+      "lead": "Websites, webshops, software and apps. Each topic below has its own page, so you land straight on the one that matches your question.",
+      "metaTitle": "Services — web, ecommerce and software development",
+      "metaDescription": "Every Brisk service in one place: website development, ecommerce, custom software and mobile apps. More than 150 projects delivered."
+    },
+    "regionsHub": {
+      "eyebrow": "Regions",
+      "title": "We work across <em>Belgium</em> and the Netherlands.",
+      "lead": "Pick your province and see what we build there. We work remotely and travel for the moments that matter.",
+      "metaTitle": "Web and software development, Belgium and Netherlands",
+      "metaDescription": "Brisk builds websites, webshops, software and apps for companies across Belgium and the Netherlands. Pick your province to see more.",
+      "belgium": "Belgium",
+      "netherlands": "Netherlands"
+    },
+    "relatedTitle": "Also relevant",
+    "relatedEyebrow": "Read on",
+    "servicesInRegion": "What we build in {region}",
+    "citiesTitle": "Cities and towns in {region}",
+    "citiesLead": "We work for companies in {cities} among others. If your town is not listed, we work there just the same.",
+    "regionEyebrow": "Region",
+    "clusterEyebrow": "Service",
+    "backToService": "Everything about {service}",
+    "nearbyWork": "Work from this region"
   }
 }

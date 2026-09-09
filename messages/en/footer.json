@@ -14,7 +14,9 @@
     "references": "Work",
     "about": "About",
     "contact": "Book a call",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "servicesHub": "All services",
+    "regionsHub": "Regions"
   },
   "newsletter": {
     "title": "An occasional email",

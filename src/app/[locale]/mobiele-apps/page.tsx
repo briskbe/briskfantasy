@@ -11,11 +11,18 @@ import { SCREEN_CROPS, screenRect } from "@/components/pages/apps/screen-crops";
 import { Included } from "@/components/pages/apps/included";
 import { AppsProcess } from "@/components/pages/apps/process";
 import { AppsFaq } from "@/components/pages/apps/faq";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/mobiele-apps">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Apps" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/mobiele-apps",
+    locale: locale as AppLocale,
+  });
 }
 
 export default async function Page({ params }: PageProps<"/[locale]/mobiele-apps">) {

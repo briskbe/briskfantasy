@@ -16,6 +16,8 @@ import { WhyBrisk } from "@/components/pages/home/why-brisk";
 import { siteConfig } from "@/data/site";
 import { yearsOfExperience } from "@/data/clients";
 import { portfolio } from "@/data/portfolio";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 /** 53 screens today -> "50+". Rounded down to the nearest ten so the claim can never overstate. */
 const screenCount = Math.max(50, Math.floor(portfolio.length / 10) * 10);
@@ -23,10 +25,12 @@ const screenCount = Math.max(50, Math.floor(portfolio.length / 10) * 10);
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home" });
-  return {
+  return pageMetadata({
     title: t("meta.title"),
     description: t("meta.description", { total: siteConfig.projectsDelivered, years: yearsOfExperience() }),
-  };
+    href: "/",
+    locale: locale as AppLocale,
+  });
 }
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {

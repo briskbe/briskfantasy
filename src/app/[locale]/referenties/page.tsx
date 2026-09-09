@@ -16,13 +16,19 @@ import {
 } from "@/components/pages/references/product-gallery";
 import { HowItStarts } from "@/components/pages/references/how-it-starts";
 import { flattenRows, planRows } from "@/components/pages/references/layout";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/referenties">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "References" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/referenties",
+    locale: locale as AppLocale,
+  });
 }
 
 /** Tile aspect the gallery is built on; 51 of the 53 screens are natively 4:3. */

@@ -11,11 +11,18 @@ import { ShopReferences } from "@/components/pages/webshops/references";
 import { Growth } from "@/components/pages/webshops/growth";
 import { WebshopsFaq } from "@/components/pages/webshops/faq";
 import { MotionShell } from "@/components/pages/webshops/motion-shell";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/webshop-op-maat">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Webshops" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/webshop-op-maat",
+    locale: locale as AppLocale,
+  });
 }
 
 const HERO_SLUG = "roetfilterkopen-com";

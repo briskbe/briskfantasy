@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react
 import { useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
+import type { StaticAppPathname } from "@/i18n/routing";
 import { MicrolinkShot } from "@/components/ui/microlink-shot";
 import { RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { useFinePointer, usePrefersReducedMotion } from "@/hooks/use-media-query";
@@ -23,7 +23,7 @@ type Preview =
 const byId = (id: string) => portfolio.find((p) => p.id === id)!;
 const bySlug = (slug: string) => references.find((r) => r.slug === slug)!;
 
-const SERVICES: { key: ServiceKey; href: AppPathname; preview: Preview }[] = [
+const SERVICES: { key: ServiceKey; href: StaticAppPathname; preview: Preview }[] = [
   { key: "websites", href: "/website-op-maat", preview: { kind: "site", url: bySlug("landelijkglas-be").url, slug: "landelijkglas-be" } },
   { key: "webshops", href: "/webshop-op-maat", preview: { kind: "site", url: bySlug("legacycristal-com").url, slug: "legacycristal-com" } },
   { key: "software", href: "/software-op-maat", preview: { kind: "image", ...byId("043-w037") } },

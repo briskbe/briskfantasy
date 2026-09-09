@@ -74,5 +74,36 @@
       "years": "{years}+ jaar ervaring",
       "reply": "Antwoord binnen 24 uur"
     }
+  },
+  "seo": {
+    "home": "Home",
+    "faqEyebrow": "Veelgestelde vragen",
+    "faqTitle": "Goed om te weten.",
+    "ctaLabel": "Gesprek inplannen",
+    "servicesHub": {
+      "eyebrow": "Diensten",
+      "title": "Alles wat we bouwen, per <em>vraag</em>.",
+      "lead": "Websites, webshops, software en apps. Hieronder staat elk onderwerp apart uitgewerkt, zodat je meteen op de pagina komt die bij jouw vraag past.",
+      "metaTitle": "Diensten — website, webshop en software laten maken",
+      "metaDescription": "Alle diensten van Brisk op een rij: website laten maken, webshop laten maken, software op maat en mobiele apps. Meer dan 150 projecten opgeleverd."
+    },
+    "regionsHub": {
+      "eyebrow": "Regio's",
+      "title": "We werken in heel <em>België</em> en Nederland.",
+      "lead": "Kies je provincie en zie wat we daar bouwen. We werken op afstand en komen langs wanneer dat het verschil maakt.",
+      "metaTitle": "Website of software laten maken in België en Nederland",
+      "metaDescription": "Brisk bouwt websites, webshops, software en apps voor bedrijven in heel België en Nederland. Kies je provincie en ontdek wat we daar doen.",
+      "belgium": "België",
+      "netherlands": "Nederland"
+    },
+    "relatedTitle": "Ook interessant",
+    "relatedEyebrow": "Verder lezen",
+    "servicesInRegion": "Wat we bouwen in {region}",
+    "citiesTitle": "Steden en gemeenten in {region}",
+    "citiesLead": "We werken voor bedrijven in onder meer {cities}. Staat jouw gemeente er niet bij, dan werken we er evengoed.",
+    "regionEyebrow": "Regio",
+    "clusterEyebrow": "Dienst",
+    "backToService": "Alles over {service}",
+    "nearbyWork": "Werk uit deze regio"
   }
 }

@@ -4,11 +4,18 @@ import { CtaBand } from "@/components/blocks/cta-band";
 import { Section } from "@/components/ui/section";
 import { PrivacyHero } from "@/components/pages/privacy/hero";
 import { PrivacyBody } from "@/components/pages/privacy/body";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/privacy">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Privacy" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/privacy",
+    locale: locale as AppLocale,
+  });
 }
 
 export default async function Page({ params }: PageProps<"/[locale]/privacy">) {

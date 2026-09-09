@@ -1,11 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
+import type { StaticAppPathname } from "@/i18n/routing";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { RevealGroup, RevealItem } from "@/components/ui/reveal";
 
-const SERVICES: { key: "websites" | "webshops" | "apps"; href: AppPathname }[] = [
+const SERVICES: { key: "websites" | "webshops" | "apps"; href: StaticAppPathname }[] = [
   { key: "websites", href: "/website-op-maat" },
   { key: "webshops", href: "/webshop-op-maat" },
   { key: "apps", href: "/mobiele-apps" },

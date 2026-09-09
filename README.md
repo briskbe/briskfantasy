@@ -33,6 +33,10 @@ pnpm lint
 | Product-design portfolio | `src/data/portfolio.ts` + `/public/portfolio` |
 | Site config (email, hero video, socials) | `src/data/site.ts` |
 | Contact form endpoint | `src/app/api/contact/route.ts` (Resend optional, see `.env.example`) |
+| SEO helpers (canonical, hreflang, JSON-LD) | `src/lib/seo.ts` |
+| Keyword landing pages | `src/data/seo/clusters.ts` + `src/data/seo/content/` |
+| Regional landing pages | `src/data/seo/regions.ts` + `src/data/seo/content/regions-*.ts` |
+| SEO audit against a build | `node scripts/seo-audit.mjs` |
 
 ## Before going live
 
@@ -62,3 +66,60 @@ pnpm lint
 pnpm dev &
 node scripts/shot.mjs / ./qa/home          # NL + EN, desktop + mobile, full page
 ```
+
+
+## SEO
+
+### How the pages are organised
+
+- **Four service pages** (`/website-op-maat` and friends) carry the head terms.
+- **Keyword landing pages** at `/diensten/[slug]` cover one distinct search
+  intent each. Synonyms do not get their own page: "website laten maken",
+  "website laten bouwen" and "professionele website laten maken" are one intent,
+  so they share a page and the synonyms live in its body copy. See the `related`
+  field in `src/data/seo/clusters.ts`.
+- **Regional pages** at `/regio/[slug]`, one per province in Belgium and the
+  Netherlands, each covering all four services for that region.
+- **Two hubs**, `/diensten` and `/regio`, linked from the footer, so every
+  landing page is two clicks from the homepage and none is orphaned.
+
+### Why not a page per keyword per city
+
+That would be several thousand near-identical pages, which is what Google's spam
+policy calls a doorway page. They get demoted and they drag the rest of the
+domain's trust down with them. A province page that says something true about
+doing business there ranks; the same paragraph with the city name swapped does
+not. If you add regions or clusters, hold that line — `src/data/seo/regions.ts`
+explains it at the top of the file.
+
+### What every page emits
+
+- A self-referencing `canonical`.
+- `hreflang` for `nl`, `en` and `x-default` (Dutch is the default).
+- JSON-LD: `ProfessionalService` and `WebSite` site-wide, plus `Service`,
+  `BreadcrumbList` and `FAQPage` per landing page.
+- Visible breadcrumbs matching the `BreadcrumbList` data.
+- An FAQ built on `<details>`, so answers are in the HTML without JavaScript and
+  match the structured data exactly.
+
+Deliberately **not** emitted: `AggregateRating` for the Google review badge.
+Google disallows self-serving review markup about your own organisation, and it
+risks a manual action. The badge is visual proof only.
+
+### Auditing
+
+```bash
+pnpm build && pnpm start &
+node scripts/seo-audit.mjs
+```
+
+It walks every URL in the sitemap and fails on a missing canonical or hreflang,
+a duplicate title or description, a missing `h1`, invalid JSON-LD, or an FAQ
+question that is in the structured data but not visible on the page.
+
+### Adding a landing page
+
+1. Add an entry to `src/data/seo/clusters.ts` (or `regions.ts`).
+2. Add its copy to the matching file in `src/data/seo/content/`.
+3. That is all — the route, sitemap entry, hreflang and structured data follow
+   from the data.

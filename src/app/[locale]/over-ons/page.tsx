@@ -11,6 +11,8 @@ import { HowWeWork } from "@/components/pages/about/how-we-work";
 import { AboutMotion } from "@/components/pages/about/motion-settings";
 import { portfolio } from "@/data/portfolio";
 import { siteConfig } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 /** Same rounding the on-page counter uses, so SERP and page never disagree. */
 const screens = Math.max(50, Math.floor(portfolio.length / 10) * 10);
@@ -18,10 +20,12 @@ const screens = Math.max(50, Math.floor(portfolio.length / 10) * 10);
 export async function generateMetadata({ params }: PageProps<"/[locale]/over-ons">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About" });
-  return {
+  return pageMetadata({
     title: t("meta.title"),
     description: t("meta.description", { total: siteConfig.projectsDelivered, screens }),
-  };
+    href: "/over-ons",
+    locale: locale as AppLocale,
+  });
 }
 
 export default async function Page({ params }: PageProps<"/[locale]/over-ons">) {

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
+import type { StaticAppPathname } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { richTags } from "@/components/ui/rich";
 import { siteConfig } from "@/data/site";
@@ -13,7 +13,7 @@ import { SocialProof } from "@/components/ui/google-rating";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const SERVICE_LINKS: { key: "websites" | "webshops" | "software" | "apps"; href: AppPathname }[] = [
+const SERVICE_LINKS: { key: "websites" | "webshops" | "software" | "apps"; href: StaticAppPathname }[] = [
   { key: "websites", href: "/website-op-maat" },
   { key: "webshops", href: "/webshop-op-maat" },
   { key: "software", href: "/software-op-maat" },

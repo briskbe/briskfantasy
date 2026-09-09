@@ -5,14 +5,14 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
+import type { StaticAppPathname } from "@/i18n/routing";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { LanguageSwitcher } from "./language-switcher";
 import { Button } from "@/components/ui/button";
 
-type NavItem = { href: AppPathname; key: "websites" | "webshops" | "software" | "apps" | "references" | "about" };
+type NavItem = { href: StaticAppPathname; key: "websites" | "webshops" | "software" | "apps" | "references" | "about" };
 
 const NAV: NavItem[] = [
   { href: "/website-op-maat", key: "websites" },

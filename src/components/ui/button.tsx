@@ -3,7 +3,7 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
+import type { StaticAppPathname } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { Magnetic } from "./magnetic";
 
@@ -14,7 +14,7 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   variant?: Variant;
   size?: Size;
   /** Internal (localized) route. Use `external` for outbound URLs. */
-  href?: AppPathname;
+  href?: StaticAppPathname;
   external?: string;
   icon?: "arrow" | "up-right" | "none";
   magnetic?: boolean;

@@ -5,11 +5,18 @@ import { ContactHero } from "@/components/pages/contact/hero";
 import { Proof } from "@/components/pages/contact/proof";
 import { Faq } from "@/components/pages/contact/faq";
 import { Closing } from "@/components/pages/contact/closing";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/gesprek-inplannen">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/gesprek-inplannen",
+    locale: locale as AppLocale,
+  });
 }
 
 export default async function Page({ params }: PageProps<"/[locale]/gesprek-inplannen">) {

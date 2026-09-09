@@ -42,6 +42,7 @@ export async function Footer() {
                 <li><Link className="hover:text-accent transition-colors" href="/webshop-op-maat">{t("links.webshops")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/software-op-maat">{t("links.software")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/mobiele-apps">{t("links.apps")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/diensten">{t("links.servicesHub")}</Link></li>
               </ul>
             </div>
             <div>
@@ -50,6 +51,7 @@ export async function Footer() {
                 <li><Link className="hover:text-accent transition-colors" href="/referenties">{t("links.references")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/over-ons">{t("links.about")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/gesprek-inplannen">{t("links.contact")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/regio">{t("links.regionsHub")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/privacy">{t("links.privacy")}</Link></li>
               </ul>
             </div>

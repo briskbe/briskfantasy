@@ -13,11 +13,18 @@ import { InterfaceGallery } from "@/components/pages/software/interface-gallery"
 import { StackPrinciples } from "@/components/pages/software/stack";
 import { SoftwareFaq } from "@/components/pages/software/faq";
 import { SoftwareOtherServices } from "@/components/pages/software/other-services";
+import { pageMetadata } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/software-op-maat">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Software" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return pageMetadata({
+    title: t("meta.title"),
+    description: t("meta.description"),
+    href: "/software-op-maat",
+    locale: locale as AppLocale,
+  });
 }
 
 /**
