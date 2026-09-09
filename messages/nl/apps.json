@@ -1,19 +1,28 @@
 {
   "meta": {
     "title": "Mobiele apps",
-    "description": "Brisk ontwerpt en bouwt mobiele apps voor iOS en Android uit één codebase, met React Native en Expo. Van klikbaar prototype tot App Store en Google Play, vanuit België."
+    "description": "Brisk ontwerpt en bouwt mobiele apps voor iOS en Android uit één codebase. Van klikbaar prototype tot App Store en Google Play, vanuit België."
   },
   "hero": {
     "eyebrow": "Mobiele apps",
     "title": "Apps die mensen <em>elke dag</em> openen.",
-    "lead": "Voor iOS en Android, uit één codebase. We ontwerpen en bouwen apps die native aanvoelen, zonder bereik blijven werken en zonder gedoe door de stores raken.",
+    "lead": "Voor iOS en Android, uit één codebase. We ontwerpen en bouwen apps die native aanvoelen en zonder gedoe door de stores raken.",
     "primary": "Gesprek inplannen",
-    "secondary": "Bekijk schermen",
+    "secondary": "Bekijk de schermen",
     "reelLabel": "Wisselende appschermen ontworpen door Brisk, getoond op een iPhone",
     "facts": {
-      "platforms": "iOS & Android",
-      "screens": "50+ productschermen ontworpen",
-      "reply": "Antwoord binnen 24 uur"
+      "platforms": {
+        "value": "iOS + Android",
+        "label": "uit één codebase"
+      },
+      "screens": {
+        "value": "50+",
+        "label": "productschermen ontworpen"
+      },
+      "reply": {
+        "value": "24 u",
+        "label": "antwoord op je bericht"
+      }
     }
   },
   "codebase": {
@@ -23,13 +32,13 @@
     "items": {
       "1": {
         "title": "iOS en Android uit één codebase",
-        "body": "Eén team, één planning, één versie van de waarheid. Nieuwe functies landen tegelijk op iPhone en Android, en een bug los je één keer op.",
+        "body": "Eén team, één planning, één plek waar alles klopt. Nieuwe functies landen tegelijk op iPhone en Android, en een bug los je één keer op.",
         "tags": "React Native · Expo · TypeScript"
       },
       "2": {
         "title": "Native gevoel",
-        "body": "Gestures die meebewegen met je vinger, haptics op het juiste moment en schermen die op 60 fps blijven. Het verschil tussen een app die je opent en een app die je gebruikt.",
-        "tags": "Gestures · Haptics · 60 fps"
+        "body": "Gebaren die meebewegen met je vinger, haptische feedback op het juiste moment en schermen die vloeiend blijven. Het verschil tussen een app die je opent en een app die je gebruikt.",
+        "tags": "Gebaren · Haptische feedback · Vloeiend"
       },
       "3": {
         "title": "Klaar voor de stores",
@@ -42,32 +51,26 @@
     "eyebrow": "Schermen",
     "title": "Ontworpen voor de duim.",
     "intro": "Een greep uit meer dan 50 productschermen: onboarding, betalingen, instellingen en alles daartussen.",
-    "hint": "Scroll om te bladeren",
+    "hint": "Sleep om te bladeren",
     "alt": "{caption}, appontwerp door Brisk",
     "items": {
       "1": {
-        "caption": "Laadpassen en voertuigen beheren"
+        "caption": "Een laadsessie starten"
       },
       "2": {
         "caption": "Instellingen en premium-upgrade"
       },
       "3": {
-        "caption": "Laadstations filteren op laadsnelheid"
+        "caption": "Deelnemen aan een videoles"
       },
       "4": {
-        "caption": "Omzetwidget op het beginscherm"
+        "caption": "Apps koppelen bij het instellen"
       },
       "5": {
-        "caption": "Een videoles joinen"
-      },
-      "6": {
-        "caption": "Een laadsessie starten"
-      },
-      "7": {
         "caption": "Back-ups maken en terugzetten"
       },
-      "8": {
-        "caption": "Een toestel koppelen via Bluetooth"
+      "6": {
+        "caption": "Laadpassen en voertuigen beheren"
       }
     }
   },
@@ -77,23 +80,23 @@
     "intro": "Geen add-ons, geen verrassingen achteraf. Dit zit standaard in elke app die we bouwen, afgestemd op wat jouw gebruikers echt nodig hebben.",
     "items": {
       "1": {
-        "title": "Push-notificaties",
+        "title": "Pushnotificaties",
         "body": "Gerichte meldingen die mensen terugbrengen in plaats van wegjagen."
       },
       "2": {
-        "title": "Offline-first & sync",
+        "title": "Offline-first & synchronisatie",
         "body": "Werkt zonder bereik en synchroniseert zodra er weer netwerk is."
       },
       "3": {
         "title": "Betalingen & abonnementen",
-        "body": "In-app aankopen, abonnementen en kaartbetalingen, correct afgehandeld in beide stores."
+        "body": "In-app-aankopen, abonnementen en kaartbetalingen, correct afgehandeld in beide stores."
       },
       "4": {
         "title": "Login & accounts",
         "body": "Apple, Google, e-mail of magic link. Veilig, snel en zonder wachtwoordfrustratie."
       },
       "5": {
-        "title": "Analytics & crash reporting",
+        "title": "Analytics & crashrapportage",
         "body": "Je ziet wat mensen doen en waar het misloopt, voor ze het je komen vertellen."
       },
       "6": {
@@ -117,7 +120,7 @@
       },
       "3": {
         "title": "Bouw in sprints",
-        "body": "Om de twee weken een nieuwe build via TestFlight of een interne Play-track. Je ziet de app groeien in plaats van te wachten op één grote onthulling."
+        "body": "Elke sprint eindigt met een nieuwe build via TestFlight of een interne Play-track. Je ziet de app groeien in plaats van te wachten op één grote onthulling."
       },
       "4": {
         "title": "Testen met echte gebruikers",
@@ -144,11 +147,11 @@
       },
       "3": {
         "q": "Hoelang duurt het voor de app in de stores staat?",
-        "a": "Dat hangt af van de scope, maar het klikbare prototype heb je al na de eerste weken op je telefoon. Daarna bouwen we in sprints van twee weken naar een eerste versie voor de stores. We spreken vooraf mijlpalen af en houden ons eraan."
+        "a": "Dat hangt af van de scope, maar het klikbare prototype heb je al na de eerste weken op je telefoon. Daarna bouwen we in korte sprints naar een eerste versie voor de stores. We spreken vooraf mijlpalen af en houden ons eraan."
       },
       "4": {
         "q": "Wat als Apple of Google de app afkeurt?",
-        "a": "Dat gebeurt zelden als je de richtlijnen vanaf dag één respecteert, en dat doen we. Komt er toch een opmerking, dan lossen we die op en dienen we opnieuw in. Storebegeleiding zit in elk project."
+        "a": "Dat gebeurt zelden als je de richtlijnen vanaf dag één volgt, en dat doen we. Komt er toch een opmerking, dan lossen we die op en dienen we opnieuw in. Storebegeleiding zit in elk project."
       },
       "5": {
         "q": "Wie onderhoudt de app na de lancering?",

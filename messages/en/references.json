@@ -5,7 +5,7 @@
   },
   "hero": {
     "eyebrow": "Work",
-    "title": "{count} websites, all of them <em>live</em>.",
+    "title": "{count} websites that are <em>live</em>.",
     "lead": "No mockups, nothing polished after the fact. Every screenshot on this page is captured the moment you view it. What you see is what is online today.",
     "note": "Live screenshots via Microlink",
     "reelLabel": "Showreel of four live websites",
@@ -19,6 +19,7 @@
     "eyebrow": "Live websites",
     "title": "Every project, exactly as it is <em>online</em> today.",
     "intro": "Filter by type or just keep scrolling. Each card opens the real site in a new tab.",
+    "featured": "Featured project",
     "filterLabel": "Filter by type",
     "filters": {
       "all": "All",
@@ -65,6 +66,7 @@
   "start": {
     "eyebrow": "How a project starts",
     "title": "From first call to <em>first</em> screen.",
+    "lead": "Three steps. After the first call you know what you get, when it lands and what it costs.",
     "steps": {
       "1": {
         "title": "Call",

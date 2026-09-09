@@ -21,6 +21,7 @@ export function Faq() {
       <Reveal className="self-start lg:sticky lg:top-32 lg:col-span-4">
         <Eyebrow>{t("eyebrow")}</Eyebrow>
         <h2 className="text-h2 mt-5 max-w-sm text-balance">{t("title")}</h2>
+        <p className="text-body mt-6 max-w-xs text-muted text-pretty">{t("lead")}</p>
       </Reveal>
 
       <RevealGroup className="lg:col-span-7 lg:col-start-6" stagger={0.08}>
@@ -43,11 +44,11 @@ export function Faq() {
                     <span className="mt-1.5 w-6 shrink-0 font-mono text-[0.72rem] tracking-[0.18em] text-muted transition-colors group-hover:text-amber">
                       0{k}
                     </span>
-                    <span className="text-h4 flex-1 text-balance transition-colors duration-300 group-hover:text-amber-2">
+                    <span className="text-h4 flex-1 text-balance">
                       {t(`items.${k}.q`)}
                     </span>
                     <span
-                      className="relative mt-1 flex size-8 shrink-0 items-center justify-center rounded-full border border-line-2 transition-colors duration-300 group-hover:border-amber"
+                      className="relative mt-1 flex size-8 shrink-0 items-center justify-center rounded-full border border-line-2 text-muted transition-colors duration-300 group-hover:border-fg/45 group-hover:text-fg"
                       aria-hidden
                     >
                       <span className="absolute h-px w-3.5 bg-current" />

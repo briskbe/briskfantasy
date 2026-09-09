@@ -83,7 +83,7 @@ export function ServicesRows() {
               >
                 <span className="pt-1.5 font-mono text-[0.72rem] tracking-[0.18em] text-muted lg:pt-0 lg:text-[0.8rem]">0{i + 1}</span>
                 <span className="min-w-0">
-                  <span className="text-h3 block text-fg transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2 lg:text-[clamp(2.125rem,4.6vw,4.25rem)] lg:leading-[1.02] lg:tracking-[-0.035em]">
+                  <span className="text-h3 block text-fg transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2 lg:text-[clamp(1.875rem,3.4vw,3.25rem)] lg:leading-[1.04] lg:tracking-[-0.03em]">
                     {title}
                   </span>
                   <span className="text-body mt-2 block max-w-md text-muted lg:hidden">{t(`items.${s.key}.description`)}</span>

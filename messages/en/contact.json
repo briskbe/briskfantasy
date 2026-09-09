@@ -8,10 +8,11 @@
     "titleLine1": "Let's have",
     "titleLine2": "a <em>conversation</em>.",
     "lead": "Tell us what you want to build. Within 24 hours you'll hear back from the people who will actually make it.",
+    "responseBadge": "Reply within 24 hours",
     "expectTitle": "What to expect",
     "steps": {
       "1": {
-        "title": "30 minutes",
+        "title": "30 minutes, free",
         "body": "We listen and ask questions. You don't have to sell anything, and neither do we."
       },
       "2": {
@@ -24,19 +25,18 @@
       }
     },
     "emailLabel": "Email",
-    "locationLabel": "Based in",
-    "booking": "Pick a time right away",
-    "responseBadge": "Reply within 24 hours"
+    "locationLabel": "Based in"
   },
   "form": {
     "title": "Tell us what you have in mind",
+    "intro": "A handful of fields. Two sentences will do.",
     "name": "Name",
     "email": "Email",
     "company": "Company",
     "optional": "optional",
     "service": {
       "label": "What is it about?",
-      "hint": "Pick more than one if you like.",
+      "hint": "more than one is fine",
       "options": {
         "website": "Website",
         "webshop": "Webshop",
@@ -47,7 +47,7 @@
     },
     "budget": {
       "label": "Budget",
-      "hint": "A rough figure helps us suggest the right approach straight away.",
+      "hint": "a rough figure helps us",
       "options": {
         "a": "< 5k",
         "b": "5–15k",
@@ -74,30 +74,18 @@
       "again": "Send another message"
     }
   },
-  "alternatives": {
-    "eyebrow": "Other routes",
-    "title": "More than one way to get started.",
-    "cards": {
-      "mail": {
-        "title": "Prefer email?",
-        "body": "Send us a message, short or long. Within 24 hours you'll hear back from someone who understands your question.",
-        "link": "Email us"
-      },
-      "briefing": {
-        "title": "Already have a brief?",
-        "body": "Summarise it in the form and attach the document when you reply to our first email. We read everything, forty-page appendix included.",
-        "link": "Go to the form"
-      },
-      "unsure": {
-        "title": "Not sure yet?",
-        "body": "Have a look at what we built for others first: 17 live websites, webshops and platforms, with the code and design owned by the client.",
-        "link": "See our work"
-      }
-    }
+  "proof": {
+    "eyebrow": "Before you start",
+    "title": "What we've <em>built</em> so far.",
+    "lead": "No mockups from a deck. Every site below runs for a real client, and the code and the design belong to them.",
+    "sitesLabel": "Live sites",
+    "screensLabel": "Design screens",
+    "link": "See our work"
   },
   "faq": {
     "eyebrow": "Frequently asked",
     "title": "About the first call",
+    "lead": "Everything worth knowing before you hit send.",
     "items": {
       "1": {
         "q": "Is it free?",
@@ -118,8 +106,11 @@
     }
   },
   "closing": {
-    "eyebrow": "Direct",
-    "note": "We reply in Dutch and English.",
-    "locationLabel": "Based in"
+    "eyebrow": "Rather go direct",
+    "note": "We read everything ourselves and reply within 24 hours, in English or Dutch.",
+    "locationLabel": "Based in",
+    "briefTitle": "Already have a brief?",
+    "briefBody": "Summarise it in the form and attach the document when you reply to our first email. We read everything, forty-page appendix included.",
+    "briefLink": "Go to the form"
   }
 }

@@ -19,6 +19,7 @@
     "eyebrow": "Live websites",
     "title": "Elk project, zoals het vandaag <em>online</em> staat.",
     "intro": "Filter op type of scrol gewoon door. Elke kaart opent de echte site in een nieuw tabblad.",
+    "featured": "Uitgelicht project",
     "filterLabel": "Filter op type",
     "filters": {
       "all": "Alle",
@@ -65,6 +66,7 @@
   "start": {
     "eyebrow": "Zo begint een project",
     "title": "Van eerste gesprek tot <em>eerste</em> scherm.",
+    "lead": "Drie stappen. Na het eerste gesprek weet je wat je krijgt, wanneer het klaar is en wat het kost.",
     "steps": {
       "1": {
         "title": "Gesprek",

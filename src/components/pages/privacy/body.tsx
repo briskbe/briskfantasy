@@ -37,8 +37,8 @@ export async function PrivacyBody() {
         {sections.map((s, i) => (
           <Reveal key={s.key} as="section" className={i === 0 ? "" : "mt-16 border-t border-line pt-14 lg:mt-20 lg:pt-16"} amount={0.15}>
             <div id={s.key} className="scroll-mt-32">
-              <p className="font-mono text-[0.72rem] tracking-[0.18em] text-amber">{s.index}</p>
-              <h2 className="text-h4 mt-3 text-balance">{s.title}</h2>
+              <p className="font-mono text-[0.72rem] tracking-[0.18em] text-muted">{s.index}</p>
+              <h2 className="text-h3 mt-3 text-balance">{s.title}</h2>
               <div className="mt-6 space-y-5">
                 {s.body.map((p, j) => (
                   <p key={j} className="text-body text-fg-2 text-pretty">
@@ -50,7 +50,7 @@ export async function PrivacyBody() {
                 <ul className="mt-6 space-y-4">
                   {s.list.map((item, j) => (
                     <li key={j} className="grid grid-cols-[1rem_1fr] gap-4 text-body text-fg-2 text-pretty">
-                      <span className="mt-[0.7em] size-1.5 rounded-full bg-amber" aria-hidden />
+                      <span className="mt-[0.72em] size-1.5 rounded-full bg-fg/30" aria-hidden />
                       <span>{item}</span>
                     </li>
                   ))}

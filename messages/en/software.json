@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Custom software",
-    "description": "Brisk builds custom software: client portals, dashboards, automation, integrations and SaaS products. Fixed price per phase, and you own the code and the data. Based in Belgium."
+    "description": "Brisk builds custom software: client portals, dashboards, automation, integrations and SaaS products. You own the code and the data. Based in Belgium."
   },
   "hero": {
     "eyebrow": "Custom software",
@@ -20,15 +20,16 @@
     "eyebrow": "What we build",
     "title": "Five kinds of software. One way of <em>building</em>.",
     "intro": "Every project starts with a concrete problem in your business. We then pick the smallest solution that solves it completely, and build it so it can grow.",
+    "tagsLabel": "Keywords for {title}",
     "items": {
       "1": {
         "title": "Client portals",
-        "body": "A secure place where clients track orders, download files and manage their own details. Fewer emails, fewer phone calls, more overview.",
+        "body": "A secure place where clients track orders, download files and manage their own details. Fewer emails, fewer phone calls, a clearer picture.",
         "tags": { "1": "Login", "2": "Roles", "3": "Self-service" }
       },
       "2": {
         "title": "Dashboards & reporting",
-        "body": "Numbers from all your systems on one screen, live and tailored to whoever is looking. From daily follow-up to a monthly report in a single click.",
+        "body": "Numbers from all your systems on one screen, live and tailored to whoever is looking. From day-to-day tracking to a monthly report in a single click.",
         "tags": { "1": "Live data", "2": "Filters", "3": "Export" }
       },
       "3": {
@@ -38,7 +39,7 @@
       },
       "4": {
         "title": "Integrations & APIs",
-        "body": "We connect what currently lives side by side: accounting, CRM, webshop, ERP. Data flows automatically and in both directions, with nothing retyped.",
+        "body": "We connect the systems that currently sit apart: accounting, CRM, webshop, ERP. Data flows automatically and in both directions, with nothing retyped.",
         "tags": { "1": "REST", "2": "Webhooks", "3": "Sync" }
       },
       "5": {
@@ -51,22 +52,42 @@
   "cases": {
     "eyebrow": "Case",
     "title": "Two platforms that run <em>every day</em>.",
-    "intro": "For two players in the chiptuning world we built a dedicated platform each. Workshops order, pay and collect their files without anyone having to step in.",
+    "intro": "We built a dedicated platform for each of two players in the chiptuning world. Workshops order, pay and collect their files without anyone having to step in.",
     "builtLabel": "What we built",
-    "specs": { "1": "Client portal", "2": "Ordering flow", "3": "Client area", "4": "Payments" },
     "visit": "View live",
-    "shotAlt": "{name}, a platform designed and built by Brisk"
+    "newTab": "(opens in a new tab)",
+    "shotAlt": "{name}, a platform designed and built by Brisk",
+    "items": {
+      "1": { "specs": { "1": "Client accounts", "2": "File delivery", "3": "Payments" } },
+      "2": { "specs": { "1": "Client portal", "2": "Ordering flow", "3": "Invoicing" } }
+    }
   },
-  "motion": {
+  "phases": {
     "eyebrow": "From idea to working software",
     "title": "Four phases. No <em>surprises</em>.",
-    "body": "We split every project into phases with a fixed price. After each sprint you see working software, not a slide deck. And you decide when the next phase starts.",
-    "reelEyebrow": "How we build",
+    "body": "We split every project into phases, each with a clear scope and price. After each sprint you see working software, not a slide deck. And you decide when the next phase starts.",
+    "deliverablesLabel": "What the {title} phase leaves you with",
     "steps": {
-      "1": { "title": "Discovery", "body": "We map your processes, data and systems and pin down exactly what the software has to do." },
-      "2": { "title": "Architecture", "body": "Data model, integrations and tech are on paper before anything is built. That keeps the build predictable." },
-      "3": { "title": "Build in sprints", "body": "A working version every two weeks that you test yourself and steer as we go." },
-      "4": { "title": "Handover", "body": "Code, documentation and access become yours. We stay within reach." }
+      "1": {
+        "title": "Discovery",
+        "body": "We map your processes, data and systems and pin down exactly what the software has to do.",
+        "deliverables": { "1": "Process analysis", "2": "Functional scope", "3": "Proposal per phase" }
+      },
+      "2": {
+        "title": "Architecture",
+        "body": "Data model, integrations and tech are on paper before anything is built. That keeps the build predictable.",
+        "deliverables": { "1": "Data model", "2": "Integration plan", "3": "Technical choices" }
+      },
+      "3": {
+        "title": "Build in sprints",
+        "body": "A working version after every sprint that you test yourself and steer as we go.",
+        "deliverables": { "1": "Working version", "2": "Test environment", "3": "Sprint demo" }
+      },
+      "4": {
+        "title": "Handover",
+        "body": "Code, documentation and access become yours. We stay on hand if you need us.",
+        "deliverables": { "1": "Documentation", "2": "Access to everything", "3": "Handover session" }
+      }
     }
   },
   "gallery": {
@@ -79,12 +100,12 @@
   "stack": {
     "eyebrow": "Stack & principles",
     "title": "Proven technology, clear <em>agreements</em>.",
-    "intro": "We build on a stack we know inside out and that will still be maintained five years from now. No exotic choices, just the right ones.",
+    "intro": "We build on a stack we know inside out and that will still be maintained for years to come. No exotic choices, just the right ones.",
     "marqueeLabel": "Technologies we build with",
     "principles": {
       "1": {
-        "title": "Fixed price per phase",
-        "body": "Every phase gets a scope and a price up front. You know what you pay before anything is built, and you decide phase by phase whether we continue."
+        "title": "Scope and price per phase",
+        "body": "Every phase gets a clear scope and a price up front. You know what you pay before anything is built, and you decide phase by phase whether we continue."
       },
       "2": {
         "title": "Your own code and data",
@@ -103,7 +124,7 @@
     "items": {
       "1": {
         "q": "What does custom software cost?",
-        "a": "It depends on what the software has to do and which systems it talks to. After an analysis of your processes you receive a proposal per phase, with a fixed price. You know where you stand before we start, and you can start small."
+        "a": "It depends on what the software has to do and which systems it talks to. After an analysis of your processes you receive a proposal per phase, with a clear scope and price. You know where you stand up front, and you can start small."
       },
       "2": {
         "q": "Do you also build on top of existing systems?",
@@ -111,7 +132,7 @@
       },
       "3": {
         "q": "Who hosts the software?",
-        "a": "Usually we do, on infrastructure such as Vercel and Supabase, on accounts registered in your name. Prefer to host it yourself or with your own provider? That works too, the code is yours either way."
+        "a": "Usually we do, on infrastructure such as Vercel and Supabase, on accounts registered in your name. Prefer to host it yourself or with your own provider? That works too: the code is yours either way."
       },
       "4": {
         "q": "What about maintenance?",
@@ -122,5 +143,10 @@
         "a": "Absolutely. We like to start with an MVP: the smallest version that solves one problem completely. It goes live quickly, delivers value right away and shows what the next step should be."
       }
     }
+  },
+  "otherServices": {
+    "websites": "Marketing sites that load fast and convert.",
+    "webshops": "Webshops that sell and stay easy to manage.",
+    "apps": "iOS and Android apps, designed and built in house."
   }
 }

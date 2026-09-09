@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Software op maat",
-    "description": "Brisk bouwt software op maat: klantportalen, dashboards, automatisering, integraties en SaaS-producten. Vaste prijs per fase, code en data in jouw eigendom. Vanuit België."
+    "description": "Brisk bouwt software op maat: klantportalen, dashboards, automatisering, integraties en SaaS-producten. Code en data in jouw eigendom. Vanuit België."
   },
   "hero": {
     "eyebrow": "Software op maat",
@@ -20,6 +20,7 @@
     "eyebrow": "Wat we bouwen",
     "title": "Vijf soorten software. Eén manier van <em>bouwen</em>.",
     "intro": "Elke opdracht start met een concreet probleem in je bedrijf. Daarna kiezen we de kleinste oplossing die het volledig oplost, en bouwen we die zo dat ze kan groeien.",
+    "tagsLabel": "Kernwoorden voor {title}",
     "items": {
       "1": {
         "title": "Klantportalen",
@@ -51,22 +52,42 @@
   "cases": {
     "eyebrow": "Case",
     "title": "Twee platformen die elke dag <em>draaien</em>.",
-    "intro": "Voor twee spelers in de chiptuningwereld bouwden we elk een eigen platform. Werkplaatsen bestellen, betalen en halen hun bestanden op zonder dat er iemand tussen moet komen.",
+    "intro": "Voor twee spelers in de chiptuningwereld bouwden we telkens een eigen platform. Werkplaatsen bestellen, betalen en halen hun bestanden op zonder dat er iemand tussen moet komen.",
     "builtLabel": "Wat we bouwden",
-    "specs": { "1": "Klantportaal", "2": "Bestelflow", "3": "Klantzone", "4": "Betalingen" },
     "visit": "Bekijk live",
-    "shotAlt": "{name}, een platform ontworpen en gebouwd door Brisk"
+    "newTab": "(opent in een nieuw venster)",
+    "shotAlt": "{name}, een platform ontworpen en gebouwd door Brisk",
+    "items": {
+      "1": { "specs": { "1": "Klantaccounts", "2": "Bestandslevering", "3": "Betalingen" } },
+      "2": { "specs": { "1": "Klantportaal", "2": "Bestelflow", "3": "Facturatie" } }
+    }
   },
-  "motion": {
+  "phases": {
     "eyebrow": "Van idee tot werkende software",
     "title": "Vier fasen. Geen <em>verrassingen</em>.",
-    "body": "We knippen elk project in fasen met een vaste prijs. Na elke sprint zie je werkende software, geen presentatie. En jij beslist wanneer de volgende fase start.",
-    "reelEyebrow": "Hoe we bouwen",
+    "body": "We knippen elk project in fasen, elk met een duidelijke scope en prijs. Na elke sprint zie je werkende software, geen presentatie. En jij beslist wanneer de volgende fase start.",
+    "deliverablesLabel": "Wat je overhoudt aan de fase {title}",
     "steps": {
-      "1": { "title": "Analyse", "body": "We brengen je processen, data en systemen in kaart en leggen vast wat de software precies moet doen." },
-      "2": { "title": "Architectuur", "body": "Datamodel, integraties en techniek staan op papier voor er gebouwd wordt. Zo blijft de bouw voorspelbaar." },
-      "3": { "title": "Bouw in sprints", "body": "Elke twee weken een werkende versie die je zelf test en waarop je bijstuurt." },
-      "4": { "title": "Overdracht", "body": "Code, documentatie en toegang worden van jou. Wij blijven bereikbaar." }
+      "1": {
+        "title": "Analyse",
+        "body": "We brengen je processen, data en systemen in kaart en leggen vast wat de software precies moet doen.",
+        "deliverables": { "1": "Procesanalyse", "2": "Functionele scope", "3": "Voorstel per fase" }
+      },
+      "2": {
+        "title": "Architectuur",
+        "body": "Datamodel, integraties en techniek staan op papier voor er gebouwd wordt. Zo blijft de bouw voorspelbaar.",
+        "deliverables": { "1": "Datamodel", "2": "Integratieplan", "3": "Technische keuzes" }
+      },
+      "3": {
+        "title": "Bouw in sprints",
+        "body": "Na elke sprint een werkende versie die je zelf test en waarop je bijstuurt.",
+        "deliverables": { "1": "Werkende versie", "2": "Testomgeving", "3": "Sprintdemo" }
+      },
+      "4": {
+        "title": "Overdracht",
+        "body": "Code, documentatie en toegang worden van jou. Wij blijven bereikbaar.",
+        "deliverables": { "1": "Documentatie", "2": "Toegang tot alles", "3": "Overdrachtssessie" }
+      }
     }
   },
   "gallery": {
@@ -79,12 +100,12 @@
   "stack": {
     "eyebrow": "Stack & principes",
     "title": "Bewezen techniek, heldere <em>afspraken</em>.",
-    "intro": "We bouwen op een stack die we door en door kennen en die over vijf jaar nog onderhouden wordt. Geen exotische keuzes, wel de juiste.",
+    "intro": "We bouwen op een stack die we door en door kennen en die ook morgen nog onderhouden wordt. Geen exotische keuzes, wel de juiste.",
     "marqueeLabel": "Technologieën waarmee we bouwen",
     "principles": {
       "1": {
-        "title": "Vaste prijs per fase",
-        "body": "Elke fase krijgt vooraf een scope en een prijs. Je weet wat je betaalt voor er gebouwd wordt, en je beslist per fase of we doorgaan."
+        "title": "Scope en prijs per fase",
+        "body": "Elke fase krijgt vooraf een duidelijke scope en een prijs. Je weet wat je betaalt voor er gebouwd wordt, en je beslist per fase of we doorgaan."
       },
       "2": {
         "title": "Eigen code en data",
@@ -103,7 +124,7 @@
     "items": {
       "1": {
         "q": "Wat kost software op maat?",
-        "a": "Dat hangt af van wat de software moet doen en met welke systemen ze praat. Na een analyse van je processen krijg je een voorstel per fase, met een vaste prijs. Zo weet je vooraf waar je aan toe bent en kan je klein starten."
+        "a": "Dat hangt af van wat de software moet doen en met welke systemen ze praat. Na een analyse van je processen krijg je een voorstel per fase, met een duidelijke scope en prijs. Zo weet je vooraf waar je aan toe bent en kan je klein starten."
       },
       "2": {
         "q": "Bouwen jullie ook op bestaande systemen?",
@@ -111,7 +132,7 @@
       },
       "3": {
         "q": "Wie host de software?",
-        "a": "Meestal wij, op infrastructuur zoals Vercel en Supabase, op accounts die op jouw naam staan. Wil je liever zelf hosten of bij een eigen partij? Dat kan ook, de code is sowieso van jou."
+        "a": "Meestal wij, op infrastructuur zoals Vercel en Supabase, op accounts die op jouw naam staan. Wil je liever zelf hosten of bij een eigen partij? Dat kan ook: de code is sowieso van jou."
       },
       "4": {
         "q": "Hoe zit het met onderhoud?",
@@ -122,5 +143,10 @@
         "a": "Absoluut. We starten graag met een MVP: de kleinste versie die één probleem volledig oplost. Die gaat snel live, levert meteen iets op en toont wat de volgende stap moet zijn."
       }
     }
+  },
+  "otherServices": {
+    "websites": "Marketingsites die snel laden en converteren.",
+    "webshops": "Webshops die verkopen en makkelijk te beheren blijven.",
+    "apps": "Apps voor iOS en Android, ontworpen en gebouwd bij ons."
   }
 }

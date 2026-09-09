@@ -1,15 +1,20 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { MicrolinkShot } from "@/components/ui/microlink-shot";
 import { Reveal } from "@/components/ui/reveal";
 import { richTags } from "@/components/ui/rich";
 import type { Reference } from "@/data/references";
 import { cn } from "@/lib/utils";
+import { CaseShot } from "./case-shot";
 
-const SPECS = ["1", "2", "3", "4"] as const;
+const CASES = ["1", "2"] as const;
+const SPECS = ["1", "2", "3"] as const;
 
-/** Dark section: two platform references side by side, the second one offset for an editorial stagger. */
+/**
+ * Dark section: the two platforms as two mirrored editorial rows (7 columns of
+ * screenshot against 4 columns of copy, sides swapped on the second row) so the
+ * pair reads as two cases rather than one card duplicated.
+ */
 export async function CaseDuo({ items }: { items: Reference[] }) {
   const t = await getTranslations("Software");
   const locale = (await getLocale()) as "nl" | "en";
@@ -36,62 +41,67 @@ export async function CaseDuo({ items }: { items: Reference[] }) {
           </Reveal>
         </div>
 
-        <ul className="mt-16 grid gap-14 lg:mt-24 lg:grid-cols-2 lg:gap-x-8 lg:gap-y-0">
-          {items.map((r, i) => (
-            <Reveal key={r.slug} as="li" delay={i * 0.1} amount={0.2} className={cn(i === 1 && "lg:mt-28")}>
-              <article className="group">
+        <ul className="mt-16 grid gap-y-20 lg:mt-24 lg:gap-y-32">
+          {items.map((r, i) => {
+            const k = CASES[i] ?? "1";
+            const mirrored = i % 2 === 1;
+            return (
+              <Reveal key={r.slug} as="li" amount={0.15} className="group grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-x-12">
                 <a
                   href={r.url}
                   target="_blank"
                   rel="noreferrer noopener"
                   data-cursor-label={t("cases.visit")}
                   aria-label={`${t("cases.visit")}: ${r.name}`}
-                  className="block rounded-2xl transition-transform duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1"
+                  className={cn(
+                    "block rounded-2xl transition-transform duration-700 ease-[var(--ease-out-expo)] hover:-translate-y-1 lg:col-span-7",
+                    mirrored ? "lg:col-start-6 lg:row-start-1" : "lg:col-start-1",
+                  )}
                 >
-                  <MicrolinkShot
+                  <CaseShot
                     url={r.url}
                     slug={r.slug}
                     alt={t("cases.shotAlt", { name: r.name })}
-                    sizes="(min-width: 1024px) 46vw, 92vw"
+                    sizes="(min-width: 1024px) 56vw, 92vw"
                     className="shadow-[0_50px_100px_-40px_rgba(0,0,0,0.9)]"
-                    imgClassName="transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
                   />
                 </a>
 
-                <div className="mt-7 grid gap-6 sm:grid-cols-[1fr_auto] sm:gap-10">
-                  <div>
-                    <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted">{r.industry[locale]}</p>
-                    <h3 className="text-h3 mt-2">{r.name}</h3>
-                    <p className="text-body mt-4 max-w-md text-muted text-pretty">{r.blurb[locale]}</p>
-                    <a
-                      href={r.url}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      data-cursor="link"
-                      className="group/link mt-6 inline-flex min-h-11 items-center gap-2 text-[0.95rem] text-fg"
-                    >
-                      <span className="relative">
-                        {t("cases.visit")}
-                        <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
-                      </span>
-                      <ArrowUpRight className="size-4 text-muted transition-all duration-500 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-amber" />
-                      <span className="sr-only">{r.domain}</span>
-                    </a>
-                  </div>
+                <div className={cn("lg:col-span-4", mirrored ? "lg:col-start-1 lg:row-start-1" : "lg:col-start-9")}>
+                  <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted">{r.industry[locale]}</p>
+                  <h3 className="text-h3 mt-3">{r.name}</h3>
+                  <p className="text-body mt-4 max-w-md text-muted text-pretty">{r.blurb[locale]}</p>
 
-                  <dl className="sm:min-w-44">
-                    <dt className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted">{t("cases.builtLabel")}</dt>
+                  <dl className="mt-8 border-t border-line">
+                    <dt className="sr-only">{t("cases.builtLabel")}</dt>
                     {SPECS.map((s, si) => (
-                      <dd key={s} className="flex items-center gap-3 border-b border-line py-2.5 text-[0.9rem] text-fg-2 first-of-type:mt-3 first-of-type:border-t">
-                        <span className="font-mono text-[0.62rem] tracking-[0.16em] text-amber">0{si + 1}</span>
-                        {t(`cases.specs.${s}`)}
+                      <dd key={s} className="flex items-center gap-4 border-b border-line py-2.5 text-[0.92rem] text-fg-2">
+                        <span className="font-mono text-[0.64rem] tracking-[0.16em] text-muted">0{si + 1}</span>
+                        {t(`cases.items.${k}.specs.${s}`)}
                       </dd>
                     ))}
                   </dl>
+
+                  <a
+                    href={r.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    data-cursor="link"
+                    className="group/link mt-7 inline-flex min-h-11 items-center gap-2 text-[0.95rem] text-fg"
+                  >
+                    <span className="relative">
+                      {t("cases.visit")}
+                      <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
+                    </span>
+                    <ArrowUpRight className="size-4 text-muted transition-all duration-500 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-fg" />
+                    <span className="sr-only">
+                      {r.domain} {t("cases.newTab")}
+                    </span>
+                  </a>
                 </div>
-              </article>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </ul>
       </div>
     </section>

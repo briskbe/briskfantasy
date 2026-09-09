@@ -1,12 +1,12 @@
 {
   "meta": {
     "title": "Webshop op maat",
-    "description": "Brisk ontwerpt en bouwt webshops op maat: conversiegericht design, een checkout die klopt, koppelingen met je boekhouding en voorraad, en techniek die snel blijft. Vanuit België."
+    "description": "Brisk ontwerpt en bouwt webshops op maat: conversiegericht design, een checkout die klopt en koppelingen met je boekhouding en voorraad. Vanuit België."
   },
   "hero": {
     "eyebrow": "Webshop op maat",
     "title": "Een webshop die <em>verkoopt</em>, ook als jij slaapt.",
-    "lead": "Geen standaardthema met een winkelmandje erop geplakt. We ontwerpen en bouwen je shop van nul: elke productpagina, elke stap in de checkout, elke koppeling met je administratie.",
+    "lead": "Geen standaardthema met een winkelmandje erop geplakt. We ontwerpen en bouwen je shop vanaf nul: elke productpagina, elke stap in de checkout, elke koppeling met je administratie.",
     "primary": "Gesprek inplannen",
     "secondary": "Bekijk webshops",
     "shotAlt": "{name}, een webshop ontworpen en gebouwd door Brisk",
@@ -26,10 +26,10 @@
         "2": "Gereviseerd"
       },
       "priceLabel": "Prijs incl. btw",
+      "price": "€ 249,00",
       "add": "In winkelmand",
       "added": "Toegevoegd",
-      "cartLabel": "Artikelen in winkelmand",
-      "cartStatus": "{count} artikelen in je winkelmand"
+      "cartStatus": "{count, plural, =0 {Geen artikelen in je winkelmand} =1 {1 artikel in je winkelmand} other {# artikelen in je winkelmand}}"
     }
   },
   "pillars": {
@@ -44,17 +44,17 @@
       },
       "2": {
         "title": "Betalingen & checkout",
-        "body": "Een checkout met zo weinig mogelijk stappen en de betaalmethodes die je klanten verwachten. We werken met Mollie of Stripe en ondersteunen Bancontact, Apple Pay, kaart en betaling op factuur.",
+        "body": "Een checkout met zo weinig mogelijk stappen en de betaalmethodes die je klanten verwachten. We werken met Mollie of Stripe en ondersteunen Bancontact, Apple Pay, kredietkaart en betaling op factuur.",
         "tags": "Mollie · Bancontact · Apple Pay"
       },
       "3": {
         "title": "Koppelingen",
-        "body": "Je shop praat met de rest van je bedrijf: boekhouding, voorraad, verzendlabels, e-mail. Voor Roetfilterkopen bouwden we een kentekenzoeker die meteen de juiste filter toont.",
+        "body": "Je shop praat met de rest van je bedrijf: boekhouding, voorraad, verzendlabels, e-mail. Denk aan een kentekenzoeker die meteen de juiste onderdelen toont.",
         "tags": "Boekhouding · Voorraad · Verzending"
       },
       "4": {
         "title": "Snelheid & SEO",
-        "body": "Productpagina's die in een fractie van een seconde laden en door Google gevonden worden. Gestructureerde data, schone URL's en een sitemap die meegroeit met je catalogus.",
+        "body": "Productpagina's die snel laden en door Google gevonden worden. Gestructureerde data, schone URL's en een sitemap die meegroeit met je catalogus.",
         "tags": "Core Web Vitals · Gestructureerde data · Sitemap"
       }
     }
@@ -62,7 +62,8 @@
   "story": {
     "eyebrow": "De checkout",
     "title": "Drie schermen tussen kijken en <em>kopen</em>.",
-    "intro": "We ontwerpen elke stap alsof het de enige is. Zo weinig mogelijk vragen, zo veel mogelijk zekerheid.",
+    "intro": "We ontwerpen elke stap alsof het de enige is. Zo weinig mogelijk vragen, zoveel mogelijk zekerheid.",
+    "jump": "Ga naar scherm {label}",
     "steps": {
       "1": {
         "label": "Ontdekken",
@@ -74,23 +75,36 @@
       },
       "3": {
         "label": "Afrekenen",
-        "body": "Eén pagina, drie stappen, geen verplichte account. Betalen met wat je klant al gebruikt, bevestiging binnen een seconde."
+        "body": "Eén pagina, drie stappen, geen verplichte account. Betalen met wat je klant al gebruikt, bevestiging meteen in de mailbox."
       }
     },
     "screens": {
       "1": {
         "name": "Catalogus",
-        "search": "Zoek op kenteken",
+        "searchLabel": "Zoek op kenteken",
+        "plate": "1-KLM-235",
         "filter1": "Merk",
         "filter2": "Bouwjaar",
         "filter3": "Brandstof",
-        "results": "Resultaten"
+        "results": "Resultaten",
+        "fit": "Past",
+        "products": {
+          "1": { "name": "Roetfilter Euro 5", "price": "€ 189,00" },
+          "2": { "name": "Roetfilter Euro 6", "price": "€ 249,00" },
+          "3": { "name": "Roetfilter met kat", "price": "€ 329,00" },
+          "4": { "name": "Katalysator Euro 6", "price": "€ 279,00" },
+          "5": { "name": "Drukverschilsensor", "price": "€ 59,00" },
+          "6": { "name": "Montageset", "price": "€ 34,00" }
+        }
       },
       "2": {
         "name": "Productpagina",
         "badge": "Op voorraad",
+        "kicker": "Origineel onderdeel",
         "title": "Roetfilter Euro 6",
-        "spec1": "Past op je kenteken",
+        "price": "€ 249,00",
+        "priceNote": "incl. btw",
+        "spec1": "Past op kenteken 1-KLM-235",
         "spec2": "Levering 1–2 werkdagen",
         "spec3": "30 dagen retour",
         "cta": "In winkelmand"
@@ -100,10 +114,22 @@
         "step1": "Gegevens",
         "step2": "Verzending",
         "step3": "Betaling",
+        "fields": {
+          "1": "Naam",
+          "2": "E-mail",
+          "3": "Straat en nummer",
+          "4": "Postcode",
+          "5": "Gemeente"
+        },
         "method1": "Bancontact",
         "method2": "Apple Pay",
-        "method3": "Kaart",
+        "method3": "Kredietkaart",
+        "summary": {
+          "1": { "label": "Roetfilter Euro 6", "value": "€ 249,00" },
+          "2": { "label": "Verzending", "value": "Gratis" }
+        },
         "total": "Totaal",
+        "totalValue": "€ 249,00",
         "cta": "Betaal nu"
       }
     }
@@ -111,8 +137,9 @@
   "references": {
     "eyebrow": "Webshops & platformen",
     "title": "Gebouwd, gelanceerd en live.",
-    "intro": "Twee webshops en twee bestelplatformen, elk op maat gemaakt voor een specifieke markt. Klik door, ze draaien vandaag.",
+    "intro": "Webshops en bestelplatformen, elk op maat gemaakt voor een specifieke markt. Klik door, ze draaien vandaag.",
     "visit": "Bekijk live",
+    "newTab": "opent in een nieuw tabblad",
     "shotAlt": "Startpagina van {name}",
     "types": {
       "webshop": "Webshop",
@@ -131,7 +158,7 @@
       },
       "2": {
         "title": "E-mailflows & automatisering",
-        "body": "Verlaten winkelmandjes, bestelbevestigingen, reviews na levering, terugkomacties. Eén keer opgezet, daarna werkt het vanzelf."
+        "body": "Verlaten winkelmandjes, bestelbevestigingen, reviews na levering, mails die klanten terughalen. Eén keer opgezet, daarna werkt het vanzelf."
       },
       "3": {
         "title": "Analytics & rapportering",
@@ -155,7 +182,7 @@
         "a": "Alles wat je klanten verwachten: Bancontact, kredietkaart, Apple Pay, Google Pay, iDEAL, overschrijving en betaling op factuur voor zakelijke klanten. We werken met Mollie of Stripe, afhankelijk van je markt en je volume."
       },
       "3": {
-        "q": "Kan mijn shop koppelen met mijn boekhouding en voorraad?",
+        "q": "Kan ik mijn shop koppelen aan mijn boekhouding en voorraad?",
         "a": "Ja. Boekhoudpakketten, voorraadsystemen, verzendplatformen en e-mailtools praten via API's met je shop. Bestaat er geen koppeling, dan bouwen we ze. Zo typ je nooit twee keer dezelfde bestelling in."
       },
       "4": {

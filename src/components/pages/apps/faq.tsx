@@ -2,17 +2,31 @@
 
 import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Plus } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { Reveal, RevealGroup, RevealItem } from "./reveal";
 
 const ITEMS = ["1", "2", "3", "4", "5"] as const;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-function Item({ q, a, open, onToggle, baseId }: { q: string; a: string; open: boolean; onToggle: () => void; baseId: string }) {
+function Item({
+  q,
+  a,
+  open,
+  onToggle,
+  baseId,
+  reduced,
+}: {
+  q: string;
+  a: string;
+  open: boolean;
+  onToggle: () => void;
+  baseId: string;
+  reduced: boolean;
+}) {
   const btnId = `${baseId}-btn`;
   const panelId = `${baseId}-panel`;
   return (
@@ -49,10 +63,14 @@ function Item({ q, a, open, onToggle, baseId }: { q: string; a: string; open: bo
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ height: { duration: 0.6, ease: EASE }, opacity: { duration: 0.35 } }}
+            transition={
+              reduced
+                ? { duration: 0 }
+                : { height: { duration: 0.6, ease: EASE }, opacity: { duration: 0.35 } }
+            }
             className="overflow-hidden"
           >
-            <p className="text-body max-w-2xl pb-7 text-muted text-pretty">{a}</p>
+            <p className="text-body max-w-2xl pb-7 text-fg-2 text-pretty">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -60,14 +78,19 @@ function Item({ q, a, open, onToggle, baseId }: { q: string; a: string; open: bo
   );
 }
 
-/** Dark section: accessible accordion (button + aria-expanded, animated height). */
+/**
+ * Light section: accessible accordion (button + aria-expanded, animated
+ * height). Light on purpose — the process, the cross-links, the CTA band and
+ * the footer are all dark, and the page should not end in one long dark slab.
+ */
 export function AppsFaq() {
   const t = useTranslations("Apps");
+  const reduced = useReducedMotion() ?? false;
   const [open, setOpen] = useState<string | null>("1");
   const id = useId();
 
   return (
-    <section className="theme-dark relative bg-ink text-paper section-y" aria-labelledby="apps-faq-title">
+    <section className="theme-light relative bg-bg text-fg section-y" aria-labelledby="apps-faq-title">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
@@ -96,6 +119,7 @@ export function AppsFaq() {
                 a={t(`faq.items.${k}.a`)}
                 open={open === k}
                 onToggle={() => setOpen((v) => (v === k ? null : k))}
+                reduced={reduced}
               />
             </RevealItem>
           ))}

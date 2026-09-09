@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Section } from "@/components/ui/section";
 import { ContactHero } from "@/components/pages/contact/hero";
-import { Alternatives } from "@/components/pages/contact/alternatives";
+import { Proof } from "@/components/pages/contact/proof";
 import { Faq } from "@/components/pages/contact/faq";
-import { ClosingStrip } from "@/components/pages/contact/closing-strip";
+import { Closing } from "@/components/pages/contact/closing";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/gesprek-inplannen">): Promise<Metadata> {
   const { locale } = await params;
@@ -21,9 +21,9 @@ export default async function Page({ params }: PageProps<"/[locale]/gesprek-inpl
       {/* 1. Hero + form (dark) */}
       <ContactHero />
 
-      {/* 2. Other ways in (light) */}
-      <Section theme="light" id="alternatieven">
-        <Alternatives />
+      {/* 2. Why the call is worth it: real client sites (light) */}
+      <Section theme="light" id="werk">
+        <Proof />
       </Section>
 
       {/* 3. FAQ about the intro call (dark) */}
@@ -31,8 +31,11 @@ export default async function Page({ params }: PageProps<"/[locale]/gesprek-inpl
         <Faq />
       </Section>
 
-      {/* 4. Slim closing strip — no CTA band here, it would loop back to this page */}
-      <ClosingStrip />
+      {/* 4. Direct route out — light, so the page doesn't end in a dark slab
+          with the footer. No CtaBand: it would link back to this page. */}
+      <Section theme="light" padded={false} className="py-16 lg:py-24">
+        <Closing />
+      </Section>
     </>
   );
 }

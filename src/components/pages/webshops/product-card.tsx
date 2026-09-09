@@ -5,13 +5,15 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "motion/react";
 import { ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { FilterMark } from "./filter-mark";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /**
- * Image-free, typographic product card used in the hero to demonstrate the
- * micro-interactions we build into shops: a variant switch, an add-to-cart
- * button that morphs into a checkmark and a cart badge that counts up.
+ * Typographic product card used in the hero to demonstrate the micro-interactions
+ * we build into shops: a variant switch, an add-to-cart button that morphs into a
+ * checkmark and a cart badge that counts up. Everything on it is real type — no
+ * placeholder bars — and the button stays neutral so the hero keeps one amber CTA.
  */
 export function ProductCard({ className }: { className?: string }) {
   const t = useTranslations("Webshops.hero.card");
@@ -41,8 +43,8 @@ export function ProductCard({ className }: { className?: string }) {
       {/* header */}
       <div className="flex items-center justify-between">
         <span className="eyebrow text-muted">{t("label")}</span>
-        <span className="relative flex size-9 items-center justify-center rounded-full border border-line text-fg" aria-label={t("cartLabel")}>
-          <ShoppingBag className="size-4" aria-hidden />
+        <span className="relative flex size-9 items-center justify-center rounded-full border border-line text-fg" aria-hidden>
+          <ShoppingBag className="size-4" />
           <AnimatePresence mode="popLayout" initial={false}>
             {count > 0 && (
               <motion.span
@@ -51,8 +53,7 @@ export function ProductCard({ className }: { className?: string }) {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.6, opacity: 0 }}
                 transition={{ type: "spring", stiffness: 420, damping: 22 }}
-                className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-amber px-1 font-mono text-[0.62rem] font-medium text-ink tabular-nums"
-                aria-hidden
+                className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-fg px-1 font-mono text-[0.62rem] font-medium text-bg tabular-nums"
               >
                 {count}
               </motion.span>
@@ -65,14 +66,21 @@ export function ProductCard({ className }: { className?: string }) {
       </div>
 
       {/* product */}
-      <p className="mt-5 text-[1.35rem] font-medium leading-tight tracking-[-0.02em]">{t("name")}</p>
-      <p className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted">
-        <span className="inline-flex items-center gap-1.5">
-          <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden />
-          {t("stock")}
+      <div className="mt-5 flex items-start gap-4">
+        <span className="flex size-16 shrink-0 items-center justify-center rounded-xl border border-line bg-fg/[0.04] p-2 text-fg/70">
+          <FilterMark detail={false} />
         </span>
-        <span>{t("delivery")}</span>
-      </p>
+        <div className="min-w-0">
+          <p className="text-[1.2rem] font-medium leading-tight tracking-[-0.02em]">{t("name")}</p>
+          <p className="mt-2 flex flex-col gap-1 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden />
+              {t("stock")}
+            </span>
+            <span>{t("delivery")}</span>
+          </p>
+        </div>
+      </div>
 
       {/* variant */}
       <div className="mt-5">
@@ -108,26 +116,20 @@ export function ProductCard({ className }: { className?: string }) {
         </div>
       </div>
 
-      {/* price row: abstract, no invented amounts */}
-      <div className="mt-5 flex items-end justify-between border-t border-line pt-4">
-        <div>
-          <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("priceLabel")}</p>
-          <div className="mt-2 flex items-center gap-1.5" aria-hidden>
-            <span className="text-[1.4rem] font-medium leading-none">€</span>
-            <span className="h-5 w-16 rounded-sm bg-fg/15" />
-            <span className="h-3 w-6 rounded-sm bg-fg/10" />
-          </div>
-        </div>
+      {/* price */}
+      <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-4">
+        <p className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-muted">{t("priceLabel")}</p>
+        <p className="text-[1.35rem] font-medium leading-none tracking-[-0.02em] tabular-nums">{t("price")}</p>
       </div>
 
-      {/* add to cart */}
+      {/* add to cart — neutral on purpose: the amber in this viewport belongs to the page CTA */}
       <button
         type="button"
         onClick={add}
         data-cursor="link"
         className={cn(
           "group relative mt-4 flex h-12 w-full items-center justify-center overflow-hidden rounded-full text-[0.95rem] font-medium tracking-[-0.01em] transition-colors duration-300",
-          added ? "bg-fg text-bg" : "bg-amber text-ink hover:bg-amber-2",
+          added ? "bg-fg/12 text-fg" : "bg-fg text-bg hover:bg-fg/90",
         )}
       >
         <AnimatePresence mode="popLayout" initial={false}>

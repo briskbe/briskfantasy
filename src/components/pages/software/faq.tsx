@@ -6,13 +6,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { Plus } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
+import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 const ITEMS = ["1", "2", "3", "4", "5"] as const;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; open: boolean; onToggle: () => void; baseId: string; index: number }) {
+function Item({ q, a, open, onToggle, baseId, index, reduced }: { q: string; a: string; open: boolean; onToggle: () => void; baseId: string; index: number; reduced: boolean }) {
   const btnId = `${baseId}-btn`;
   const panelId = `${baseId}-panel`;
   return (
@@ -27,14 +28,14 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
           data-cursor="link"
           className="group flex w-full items-start gap-5 py-6 text-left sm:gap-8 lg:py-7"
         >
-          <span className="hidden pt-2 font-mono text-[0.7rem] tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-amber sm:block">
+          <span className="hidden pt-2 font-mono text-[0.7rem] tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-fg sm:block">
             0{index + 1}
           </span>
           <span className={cn("text-h4 flex-1 transition-colors duration-300", open ? "text-fg" : "text-fg/80 group-hover:text-fg")}>{q}</span>
           <span
             className={cn(
               "mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border transition-[transform,border-color,background-color,color] duration-500 ease-[var(--ease-out-expo)]",
-              open ? "rotate-45 border-amber bg-amber text-ink" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
+              open ? "rotate-45 border-fg bg-fg text-bg" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
             )}
             aria-hidden
           >
@@ -49,10 +50,10 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
             role="region"
             aria-labelledby={btnId}
             key="panel"
-            initial={{ height: 0, opacity: 0 }}
+            initial={reduced ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ height: { duration: 0.6, ease: EASE }, opacity: { duration: 0.35 } }}
+            exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={reduced ? { duration: 0.15 } : { height: { duration: 0.6, ease: EASE }, opacity: { duration: 0.35 } }}
             className="overflow-hidden"
           >
             <p className="text-body max-w-2xl pb-7 text-muted text-pretty sm:pl-[calc(1.75rem+2rem)]">{a}</p>
@@ -66,6 +67,7 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
 /** Dark section: accessible accordion (button + aria-expanded, animated height). */
 export function SoftwareFaq() {
   const t = useTranslations("Software");
+  const reduced = usePrefersReducedMotion();
   const [open, setOpen] = useState<string | null>("1");
   const id = useId();
 
@@ -96,6 +98,7 @@ export function SoftwareFaq() {
               <Item
                 baseId={`${id}-${k}`}
                 index={i}
+                reduced={reduced}
                 q={t(`faq.items.${k}.q`)}
                 a={t(`faq.items.${k}.a`)}
                 open={open === k}

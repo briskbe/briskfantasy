@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Custom webshops",
-    "description": "Brisk designs and builds custom webshops: conversion-focused design, a checkout that just works, integrations with your accounting and stock, and technology that stays fast. From Belgium."
+    "description": "Brisk designs and builds custom webshops: conversion-focused design, a checkout that works and integrations with your accounting and stock. From Belgium."
   },
   "hero": {
     "eyebrow": "Custom webshops",
@@ -17,7 +17,7 @@
     },
     "card": {
       "label": "Product card",
-      "name": "DPF filter Euro 6",
+      "name": "Euro 6 DPF",
       "stock": "In stock",
       "delivery": "Ships in 1–2 working days",
       "variantLabel": "Version",
@@ -26,16 +26,16 @@
         "2": "Remanufactured"
       },
       "priceLabel": "Price incl. VAT",
+      "price": "€ 249.00",
       "add": "Add to cart",
       "added": "Added",
-      "cartLabel": "Items in cart",
-      "cartStatus": "{count} items in your cart"
+      "cartStatus": "{count, plural, =0 {No items in your cart} =1 {1 item in your cart} other {# items in your cart}}"
     }
   },
   "pillars": {
     "eyebrow": "What you get",
     "title": "From first click to <em>repeat order</em>.",
-    "intro": "Four pillars, one whole. We don't build them in isolation but as a single system that walks your customer from product page to order confirmation.",
+    "intro": "Four pillars, one system. We don't build them in isolation but as a single whole that walks your customer from product page to order confirmation.",
     "items": {
       "1": {
         "title": "Conversion-focused design",
@@ -49,12 +49,12 @@
       },
       "3": {
         "title": "Integrations",
-        "body": "Your shop talks to the rest of your business: accounting, stock, shipping labels, email. For Roetfilterkopen we built a licence-plate lookup that shows the right filter instantly.",
+        "body": "Your shop talks to the rest of your business: accounting, stock, shipping labels, email. Think of a licence-plate lookup that shows the right parts instantly.",
         "tags": "Accounting · Stock · Shipping"
       },
       "4": {
         "title": "Speed & SEO",
-        "body": "Product pages that load in a fraction of a second and get found on Google. Structured data, clean URLs and a sitemap that grows with your catalogue.",
+        "body": "Product pages that load fast and get found on Google. Structured data, clean URLs and a sitemap that grows with your catalogue.",
         "tags": "Core Web Vitals · Structured data · Sitemap"
       }
     }
@@ -63,6 +63,7 @@
     "eyebrow": "The checkout",
     "title": "Three screens between browsing and <em>buying</em>.",
     "intro": "We design every step as if it were the only one. As few questions as possible, as much certainty as possible.",
+    "jump": "Go to screen {label}",
     "steps": {
       "1": {
         "label": "Discover",
@@ -74,23 +75,36 @@
       },
       "3": {
         "label": "Pay",
-        "body": "One page, three steps, no forced account. Pay with whatever your customer already uses, confirmation within a second."
+        "body": "One page, three steps, no account required. Pay with whatever your customer already uses, confirmation straight to their inbox."
       }
     },
     "screens": {
       "1": {
         "name": "Catalogue",
-        "search": "Search by licence plate",
+        "searchLabel": "Search by licence plate",
+        "plate": "1-KLM-235",
         "filter1": "Brand",
         "filter2": "Model year",
         "filter3": "Fuel",
-        "results": "Results"
+        "results": "Results",
+        "fit": "Fits",
+        "products": {
+          "1": { "name": "Euro 5 DPF", "price": "€ 189.00" },
+          "2": { "name": "Euro 6 DPF", "price": "€ 249.00" },
+          "3": { "name": "DPF with catalyst", "price": "€ 329.00" },
+          "4": { "name": "Euro 6 catalyst", "price": "€ 279.00" },
+          "5": { "name": "Pressure sensor", "price": "€ 59.00" },
+          "6": { "name": "Fitting kit", "price": "€ 34.00" }
+        }
       },
       "2": {
         "name": "Product page",
         "badge": "In stock",
-        "title": "DPF filter Euro 6",
-        "spec1": "Fits your licence plate",
+        "kicker": "Original part",
+        "title": "Euro 6 DPF",
+        "price": "€ 249.00",
+        "priceNote": "incl. VAT",
+        "spec1": "Fits licence plate 1-KLM-235",
         "spec2": "Ships in 1–2 working days",
         "spec3": "30-day returns",
         "cta": "Add to cart"
@@ -100,10 +114,22 @@
         "step1": "Details",
         "step2": "Shipping",
         "step3": "Payment",
+        "fields": {
+          "1": "Name",
+          "2": "Email",
+          "3": "Street and number",
+          "4": "Postcode",
+          "5": "Town"
+        },
         "method1": "Bancontact",
         "method2": "Apple Pay",
-        "method3": "Card",
+        "method3": "Credit card",
+        "summary": {
+          "1": { "label": "Euro 6 DPF", "value": "€ 249.00" },
+          "2": { "label": "Shipping", "value": "Free" }
+        },
         "total": "Total",
+        "totalValue": "€ 249.00",
         "cta": "Pay now"
       }
     }
@@ -111,8 +137,9 @@
   "references": {
     "eyebrow": "Webshops & platforms",
     "title": "Built, launched and live.",
-    "intro": "Two webshops and two ordering platforms, each made for a specific market. Click through, they're taking orders today.",
+    "intro": "Webshops and ordering platforms, each made for a specific market. Click through, they're taking orders today.",
     "visit": "View live",
+    "newTab": "opens in a new tab",
     "shotAlt": "Homepage of {name}",
     "types": {
       "webshop": "Webshop",
@@ -164,7 +191,7 @@
       },
       "5": {
         "q": "Who owns the shop once it's delivered?",
-        "a": "You do. Code, design and data are handed over as your property, with documentation and access to everything. If you ever want to continue with someone else, you can, no discussion."
+        "a": "You do. Code, design and data are handed over as your property, with documentation and access to everything. If you ever want to continue with someone else, you can, no questions asked."
       }
     }
   }

@@ -9,6 +9,7 @@ import { CheckoutStory } from "@/components/pages/webshops/checkout-story";
 import { ShopReferences } from "@/components/pages/webshops/references";
 import { Growth } from "@/components/pages/webshops/growth";
 import { WebshopsFaq } from "@/components/pages/webshops/faq";
+import { MotionShell } from "@/components/pages/webshops/motion-shell";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/webshop-op-maat">): Promise<Metadata> {
   const { locale } = await params;
@@ -26,7 +27,7 @@ export default async function Page({ params }: PageProps<"/[locale]/webshop-op-m
   const shops = [...referencesByType("webshop"), ...referencesByType("platform")];
 
   return (
-    <>
+    <MotionShell>
       <WebshopsHero shot={{ slug: hero.slug, url: hero.url, name: hero.name }} siteCount={references.length} />
       <Pillars />
       <CheckoutStory />
@@ -35,6 +36,6 @@ export default async function Page({ params }: PageProps<"/[locale]/webshop-op-m
       <WebshopsFaq />
       <OtherServices current="webshops" />
       <CtaBand />
-    </>
+    </MotionShell>
   );
 }

@@ -1,27 +1,28 @@
 {
   "meta": {
     "title": "About Brisk — A digital agency from Belgium",
-    "description": "Brisk designs and builds custom websites, webshops, software and mobile apps. You talk directly to the people who build it. 17 live websites, 50+ product screens, a reply within 24 hours."
+    "description": "Brisk designs and builds custom websites, webshops, software and mobile apps. You talk to the people who build it. {sites} live websites, a reply within 24 hours."
   },
   "hero": {
     "eyebrow": "About Brisk",
     "titleLine1": "Small team.",
     "titleLine2": "Serious <em>care</em>.",
-    "lead": "Brisk is a digital agency based in Belgium. We design and build custom websites, webshops, software and mobile apps. You talk directly to the people who build it, from the first call until long after launch.",
+    "lead": "Brisk is a digital agency based in Belgium. We design and build custom websites, webshops, software and mobile apps. You talk directly to the people who build it.",
     "ctaPrimary": "Book a call",
     "ctaSecondary": "See our work",
-    "tagline": "Designed and built in Belgium",
-    "reelCaption": "Brisk, in motion"
+    "workCaption": "Screens from our own portfolio"
   },
   "manifesto": {
     "eyebrow": "What we stand for",
+    "title": "Three promises we <em>keep</em>.",
+    "lead": "No mission statement on the wall. Three commitments you can hold us to, from the first call until long after launch.",
     "p1": {
       "opening": "We build what fits.",
-      "rest": "No themes, no page builders, no plugin that almost does what you need. Every project starts with your customer and ends in code of our own, designed around the way you work."
+      "rest": "No themes, no page builders, no plugin that almost does what you need. Every project starts with your customer and ends in code we write ourselves, designed around the way you work."
     },
     "p2": {
       "opening": "We say what we think.",
-      "rest": "If an idea will not work, you hear it in the first call, not on the invoice. You get honest advice, even when it means you need less than you thought."
+      "rest": "If an idea won't work, you'll hear it on the first call, not on the invoice. You get honest advice, even when it means you need less than you thought."
     },
     "p3": {
       "opening": "We ship fast, without rushing.",
@@ -31,10 +32,11 @@
   "principles": {
     "eyebrow": "Principles",
     "title": "Five things we never <em>let go</em>.",
+    "lead": "Whatever the project is, these five hold. Alongside them runs work we actually shipped.",
     "items": {
       "one": {
         "title": "Understand first, then build.",
-        "body": "Every project starts with questions, not a quote. What does your customer need to do, and what is stopping them today."
+        "body": "Every project starts with questions, not a quote. What your customer needs to do, and what is stopping them today."
       },
       "two": {
         "title": "Speed is a feature.",
@@ -42,31 +44,31 @@
       },
       "three": {
         "title": "Detail is not polish.",
-        "body": "The transitions, the error message, the empty screen. The last five percent decides how something feels."
+        "body": "The transitions, the error message, the empty screen. The last details decide how something feels."
       },
       "four": {
         "title": "No noise.",
-        "body": "One message per screen, one accent. Anything that does not help you understand or decide gets cut."
+        "body": "One message per screen, one accent. Anything that doesn't help you understand or decide gets cut."
       },
       "five": {
         "title": "Yours, not ours.",
-        "body": "Design, code and data belong to you. You can always carry on without us, although we hope you will not want to."
+        "body": "Design, code and data belong to you. You can always carry on without us, though we hope you won't want to."
       }
     },
-    "videoCaption": "Interface in motion",
-    "videoLabel": "An interface from our portfolio, in motion"
+    "reelCaption": "Work we shipped"
   },
   "how": {
     "eyebrow": "How we work",
     "title": "What a project with Brisk looks like.",
+    "lead": "From the first call to launch: short phases, one point of contact and a scope agreed up front.",
     "items": {
       "contact": {
         "title": "Direct contact",
         "body": "You talk to the people who build it. No account manager in between, no brief that gets passed on three times."
       },
       "price": {
-        "title": "Fixed price per phase",
-        "body": "Every phase has a clear scope and a price agreed up front. You know what you are getting before you say yes."
+        "title": "Clear scope per phase",
+        "body": "Every phase has a clear scope agreed up front. You know what you are getting before you say yes."
       },
       "custom": {
         "title": "Custom, always",
@@ -77,14 +79,16 @@
   },
   "numbers": {
     "eyebrow": "In numbers",
-    "title": "What is <em>live</em> today.",
+    "title": "What's <em>live</em> today.",
     "items": {
       "sites": "live websites",
       "screens": "product screens",
-      "languages": "languages",
+      "intro": "free intro call",
       "reply": "reply time"
     },
+    "introSuffix": "min",
     "replySuffix": "h",
-    "note": "Counted from our own references and portfolio, nothing added."
+    "note": "Counted from our own references and portfolio, nothing added.",
+    "link": "All references"
   }
 }

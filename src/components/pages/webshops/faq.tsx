@@ -27,7 +27,7 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
           data-cursor="link"
           className="group flex w-full items-start gap-5 py-6 text-left lg:gap-8 lg:py-7"
         >
-          <span className={cn("mt-[0.45em] hidden font-mono text-[0.7rem] tracking-[0.18em] transition-colors duration-300 sm:block", open ? "text-amber" : "text-muted")}>
+          <span className={cn("mt-[0.45em] hidden font-mono text-[0.7rem] tracking-[0.18em] transition-colors duration-300 sm:block", open ? "text-fg" : "text-muted")}>
             0{index + 1}
           </span>
           <span className={`text-h4 ${cn("flex-1 transition-colors duration-300", open ? "text-fg" : "text-fg/80 group-hover:text-fg")}`}>{q}</span>
@@ -63,14 +63,19 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
   );
 }
 
-/** Dark section: accessible accordion (button + aria-expanded, animated height). */
+/**
+ * Light section: accessible accordion (button + aria-expanded, animated height).
+ * Paper here keeps the page from ending in a long dark run before the shared
+ * dark CtaBand and footer, and gives the open item's amber marker one clean
+ * accent to itself.
+ */
 export function WebshopsFaq() {
   const t = useTranslations("Webshops");
   const [open, setOpen] = useState<string | null>("1");
   const id = useId();
 
   return (
-    <section className="theme-dark relative bg-ink text-paper section-y" aria-labelledby="webshops-faq-title">
+    <section className="theme-light relative bg-bg text-fg section-y" aria-labelledby="webshops-faq-title">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">

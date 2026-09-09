@@ -8,10 +8,11 @@
     "titleLine1": "Plan een",
     "titleLine2": "<em>gesprek</em> in.",
     "lead": "Vertel ons wat je wil bouwen. Binnen 24 uur krijg je een antwoord van de mensen die het straks ook echt maken.",
+    "responseBadge": "Antwoord binnen 24 uur",
     "expectTitle": "Wat je mag verwachten",
     "steps": {
       "1": {
-        "title": "30 minuten",
+        "title": "30 minuten, gratis",
         "body": "We luisteren en stellen vragen. Jij hoeft niets te verkopen, wij ook niet."
       },
       "2": {
@@ -24,19 +25,18 @@
       }
     },
     "emailLabel": "Mail",
-    "locationLabel": "Vanuit",
-    "booking": "Kies meteen een moment",
-    "responseBadge": "Antwoord binnen 24 uur"
+    "locationLabel": "Vanuit"
   },
   "form": {
     "title": "Vertel ons waar je aan denkt",
+    "intro": "Een paar velden. Twee zinnen volstaan.",
     "name": "Naam",
     "email": "E-mail",
     "company": "Bedrijf",
     "optional": "optioneel",
     "service": {
       "label": "Waar gaat het over?",
-      "hint": "Kies er gerust meer dan één.",
+      "hint": "meerdere mag",
       "options": {
         "website": "Website",
         "webshop": "Webshop",
@@ -47,7 +47,7 @@
     },
     "budget": {
       "label": "Budget",
-      "hint": "Een richtbedrag helpt ons om meteen de juiste aanpak voor te stellen.",
+      "hint": "een richtbedrag helpt ons",
       "options": {
         "a": "< 5k",
         "b": "5–15k",
@@ -74,30 +74,18 @@
       "again": "Nog een bericht sturen"
     }
   },
-  "alternatives": {
-    "eyebrow": "Andere wegen",
-    "title": "Meer dan één manier om te beginnen.",
-    "cards": {
-      "mail": {
-        "title": "Liever mailen?",
-        "body": "Stuur een mail, kort of lang. Je krijgt binnen 24 uur een antwoord van iemand die je vraag begrijpt.",
-        "link": "Mail ons"
-      },
-      "briefing": {
-        "title": "Al een briefing?",
-        "body": "Vat ze samen in het formulier en stuur het document mee als antwoord op onze eerste mail. We lezen alles, ook de bijlage van veertig pagina's.",
-        "link": "Naar het formulier"
-      },
-      "unsure": {
-        "title": "Nog niet zeker?",
-        "body": "Bekijk eerst wat we voor anderen bouwden: 17 live websites, webshops en platformen, met de code en het ontwerp in handen van de klant.",
-        "link": "Bekijk ons werk"
-      }
-    }
+  "proof": {
+    "eyebrow": "Voor je begint",
+    "title": "Wat we tot nu toe <em>bouwden</em>.",
+    "lead": "Geen mockups uit een deck. Elke site hieronder staat live voor een klant, en de code en het ontwerp zijn van hen.",
+    "sitesLabel": "Live sites",
+    "screensLabel": "Ontwerpschermen",
+    "link": "Bekijk ons werk"
   },
   "faq": {
     "eyebrow": "Veelgestelde vragen",
     "title": "Over het eerste gesprek",
+    "lead": "Alles wat je wil weten voor je op verstuur duwt.",
     "items": {
       "1": {
         "q": "Is het gratis?",
@@ -118,8 +106,11 @@
     }
   },
   "closing": {
-    "eyebrow": "Rechtstreeks",
-    "note": "We antwoorden in het Nederlands en Engels.",
-    "locationLabel": "Gevestigd in"
+    "eyebrow": "Liever rechtstreeks",
+    "note": "We lezen alles zelf en antwoorden binnen 24 uur, in het Nederlands of het Engels.",
+    "locationLabel": "Gevestigd in",
+    "briefTitle": "Al een briefing?",
+    "briefBody": "Vat ze samen in het formulier en stuur het document mee als antwoord op onze eerste mail. We lezen alles, ook de bijlage van veertig pagina's.",
+    "briefLink": "Naar het formulier"
   }
 }

@@ -20,7 +20,11 @@ type Field = "name" | "email" | "message";
 type Errors = Partial<Record<Field, string>>;
 
 const inputClass =
-  "h-13 w-full rounded-xl border border-line bg-ink/60 px-4 text-[1rem] text-fg outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted/55 hover:border-line-2 focus:border-amber focus:bg-ink/80 focus:shadow-[0_0_0_3px_rgba(255,159,77,0.22)] focus-visible:outline-none aria-[invalid=true]:border-ember";
+  "h-12 w-full rounded-xl border border-line-2 bg-fg/[0.045] px-4 text-[1rem] text-fg outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted/60 hover:border-fg/25 hover:bg-fg/[0.06] focus:border-amber focus:bg-fg/[0.07] focus:shadow-[0_0_0_3px_rgba(255,159,77,0.18)] focus-visible:outline-none aria-[invalid=true]:border-ember";
+
+const hintClass = "text-[0.8rem] tracking-[-0.005em] text-muted";
+const legendClass = "mb-3 flex w-full flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3";
+const labelClass = "text-[0.9rem] font-medium tracking-[-0.01em] text-fg";
 
 function FieldWrap({
   id,
@@ -38,10 +42,10 @@ function FieldWrap({
   return (
     <div>
       <div className="mb-2.5 flex items-baseline justify-between gap-3">
-        <label htmlFor={id} className="text-[0.9rem] font-medium tracking-[-0.01em] text-fg">
+        <label htmlFor={id} className={labelClass}>
           {label}
         </label>
-        {hint ? <span className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">{hint}</span> : null}
+        {hint ? <span className={hintClass}>{hint}</span> : null}
       </div>
       {children}
       <AnimatePresence initial={false}>
@@ -71,7 +75,7 @@ function Pill({ selected, onClick, children }: { selected: boolean; onClick: () 
       className={cn(
         "h-11 rounded-full border px-4 text-[0.92rem] tracking-[-0.01em] transition-[background-color,border-color,color,transform] duration-300 ease-[var(--ease-out-expo)] active:scale-[0.97]",
         selected
-          ? "border-amber bg-amber text-ink"
+          ? "border-fg bg-fg text-ink"
           : "border-line-2 bg-transparent text-fg/85 hover:border-fg/50 hover:text-fg",
       )}
     >
@@ -204,7 +208,7 @@ export function ContactForm() {
             key="success"
             role="status"
             aria-live="polite"
-            className="flex min-h-[28rem] flex-col items-start justify-center py-6"
+            className="flex min-h-[30rem] flex-col items-start justify-center py-6"
             initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0 }}
@@ -231,13 +235,16 @@ export function ContactForm() {
             key="form"
             onSubmit={onSubmit}
             noValidate
-            className="space-y-8"
+            className="space-y-7"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -12, filter: "blur(8px)" }}
             transition={{ duration: 0.5, ease: EASE }}
           >
-            <h2 className="text-h4 text-balance">{t("title")}</h2>
+            <div className="border-b border-line pb-6">
+              <h2 className="text-h4 text-balance">{t("title")}</h2>
+              <p className="mt-2 text-[0.9rem] text-muted">{t("intro")}</p>
+            </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               <FieldWrap id={id("name")} label={t("name")} error={errors.name}>
@@ -286,9 +293,9 @@ export function ContactForm() {
             </FieldWrap>
 
             <fieldset>
-              <legend className="mb-3 flex w-full flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                <span className="text-[0.9rem] font-medium tracking-[-0.01em] text-fg">{t("service.label")}</span>
-                <span className="font-mono text-[0.66rem] uppercase tracking-[0.14em] text-muted">{t("service.hint")}</span>
+              <legend className={legendClass}>
+                <span className={labelClass}>{t("service.label")}</span>
+                <span className={hintClass}>{t("service.hint")}</span>
               </legend>
               <div className="flex flex-wrap gap-2">
                 {SERVICES.map((s) => (
@@ -300,8 +307,9 @@ export function ContactForm() {
             </fieldset>
 
             <fieldset>
-              <legend className="mb-3 flex w-full flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                <span className="text-[0.9rem] font-medium tracking-[-0.01em] text-fg">{t("budget.label")}</span>
+              <legend className={legendClass}>
+                <span className={labelClass}>{t("budget.label")}</span>
+                <span className={hintClass}>{t("budget.hint")}</span>
               </legend>
               <div className="flex flex-wrap gap-2">
                 {BUDGETS.map((b) => (
@@ -310,7 +318,6 @@ export function ContactForm() {
                   </Pill>
                 ))}
               </div>
-              <p className="mt-3 text-[0.85rem] text-muted">{t("budget.hint")}</p>
             </fieldset>
 
             <FieldWrap id={id("message")} label={t("message")} error={errors.message}>
@@ -326,7 +333,7 @@ export function ContactForm() {
                 onBlur={onBlur("message")}
                 aria-invalid={Boolean(errors.message)}
                 aria-describedby={errors.message ? `${id("message")}-error` : undefined}
-                className={cn(inputClass, "h-auto min-h-36 resize-y py-3.5 leading-relaxed")}
+                className={cn(inputClass, "h-auto min-h-32 resize-y py-3.5 leading-relaxed")}
               />
             </FieldWrap>
 

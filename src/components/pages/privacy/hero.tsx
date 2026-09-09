@@ -14,7 +14,7 @@ export async function PrivacyHero() {
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 grain" aria-hidden />
 
-      <div className="container-x relative flex min-h-[92svh] flex-col justify-end pb-14 pt-36 sm:pt-40 lg:pb-20">
+      <div className="container-x relative flex flex-col justify-end pb-20 pt-36 sm:pt-44 lg:pb-28">
         <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal>
@@ -38,7 +38,7 @@ export async function PrivacyHero() {
             <ol className="mt-5 divide-y divide-line border-y border-line">
               {points.map((p) => (
                 <li key={p} className="grid grid-cols-[2.5rem_1fr] gap-4 py-4">
-                  <span className="font-mono text-[0.72rem] leading-6 tracking-[0.18em] text-amber">0{p}</span>
+                  <span className="font-mono text-[0.72rem] leading-6 tracking-[0.18em] text-muted">0{p}</span>
                   <p className="text-[1.05rem] leading-6 tracking-[-0.01em] text-fg text-pretty">{t(`summary.${p}`)}</p>
                 </li>
               ))}

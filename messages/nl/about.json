@@ -1,20 +1,21 @@
 {
   "meta": {
     "title": "Over Brisk — Digitaal bureau uit België",
-    "description": "Brisk ontwerpt en bouwt websites, webshops, software en mobiele apps op maat. Je praat rechtstreeks met de mensen die het bouwen. 17 live websites, 50+ productschermen, antwoord binnen 24 uur."
+    "description": "Brisk ontwerpt en bouwt websites, webshops, software en apps op maat. Je praat rechtstreeks met wie het bouwt. {sites} live websites, antwoord binnen 24 uur."
   },
   "hero": {
     "eyebrow": "Over Brisk",
     "titleLine1": "Klein team.",
-    "titleLine2": "Grote <em>zorg</em>.",
-    "lead": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. Je praat rechtstreeks met de mensen die het bouwen, van het eerste gesprek tot lang na de lancering.",
+    "titleLine2": "Groot <em>werk</em>.",
+    "lead": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. Je praat rechtstreeks met wie het bouwt.",
     "ctaPrimary": "Gesprek inplannen",
     "ctaSecondary": "Bekijk ons werk",
-    "tagline": "Ontworpen en gebouwd in België",
-    "reelCaption": "Brisk, in beweging"
+    "workCaption": "Schermen uit ons eigen portfolio"
   },
   "manifesto": {
     "eyebrow": "Waar we voor staan",
+    "title": "Drie beloftes die we <em>nakomen</em>.",
+    "lead": "Geen missie aan de muur. Drie afspraken waar je ons op mag pakken, van het eerste gesprek tot lang na de lancering.",
     "p1": {
       "opening": "We bouwen wat past.",
       "rest": "Geen thema's, geen bouwpakketten, geen plugin die bijna doet wat je nodig hebt. Elk project begint bij jouw klant en eindigt in eigen code, ontworpen rond hoe jij werkt."
@@ -31,10 +32,11 @@
   "principles": {
     "eyebrow": "Principes",
     "title": "Vijf dingen die we niet <em>loslaten</em>.",
+    "lead": "Wat het project ook is, deze vijf blijven staan. Ernaast schuift werk voorbij dat we effectief opleverden.",
     "items": {
       "one": {
         "title": "Eerst begrijpen, dan bouwen.",
-        "body": "Elk project begint met vragen, niet met een offerte. Wat moet je klant kunnen doen, en wat houdt hem vandaag tegen."
+        "body": "Elk project begint met vragen, niet met een offerte. Wat je klant moet kunnen doen, en wat hem vandaag tegenhoudt."
       },
       "two": {
         "title": "Snelheid is een feature.",
@@ -42,7 +44,7 @@
       },
       "three": {
         "title": "Detail is geen afwerking.",
-        "body": "De overgangen, de foutmelding, het lege scherm. De laatste vijf procent bepaalt hoe iets aanvoelt."
+        "body": "De overgangen, de foutmelding, het lege scherm. De laatste details bepalen hoe iets aanvoelt."
       },
       "four": {
         "title": "Geen ruis.",
@@ -53,20 +55,20 @@
         "body": "Ontwerp, code en data zijn jouw eigendom. Je kan altijd verder zonder ons, ook al hopen we van niet."
       }
     },
-    "videoCaption": "Interface in beweging",
-    "videoLabel": "Een interface uit ons portfolio, in beweging"
+    "reelCaption": "Werk dat we opleverden"
   },
   "how": {
     "eyebrow": "Hoe we werken",
     "title": "Zo verloopt een project met Brisk.",
+    "lead": "Van eerste gesprek tot livegang: korte fases, één aanspreekpunt en een scope die vooraf vastligt.",
     "items": {
       "contact": {
-        "title": "Direct contact",
+        "title": "Rechtstreeks contact",
         "body": "Je praat met wie het bouwt. Geen accountmanager tussenin, geen briefing die drie keer wordt doorgegeven."
       },
       "price": {
-        "title": "Vaste prijs per fase",
-        "body": "Elke fase heeft een duidelijke scope en een prijs die vooraf vastligt. Je weet wat je krijgt voor je ja zegt."
+        "title": "Duidelijke scope per fase",
+        "body": "Elke fase heeft een duidelijke scope en een afspraak die vooraf vastligt. Je weet wat je krijgt voor je ja zegt."
       },
       "custom": {
         "title": "Op maat, altijd",
@@ -81,10 +83,12 @@
     "items": {
       "sites": "live websites",
       "screens": "productschermen",
-      "languages": "talen",
+      "intro": "gratis kennismaking",
       "reply": "reactietijd"
     },
+    "introSuffix": "min",
     "replySuffix": "u",
-    "note": "Geteld op onze eigen referenties en portfolio, niets bijgeteld."
+    "note": "Geteld in onze eigen referenties en portfolio, niets bijgeteld.",
+    "link": "Alle referenties"
   }
 }

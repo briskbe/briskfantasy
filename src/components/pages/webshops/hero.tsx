@@ -9,8 +9,7 @@ import { Magnetic } from "@/components/ui/magnetic";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { MicrolinkShot } from "@/components/ui/microlink-shot";
 import { richTags } from "@/components/ui/rich";
-import { WordsStagger } from "@/components/spell/words-stagger";
-import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import { useMediaQuery, usePrefersReducedMotion } from "@/hooks/use-media-query";
 import type { Reference } from "@/data/references";
 import { ProductCard } from "./product-card";
 
@@ -20,19 +19,22 @@ type Shot = Pick<Reference, "slug" | "url" | "name">;
 
 /**
  * Dark split hero. Left: editorial copy. Right: a large browser-framed live
- * screenshot of a webshop we built, with an interactive product card
- * overlapping its bottom-left corner. Both layers parallax at different speeds.
+ * screenshot of a webshop we built, dimmed into the ink at its bottom edge, with
+ * an interactive product card overlapping its bottom-left corner. The two layers
+ * parallax at different speeds — on desktop only, where they actually overlap.
  */
 export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: number }) {
   const t = useTranslations("Webshops");
   const reduced = usePrefersReducedMotion();
+  const isLg = useMediaQuery("(min-width: 1024px)");
+  const move = !reduced && isLg;
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  const yShot = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -60]);
-  const yCard = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -140]);
+  const yShot = useTransform(scrollYProgress, [0, 1], [0, move ? -60 : 0]);
+  const yCard = useTransform(scrollYProgress, [0, 1], [0, move ? -140 : 0]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const rise = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 60]);
+  const rise = useTransform(scrollYProgress, [0, 1], [0, move ? 60 : 0]);
 
   return (
     <section ref={ref} className="theme-dark relative overflow-hidden bg-ink text-paper grain" aria-labelledby="webshops-hero-title">
@@ -47,7 +49,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
         <div className="grid flex-1 items-end gap-14 lg:grid-cols-12 lg:gap-8">
           {/* copy */}
           <motion.div style={{ opacity: fade, y: rise }} className="lg:col-span-6 lg:pr-8">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.05 }}>
               <Eyebrow>{t("hero.eyebrow")}</Eyebrow>
             </motion.div>
 
@@ -57,22 +59,27 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
                   className="block"
                   initial={{ y: "105%" }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
+                  transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
                 >
                   {t.rich("hero.title", richTags)}
                 </motion.span>
               </span>
             </h1>
 
-            <WordsStagger className="text-lead mt-7 max-w-xl text-muted text-pretty" delay={0.75} stagger={0.02} speed={0.6}>
+            <motion.p
+              className="text-lead mt-7 max-w-xl text-muted text-pretty"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
+            >
               {t("hero.lead")}
-            </WordsStagger>
+            </motion.p>
 
             <motion.div
               className="mt-10 flex flex-wrap items-center gap-3"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE, delay: 1.05 }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.75 }}
             >
               <Button href="/gesprek-inplannen" size="lg">
                 {t("hero.primary")}
@@ -95,10 +102,10 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
             <div className="relative lg:pl-[16%] lg:pb-16">
               <motion.div
                 style={{ y: yShot }}
-                initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+                initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 1.3, ease: EASE, delay: 0.5 }}
-                className="will-change-transform lg:w-[118%]"
+                transition={{ duration: 1.2, ease: EASE, delay: 0.35 }}
+                className="relative lg:w-[111%] lg:will-change-transform"
               >
                 <MicrolinkShot
                   url={shot.url}
@@ -108,6 +115,12 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
                   sizes="(min-width: 1024px) 50vw, 100vw"
                   className="shadow-[0_60px_140px_-40px_rgba(0,0,0,0.9)]"
                 />
+                {/* the shop is the backdrop, not the subject: dim the top chrome and
+                    dissolve the bottom edge into the ink instead of cutting it off */}
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-[0.9rem] bg-gradient-to-b from-ink/35 via-ink/0 to-ink"
+                  aria-hidden
+                />
               </motion.div>
 
               {/* product card: overlaps the bottom-left corner on desktop, sits below on mobile */}
@@ -115,8 +128,8 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
                 style={{ y: yCard }}
                 initial={{ opacity: 0, y: 40, rotate: 2 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
-                transition={{ duration: 1.2, ease: EASE, delay: 0.95 }}
-                className="relative z-10 -mt-10 ml-auto w-[min(20rem,88%)] will-change-transform sm:-mt-14 lg:absolute lg:bottom-0 lg:left-0 lg:ml-0 lg:mt-0"
+                transition={{ duration: 1, ease: EASE, delay: 0.8 }}
+                className="relative z-10 -mt-16 ml-auto w-[min(20rem,88%)] sm:-mt-20 lg:absolute lg:bottom-0 lg:left-0 lg:ml-0 lg:mt-0 lg:will-change-transform"
               >
                 <ProductCard />
               </motion.div>
@@ -129,11 +142,11 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
           className="mt-14 grid gap-4 border-t border-line pt-6 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted sm:grid-cols-3 lg:mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.3 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
           {(["sites", "reply", "intro"] as const).map((k) => (
             <li key={k} className="flex items-center gap-3">
-              <span className="size-1.5 shrink-0 rounded-full bg-amber" aria-hidden />
+              <span className="size-1.5 shrink-0 rounded-full bg-fg/25" aria-hidden />
               {t(`hero.facts.${k}`, { count: siteCount })}
             </li>
           ))}

@@ -1,19 +1,28 @@
 {
   "meta": {
     "title": "Mobile apps",
-    "description": "Brisk designs and builds mobile apps for iOS and Android from a single codebase, with React Native and Expo. From tappable prototype to the App Store and Google Play, built in Belgium."
+    "description": "Brisk designs and builds mobile apps for iOS and Android from one codebase. From tappable prototype to the App Store and Google Play, built in Belgium."
   },
   "hero": {
     "eyebrow": "Mobile apps",
     "title": "Apps people open <em>every day</em>.",
-    "lead": "For iOS and Android, from one codebase. We design and build apps that feel native, keep working without signal and make it through the stores without drama.",
+    "lead": "For iOS and Android, from one codebase. We design and build apps that feel native and make it through the stores without drama.",
     "primary": "Book a call",
     "secondary": "See the screens",
     "reelLabel": "Rotating app screens designed by Brisk, shown on an iPhone",
     "facts": {
-      "platforms": "iOS & Android",
-      "screens": "50+ product screens designed",
-      "reply": "Reply within 24 hours"
+      "platforms": {
+        "value": "iOS + Android",
+        "label": "from one codebase"
+      },
+      "screens": {
+        "value": "50+",
+        "label": "product screens designed"
+      },
+      "reply": {
+        "value": "24 h",
+        "label": "to reply to your message"
+      }
     }
   },
   "codebase": {
@@ -23,13 +32,13 @@
     "items": {
       "1": {
         "title": "iOS and Android from one codebase",
-        "body": "One team, one roadmap, one source of truth. New features land on iPhone and Android at the same time, and a bug only needs fixing once.",
+        "body": "One team, one roadmap, one place where everything lines up. New features land on iPhone and Android at the same time, and a bug only needs fixing once.",
         "tags": "React Native · Expo · TypeScript"
       },
       "2": {
         "title": "Native feel",
-        "body": "Gestures that follow your finger, haptics at the right moment and screens that hold 60 fps. The difference between an app you open and an app you use.",
-        "tags": "Gestures · Haptics · 60 fps"
+        "body": "Gestures that follow your finger, haptics at the right moment and screens that stay smooth. The difference between an app you open and an app you use.",
+        "tags": "Gestures · Haptics · Smooth"
       },
       "3": {
         "title": "Store-ready",
@@ -42,39 +51,33 @@
     "eyebrow": "Screens",
     "title": "Designed for the thumb.",
     "intro": "A selection from more than 50 product screens: onboarding, payments, settings and everything in between.",
-    "hint": "Scroll to browse",
+    "hint": "Drag to browse",
     "alt": "{caption}, app design by Brisk",
     "items": {
       "1": {
-        "caption": "Managing charge cards and vehicles"
+        "caption": "Starting a charging session"
       },
       "2": {
         "caption": "Settings and premium upgrade"
       },
       "3": {
-        "caption": "Filtering charging stations by speed"
-      },
-      "4": {
-        "caption": "Revenue widget on the home screen"
-      },
-      "5": {
         "caption": "Joining a video lesson"
       },
-      "6": {
-        "caption": "Starting a charging session"
+      "4": {
+        "caption": "Connecting apps during setup"
       },
-      "7": {
+      "5": {
         "caption": "Creating and restoring backups"
       },
-      "8": {
-        "caption": "Pairing a device over Bluetooth"
+      "6": {
+        "caption": "Managing charge cards and vehicles"
       }
     }
   },
   "included": {
     "eyebrow": "Included",
     "title": "Everything that makes an app <em>complete</em>.",
-    "intro": "No add-ons, no surprises afterwards. This comes standard in every app we build, tuned to what your users actually need.",
+    "intro": "No add-ons, no surprises later. This comes standard in every app we build, tuned to what your users actually need.",
     "items": {
       "1": {
         "title": "Push notifications",
@@ -98,7 +101,7 @@
       },
       "6": {
         "title": "Integration with your existing software",
-        "body": "Your CRM, ERP, accounting or own API talks directly to the app."
+        "body": "Your CRM, ERP, accounting software or your own API talks directly to the app."
       }
     }
   },
@@ -117,7 +120,7 @@
       },
       "3": {
         "title": "Build in sprints",
-        "body": "A new build every two weeks via TestFlight or an internal Play track. You watch the app grow instead of waiting for one big reveal."
+        "body": "Every sprint ends with a new build via TestFlight or an internal Play track. You watch the app grow instead of waiting for one big reveal."
       },
       "4": {
         "title": "Testing with real users",
@@ -140,15 +143,15 @@
       },
       "2": {
         "q": "What does an app cost?",
-        "a": "It depends on the number of screens, integrations and platforms. After a free 30-minute intro call you get a fixed price with a clear scope, no open end. You pay in phases, each time after something you can see and test."
+        "a": "It depends on the number of screens, integrations and platforms. After a free 30-minute intro call you get a fixed price with a clear scope, nothing open-ended. You pay in phases, each one after something you can see and test."
       },
       "3": {
         "q": "How long until the app is in the stores?",
-        "a": "That depends on the scope, but the tappable prototype is on your phone within the first weeks. From there we build in two-week sprints towards a first store release. We agree on milestones up front and stick to them."
+        "a": "That depends on the scope, but the tappable prototype is on your phone within the first few weeks. From there we build in short sprints towards a first store release. We agree on milestones up front and stick to them."
       },
       "4": {
         "q": "What if Apple or Google rejects the app?",
-        "a": "It rarely happens when you respect the guidelines from day one, and we do. If a reviewer does flag something, we fix it and resubmit. Store guidance is part of every project."
+        "a": "It rarely happens when you follow the guidelines from day one, and we do. If a reviewer does flag something, we fix it and resubmit. Store guidance is part of every project."
       },
       "5": {
         "q": "Who maintains the app after launch?",
