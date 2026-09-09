@@ -32,17 +32,34 @@ pnpm lint
 | Refresh reference screenshots | `node scripts/capture-references.mjs` (see `--all`) |
 | Product-design portfolio | `src/data/portfolio.ts` + `/public/portfolio` |
 | Site config (email, hero video, socials) | `src/data/site.ts` |
-| Contact form endpoint | `src/app/api/contact/route.ts` (Resend optional, see `.env.example`) |
+| Contact form endpoint | `src/app/api/contact/route.ts` |
+| Email templates (confirmation + notification) | `src/emails/` |
+| Preview the emails in a browser | `pnpm preview:emails` (writes `.preview/`) |
 | SEO helpers (canonical, hreflang, JSON-LD) | `src/lib/seo.ts` |
 | Keyword landing pages | `src/data/seo/clusters.ts` + `src/data/seo/content/` |
 | Regional landing pages | `src/data/seo/regions.ts` + `src/data/seo/content/regions-*.ts` |
 | SEO audit against a build | `node scripts/seo-audit.mjs` |
 
+## Transactional email
+
+One form submission sends two emails: the lead to `CONTACT_TO`, and a branded
+confirmation to the person who filled in the form, in their own language. The
+lead is the one that matters — if it fails the endpoint returns 502 and the form
+shows its error state, while a failed confirmation is only logged, because the
+lead is already safe and telling the visitor otherwise would be a lie.
+
+`src/emails/` is email HTML, not web HTML: tables for layout, styles inline on
+every element, no custom properties, no web fonts and no external images. Most
+clients block remote images by default, so the wordmark is type. Run
+`pnpm preview:emails` after changing a template and open the files it writes.
+
 ## Before going live
 
 1. Fill in the real social profile URLs and phone number in `src/data/site.ts`.
-2. Set `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` (see `.env.example`) so
-   "Gesprek inplannen" submissions arrive by email.
+2. Set `RESEND_API_KEY`, `CONTACT_TO` and `CONTACT_FROM` (see `.env.example`).
+   `CONTACT_FROM` has to sit on a domain verified in Resend or every send is
+   rejected; brisk.be is verified. Without the key the form still submits and
+   the lead is written to the server log, so a local checkout needs no setup.
 3. Update `siteConfig.url` if the production domain differs from `https://www.brisk.be`.
 4. Two clients have no logo in Brandfetch and currently render as a wordmark:
    the Belgian Football Association and museumPASSmusées. Ask them for a
