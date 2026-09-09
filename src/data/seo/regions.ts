@@ -74,7 +74,7 @@ export const regions: Region[] = [
       nl: "automotive en logistiek rond Genk, bouw, zorg en een sterke ondernemersbasis",
       en: "automotive and logistics around Genk, construction, care and a strong base of owner-run firms",
     },
-    nearbyReferences: ["city-housing-be", "ecuperformance-be", "x-performance-be", "tcko-be", "comfortsolutions-be"],
+    nearbyReferences: ["city-housing-be", "ecuperformance-be", "tcko-be", "comfortsolutions-be"],
   },
   {
     slug: "vlaams-brabant",

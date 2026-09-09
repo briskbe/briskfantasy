@@ -236,7 +236,7 @@ export const belgiumRegionContent: RegionContentMap = {
       h1: "Websites, webshops en software uit Limburg",
       lead: "Brisk zit in Limburg. Hasselt, Genk, Sint-Truiden, Tongeren, Beringen, Lommel en Maasmechelen zijn voor ons geen lijstje zoekwoorden maar de streek waar we werken en waar een groot deel van onze klanten om de hoek zit.",
       localAngle: [
-        "Je kan ons werk hier gewoon gaan bekijken. Designhotel City Housing in Genk verkoopt zijn kamers via een site die wij gebouwd hebben. ECU Performance en X Performance, allebei chiptuning in Genk, halen er hun afspraken mee binnen. TCKO stuurt bezoekers naar zijn tegelshowroom en Comfort Solutions laat mensen hun badkamer-, verwarmings- of ventilatiewerk aanvragen. Vijf Limburgse bedrijven, vijf verschillende doelen, vijf sites die niets van elkaar weg hebben.",
+        "Je kan ons werk hier gewoon gaan bekijken. Designhotel City Housing in Genk verkoopt zijn kamers via een site die wij gebouwd hebben. ECU Performance, chiptuning in Genk, haalt er zijn afspraken mee binnen. TCKO stuurt bezoekers naar zijn tegelshowroom en Comfort Solutions laat mensen hun badkamer-, verwarmings- of ventilatiewerk aanvragen. Vier Limburgse bedrijven, vier verschillende doelen, vier sites die niets van elkaar weg hebben.",
         "De Limburgse economie is er een van bedrijven met een naam op de gevel. Rond Genk zitten automotive en logistiek, in de hele provincie bouw- en installatiebedrijven, zorg, en rond Sint-Truiden en Tongeren de fruit- en agrosector. Wat die gemeen hebben: de eigenaar beslist zelf en wil weten wat hij krijgt voor hij tekent. Daarom werken we in korte stappen met iets zichtbaars aan het einde van elke stap, en zijn ontwerp en code na oplevering van jou.",
         "Dichtbij zitten heeft één praktisch voordeel: aan tafel gaan kost hier geen halve dag. We bouwen in Limburg websites, webshops, maatwerksoftware en mobiele apps, van een site voor een installatiebedrijf tot een platform dat een stuk administratie overneemt. In ruim 17 jaar zijn dat meer dan 150 projecten geworden, en bijna allemaal begonnen ze op dezelfde manier: een half uur bellen om te horen of het klikt.",
       ],
@@ -249,7 +249,7 @@ export const belgiumRegionContent: RegionContentMap = {
         {
           question: "Welke Limburgse bedrijven hebben jullie al geholpen?",
           answer:
-            "In Limburg bouwden we onder meer de sites van designhotel City Housing in Genk, chiptuningspecialisten ECU Performance en X Performance, tegelspecialist TCKO en sanitair- en verwarmingsbedrijf Comfort Solutions.",
+            "In Limburg bouwden we onder meer de sites van designhotel City Housing in Genk, chiptuningspecialist ECU Performance, tegelspecialist TCKO en sanitair- en verwarmingsbedrijf Comfort Solutions.",
         },
         {
           question: "Kunnen we langskomen of komen jullie naar ons?",
@@ -270,7 +270,7 @@ export const belgiumRegionContent: RegionContentMap = {
       h1: "Websites, webshops and software from Limburg",
       lead: "Brisk is based in Limburg. Hasselt, Genk, Sint-Truiden, Tongeren, Beringen, Lommel and Maasmechelen are not a keyword list to us but the area we work in, where a good share of our clients are a short drive away.",
       localAngle: [
-        "You can go and look at the work in person. City Housing, a design hotel in Genk, sells its rooms through a site we built. ECU Performance and X Performance, both chiptuning specialists in Genk, book their appointments through theirs. TCKO sends visitors to its tile showroom, and Comfort Solutions takes requests for bathroom, heating and ventilation work. Five Limburg companies, five different goals, five sites that look nothing like each other.",
+        "You can go and look at the work in person. City Housing, a design hotel in Genk, sells its rooms through a site we built. ECU Performance, a chiptuning specialist in Genk, books its appointments through theirs. TCKO sends visitors to its tile showroom, and Comfort Solutions takes requests for bathroom, heating and ventilation work. Four Limburg companies, four different goals, four sites that look nothing like each other.",
         "Limburg's economy is largely made of companies with a family name on the front. Automotive and logistics around Genk, construction and installation firms across the province, care, and the fruit and agri sector around Sint-Truiden and Tongeren. What they share is that the owner decides, and wants to know exactly what they are getting before signing. So we work in short steps with something visible at the end of each one, and the design and code belong to you once the project ships.",
         "Being nearby has one practical advantage: sitting down together does not cost half a day. In Limburg we build websites, webshops, custom software and mobile apps, from a site for an installation company to a platform that takes over a chunk of the back office. Over 17-plus years that has added up to more than 150 projects, and almost all of them started the same way: half an hour on a call to see whether it fits.",
       ],
@@ -283,7 +283,7 @@ export const belgiumRegionContent: RegionContentMap = {
         {
           question: "Which Limburg companies have you worked with?",
           answer:
-            "In Limburg we built the sites for City Housing, a design hotel in Genk, for chiptuning specialists ECU Performance and X Performance, for tile specialist TCKO and for plumbing and heating company Comfort Solutions.",
+            "In Limburg we built the sites for City Housing, a design hotel in Genk, for chiptuning specialist ECU Performance, for tile specialist TCKO and for plumbing and heating company Comfort Solutions.",
         },
         {
           question: "Can we visit you, or will you come to us?",

@@ -192,21 +192,6 @@ export const references: Reference[] = [
     captureQuality: "weak",
   },
   {
-    slug: "x-performance-be",
-    name: "X Performance",
-    url: "https://x-performance.be/",
-    domain: "x-performance.be",
-    type: "website",
-    industry: { nl: "Automotive", en: "Automotive" },
-    blurb: {
-      nl: "Chiptuning met 5 jaar garantie en DynoPro-metingen. Een conversiegerichte site die de #1-positie in België waarmaakt.",
-      en: "Chiptuning with a 5-year warranty and DynoPro measurements. A conversion-driven site that lives up to its #1 spot in Belgium.",
-    },
-    services: ["design", "development", "seo", "copy"],
-    langs: ["nl"],
-    accent: "#d00000",
-  },
-  {
     slug: "comfortsolutions-be",
     name: "Comfort Solutions",
     url: "https://www.comfortsolutions.be/",

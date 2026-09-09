@@ -25,13 +25,13 @@ const CURATED: { slug: string; size: CardSize }[] = [
   { slug: "landelijkglas-be", size: "wide" },
   { slug: "priveglas-be", size: "compact" },
   { slug: "vestra-armor-com", size: "compact" },
-  { slug: "x-performance-be", size: "compact" },
+  { slug: "comfortsolutions-be", size: "compact" },
   { slug: "sanae-align-com", size: "wide" },
   { slug: "mirkozvending-com", size: "feature" },
 ];
 
 /** Shots for the reel, deliberately not the two cards that open the grid. */
-const REEL = ["mirkozvending-com", "priveglas-be", "sanae-align-com", "comfortsolutions-be"];
+const REEL = ["mirkozvending-com", "priveglas-be", "sanae-align-com", "roetfilterservice-be"];
 
 const FALLBACK_SIZES: CardSize[] = ["feature", "wide", "compact", "compact", "compact", "wide", "feature"];
 
