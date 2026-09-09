@@ -65,5 +65,14 @@
     "lead": "Over {years} years we have built more than {total} custom websites, webshops and software projects. For a national railway just as readily as for a startup of three.",
     "note": "Everything you see on this site is a selection from more than {total} projects. Work for NMBS, De Watergroep, IDEWE, the Royal Belgian Football Association, museumPASSmusées, BMW, Nike and OpenAI among others. Logos are the property of their respective brands.",
     "compactEyebrow": "{total}+ projects in {years} years — for governments, Fortune 100 brands and startups"
+  },
+  "social": {
+    "reviews": "{count} Google reviews",
+    "ratingAria": "Rated {score} out of 5 based on {reviews} Google reviews",
+    "badges": {
+      "projects": "{total}+ projects delivered",
+      "years": "{years}+ years of experience",
+      "reply": "We reply within 24 hours"
+    }
   }
 }

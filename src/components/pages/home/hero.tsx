@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { richTags } from "@/components/ui/rich";
 import { siteConfig } from "@/data/site";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import { SocialProof } from "@/components/ui/google-rating";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -138,6 +139,15 @@ export function HomeHero() {
               <Button href="/referenties" variant="secondary" size="lg" icon="up-right" className="min-w-[13.5rem] sm:min-w-0">
                 {t("ctaSecondary")}
               </Button>
+            </motion.div>
+
+            {/* Proof, directly under the CTA where the decision is made */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={ready ? { opacity: 1, y: 0 } : undefined}
+              transition={{ duration: 0.9, ease: EASE, delay: delay + 0.72 }}
+            >
+              <SocialProof className="mt-8" />
             </motion.div>
           </div>
 

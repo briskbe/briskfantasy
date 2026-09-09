@@ -65,5 +65,14 @@
     "lead": "In {years} jaar bouwden we meer dan {total} websites, webshops en softwareprojecten op maat. Voor een nationale spoorwegmaatschappij net zo goed als voor een startup van drie.",
     "note": "Alles wat je op deze site ziet is een selectie uit meer dan {total} projecten. Werk voor onder meer NMBS, De Watergroep, IDEWE, de Belgische Voetbalbond, museumPASSmusées, BMW, Nike en OpenAI. Logo's zijn eigendom van hun respectievelijke merken.",
     "compactEyebrow": "{total}+ projecten in {years} jaar — voor overheden, Fortune 100-merken en startups"
+  },
+  "social": {
+    "reviews": "{count} Google-reviews",
+    "ratingAria": "Beoordeeld met {score} uit 5 op basis van {reviews} Google-reviews",
+    "badges": {
+      "projects": "{total}+ projecten opgeleverd",
+      "years": "{years}+ jaar ervaring",
+      "reply": "Antwoord binnen 24 uur"
+    }
   }
 }

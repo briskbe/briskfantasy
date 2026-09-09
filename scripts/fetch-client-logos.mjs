@@ -50,7 +50,16 @@ const DOMAINS = {
   // No logo in Brandfetch as of this writing — both render as wordmarks:
   rbfa: "rbfa.be",
   museumpass: "museumpassmusees.be",
+  // Not a client: the Google mark and wordmark for the review badge in the hero.
+  google: "google.com",
+  "google-wordmark": "google.com",
 };
+
+/**
+ * Brands where the wordmark is not what we want. The review badge needs the
+ * compact multicolour "G", which Brandfetch files as a `symbol`.
+ */
+const PREFER_SYMBOL = new Set(["google"]);
 
 /** Adobe exports carry a <metadata> block with an invalid namespace that breaks strict SVG parsers. */
 function cleanSvg(text) {
@@ -82,8 +91,19 @@ for (const slug of slugs) {
     // mark like the BMW roundel is only offered as SVG under one theme, so
     // format has to outrank theme); then a dark mark for our light sections;
     // then the largest.
+    const preferSymbol = PREFER_SYMBOL.has(slug);
     const rank = (f) =>
-      (f.type === "logo" ? 0 : f.type === "symbol" ? 10 : 20) +
+      (preferSymbol
+        ? f.type === "symbol"
+          ? 0
+          : f.type === "logo"
+            ? 10
+            : 20
+        : f.type === "logo"
+          ? 0
+          : f.type === "symbol"
+            ? 10
+            : 20) +
       (f.format === "svg" ? 0 : 3) +
       (f.theme === "dark" ? 0 : 1);
     const ranked = (brand.logos ?? [])

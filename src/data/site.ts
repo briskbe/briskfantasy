@@ -22,4 +22,11 @@ export const siteConfig = {
    * Stated as "150+" — keep it a round floor, never an exact count.
    */
   projectsDelivered: 150,
+  /**
+   * Google Business rating shown in the homepage hero. `score` is out of 5 and
+   * may be fractional — the stars fill proportionally. Set `url` to the public
+   * reviews page and the badge becomes a link; leave it empty and it renders as
+   * plain text. Update both numbers together when the profile changes.
+   */
+  googleRating: { score: 5, reviews: 49, url: "" },
 } as const;
