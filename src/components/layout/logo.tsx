@@ -33,6 +33,15 @@ const WORDMARK_PATHS = (
   </>
 );
 
+/** The mark on its own, without the link — for avatars and badges. */
+export function Mark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 1336 1336" className={cn("h-[1em] w-auto", className)} fill="none" aria-hidden focusable="false">
+      <path d={MARK_D} fill="#D3F882" />
+    </svg>
+  );
+}
+
 export function Wordmark({ className, markClassName }: { className?: string; markClassName?: string }) {
   return (
     <svg viewBox="0 0 5167 1336" className={cn("h-[1em] w-auto", className)} fill="none" aria-hidden focusable="false">

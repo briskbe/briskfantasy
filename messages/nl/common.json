@@ -75,6 +75,15 @@
       "reply": "Antwoord binnen 24 uur"
     }
   },
+  "whatsapp": {
+    "open": "Chat met ons op WhatsApp",
+    "close": "Sluiten",
+    "title": "Chat met Brisk",
+    "reply": "Antwoord binnen 24 uur",
+    "greeting": "Hallo! Waar kunnen we je mee helpen? Typ je vraag hieronder, dan gaan we verder in WhatsApp.",
+    "placeholder": "Typ je bericht…",
+    "send": "Verstuur via WhatsApp"
+  },
   "seo": {
     "home": "Home",
     "faqEyebrow": "Veelgestelde vragen",

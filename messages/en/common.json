@@ -75,6 +75,15 @@
       "reply": "We reply within 24 hours"
     }
   },
+  "whatsapp": {
+    "open": "Chat with us on WhatsApp",
+    "close": "Close",
+    "title": "Chat with Brisk",
+    "reply": "We reply within 24 hours",
+    "greeting": "Hi! What can we help you with? Type your question below and we'll pick it up in WhatsApp.",
+    "placeholder": "Type your message…",
+    "send": "Send via WhatsApp"
+  },
   "seo": {
     "home": "Home",
     "faqEyebrow": "Frequently asked",

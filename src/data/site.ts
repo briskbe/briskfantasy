@@ -29,4 +29,10 @@ export const siteConfig = {
    * plain text. Update both numbers together when the profile changes.
    */
   googleRating: { score: 5, reviews: 49, url: "" },
+  /**
+   * WhatsApp number in the format wa.me expects: country code first, digits
+   * only, no `+`, no spaces and no leading zero. `display` is the same number
+   * written for people. Empty `number` hides the chat widget entirely.
+   */
+  whatsapp: { number: "32470070981", display: "+32 470 07 09 81" },
 } as const;

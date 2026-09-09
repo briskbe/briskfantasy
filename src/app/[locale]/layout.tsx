@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Cursor } from "@/components/layout/cursor";
 import { Preloader } from "@/components/layout/preloader";
+import { WhatsAppWidget } from "@/components/layout/whatsapp-widget";
 import { siteConfig } from "@/data/site";
 import { JsonLd } from "@/components/seo/json-ld";
 import { jsonLdGraph, organizationSchema, websiteSchema } from "@/lib/seo";
@@ -90,6 +91,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
               {children}
             </main>
             <Footer />
+            {/* Last in the DOM so it is last in the tab order, not a detour on
+                the way into the page. */}
+            <WhatsAppWidget />
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>
