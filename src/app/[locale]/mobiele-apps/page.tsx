@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { OtherServices } from "@/components/blocks/other-services";
 import { AppsHero } from "@/components/pages/apps/hero";
 import { AppsMotionProvider } from "@/components/pages/apps/motion-provider";
@@ -36,6 +37,7 @@ export default async function Page({ params }: PageProps<"/[locale]/mobiele-apps
       <Included />
       <AppsProcess />
       <AppsFaq />
+      <ClientWall variant="compact" />
       <OtherServices current="apps" />
       <CtaBand />
     </AppsMotionProvider>

@@ -25,10 +25,22 @@
     "note": "Gratis. Vrijblijvend. Eerlijk advies."
   },
   "services": {
-    "websites": { "title": "Website op maat", "short": "Websites" },
-    "webshops": { "title": "Webshop op maat", "short": "Webshops" },
-    "software": { "title": "Software op maat", "short": "Software" },
-    "apps": { "title": "Mobiele apps", "short": "Apps" }
+    "websites": {
+      "title": "Website op maat",
+      "short": "Websites"
+    },
+    "webshops": {
+      "title": "Webshop op maat",
+      "short": "Webshops"
+    },
+    "software": {
+      "title": "Software op maat",
+      "short": "Software"
+    },
+    "apps": {
+      "title": "Mobiele apps",
+      "short": "Apps"
+    }
   },
   "otherServices": {
     "eyebrow": "Meer van Brisk",
@@ -46,5 +58,12 @@
     "en": "English",
     "switchTo": "Schakel naar {lang}"
   },
-  "poweredBy": "Live screenshots via Microlink · Motion via Remotion"
+  "poweredBy": "Live screenshots via Microlink · Motion via Remotion",
+  "clients": {
+    "eyebrow": "Vertrouwd door",
+    "title": "Van overheden tot <em>Fortune 100</em> en startups.",
+    "lead": "Al meer dan {years} jaar bouwen we digitale producten voor organisaties waar het echt op aankomt. Dezelfde mensen, dezelfde zorg, of het nu om een nationale spoorwegmaatschappij gaat of om een startup van drie.",
+    "note": "Werk voor NMBS, De Watergroep, IDEWE, de Belgische Voetbalbond, museumPASSmusées, BMW, Nike en OpenAI. Logo's zijn eigendom van hun respectievelijke merken.",
+    "compactEyebrow": "{years}+ jaar werk voor overheden, Fortune 100-merken en startups"
+  }
 }

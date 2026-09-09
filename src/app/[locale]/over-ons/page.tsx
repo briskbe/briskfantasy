@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { Section } from "@/components/ui/section";
 import { AboutHero } from "@/components/pages/about/hero";
 import { Manifesto } from "@/components/pages/about/manifesto";
@@ -40,19 +41,22 @@ export default async function Page({ params }: PageProps<"/[locale]/over-ons">) 
           <Numbers liveSites={references.length} screens={screens} />
         </Section>
 
-        {/* 3. Principles, with a sticky roll of our own work — dark */}
+        {/* 3. Who we work for — light, continuing the same paper chapter */}
+        <ClientWall />
+
+        {/* 4. Principles, with a sticky roll of our own work — dark */}
         <Section id="principes" className="overflow-x-clip pb-24 lg:pb-32">
           <Principles />
         </Section>
 
-        {/* 4. How a project runs + the tools — light, so the page hands over
+        {/* 5. How a project runs + the tools — light, so the page hands over
                to the dark CtaBand instead of ending in one long ink slab. */}
         <Section theme="light" id="werkwijze" className="overflow-hidden pb-24 lg:pb-28">
           <HowWeWork />
         </Section>
       </AboutMotion>
 
-      {/* 5. Closing CTA */}
+      {/* 6. Closing CTA */}
       <CtaBand />
     </>
   );

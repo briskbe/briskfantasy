@@ -25,10 +25,22 @@
     "note": "Free. No strings. Honest advice."
   },
   "services": {
-    "websites": { "title": "Custom websites", "short": "Websites" },
-    "webshops": { "title": "Custom webshops", "short": "Webshops" },
-    "software": { "title": "Custom software", "short": "Software" },
-    "apps": { "title": "Mobile apps", "short": "Apps" }
+    "websites": {
+      "title": "Custom websites",
+      "short": "Websites"
+    },
+    "webshops": {
+      "title": "Custom webshops",
+      "short": "Webshops"
+    },
+    "software": {
+      "title": "Custom software",
+      "short": "Software"
+    },
+    "apps": {
+      "title": "Mobile apps",
+      "short": "Apps"
+    }
   },
   "otherServices": {
     "eyebrow": "More from Brisk",
@@ -46,5 +58,12 @@
     "en": "English",
     "switchTo": "Switch to {lang}"
   },
-  "poweredBy": "Live screenshots via Microlink · Motion via Remotion"
+  "poweredBy": "Live screenshots via Microlink · Motion via Remotion",
+  "clients": {
+    "eyebrow": "Trusted by",
+    "title": "From governments to <em>Fortune 100</em> and startups.",
+    "lead": "For more than {years} years we have built digital products for organisations where it genuinely matters. The same people and the same care, whether it is a national railway or a startup of three.",
+    "note": "Work for NMBS, De Watergroep, IDEWE, the Royal Belgian Football Association, museumPASSmusées, BMW, Nike and OpenAI. Logos are the property of their respective brands.",
+    "compactEyebrow": "{years}+ years of work for governments, Fortune 100 brands and startups"
+  }
 }

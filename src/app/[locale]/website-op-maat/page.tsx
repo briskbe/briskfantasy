@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { OtherServices } from "@/components/blocks/other-services";
 import { references, referencesByType } from "@/data/references";
 import { MotionPrefs } from "@/components/pages/websites/motion-prefs";
@@ -38,6 +39,7 @@ export default async function Page({ params }: PageProps<"/[locale]/website-op-m
       <WebsiteReferences />
       <ProcessTimeline />
       <WebsitesFaq />
+      <ClientWall variant="compact" />
       <OtherServices current="websites" />
       <CtaBand />
     </MotionPrefs>

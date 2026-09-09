@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
@@ -37,7 +38,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       {/* 2. Trust band — dark */}
       <TrustBand screens={screenCount} />
 
-      {/* 3. Services — light */}
+      {/* 3. Who we work for — light. Placed directly under the hero because the
+          client list is the strongest credibility signal on the site. */}
+      <ClientWall />
+
+      {/* 4. Services — light */}
       <Section theme="light" id="services">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
@@ -53,29 +58,29 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </Section>
 
-      {/* 4. Selected work + the reel that closes it — dark */}
+      {/* 5. Selected work + the reel that closes it — dark */}
       <Section id="work">
         <SelectedWork />
       </Section>
 
-      {/* 5. Product design — light */}
+      {/* 6. Product design — light */}
       {/* lg:min-h-screen reserves the sticky scroller's height in the server HTML, so the desktop
           upgrade from the native row does not shift the page on hydration. */}
       <section className="theme-light relative bg-bg text-fg lg:min-h-screen" id="product-design">
         <ProductStrip />
       </section>
 
-      {/* 6. Process — dark */}
+      {/* 7. Process — dark */}
       <Section id="process">
         <Process />
       </Section>
 
-      {/* 7. Why Brisk — light, so the page does not end on a dark run into the CTA band */}
+      {/* 8. Why Brisk — light, so the page does not end on a dark run into the CTA band */}
       <Section theme="light" id="why">
         <WhyBrisk liveSites={references.length} screens={screenCount} />
       </Section>
 
-      {/* 8. Closing CTA */}
+      {/* 9. Closing CTA */}
       <CtaBand />
     </MotionShell>
   );

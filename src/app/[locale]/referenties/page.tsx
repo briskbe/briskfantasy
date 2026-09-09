@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { references, featuredReferences } from "@/data/references";
 import { portfolio, portfolioVideos } from "@/data/portfolio";
 import type { AppLocale } from "@/i18n/routing";
@@ -148,6 +149,8 @@ export default async function Page({
         screenCount={Math.floor(portfolio.length / 10) * 10}
         shots={reelShots}
       />
+      {/* Who the work was for, before the work itself. */}
+      <ClientWall />
       <WorkGrid items={cards} />
       <ProductGallery items={gallery} rows={galleryRows} />
       <HowItStarts />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { OtherServices } from "@/components/blocks/other-services";
 import { references, referencesByType } from "@/data/references";
 import { WebshopsHero } from "@/components/pages/webshops/hero";
@@ -34,6 +35,7 @@ export default async function Page({ params }: PageProps<"/[locale]/webshop-op-m
       <ShopReferences items={shops} />
       <Growth />
       <WebshopsFaq />
+      <ClientWall variant="compact" />
       <OtherServices current="webshops" />
       <CtaBand />
     </MotionShell>

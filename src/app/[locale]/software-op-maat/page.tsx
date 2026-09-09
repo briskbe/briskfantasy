@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
+import { ClientWall } from "@/components/blocks/client-wall";
 import { references } from "@/data/references";
 import { portfolio } from "@/data/portfolio";
 import { SoftwareMotionConfig } from "@/components/pages/software/reduced-motion";
@@ -58,6 +59,7 @@ export default async function Page({ params }: PageProps<"/[locale]/software-op-
       <InterfaceGallery items={gallery} />
       <StackPrinciples />
       <SoftwareFaq />
+      <ClientWall variant="compact" />
       <SoftwareOtherServices />
       <CtaBand />
     </SoftwareMotionConfig>

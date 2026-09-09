@@ -27,6 +27,8 @@ pnpm lint
 | Spell UI components (spell.sh) | `src/components/spell` — add more with `pnpm dlx shadcn@latest add @spell/<name>` |
 | Remotion compositions | `src/components/remotion/compositions` |
 | Client references (17 live sites) | `src/data/references.ts` + `/public/references` |
+| Client logo wall (NMBS, BMW, Nike, …) | `src/data/clients.ts` + `/public/logos` |
+| Refresh client logos | `BRANDFETCH_API_KEY=... node scripts/fetch-client-logos.mjs` |
 | Refresh reference screenshots | `node scripts/capture-references.mjs` (see `--all`) |
 | Product-design portfolio | `src/data/portfolio.ts` + `/public/portfolio` |
 | Site config (email, hero video, socials) | `src/data/site.ts` |
@@ -38,12 +40,18 @@ pnpm lint
 2. Set `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` (see `.env.example`) so
    "Gesprek inplannen" submissions arrive by email.
 3. Update `siteConfig.url` if the production domain differs from `https://www.brisk.be`.
-4. Microlink's free tier allows ~25 screenshot requests per minute and a daily
+4. Two clients have no logo in Brandfetch and currently render as a wordmark:
+   the Belgian Football Association and museumPASSmusées. Ask them for a
+   transparent SVG, save it as `public/logos/rbfa.svg` / `public/logos/museumpass.svg`
+   and set `logo` on that entry in `src/data/clients.ts`.
+5. Confirm you may display each client logo. Showing them is normal agency
+   practice, but some contracts restrict it.
+6. Microlink's free tier allows ~25 screenshot requests per minute and a daily
    quota. Reference cards render the bundled static capture instantly and fade
    the live capture on top when it arrives, so hitting the limit is invisible to
    visitors. Set `MICROLINK_API_KEY` for a paid plan (that also unlocks the
    `ttl` cache parameter, which the free tier rejects).
-5. Three bundled captures are flagged `captureQuality: "weak"` in
+7. Three bundled captures are flagged `captureQuality: "weak"` in
    `src/data/references.ts` because they fired before the site finished painting
    or a promo layer covered the hero. Re-run `node scripts/capture-references.mjs`
    (it defaults to exactly those) and clear the flag when they look right.
