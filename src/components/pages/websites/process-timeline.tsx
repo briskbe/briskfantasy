@@ -43,7 +43,9 @@ export function ProcessTimeline() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={4}>{t("process.eyebrow")}</Eyebrow>
+              <Eyebrow index={4} tone="muted" className="text-xs">
+                {t("process.eyebrow")}
+              </Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="websites-process-title" className="text-h2 mt-5 text-balance">
@@ -73,7 +75,7 @@ export function ProcessTimeline() {
                   <Dot progress={progress} at={i / 3} />
                 </span>
                 <Reveal delay={i * 0.08} amount={0.4}>
-                  <span className="font-mono text-[0.72rem] tracking-[0.18em] text-muted">0{i + 1}</span>
+                  <span className="font-mono text-xs tracking-[0.18em] text-muted">0{i + 1}</span>
                   <h3 className="text-h3 mt-3">{t(`process.steps.${k}.title`)}</h3>
                   <p className="text-body mt-4 max-w-xs text-fg-2 text-pretty">{t(`process.steps.${k}.body`)}</p>
                 </Reveal>

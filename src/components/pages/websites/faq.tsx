@@ -69,12 +69,14 @@ export function WebsitesFaq() {
   const id = useId();
 
   return (
-    <section className="theme-dark relative bg-ink text-paper section-y" aria-labelledby="websites-faq-title">
+    <section className="theme-light relative border-t border-line bg-bg-2 text-fg section-y" aria-labelledby="websites-faq-title">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={5}>{t("faq.eyebrow")}</Eyebrow>
+              <Eyebrow index={5} tone="muted" className="text-xs">
+                {t("faq.eyebrow")}
+              </Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="websites-faq-title" className="text-h2 mt-5 text-balance">

@@ -27,6 +27,7 @@ pnpm lint
 | Spell UI components (spell.sh) | `src/components/spell` — add more with `pnpm dlx shadcn@latest add @spell/<name>` |
 | Remotion compositions | `src/components/remotion/compositions` |
 | Client references (17 live sites) | `src/data/references.ts` + `/public/references` |
+| Refresh reference screenshots | `node scripts/capture-references.mjs` (see `--all`) |
 | Product-design portfolio | `src/data/portfolio.ts` + `/public/portfolio` |
 | Site config (email, hero video, socials) | `src/data/site.ts` |
 | Contact form endpoint | `src/app/api/contact/route.ts` (Resend optional, see `.env.example`) |
@@ -37,8 +38,15 @@ pnpm lint
 2. Set `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` (see `.env.example`) so
    "Gesprek inplannen" submissions arrive by email.
 3. Update `siteConfig.url` if the production domain differs from `https://www.brisk.be`.
-4. Microlink's free tier allows ~25 screenshot requests per minute per visitor; the
-   References page loads them lazily and falls back to the bundled static captures.
+4. Microlink's free tier allows ~25 screenshot requests per minute and a daily
+   quota. Reference cards render the bundled static capture instantly and fade
+   the live capture on top when it arrives, so hitting the limit is invisible to
+   visitors. Set `MICROLINK_API_KEY` for a paid plan (that also unlocks the
+   `ttl` cache parameter, which the free tier rejects).
+5. Three bundled captures are flagged `captureQuality: "weak"` in
+   `src/data/references.ts` because they fired before the site finished painting
+   or a promo layer covered the hero. Re-run `node scripts/capture-references.mjs`
+   (it defaults to exactly those) and clear the flag when they look right.
 
 ## Visual QA
 

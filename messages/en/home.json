@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisk — Custom websites, webshops, software and apps",
-    "description": "Brisk is a digital agency based in Belgium. We design and build custom websites, webshops, software and mobile apps. 17 live websites, 50+ product screens, replies within 24 hours."
+    "description": "Brisk is a digital agency in Belgium. We design and build custom websites, webshops, software and mobile apps. 17 live websites, replies within 24 hours."
   },
   "hero": {
     "eyebrow": "Digital agency · Belgium",
@@ -12,7 +12,7 @@
     "ctaSecondary": "See our work",
     "scroll": "Scroll",
     "navLabel": "Services",
-    "videoLabel": "Mood film: someone working on a laptop on a cliff above the clouds",
+    "videoLabel": "Background film: someone working on a laptop on a cliff above the clouds",
     "links": {
       "websites": "Websites",
       "webshops": "Webshops",
@@ -29,7 +29,6 @@
     "eyebrow": "What we make",
     "title": "Four things. All of them custom.",
     "lead": "No themes, no page builders. Every project starts with what your customer needs and ends in code you own outright.",
-    "previewAlt": "Example of {service}",
     "items": {
       "websites": {
         "title": "Custom websites",
@@ -61,7 +60,7 @@
   "motion": {
     "eyebrow": "Work in motion",
     "title": "From homepage to checkout.",
-    "body": "A quick tour of six references, exactly as they are online today."
+    "body": "A quick tour of a handful of references, exactly as they are online today."
   },
   "product": {
     "eyebrow": "Product design",
@@ -76,6 +75,7 @@
     "body": "You talk directly to the people who design and build. Every step ends with something you can see, click and judge for yourself.",
     "cta": "Book a call",
     "reelEyebrow": "How we work",
+    "visualAlt": "Screen design from this step: {title}",
     "steps": {
       "discover": {
         "index": "01",
@@ -92,20 +92,21 @@
       "build": {
         "index": "03",
         "title": "Build",
-        "short": "Own code, staging site",
-        "body": "We build in our own code, without themes or plugins that work against you later. Fast, accessible and ready to grow. You follow progress on a staging site."
+        "short": "Custom code, staging site",
+        "body": "We write custom code, without themes or plugins that work against you later. Fast, accessible and ready to grow. You follow progress on a staging site."
       },
       "launch": {
         "index": "04",
         "title": "Launch & grow",
         "short": "Live, measure, improve",
-        "body": "Going live is the start. We measure what works, improve what can be improved and stay reachable. Any question gets an answer within 24 hours."
+        "body": "Going live is the start. We measure what works, improve what can be better and stay reachable. You get an answer to any question within 24 hours."
       }
     }
   },
   "why": {
     "eyebrow": "Why Brisk",
-    "title": "Small team, short lines, our own code.",
+    "title": "Small team, direct contact, our own code.",
+    "lead": "One small team that designs and builds. You always know who you are talking to and what happens in the next step.",
     "items": {
       "contact": {
         "index": "01",
@@ -115,7 +116,7 @@
       "ownership": {
         "index": "02",
         "title": "Our code, your property",
-        "body": "Everything we design and build is yours: design files, code and domain. No subscription to your own website."
+        "body": "Everything we design and build is yours: design files and code. No subscription to your own website."
       },
       "pace": {
         "index": "03",
@@ -127,7 +128,7 @@
       "sites": "Live websites",
       "screens": "Product screens",
       "reply": "Response time",
-      "languages": "Languages"
+      "intro": "Free intro call"
     }
   }
 }

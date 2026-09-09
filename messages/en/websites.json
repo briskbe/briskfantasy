@@ -1,17 +1,17 @@
 {
   "meta": {
     "title": "Custom websites",
-    "description": "Brisk designs and builds custom websites: no themes, just a structure that wins customers and a codebase that stays fast and accessible. Based in Belgium, with a fixed price after the first call."
+    "description": "Brisk designs and builds custom websites from Belgium. No themes, just a structure that wins customers and code that stays fast and accessible."
   },
   "hero": {
     "eyebrow": "Custom websites",
     "title": "A website that <em>works</em> while you work.",
     "lead": "No theme, no page builder. We design and build your site from scratch, with a structure that wins customers and technology that lasts for years.",
     "primary": "Book a call",
-    "secondary": "See the websites",
+    "secondary": "See the work",
     "shotAlt": "{name}, a website designed and built by Brisk",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{count} sites live",
       "reply": "Reply within 24 hours",
       "intro": "Free 30-minute intro call"
     }
@@ -27,7 +27,7 @@
         "tags": "Sitemap · Wireframes · Content"
       },
       "2": {
-        "title": "Bespoke design",
+        "title": "Custom design",
         "body": "No themes, no templates. Every screen is designed around your brand, your offer and the way people actually use your site.",
         "tags": "Identity · Interface · Prototype"
       },
@@ -38,7 +38,7 @@
       },
       "4": {
         "title": "SEO & performance",
-        "body": "Speed and findability are built in, not bolted on with a plug-in afterwards. Clean code, correct structure and images that load before you notice.",
+        "body": "Speed and search visibility are built in, not bolted on with a plug-in afterwards. Clean code, a sound structure and images that load before you notice.",
         "tags": "Core Web Vitals · Structured data · Analytics"
       },
       "5": {
@@ -50,20 +50,21 @@
   },
   "speed": {
     "eyebrow": "Built for speed",
-    "title": "This is what we build for.",
-    "lead": "A beautiful site that loads slowly is an expensive brochure. So every project is held to the same bar: fast, usable by everyone and easy to find.",
-    "targetLabel": "Target",
-    "when": "Before every launch",
-    "gauges": {
-      "performance": "Performance",
-      "accessibility": "Accessibility",
-      "seo": "SEO"
+    "title": "The bar we hold every project to.",
+    "lead": "A beautiful site that loads slowly is an expensive brochure. So every project gets the same treatment: fast, usable by everyone and easy to find.",
+    "checksTitle": "What we check before every launch",
+    "checks": {
+      "1": "Core Web Vitals: load time, interaction, stability",
+      "2": "Keyboard navigation and visible focus",
+      "3": "Colour contrast to WCAG AA",
+      "4": "Semantic headings and landmarks",
+      "5": "Meta, sitemap and structured data",
+      "6": "Images in modern formats, sized to fit"
     },
-    "note": "Targets every project is checked against before launch. Not measured scores of client sites.",
     "args": {
       "1": {
         "title": "Core Web Vitals",
-        "body": "Load time, interaction and visual stability are measured during the build, not after it. Green scores are the starting point, not the goal."
+        "body": "Load time, interaction and visual stability are measured during the build, not after it. Every page is tested before it reaches production."
       },
       "2": {
         "title": "Accessible to everyone",
@@ -77,20 +78,23 @@
   },
   "references": {
     "eyebrow": "Our work",
-    "title": "{count} websites that are <em>live</em> today.",
-    "intro": "No mockups, just real sites for real clients. The screenshots are fetched live, so what you see here is what their visitors see today.",
+    "title": "Sites that are <em>live</em> today.",
+    "intro": "No mockups, just real sites for real clients. A selection of the work that is online today, from a design hotel to a made-to-measure workshop.",
     "reelLabel": "Showreel",
+    "reelCaption": "Four sites, one after another.",
     "visit": "View live",
+    "newTab": "opens in a new tab",
+    "all": "All {count} projects",
     "shotAlt": "Homepage of {name}"
   },
   "process": {
     "eyebrow": "How we work",
     "title": "From first call to <em>launch</em>.",
-    "intro": "Four steps and one fixed price after the first conversation. You know where we stand at every moment.",
+    "intro": "Four steps and a clear proposal after the first call. You always know where things stand.",
     "steps": {
       "1": {
         "title": "Intro call",
-        "body": "A 30-minute conversation about your goals, your customers and what isn't working today. You then receive a clear proposal with a fixed price."
+        "body": "A 30-minute conversation about your goals, your customers and what isn't working today. You then receive a clear proposal with scope and timeline."
       },
       "2": {
         "title": "Design",
@@ -102,7 +106,7 @@
       },
       "4": {
         "title": "Launch",
-        "body": "Domain, hosting and analytics are ready to go. After going live we follow the numbers and stay within reach."
+        "body": "Domain, hosting and analytics are ready to go. After launch we keep an eye on the numbers and stay on hand."
       }
     }
   },
@@ -113,11 +117,11 @@
     "items": {
       "1": {
         "q": "What does a custom website cost?",
-        "a": "It depends on the scope: the number of pages, the features and whether we also take care of copy and imagery. After the intro call you receive a proposal with a fixed price, with no surprises later on."
+        "a": "It depends on the scope: the number of pages, the features and whether we also take care of copy and imagery. After the intro call you receive a proposal that spells out exactly what we build and when."
       },
       "2": {
         "q": "How long does it take?",
-        "a": "A compact site is usually live within a few weeks. A larger site with multiple languages or integrations takes longer. The proposal includes a timeline we keep track of together."
+        "a": "That depends on the scope. A compact site is ready sooner than a larger site with multiple languages or integrations. The proposal includes a timeline we keep track of together."
       },
       "3": {
         "q": "Can I edit the content myself?",

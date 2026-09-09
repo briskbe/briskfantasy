@@ -4,16 +4,19 @@ import { CtaBand } from "@/components/blocks/cta-band";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
+import { MotionShell } from "@/components/pages/home/motion-shell";
 import { HomeHero } from "@/components/pages/home/hero";
 import { TrustBand } from "@/components/pages/home/trust-band";
 import { ServicesRows } from "@/components/pages/home/services-rows";
 import { SelectedWork } from "@/components/pages/home/selected-work";
-import { InMotion } from "@/components/pages/home/in-motion";
 import { ProductStrip } from "@/components/pages/home/product-strip";
 import { Process } from "@/components/pages/home/process";
 import { WhyBrisk } from "@/components/pages/home/why-brisk";
-import { featuredReferences, references } from "@/data/references";
+import { references } from "@/data/references";
 import { portfolio } from "@/data/portfolio";
+
+/** 53 screens today -> "50+". Rounded down to the nearest ten so the claim can never overstate. */
+const screenCount = Math.max(50, Math.floor(portfolio.length / 10) * 10);
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -26,69 +29,52 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   setRequestLocale(locale);
   const t = await getTranslations("Home");
 
-  const shots = featuredReferences.slice(0, 6).map((r) => ({ src: `/references/${r.slug}.webp`, domain: r.domain, name: r.name }));
-  const screens = Math.max(50, Math.floor(portfolio.length / 10) * 10);
-
   return (
-    <>
-      {/* 1. Hero */}
+    <MotionShell>
+      {/* 1. Hero — dark */}
       <HomeHero />
 
-      {/* 2. Trust band */}
-      <TrustBand />
+      {/* 2. Trust band — dark */}
+      <TrustBand screens={screenCount} />
 
-      {/* 3. Services */}
+      {/* 3. Services — light */}
       <Section theme="light" id="services">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-7">
             <Eyebrow>{t("services.eyebrow")}</Eyebrow>
-            <h2 className="text-h1 mt-5 text-balance">{t("services.title")}</h2>
+            <h2 className="text-h2 mt-5 text-balance">{t("services.title")}</h2>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9">
             <p className="text-body max-w-md text-muted text-pretty">{t("services.lead")}</p>
           </Reveal>
         </div>
-        <div className="mt-14 lg:mt-20">
+        <div className="mt-12 lg:mt-16">
           <ServicesRows />
         </div>
       </Section>
 
-      {/* 4. Selected work */}
+      {/* 4. Selected work + the reel that closes it — dark */}
       <Section id="work">
         <SelectedWork />
       </Section>
 
-      {/* 5. In motion */}
-      <Section className="overflow-hidden pt-0" padded={false} innerClassName="pb-[clamp(5rem,10vw,11rem)]">
-        <div className="mx-auto mb-12 max-w-6xl lg:mb-16">
-          <Reveal className="grid gap-4 border-t border-line pt-8 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-6">
-              <Eyebrow>{t("motion.eyebrow")}</Eyebrow>
-              <h2 className="text-h3 mt-4">{t("motion.title")}</h2>
-            </div>
-            <p className="text-body max-w-md text-muted lg:col-span-5 lg:col-start-8">{t("motion.body")}</p>
-          </Reveal>
-        </div>
-        <InMotion shots={shots} />
-      </Section>
-
-      {/* 6. Product design */}
+      {/* 5. Product design — light */}
       <section className="theme-light relative bg-bg text-fg" id="product-design">
         <ProductStrip />
       </section>
 
-      {/* 7. Process */}
+      {/* 6. Process — dark */}
       <Section id="process">
         <Process />
       </Section>
 
-      {/* 8. Why Brisk */}
+      {/* 7. Why Brisk — light, so the page does not end on a dark run into the CTA band */}
       <Section theme="light" id="why">
-        <WhyBrisk liveSites={references.length} screens={screens} />
+        <WhyBrisk liveSites={references.length} screens={screenCount} />
       </Section>
 
-      {/* 9. Closing CTA */}
+      {/* 8. Closing CTA */}
       <CtaBand />
-    </>
+    </MotionShell>
   );
 }

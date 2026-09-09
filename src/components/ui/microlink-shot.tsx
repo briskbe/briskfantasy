@@ -17,8 +17,10 @@ export function microlinkUrl(url: string, opts?: { width?: number; height?: numb
     "viewport.width": String(opts?.width ?? 1440),
     "viewport.height": String(opts?.height ?? 900),
     waitForTimeout: "2500",
-    ttl: "7d",
   });
+  // Note: `ttl` (cache control) is a Microlink paid-plan parameter. Sending it
+  // on the free tier fails the request with HTTP 400, so the live layer would
+  // never load. Add it back only together with an API key.
   if (opts?.fullPage) p.set("screenshot.fullPage", "true");
   if (opts?.dark) p.set("colorScheme", "dark");
   return `https://api.microlink.io/?${p.toString()}`;

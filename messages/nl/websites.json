@@ -1,17 +1,17 @@
 {
   "meta": {
     "title": "Website op maat",
-    "description": "Brisk ontwerpt en bouwt websites op maat: geen thema's, wel een structuur die klanten binnenhaalt en techniek die snel en toegankelijk blijft. Vanuit België, met een vaste prijs na het eerste gesprek."
+    "description": "Brisk ontwerpt en bouwt websites op maat vanuit België. Geen thema's, wel een structuur die klanten binnenhaalt en techniek die snel en toegankelijk blijft."
   },
   "hero": {
     "eyebrow": "Website op maat",
     "title": "Een website die <em>werkt</em> terwijl jij werkt.",
     "lead": "Geen thema, geen bouwpakket. We ontwerpen en bouwen je site van nul, met een structuur die klanten binnenhaalt en techniek die jaren meegaat.",
     "primary": "Gesprek inplannen",
-    "secondary": "Bekijk websites",
+    "secondary": "Bekijk het werk",
     "shotAlt": "{name}, een website ontworpen en gebouwd door Brisk",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{count} sites live",
       "reply": "Antwoord binnen 24 uur",
       "intro": "Gratis kennismaking van 30 minuten"
     }
@@ -27,19 +27,19 @@
         "tags": "Sitemap · Wireframes · Content"
       },
       "2": {
-        "title": "Design op maat",
+        "title": "Ontwerp op maat",
         "body": "Geen thema's, geen sjablonen. Elk scherm wordt ontworpen rond jouw merk, je aanbod en de manier waarop mensen je site echt gebruiken.",
         "tags": "Identiteit · Interface · Prototype"
       },
       "3": {
         "title": "Development",
         "body": "We bouwen met Next.js en een headless CMS: snel, toegankelijk en klaar om te groeien. Elke pagina wordt getest op elk scherm voor ze live gaat.",
-        "tags": "Next.js · Headless CMS · Testing"
+        "tags": "Next.js · Headless CMS · Testen"
       },
       "4": {
         "title": "SEO & performance",
         "body": "Snelheid en vindbaarheid zitten in de bouw, niet in een plug-in achteraf. Schone code, een correcte structuur en beelden die laden voor je het merkt.",
-        "tags": "Core Web Vitals · Structured data · Analytics"
+        "tags": "Core Web Vitals · Gestructureerde data · Analytics"
       },
       "5": {
         "title": "Onderhoud & groei",
@@ -50,20 +50,21 @@
   },
   "speed": {
     "eyebrow": "Gebouwd op snelheid",
-    "title": "Dit is waar we voor bouwen.",
-    "lead": "Een mooie site die traag laadt, is een dure folder. Daarom leggen we voor elk project dezelfde lat: snel, bruikbaar voor iedereen en vindbaar.",
-    "targetLabel": "Richtwaarde",
-    "when": "Voor elke lancering",
-    "gauges": {
-      "performance": "Performance",
-      "accessibility": "Toegankelijkheid",
-      "seo": "SEO"
+    "title": "De lat die we voor elk project leggen.",
+    "lead": "Een mooie site die traag laadt, is een dure folder. Daarom krijgt elk project dezelfde behandeling: snel, bruikbaar voor iedereen en vindbaar.",
+    "checksTitle": "Wat we nakijken voor elke lancering",
+    "checks": {
+      "1": "Core Web Vitals: laadtijd, interactie, stabiliteit",
+      "2": "Toetsenbordnavigatie en zichtbare focus",
+      "3": "Kleurcontrast volgens WCAG AA",
+      "4": "Semantische koppen en landmarks",
+      "5": "Meta, sitemap en gestructureerde data",
+      "6": "Beelden in moderne formaten, op maat geladen"
     },
-    "note": "Richtwaarden waaraan we elk project toetsen voor de lancering. Geen gemeten scores van klantensites.",
     "args": {
       "1": {
         "title": "Core Web Vitals",
-        "body": "Laadtijd, interactie en visuele stabiliteit meten we tijdens de bouw, niet erna. Groene scores zijn het vertrekpunt, niet het doel."
+        "body": "Laadtijd, interactie en visuele stabiliteit meten we tijdens de bouw, niet erna. Elke pagina wordt getest voor ze naar productie gaat."
       },
       "2": {
         "title": "Toegankelijk voor iedereen",
@@ -71,30 +72,33 @@
       },
       "3": {
         "title": "Een CMS dat meegroeit",
-        "body": "Headless en losgekoppeld van het design. Later een taal, een pagina of een koppeling toevoegen vraagt geen herbouw."
+        "body": "Headless en losgekoppeld van het ontwerp. Later een taal, een pagina of een koppeling toevoegen vraagt geen herbouw."
       }
     }
   },
   "references": {
     "eyebrow": "Referenties",
-    "title": "{count} websites die vandaag <em>live</em> staan.",
-    "intro": "Geen mockups, wel echte sites van echte klanten. De schermafbeeldingen worden live opgehaald, dus wat je hier ziet, zien hun bezoekers vandaag ook.",
+    "title": "Sites die vandaag <em>live</em> staan.",
+    "intro": "Geen mockups, wel echte sites van echte klanten. Een selectie uit het werk dat vandaag online staat, van hotel tot maatwerkatelier.",
     "reelLabel": "Showreel",
+    "reelCaption": "Vier sites, één na één doorlopen.",
     "visit": "Bekijk live",
+    "newTab": "opent in een nieuw venster",
+    "all": "Alle {count} referenties",
     "shotAlt": "Startpagina van {name}"
   },
   "process": {
     "eyebrow": "Hoe we werken",
     "title": "Van kennismaking tot <em>lancering</em>.",
-    "intro": "Vier stappen en één vaste prijs na het eerste gesprek. Je weet op elk moment waar we staan.",
+    "intro": "Vier stappen en een helder voorstel na het eerste gesprek. Je weet op elk moment waar we staan.",
     "steps": {
       "1": {
         "title": "Kennismaking",
-        "body": "Een gesprek van 30 minuten over je doelen, je klanten en wat er nu niet werkt. Daarna krijg je een helder voorstel met een vaste prijs."
+        "body": "Een gesprek van 30 minuten over je doelen, je klanten en wat er nu niet werkt. Daarna krijg je een helder voorstel met scope en planning."
       },
       "2": {
         "title": "Ontwerp",
-        "body": "Structuur en teksten eerst, dan het visuele ontwerp. Je kijkt mee in een klikbaar prototype voor er één lijn code staat."
+        "body": "Structuur en teksten eerst, dan het visuele ontwerp. Je kijkt mee in een klikbaar prototype voor er één regel code staat."
       },
       "3": {
         "title": "Bouw",
@@ -113,11 +117,11 @@
     "items": {
       "1": {
         "q": "Wat kost een website op maat?",
-        "a": "Dat hangt af van de omvang: het aantal pagina's, de functies en of we ook de teksten en beelden verzorgen. Na het kennismakingsgesprek krijg je een voorstel met een vaste prijs, zonder verrassingen achteraf."
+        "a": "Dat hangt af van de omvang: het aantal pagina's, de functies en of we ook de teksten en beelden verzorgen. Na het kennismakingsgesprek krijg je een voorstel waarin precies staat wat we bouwen en wanneer."
       },
       "2": {
         "q": "Hoe lang duurt het?",
-        "a": "Een compacte site staat doorgaans binnen enkele weken live. Een uitgebreide site met meerdere talen of koppelingen vraagt meer tijd. In het voorstel staat een planning die we samen bewaken."
+        "a": "Dat hangt af van de omvang. Een compacte site is sneller klaar dan een uitgebreide site met meerdere talen of koppelingen. In het voorstel staat een planning die we samen bewaken."
       },
       "3": {
         "q": "Kan ik zelf teksten aanpassen?",

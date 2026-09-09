@@ -11,10 +11,12 @@ export async function WhatYouGet() {
   return (
     <section className="theme-light relative bg-bg text-fg section-y" aria-labelledby="websites-what-title">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={1}>{t("whatYouGet.eyebrow")}</Eyebrow>
+              <Eyebrow index={1} className="text-xs">
+                {t("whatYouGet.eyebrow")}
+              </Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="websites-what-title" className="text-h2 mt-5 text-balance">
@@ -27,17 +29,17 @@ export async function WhatYouGet() {
           </div>
         </div>
 
-        <ol className="lg:col-span-8 lg:col-start-5" aria-label={t("whatYouGet.eyebrow")}>
+        <ol className="lg:col-span-6 lg:col-start-7" aria-label={t("whatYouGet.eyebrow")}>
           {ITEMS.map((k, i) => (
             <Reveal key={k} as="li" amount={0.3} className="group border-t border-line last:border-b">
               <div className="grid gap-4 py-8 sm:grid-cols-[4.5rem_1fr] sm:gap-6 lg:grid-cols-[6rem_1fr] lg:py-10">
-                <span className="font-mono text-[0.78rem] tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-amber">
+                <span className="font-mono text-xs tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-fg">
                   0{i + 1}
                 </span>
                 <div>
                   <h3 className="text-h3 text-balance">{t(`whatYouGet.items.${k}.title`)}</h3>
-                  <p className="text-body mt-4 max-w-2xl text-fg-2 text-pretty">{t(`whatYouGet.items.${k}.body`)}</p>
-                  <p className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted">
+                  <p className="text-body mt-4 max-w-xl text-fg-2 text-pretty">{t(`whatYouGet.items.${k}.body`)}</p>
+                  <p className="mt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted">
                     {t(`whatYouGet.items.${k}.tags`)}
                   </p>
                 </div>

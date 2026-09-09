@@ -62,27 +62,27 @@ export function HomeHero() {
   const scrollLine = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   return (
-    <section ref={ref} className="theme-dark relative isolate min-h-[100svh] overflow-hidden bg-ink text-paper" aria-label={t("eyebrow")}>
+    <section ref={ref} className="theme-dark relative isolate min-h-[100svh] overflow-hidden bg-ink text-paper" aria-labelledby="hero-title">
       {/* Film */}
-      <motion.div className="absolute inset-0 -z-10 will-change-transform" style={reduced ? undefined : { scale: videoScale }}>
+      <motion.div className="absolute inset-0 -z-10 will-change-transform" style={reduced ? undefined : { scale: videoScale }} aria-hidden>
         {reduced ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={siteConfig.heroPoster} alt="" className="h-full w-full object-cover" />
+          <img src={siteConfig.heroPoster} alt="" className="h-full w-full object-cover object-[68%_center] sm:object-center" />
         ) : (
           <video
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-[68%_center] sm:object-center"
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             poster={siteConfig.heroPoster}
-            aria-label={t("videoLabel")}
           >
             <source src={siteConfig.heroVideo} type="video/mp4" />
           </video>
         )}
       </motion.div>
+      <p className="sr-only">{t("videoLabel")}</p>
       {/* Overlays: legibility for the header, melt into the next section, dim on scroll */}
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34%] bg-gradient-to-b from-ink/80 via-ink/30 to-transparent" aria-hidden />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-ink via-ink/60 to-transparent" aria-hidden />
@@ -91,21 +91,21 @@ export function HomeHero() {
 
       {/* Content */}
       <motion.div
-        className="container-x relative flex min-h-[100svh] flex-col justify-end pb-10 pt-40 sm:pb-14"
+        className="container-x relative flex min-h-[100svh] flex-col justify-end pb-12 pt-40 sm:pb-14"
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
       >
         <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-9">
             <motion.p
-              className="eyebrow inline-flex items-center gap-3 text-amber"
+              className="eyebrow inline-flex items-center gap-3 text-paper/70"
               initial={{ opacity: 0, y: 12 }}
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.8, ease: EASE, delay }}
             >
-              <span className="size-1.5 rounded-full bg-current" aria-hidden />
+              <span className="size-1.5 rounded-full bg-paper/40" aria-hidden />
               {t("eyebrow")}
             </motion.p>
-            <h1 className="text-display mt-6 max-w-[11ch] text-balance">
+            <h1 id="hero-title" className="text-display mt-6 max-w-[11ch] text-balance">
               <Line delay={delay + 0.1} ready={ready}>
                 {t("titleLine1")}
               </Line>{" "}
@@ -127,44 +127,44 @@ export function HomeHero() {
               animate={ready ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.9, ease: EASE, delay: delay + 0.58 }}
             >
-              <Button href="/gesprek-inplannen" size="lg">
+              <Button href="/gesprek-inplannen" size="lg" className="min-w-[13.5rem] sm:min-w-0">
                 {t("ctaPrimary")}
               </Button>
-              <Button href="/referenties" variant="secondary" size="lg" icon="up-right">
+              <Button href="/referenties" variant="secondary" size="lg" icon="up-right" className="min-w-[13.5rem] sm:min-w-0">
                 {t("ctaSecondary")}
               </Button>
             </motion.div>
           </div>
 
-          {/* Bottom-right: scroll indicator + service links */}
+          {/* Bottom-right: service index + scroll indicator (desktop only) */}
           <motion.div
-            className="flex items-end justify-between gap-6 lg:col-span-3 lg:flex-col lg:items-end"
+            className="hidden lg:col-span-3 lg:flex lg:flex-col lg:items-end"
             initial={{ opacity: 0 }}
             animate={ready ? { opacity: 1 } : undefined}
             transition={{ duration: 1, delay: delay + 0.8 }}
           >
-            <nav aria-label={t("navLabel")} className="order-2 lg:order-1">
-              <ul className="flex flex-wrap gap-x-4 gap-y-1 lg:flex-col lg:items-end lg:gap-y-0">
+            <nav aria-label={t("navLabel")}>
+              <ul className="flex flex-col items-end">
                 {SERVICE_LINKS.map((s) => (
                   <li key={s.key}>
                     <Link
                       href={s.href}
-                      className="group inline-flex min-h-11 items-center font-mono text-[0.68rem] uppercase tracking-[0.18em] text-paper/60 transition-colors hover:text-paper"
+                      className="group inline-flex min-h-10 items-center font-mono text-[0.72rem] uppercase tracking-[0.18em] text-paper/70 transition-colors hover:text-paper"
                     >
                       <span className="relative">
                         {t(`links.${s.key}`)}
-                        <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100" />
+                        <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-paper transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100" />
                       </span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
-            <div className="order-1 hidden items-center gap-3 sm:flex lg:order-2 lg:mt-6" aria-hidden>
-              <span className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-paper/60">{t("scroll")}</span>
+            <div className="mt-6 flex items-center gap-3" aria-hidden>
+              <span className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-paper/50">{t("scroll")}</span>
               <span className="relative block h-12 w-px overflow-hidden bg-paper/15">
                 <motion.span
-                  className="absolute inset-x-0 top-0 h-1/2 bg-amber"
+                  className="absolute inset-x-0 top-0 h-1/2 bg-paper/70"
                   animate={reduced ? undefined : { y: ["-100%", "200%"] }}
                   transition={{ duration: 1.8, ease: [0.76, 0, 0.24, 1], repeat: Infinity, repeatDelay: 0.4 }}
                   style={{ opacity: scrollLine }}

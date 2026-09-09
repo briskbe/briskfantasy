@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisk — Websites, webshops, software en apps op maat",
-    "description": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. 17 live websites, 50+ productschermen, antwoord binnen 24 uur."
+    "description": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. 17 live websites, antwoord binnen 24 uur."
   },
   "hero": {
     "eyebrow": "Digitaal bureau · België",
@@ -28,8 +28,7 @@
   "services": {
     "eyebrow": "Wat we maken",
     "title": "Vier dingen. Allemaal op maat.",
-    "lead": "Geen thema's, geen bouwpakketten. Elk project begint bij wat jouw klant nodig heeft en eindigt in eigen code die van jou is.",
-    "previewAlt": "Voorbeeld van {service}",
+    "lead": "Geen thema's, geen bouwpakketten. Elk project begint bij wat je klant nodig heeft en eindigt met code die van jou is.",
     "items": {
       "websites": {
         "title": "Website op maat",
@@ -45,7 +44,7 @@
       },
       "apps": {
         "title": "Mobiele apps",
-        "description": "Apps voor iOS en Android die aanvoelen alsof ze er thuishoren."
+        "description": "Apps voor iOS en Android die aanvoelen alsof ze op je telefoon thuishoren."
       }
     }
   },
@@ -61,7 +60,7 @@
   "motion": {
     "eyebrow": "Werk in beweging",
     "title": "Van homepage tot checkout.",
-    "body": "Een korte ronde langs zes referenties, precies zoals ze vandaag online staan."
+    "body": "Een korte ronde langs een handvol referenties, precies zoals ze vandaag online staan."
   },
   "product": {
     "eyebrow": "Product design",
@@ -73,9 +72,10 @@
   "process": {
     "eyebrow": "Hoe we werken",
     "title": "Vier stappen, geen verrassingen.",
-    "body": "Je praat rechtstreeks met de mensen die ontwerpen en bouwen. Elke stap eindigt met iets dat je kan zien, aanklikken en beoordelen.",
+    "body": "Je praat rechtstreeks met de mensen die ontwerpen en bouwen. Elke stap eindigt met iets wat je kan zien, aanklikken en beoordelen.",
     "cta": "Gesprek inplannen",
     "reelEyebrow": "Hoe we werken",
+    "visualAlt": "Schermontwerp bij deze stap: {title}",
     "steps": {
       "discover": {
         "index": "01",
@@ -87,7 +87,7 @@
         "index": "02",
         "title": "Ontwerpen",
         "short": "Structuur, dan beeld",
-        "body": "Eerst de structuur, dan het beeld. Je krijgt echte schermen te zien in plaats van vage moodboards en geeft feedback op iets dat je kan aanklikken."
+        "body": "Eerst de structuur, dan het beeld. Je krijgt echte schermen te zien in plaats van vage moodboards en geeft feedback op iets wat je kan aanklikken."
       },
       "build": {
         "index": "03",
@@ -106,6 +106,7 @@
   "why": {
     "eyebrow": "Waarom Brisk",
     "title": "Klein team, korte lijnen, eigen code.",
+    "lead": "Eén klein team dat ontwerpt én bouwt. Je weet altijd met wie je praat en wat er in de volgende stap gebeurt.",
     "items": {
       "contact": {
         "index": "01",
@@ -115,7 +116,7 @@
       "ownership": {
         "index": "02",
         "title": "Eigen code, jouw eigendom",
-        "body": "Alles wat we ontwerpen en bouwen is van jou: ontwerpbestanden, code en domein. Geen abonnement op je eigen website."
+        "body": "Alles wat we ontwerpen en bouwen is van jou: ontwerpbestanden en code. Geen abonnement op je eigen website."
       },
       "pace": {
         "index": "03",
@@ -127,7 +128,7 @@
       "sites": "Live websites",
       "screens": "Productschermen",
       "reply": "Reactietijd",
-      "languages": "Talen"
+      "intro": "Gratis kennismaking"
     }
   }
 }

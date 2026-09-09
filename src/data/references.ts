@@ -20,6 +20,15 @@ export interface Reference {
   featured?: boolean;
   /** Brand-ish accent used for hover tints */
   accent?: string;
+  /**
+   * Quality of the bundled static capture in `/public/references`.
+   * "weak" means the capture fired before the site had finished painting, or a
+   * promo layer covered the hero. Those tiles still work at small sizes (the
+   * live Microlink layer replaces them for real visitors), but do NOT feature a
+   * "weak" capture as a hero or full-width showpiece. Refresh them with
+   * `node scripts/capture-references.mjs` and set this back to "strong".
+   */
+  captureQuality?: "strong" | "weak";
 }
 
 export const references: Reference[] = [
@@ -179,6 +188,8 @@ export const references: Reference[] = [
     services: ["design", "development", "seo"],
     langs: ["nl"],
     accent: "#ff5400",
+    // a promo modal covers the hero
+    captureQuality: "weak",
   },
   {
     slug: "x-performance-be",
@@ -224,6 +235,8 @@ export const references: Reference[] = [
     services: ["design", "development", "seo"],
     langs: ["nl"],
     accent: "#2a9d8f",
+    // capture fired before the hero image painted
+    captureQuality: "weak",
   },
   {
     slug: "roetfilterservice-be",
@@ -269,6 +282,8 @@ export const references: Reference[] = [
     services: ["design", "development"],
     langs: ["nl"],
     accent: "#8d99ae",
+    // hero is a quiet interior photo with no headline visible
+    captureQuality: "weak",
   },
   {
     slug: "vestra-armor-com",

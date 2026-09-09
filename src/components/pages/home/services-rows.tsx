@@ -30,13 +30,13 @@ const SERVICES: { key: ServiceKey; href: AppPathname; preview: Preview }[] = [
   { key: "apps", href: "/mobiele-apps", preview: { kind: "image", ...byId("039-w033") } },
 ];
 
-function PreviewMedia({ preview, alt, priority = false }: { preview: Preview; alt: string; priority?: boolean }) {
+function PreviewMedia({ preview, alt }: { preview: Preview; alt: string }) {
   if (preview.kind === "site") {
-    return <MicrolinkShot url={preview.url} slug={preview.slug} alt={alt} frame={false} live={false} imgClassName="aspect-[16/11]" priority={priority} />;
+    return <MicrolinkShot url={preview.url} slug={preview.slug} alt={alt} frame={false} live={false} imgClassName="aspect-[16/11]" />;
   }
   return (
     <div className="relative aspect-[16/11] w-full overflow-hidden bg-bg-2">
-      <Image src={preview.src} alt={alt} width={preview.width} height={preview.height} className="h-full w-full object-cover object-top" sizes="(min-width: 1024px) 26rem, 40vw" />
+      <Image src={preview.src} alt={alt} width={preview.width} height={preview.height} className="h-full w-full object-cover object-top" sizes="26rem" />
     </div>
   );
 }
@@ -77,25 +77,21 @@ export function ServicesRows() {
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
                 className={cn(
-                  "group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 border-b border-line py-7 transition-opacity duration-500 sm:gap-x-8 lg:grid-cols-[6rem_1fr_minmax(0,22rem)_auto] lg:py-9",
+                  "group grid grid-cols-[auto_1fr_auto] items-start gap-x-4 border-b border-line py-6 transition-opacity duration-500 sm:gap-x-8 lg:grid-cols-[5rem_1fr_minmax(0,22rem)_auto] lg:items-center lg:py-9",
                   dimmed && "opacity-35",
                 )}
               >
-                <span className="font-mono text-[0.72rem] tracking-[0.18em] text-muted lg:text-[0.8rem]">0{i + 1}</span>
+                <span className="pt-1.5 font-mono text-[0.72rem] tracking-[0.18em] text-muted lg:pt-0 lg:text-[0.8rem]">0{i + 1}</span>
                 <span className="min-w-0">
-                  <span className="text-h2 block text-fg transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2">{title}</span>
+                  <span className="text-h3 block text-fg transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2 lg:text-[clamp(2.125rem,4.6vw,4.25rem)] lg:leading-[1.02] lg:tracking-[-0.035em]">
+                    {title}
+                  </span>
                   <span className="text-body mt-2 block max-w-md text-muted lg:hidden">{t(`items.${s.key}.description`)}</span>
                 </span>
                 <span className="text-body hidden text-muted lg:block">{t(`items.${s.key}.description`)}</span>
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line-2 text-fg transition-[background-color,color,border-color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover:border-amber group-hover:bg-amber group-hover:text-ink lg:size-14">
+                <span className="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-full border border-line-2 text-fg transition-[background-color,color,border-color,transform] duration-500 ease-[var(--ease-out-expo)] group-hover:border-fg group-hover:bg-fg group-hover:text-bg lg:mt-0 lg:size-14">
                   <ArrowUpRight className="size-5 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
-                {/* Static thumbnail for touch devices */}
-                {!floating && (
-                  <span className="col-span-3 mt-5 block w-full max-w-sm overflow-hidden rounded-xl border border-line bg-bg-2">
-                    <PreviewMedia preview={s.preview} alt={t("previewAlt", { service: title })} />
-                  </span>
-                )}
               </Link>
             </RevealItem>
           );
@@ -119,7 +115,7 @@ export function ServicesRows() {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden rounded-2xl border border-line bg-bg-2 shadow-[0_40px_90px_-30px_rgba(7,8,12,0.55)]"
               >
-                <PreviewMedia preview={SERVICES[active].preview} alt="" priority />
+                <PreviewMedia preview={SERVICES[active].preview} alt="" />
               </motion.div>
             )}
           </AnimatePresence>
