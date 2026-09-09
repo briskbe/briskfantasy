@@ -136,6 +136,20 @@
   button {
     cursor: pointer;
   }
+  /* Custom cursor (fine pointers only): the amber dot replaces the native arrow,
+     text fields keep their I-beam. */
+  html.has-cursor body,
+  html.has-cursor a,
+  html.has-cursor button,
+  html.has-cursor [role="button"],
+  html.has-cursor label,
+  html.has-cursor select {
+    cursor: none;
+  }
+  html.has-cursor input:not([type="checkbox"]):not([type="radio"]),
+  html.has-cursor textarea {
+    cursor: text;
+  }
 }
 
 @layer components {

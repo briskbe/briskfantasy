@@ -88,10 +88,15 @@ export const portfolio: PortfolioItem[] = [
   { id: "056-w050", src: "/portfolio/056-w050.webp", width: 1600, height: 1202, title: { nl: "Transactiedetails van een Bitcoin-wallet", en: "Bitcoin wallet transaction details" }, tags: ["saas", "finance", "dark", "dashboard"], tone: "dark" },
 ];
 
+/**
+ * Motion pieces. Always render these with the matching `poster` so the tile
+ * shows a real frame while the video loads (and in browsers that cannot decode
+ * the file) instead of a black rectangle.
+ */
 export const portfolioVideos = [
-  { id: "a000", src: "/portfolio/video/001-a000.mp4", width: 1600, height: 1038, duration: 42, title: { nl: "Serverbeheer, stap voor stap", en: "Server management, step by step" } },
-  { id: "a000b", src: "/portfolio/video/002-a000b.mp4", width: 760, height: 720, duration: 9, title: { nl: "Micro-interactie", en: "Micro-interaction" } },
-  { id: "a000c", src: "/portfolio/video/003-a000c.mp4", width: 1600, height: 900, duration: 17, title: { nl: "Interface in beweging", en: "Interface in motion" } },
+  { id: "a000", src: "/portfolio/video/001-a000.mp4", poster: "/portfolio/video/001-a000-poster.webp", width: 1600, height: 1038, duration: 42, title: { nl: "Serverbeheer, stap voor stap", en: "Server management, step by step" } },
+  { id: "a000b", src: "/portfolio/video/002-a000b.mp4", poster: "/portfolio/video/002-a000b-poster.webp", width: 760, height: 720, duration: 9, title: { nl: "Micro-interactie", en: "Micro-interaction" } },
+  { id: "a000c", src: "/portfolio/video/003-a000c.mp4", poster: "/portfolio/video/003-a000c-poster.webp", width: 1600, height: 900, duration: 17, title: { nl: "Interface in beweging", en: "Interface in motion" } },
 ] as const;
 
 export function portfolioByTag(tag: PortfolioTag, limit?: number) {
