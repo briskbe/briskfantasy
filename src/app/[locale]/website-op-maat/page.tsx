@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/website-
 }
 
 /** Front frame first, then the frame that peeks from behind it. */
-const HERO_SLUGS = ["landelijkglas-be", "vestra-armor-com"];
+const HERO_SLUGS = ["city-housing-be", "vestra-armor-com"];
 
 function heroShots(): HeroShot[] {
   const picked = HERO_SLUGS.map((slug) => references.find((r) => r.slug === slug)).filter((r) => r !== undefined);

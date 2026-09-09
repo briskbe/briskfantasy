@@ -13,19 +13,25 @@ import { WebsitesShowreel } from "./showreel";
  * context (a page that is still blank above the fold, a chat widget covering
  * the hero) are left to the Referenties page; the seven here are the ones that
  * survive being blown up to half a screen.
+ *
+ * The two "feature" slots are the largest cards on the page and the only ones
+ * that open and close the grid, so they carry the work we most want seen:
+ * City Housing and Mirkoz Vending. Sizes are load-bearing — each row has to
+ * add up to the 12-column grid (7+5, 4+4+4, 5+7), so a size change here means
+ * re-checking the whole sequence, not just one entry.
  */
 const CURATED: { slug: string; size: CardSize }[] = [
-  { slug: "landelijkglas-be", size: "feature" },
-  { slug: "sanae-align-com", size: "wide" },
+  { slug: "city-housing-be", size: "feature" },
+  { slug: "landelijkglas-be", size: "wide" },
   { slug: "priveglas-be", size: "compact" },
-  { slug: "city-housing-be", size: "compact" },
   { slug: "vestra-armor-com", size: "compact" },
-  { slug: "mirkozvending-com", size: "wide" },
-  { slug: "x-performance-be", size: "feature" },
+  { slug: "x-performance-be", size: "compact" },
+  { slug: "sanae-align-com", size: "wide" },
+  { slug: "mirkozvending-com", size: "feature" },
 ];
 
 /** Shots for the reel, deliberately not the two cards that open the grid. */
-const REEL = ["priveglas-be", "city-housing-be", "x-performance-be", "mirkozvending-com"];
+const REEL = ["mirkozvending-com", "priveglas-be", "sanae-align-com", "comfortsolutions-be"];
 
 const FALLBACK_SIZES: CardSize[] = ["feature", "wide", "compact", "compact", "compact", "wide", "feature"];
 
