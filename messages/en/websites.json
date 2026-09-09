@@ -11,7 +11,7 @@
     "secondary": "See the work",
     "shotAlt": "{name}, a website designed and built by Brisk",
     "facts": {
-      "sites": "{count} sites live",
+      "sites": "{total}+ projects delivered",
       "reply": "Reply within 24 hours",
       "intro": "Free 30-minute intro call"
     }

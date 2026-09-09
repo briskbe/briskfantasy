@@ -16,7 +16,7 @@ export async function CtaBand() {
       <RaysBackdrop />
       <div className="container-x relative flex min-h-[70vh] flex-col justify-center py-28 text-center">
         <Reveal>
-          <p className="eyebrow text-amber">{t("ctaBand.eyebrow")}</p>
+          <p className="eyebrow text-accent">{t("ctaBand.eyebrow")}</p>
         </Reveal>
         <Reveal delay={0.08}>
           {/* One step below `.text-display`: the hero owns the top of the type

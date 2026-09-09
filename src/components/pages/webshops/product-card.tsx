@@ -13,7 +13,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * Typographic product card used in the hero to demonstrate the micro-interactions
  * we build into shops: a variant switch, an add-to-cart button that morphs into a
  * checkmark and a cart badge that counts up. Everything on it is real type — no
- * placeholder bars — and the button stays neutral so the hero keeps one amber CTA.
+ * placeholder bars — and the button stays neutral so the hero keeps one lime CTA.
  */
 export function ProductCard({ className }: { className?: string }) {
   const t = useTranslations("Webshops.hero.card");
@@ -122,7 +122,7 @@ export function ProductCard({ className }: { className?: string }) {
         <p className="text-[1.35rem] font-medium leading-none tracking-[-0.02em] tabular-nums">{t("price")}</p>
       </div>
 
-      {/* add to cart — neutral on purpose: the amber in this viewport belongs to the page CTA */}
+      {/* add to cart — neutral on purpose: the lime in this viewport belongs to the page CTA */}
       <button
         type="button"
         onClick={add}

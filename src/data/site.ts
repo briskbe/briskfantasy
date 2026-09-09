@@ -15,4 +15,11 @@ export const siteConfig = {
   ],
   /** Optional external booking link (Cal.com / Calendly). Empty = hidden, form is used instead. */
   bookingUrl: "",
+  /**
+   * Websites, webshops and custom software delivered to date. Everything shown
+   * on the site is a selection out of this, not the whole body of work, so copy
+   * should always frame the visible references as examples.
+   * Stated as "150+" — keep it a round floor, never an exact count.
+   */
+  projectsDelivered: 150,
 } as const;

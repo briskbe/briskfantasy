@@ -48,7 +48,7 @@ export function Toc({ label, items, className }: { label: string; items: TocItem
                 <span
                   className={cn(
                     "font-mono text-[0.68rem] tracking-[0.16em] transition-colors duration-300",
-                    isActive ? "text-amber" : "text-muted/70",
+                    isActive ? "text-accent" : "text-muted/70",
                   )}
                 >
                   {item.index}
@@ -57,7 +57,7 @@ export function Toc({ label, items, className }: { label: string; items: TocItem
                   {item.title}
                   <span
                     className={cn(
-                      "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                      "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-brand transition-transform duration-500 ease-[var(--ease-out-expo)]",
                       isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
                     )}
                   />

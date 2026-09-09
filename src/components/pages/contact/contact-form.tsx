@@ -20,7 +20,7 @@ type Field = "name" | "email" | "message";
 type Errors = Partial<Record<Field, string>>;
 
 const inputClass =
-  "h-12 w-full rounded-xl border border-line-2 bg-fg/[0.045] px-4 text-[1rem] text-fg outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted/60 hover:border-fg/25 hover:bg-fg/[0.06] focus:border-amber focus:bg-fg/[0.07] focus:shadow-[0_0_0_3px_rgba(255,159,77,0.18)] focus-visible:outline-none aria-[invalid=true]:border-ember";
+  "h-12 w-full rounded-xl border border-line-2 bg-fg/[0.045] px-4 text-[1rem] text-fg outline-none transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted/60 hover:border-fg/25 hover:bg-fg/[0.06] focus:border-accent focus:bg-fg/[0.07] focus:shadow-[0_0_0_3px_rgba(255,159,77,0.18)] focus-visible:outline-none aria-[invalid=true]:border-ember";
 
 const hintClass = "text-[0.8rem] tracking-[-0.005em] text-muted";
 const legendClass = "mb-3 flex w-full flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3";
@@ -52,7 +52,7 @@ function FieldWrap({
         {error ? (
           <motion.p
             id={`${id}-error`}
-            className="mt-2 text-[0.85rem] text-amber-2"
+            className="mt-2 text-[0.85rem] text-brand-2"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
@@ -102,7 +102,7 @@ function CheckMark() {
         cy="48"
         r="44"
         fill="none"
-        stroke="var(--color-amber)"
+        stroke="var(--color-brand)"
         strokeWidth="2"
         initial={{ pathLength: 0, rotate: -90 }}
         animate={{ pathLength: 1, rotate: -90 }}
@@ -112,7 +112,7 @@ function CheckMark() {
       <motion.path
         d="M30 49.5 L42.5 62 L67 36"
         fill="none"
-        stroke="var(--color-amber)"
+        stroke="var(--color-brand)"
         strokeWidth="3.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -355,7 +355,7 @@ export function ContactForm() {
               <p className="max-w-sm text-[0.85rem] leading-relaxed text-muted text-pretty">
                 {t.rich("note", {
                   link: (chunks) => (
-                    <Link href="/privacy" className="text-fg underline underline-offset-4 hover:text-amber">
+                    <Link href="/privacy" className="text-fg underline underline-offset-4 hover:text-accent">
                       {chunks}
                     </Link>
                   ),

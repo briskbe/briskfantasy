@@ -7,7 +7,7 @@ const ITEMS = ["1", "2", "3", "4", "5", "6"] as const;
 
 /**
  * Light section: a sticky intro and a 2×3 list on hairlines. No icons — the
- * mono numbers already mark the rows, and six identical amber check marks
+ * mono numbers already mark the rows, and six identical lime check marks
  * turned the section into a generic feature grid.
  */
 export async function Included() {

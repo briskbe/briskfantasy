@@ -59,7 +59,7 @@ function Step({ step, position, total, length }: { step: ProcessStep; position: 
           fontFamily: fonts.mono,
           fontSize: 30,
           letterSpacing: "0.12em",
-          color: brisk.amber,
+          color: brisk.brand,
           opacity: indexIn * exitOpacity,
           transform: `translateY(${(1 - indexIn) * 20 + exitY}px)`,
           display: "flex",
@@ -68,7 +68,7 @@ function Step({ step, position, total, length }: { step: ProcessStep; position: 
         }}
       >
         <span>{step.index}</span>
-        <span style={{ width: interpolate(indexIn, [0, 1], [0, 72]), height: 1, background: brisk.amber, display: "block" }} />
+        <span style={{ width: interpolate(indexIn, [0, 1], [0, 72]), height: 1, background: brisk.brand, display: "block" }} />
         <span style={{ color: brisk.muted, letterSpacing: "0.18em", fontSize: 18 }}>
           {String(position + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
@@ -167,7 +167,7 @@ export function ProcessReel({ steps, eyebrow }: ProcessReelProps) {
   return (
     <AbsoluteFill style={{ background: brisk.ink, color: brisk.paper, overflow: "hidden" }}>
       <Glow x={gx} y={gy} size={1100} opacity={0.42} />
-      <Glow x={W * 0.12} y={H * 0.95} size={700} color={brisk.sky} opacity={0.14} />
+      <Glow x={W * 0.12} y={H * 0.95} size={700} color={brisk.teal} opacity={0.14} />
       <Grain opacity={0.05} />
 
       {/* Eyebrow, persistent */}
@@ -184,7 +184,7 @@ export function ProcessReel({ steps, eyebrow }: ProcessReelProps) {
           opacity: eyebrowIn,
         }}
       >
-        <span style={{ width: 8, height: 8, borderRadius: 999, background: brisk.amber, display: "block" }} />
+        <span style={{ width: 8, height: 8, borderRadius: 999, background: brisk.brand, display: "block" }} />
         {eyebrow}
       </div>
 
@@ -198,7 +198,7 @@ export function ProcessReel({ steps, eyebrow }: ProcessReelProps) {
               height: 3,
               width: i === current ? 40 : 14,
               borderRadius: 999,
-              background: i <= current ? brisk.amber : brisk.line2,
+              background: i <= current ? brisk.brand : brisk.line2,
               opacity: eyebrowIn,
             }}
           />
@@ -216,7 +216,7 @@ export function ProcessReel({ steps, eyebrow }: ProcessReelProps) {
             top: 0,
             bottom: 0,
             width: `${progress * 100}%`,
-            background: `linear-gradient(90deg, ${brisk.ember}, ${brisk.amber} 60%, ${brisk.amber2})`,
+            background: `linear-gradient(90deg, ${brisk.brandDeep}, ${brisk.brand} 60%, ${brisk.brand2})`,
             opacity: progressOpacity,
           }}
         />

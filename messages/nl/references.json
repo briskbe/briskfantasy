@@ -5,18 +5,18 @@
   },
   "hero": {
     "eyebrow": "Referenties",
-    "title": "{count} websites die <em>live</em> staan.",
+    "title": "150+ projecten. Dit is een <em>selectie</em>.",
     "lead": "Geen mockups en geen mooier-dan-echt. Elke screenshot op deze pagina wordt gemaakt op het moment dat je ze bekijkt. Wat je ziet, staat vandaag online.",
     "note": "Live screenshots via Microlink",
     "reelLabel": "Showreel van vier live websites",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{total}+ opgeleverd",
       "screens": "{count}+ productschermen",
       "reply": "Antwoord binnen 24 uur"
     }
   },
   "grid": {
-    "eyebrow": "Live websites",
+    "eyebrow": "Een selectie",
     "title": "Elk project, zoals het vandaag <em>online</em> staat.",
     "intro": "Filter op type of scrol gewoon door. Elke kaart opent de echte site in een nieuw tabblad.",
     "featured": "Uitgelicht project",

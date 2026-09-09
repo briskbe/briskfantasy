@@ -10,7 +10,7 @@ import { Reveal } from "./reveal";
 const STEPS = ["1", "2", "3", "4", "5"] as const;
 
 /**
- * A static bordered dot with an amber fill on top. Motion cannot interpolate
+ * A static bordered dot with an lime fill on top. Motion cannot interpolate
  * between two CSS-variable strings, so the previous version snapped its colour
  * at the midpoint; fading the fill's opacity gives the smooth light-up.
  */
@@ -21,7 +21,7 @@ function Dot({ progress, at }: { progress: MotionValue<number>; at: number }) {
     <motion.span aria-hidden style={{ scale }} className="relative block size-3 rounded-full border border-line-2 bg-bg">
       <motion.span
         style={{ opacity }}
-        className="absolute inset-[-1px] rounded-full bg-amber shadow-[0_0_0_6px_rgba(255,159,77,0.16)]"
+        className="absolute inset-[-1px] rounded-full bg-brand shadow-[0_0_0_6px_rgba(255,159,77,0.16)]"
       />
     </motion.span>
   );
@@ -29,7 +29,7 @@ function Dot({ progress, at }: { progress: MotionValue<number>; at: number }) {
 
 /**
  * Dark section: sticky headline and a live step counter on the left, a
- * five-step timeline on the right. The amber line draws as you scroll and the
+ * five-step timeline on the right. The lime line draws as you scroll and the
  * dots light up as it passes.
  */
 export function AppsProcess() {
@@ -47,7 +47,7 @@ export function AppsProcess() {
   return (
     <section className="theme-dark relative overflow-hidden bg-ink text-paper section-y" aria-labelledby="apps-process-title">
       {/* the glow sits well inside the section so its edge never reads as a seam */}
-      <div className="glow-amber pointer-events-none absolute -left-[16%] top-[22%] h-[46vh] w-[42vw] opacity-25" aria-hidden />
+      <div className="glow-brand pointer-events-none absolute -left-[16%] top-[22%] h-[46vh] w-[42vw] opacity-25" aria-hidden />
       <div className="container-x relative grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
@@ -75,7 +75,7 @@ export function AppsProcess() {
 
         <ol ref={ref} className="relative lg:col-span-7 lg:col-start-6">
           <div className="absolute bottom-2 left-[5px] top-2 w-px bg-line" aria-hidden>
-            <motion.div style={{ scaleY }} className="h-full w-full origin-top bg-amber" />
+            <motion.div style={{ scaleY }} className="h-full w-full origin-top bg-brand" />
           </div>
           {STEPS.map((k, i) => (
             <li key={k} className="relative pb-14 pl-10 last:pb-0 sm:pl-14 lg:pb-20">

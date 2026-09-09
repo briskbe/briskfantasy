@@ -331,7 +331,7 @@ export function CheckoutStory() {
   return (
     <section className="theme-dark relative bg-ink text-paper section-y" aria-labelledby="webshops-story-title">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="glow-amber absolute left-[-18%] top-[-8%] h-[55vh] w-[45vw] opacity-30" />
+        <div className="glow-brand absolute left-[-18%] top-[-8%] h-[55vh] w-[45vw] opacity-30" />
       </div>
       <div className="container-x relative grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
@@ -352,7 +352,7 @@ export function CheckoutStory() {
               <div className="relative">
                 <span className="absolute left-0 top-0 h-full w-px bg-line" aria-hidden />
                 <motion.span
-                  className="absolute left-0 top-0 h-full w-px origin-top bg-amber"
+                  className="absolute left-0 top-0 h-full w-px origin-top bg-brand"
                   style={{ scaleY: reduced ? 1 : scaleY }}
                   aria-hidden
                 />

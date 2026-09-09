@@ -12,7 +12,7 @@ export function WhyBrisk({ liveSites, screens }: { liveSites: number; screens: n
   const locale = useLocale();
 
   const metrics = [
-    { key: "sites", value: liveSites, label: t("metrics.sites") },
+    { key: "sites", value: liveSites, suffix: "+", label: t("metrics.sites") },
     { key: "screens", value: screens, suffix: "+", label: t("metrics.screens") },
     { key: "reply", value: 24, suffix: locale === "nl" ? "u" : "h", label: t("metrics.reply") },
     { key: "intro", value: 30, suffix: " min", label: t("metrics.intro") },

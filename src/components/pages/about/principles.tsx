@@ -45,7 +45,7 @@ function Principle({
       <Reveal amount={0.4}>
         <div className="grid gap-4 sm:grid-cols-[4.5rem_1fr] sm:gap-8">
           <span
-            className={`font-mono text-[0.8rem] tracking-[0.18em] transition-colors duration-500 sm:pt-2 ${active ? "text-amber" : "text-muted"}`}
+            className={`font-mono text-[0.8rem] tracking-[0.18em] transition-colors duration-500 sm:pt-2 ${active ? "text-accent" : "text-muted"}`}
             aria-hidden
           >
             {String(index + 1).padStart(2, "0")}

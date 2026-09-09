@@ -7,6 +7,7 @@ import { MicrolinkShot } from "@/components/ui/microlink-shot";
 import { richTags } from "@/components/ui/rich";
 import { references } from "@/data/references";
 import { portfolio } from "@/data/portfolio";
+import { siteConfig } from "@/data/site";
 
 /** Four captures that read well small and sit together warmly. */
 const SHOWCASE = ["landelijkglas-be", "sanae-align-com", "city-housing-be", "mirkozvending-com"] as const;
@@ -32,7 +33,7 @@ export async function Proof() {
         <dl className="mt-9 grid max-w-sm grid-cols-2 gap-6 border-t border-line pt-7">
           <div>
             <dt className="eyebrow text-muted">{t("sitesLabel")}</dt>
-            <dd className="text-h3 mt-3 tabular-nums">{references.length}</dd>
+            <dd className="text-h3 mt-3 tabular-nums">{siteConfig.projectsDelivered}+</dd>
           </div>
           <div>
             <dt className="eyebrow text-muted">{t("screensLabel")}</dt>
@@ -47,7 +48,7 @@ export async function Proof() {
         >
           <span className="relative">
             {t("link")}
-            <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
+            <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-brand transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
           </span>
           <ArrowUpRight className="size-4 text-muted transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
         </Link>

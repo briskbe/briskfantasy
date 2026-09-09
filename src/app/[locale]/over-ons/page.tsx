@@ -9,8 +9,8 @@ import { Numbers } from "@/components/pages/about/numbers";
 import { Principles } from "@/components/pages/about/principles";
 import { HowWeWork } from "@/components/pages/about/how-we-work";
 import { AboutMotion } from "@/components/pages/about/motion-settings";
-import { references } from "@/data/references";
 import { portfolio } from "@/data/portfolio";
+import { siteConfig } from "@/data/site";
 
 /** Same rounding the on-page counter uses, so SERP and page never disagree. */
 const screens = Math.max(50, Math.floor(portfolio.length / 10) * 10);
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/over-ons
   const t = await getTranslations({ locale, namespace: "About" });
   return {
     title: t("meta.title"),
-    description: t("meta.description", { sites: references.length, screens }),
+    description: t("meta.description", { total: siteConfig.projectsDelivered, screens }),
   };
 }
 
@@ -38,7 +38,7 @@ export default async function Page({ params }: PageProps<"/[locale]/over-ons">) 
         {/* 2. What we stand for, closed by the proof band — light */}
         <Section theme="light" id="manifest">
           <Manifesto />
-          <Numbers liveSites={references.length} screens={screens} />
+          <Numbers liveSites={siteConfig.projectsDelivered} screens={screens} />
         </Section>
 
         {/* 3. Who we work for — light, continuing the same paper chapter */}

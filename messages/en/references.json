@@ -5,18 +5,18 @@
   },
   "hero": {
     "eyebrow": "Work",
-    "title": "{count} websites that are <em>live</em>.",
+    "title": "150+ projects. This is a <em>selection</em>.",
     "lead": "No mockups, nothing polished after the fact. Every screenshot on this page is captured the moment you view it. What you see is what is online today.",
     "note": "Live screenshots via Microlink",
     "reelLabel": "Showreel of four live websites",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{total}+ delivered",
       "screens": "{count}+ product screens",
       "reply": "Reply within 24 hours"
     }
   },
   "grid": {
-    "eyebrow": "Live websites",
+    "eyebrow": "A selection",
     "title": "Every project, exactly as it is <em>online</em> today.",
     "intro": "Filter by type or just keep scrolling. Each card opens the real site in a new tab.",
     "featured": "Featured project",

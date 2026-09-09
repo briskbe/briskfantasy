@@ -22,7 +22,7 @@ export async function CaseDuo({ items }: { items: Reference[] }) {
   return (
     <section className="theme-dark relative overflow-hidden bg-ink text-paper section-y" aria-labelledby="software-case-title">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="glow-sky absolute right-[-20%] top-[-10%] h-[60vh] w-[60vw] opacity-20" />
+        <div className="glow-teal absolute right-[-20%] top-[-10%] h-[60vh] w-[60vw] opacity-20" />
       </div>
       <div className="container-x relative">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
@@ -91,7 +91,7 @@ export async function CaseDuo({ items }: { items: Reference[] }) {
                   >
                     <span className="relative">
                       {t("cases.visit")}
-                      <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
+                      <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-brand transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover/link:scale-x-100" />
                     </span>
                     <ArrowUpRight className="size-4 text-muted transition-all duration-500 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-fg" />
                     <span className="sr-only">

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisk — Websites, webshops, software en apps op maat",
-    "description": "Brisk is een digitaal bureau uit België. We ontwerpen en bouwen websites, webshops, software en mobiele apps op maat. 17 live websites, antwoord binnen 24 uur."
+    "description": "Brisk is een digitaal bureau uit België. Meer dan {total} websites, webshops en software op maat gebouwd in {years} jaar. Antwoord binnen 24 uur."
   },
   "hero": {
     "eyebrow": "Digitaal bureau · België",
@@ -21,7 +21,7 @@
     }
   },
   "trust": {
-    "liveLabel": "live websites",
+    "liveLabel": "projecten opgeleverd",
     "screensLabel": "productschermen",
     "marqueeLabel": "Klanten die vandaag live staan"
   },
@@ -51,7 +51,7 @@
   "work": {
     "eyebrow": "Geselecteerd werk",
     "title": "Werk dat vandaag <em>live</em> staat.",
-    "lead": "Zeventien websites, webshops en platformen die nu draaien voor klanten in België en daarbuiten. Geen concepten, geen mockups.",
+    "lead": "Een greep uit meer dan {total} websites, webshops en platformen die we bouwden. Wat je hier ziet is een selectie, geen concepten of mockups.",
     "visit": "Bekijk live",
     "cursor": "Bekijk",
     "all": "Alle referenties",
@@ -125,7 +125,7 @@
       }
     },
     "metrics": {
-      "sites": "Live websites",
+      "sites": "Projecten opgeleverd",
       "screens": "Productschermen",
       "reply": "Reactietijd",
       "intro": "Gratis kennismaking"

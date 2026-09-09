@@ -1,18 +1,82 @@
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-/** Brisk wordmark. The amber period is the brand's one flourish. */
-export function Logo({ className, onClick }: { className?: string; onClick?: () => void }) {
+/**
+ * The Brisk logo: the lime pinwheel mark beside the wordmark.
+ *
+ * Both are inline SVG rather than an <img> so the wordmark can take its colour
+ * from the surrounding theme (`currentColor`) — one component works on the dark
+ * header and on a paper section — and so it paints with the first HTML rather
+ * than after a second request. The mark keeps its lime in every theme.
+ *
+ * The wordmark is the real lettering from the brand file, not Geist set to
+ * look like it. Sizing follows the font size: the lockup is 1em tall.
+ *
+ * `variant="mark"` drops the wordmark, for tight spots such as a mobile header.
+ */
+const MARK_D =
+  "M670.082 631.613C670.302 607.416 674.846 579.177 678.895 555.165C733.325 232.337 1011.62 3.73696 1335.74 0C1336.26 26.6124 1334.23 45.1437 1331.31 71.4731C1318.31 194.066 1271.9 310.736 1197.14 408.754C1111.28 521.766 975.191 610.692 837.783 646.113C811.552 652.842 784.965 658.093 758.146 661.841C744.45 663.692 730.823 664.41 716.876 666.308C749.64 669.083 781.876 668.524 814.746 668.635L944.122 668.926L1335.87 668.647C1338.27 755.668 1336.11 852.766 1336.07 940.425L1335.9 1336C1182.55 1331.45 1052.05 1291.04 929.269 1196.83C805.778 1102.02 719.516 966.841 685.556 814.892C676.213 772.973 674.543 741.505 669.043 699.625C665.989 717.956 664.948 737.833 662.619 756.316C627.758 1033 413.911 1262.9 141.783 1320.59C94.2811 1330.66 48.9982 1334.85 0.474836 1336C1.54617 1079.52 148.383 844.26 379.696 733.424C447.26 701.051 541.477 675.816 615.641 671.369C597.249 667.178 562.017 668.546 541.651 668.597L444.386 668.623L161.181 668.653C108.006 668.655 53.0336 669.318 0 668.299L0.0634918 0.519834C112.653 -1.21173 231.963 32.0955 329.638 87.3906C484.586 174.986 598.22 320.754 645.369 492.408C652.408 518.564 657.884 545.117 661.769 571.924C664.439 591.484 664.073 610.365 669.479 629.514L670.082 631.613Z";
+
+/**
+ * The lockup without the link, for places that are not navigation: the intro
+ * curtain and the oversized footer watermark. Inherits `currentColor` for the
+ * wordmark and keeps the mark lime.
+ */
+const WORDMARK_PATHS = (
+  <>
+    <path d="M3307.78 302.874C3246.29 259.701 3242.37 161.582 3298.62 110.559C3373.19 43.8382 3500.09 93.5521 3500.09 190.363C3500.09 288.483 3383.66 356.512 3307.78 302.874Z" />
+    <path d="M3780.5 1187.25C3751.71 1174.16 3712.46 1146.69 3692.83 1125.75C3660.12 1090.42 3616.95 1006.68 3616.95 976.58C3616.95 968.729 3660.12 963.495 3728.16 963.495C3815.82 963.495 3839.38 967.421 3839.38 981.814C3839.38 1009.29 3891.71 1042.01 3934.89 1042.01C3980.68 1042.01 4017.32 1022.38 4035.64 989.665C4063.11 937.325 4018.63 899.378 3894.33 873.208C3658.81 823.485 3558.07 642.912 3684.98 497.668C3753.02 421.775 3817.13 394.297 3937.51 394.297C4021.24 394.297 4055.26 400.839 4104.98 425.701C4176.95 459.722 4229.28 529.073 4241.06 602.349L4248.91 649.455H4141.62C4061.81 649.455 4035.64 645.529 4035.64 632.444C4035.64 598.423 3985.92 567.019 3930.96 567.019C3869.47 567.019 3839.38 587.955 3839.38 631.136C3839.38 674.316 3899.56 709.646 4018.63 735.816C4127.23 759.369 4184.8 793.39 4227.97 857.506C4303.86 970.038 4214.89 1151.92 4063.11 1197.72C3984.61 1219.96 3840.68 1216.04 3780.5 1187.25Z" />
+    <path fillRule="evenodd" clipRule="evenodd" d="M1759 669.083V136.522L2031.15 143.065C2180.31 145.682 2322.93 156.15 2347.79 164.001C2410.59 183.629 2487.79 249.054 2517.88 309.245C2571.52 413.925 2563.67 515.988 2496.95 595.806L2465.54 633.753L2510.03 667.774C2595.08 731.891 2629.09 857.507 2596.38 977.889C2578.07 1043.31 2490.4 1138.83 2423.67 1167.62C2375.26 1188.56 2321.62 1192.48 2063.86 1196.41L1759 1201.64V669.083ZM2328.16 981.815C2355.64 971.347 2387.04 908.539 2387.04 865.359C2387.04 844.423 2371.34 815.636 2349.09 792.083C2311.15 754.136 2309.84 754.136 2152.83 754.136H1994.51V871.901V989.666H2150.21C2236.57 989.666 2316.38 985.741 2328.16 981.815ZM2320.31 410C2342.55 458.415 2338.63 478.042 2296.76 519.914C2258.81 556.552 2254.89 557.861 2126.66 557.861H1994.51V453.181V348.501H2118.81C2254.89 348.501 2298.06 361.586 2320.31 410Z" />
+    <path d="M2727.23 956.952C2727.23 744.975 2729.84 707.028 2754.7 642.912C2807.04 501.594 2965.36 387.754 3107.97 387.754H3160.31L3156.39 481.966L3152.46 576.178L3107.97 585.338C3056.95 595.806 3008.54 629.827 2970.59 680.858C2945.73 713.571 2943.11 738.432 2939.19 958.261L2935.26 1199.02H2830.59H2727.23V956.952Z" />
+    <path d="M3276.76 806.476V413.926H3381.43H3486.1V806.476V1199.03H3381.43H3276.76V806.476Z" />
+    <path d="M4375.82 669.081V137.829L4484.42 141.755L4591.71 145.68L4598.25 427.008L4604.8 707.027L4726.48 560.475L4849.47 413.923H4975.08H5099.38L5073.21 444.018C4900.5 637.677 4819.38 743.665 4829.84 758.059C4837.69 765.91 4912.27 862.739 4997.32 970.036C5082.37 1078.64 5156.95 1174.16 5164.8 1183.32C5173.96 1195.1 5149.1 1199.02 5048.35 1199.02H4918.82L4761.81 992.281L4604.8 786.846L4598.25 989.664L4591.71 1192.48L4484.42 1196.41L4375.82 1200.33V669.081Z" />
+  </>
+);
+
+export function Wordmark({ className, markClassName }: { className?: string; markClassName?: string }) {
+  return (
+    <svg viewBox="0 0 5167 1336" className={cn("h-[1em] w-auto", className)} fill="none" aria-hidden focusable="false">
+      <path d={MARK_D} className={markClassName} fill={markClassName ? undefined : "#D3F882"} />
+      <g fill="currentColor">
+        {WORDMARK_PATHS}
+      </g>
+    </svg>
+  );
+}
+
+export function Logo({
+  className,
+  onClick,
+  variant = "full",
+}: {
+  className?: string;
+  onClick?: () => void;
+  variant?: "full" | "mark";
+}) {
+  const label = "Brisk";
+  if (variant === "mark") {
+    return (
+      <Link href="/" onClick={onClick} aria-label={`${label} — home`} data-cursor="link" className={cn("inline-flex", className)}>
+        <svg viewBox="0 0 1336 1336" className="h-[1em] w-auto" fill="none" aria-hidden focusable="false">
+          <path d={MARK_D} fill="#D3F882" />
+        </svg>
+      </Link>
+    );
+  }
   return (
     <Link
       href="/"
       onClick={onClick}
-      aria-label="Brisk — home"
+      aria-label={`${label} — home`}
       data-cursor="link"
-      className={cn("inline-flex items-baseline font-medium tracking-[-0.04em] leading-none", className)}
+      className={cn("inline-flex items-center leading-none", className)}
     >
-      <span>Brisk</span>
-      <span className="text-amber">.</span>
+      {/* One viewBox for the whole lockup keeps the mark and wordmark locked in
+          the proportions the brand file defines. */}
+      <svg viewBox="0 0 5167 1336" className="h-[1em] w-auto" fill="none" aria-hidden focusable="false">
+        <path d={MARK_D} fill="#D3F882" />
+        <g fill="currentColor">{WORDMARK_PATHS}</g>
+      </svg>
     </Link>
   );
 }

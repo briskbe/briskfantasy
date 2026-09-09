@@ -119,7 +119,7 @@ function UrlBar({ shots }: { shots: ShowreelShot[] }) {
       }}
     >
       <div style={{ display: "flex", gap: 8 }}>
-        {[brisk.ember, brisk.amber, brisk.amber2].map((c, i) => (
+        {[brisk.brandDeep, brisk.brand, brisk.brand2].map((c, i) => (
           <span key={i} style={{ width: 12, height: 12, borderRadius: 999, background: c, opacity: 0.85, display: "block" }} />
         ))}
       </div>
@@ -146,7 +146,7 @@ function UrlBar({ shots }: { shots: ShowreelShot[] }) {
           textOverflow: "ellipsis",
         }}
       >
-        <span style={{ width: 8, height: 8, borderRadius: 999, background: brisk.amber, display: "block", flex: "none" }} />
+        <span style={{ width: 8, height: 8, borderRadius: 999, background: brisk.brand, display: "block", flex: "none" }} />
         {shot.name}
       </div>
       {/* URL bar */}
@@ -175,7 +175,7 @@ function UrlBar({ shots }: { shots: ShowreelShot[] }) {
             width: 2,
             height: 18,
             marginLeft: 2,
-            background: brisk.amber,
+            background: brisk.brand,
             opacity: caretOn ? 1 : 0,
           }}
         />
@@ -202,7 +202,7 @@ export function ShowreelBrowser({ shots }: ShowreelBrowserProps) {
   return (
     <AbsoluteFill style={{ background: brisk.ink, overflow: "hidden" }}>
       <Glow x={gx} y={H * 0.1} size={1300} opacity={0.32} />
-      <Glow x={W * 0.9} y={H * 1.05} size={800} color={brisk.sky} opacity={0.12} />
+      <Glow x={W * 0.9} y={H * 1.05} size={800} color={brisk.teal} opacity={0.12} />
       <Grain opacity={0.05} />
 
       <div

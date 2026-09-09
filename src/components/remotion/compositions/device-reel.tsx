@@ -152,7 +152,7 @@ export function DeviceReel({ screens, fit = "cover", zoom = 1 }: DeviceReelProps
             position: "absolute",
             inset: 0,
             borderRadius: RADIUS,
-            background: `linear-gradient(135deg, ${rgba(brisk.amber2, 0.28)} 0%, ${rgba(brisk.paper, 0)} 28%, ${rgba(brisk.paper, 0)} 72%, ${rgba(brisk.sky, 0.14)} 100%)`,
+            background: `linear-gradient(135deg, ${rgba(brisk.brand2, 0.28)} 0%, ${rgba(brisk.paper, 0)} 28%, ${rgba(brisk.paper, 0)} 72%, ${rgba(brisk.teal, 0.14)} 100%)`,
             pointerEvents: "none",
           }}
         />

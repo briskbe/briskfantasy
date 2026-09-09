@@ -72,7 +72,7 @@ function renderWithEmail(text: string, email: string) {
     i === 0
       ? [part]
       : [
-          <a key={i} href={`mailto:${email}`} className="text-fg underline underline-offset-4 hover:text-amber">
+          <a key={i} href={`mailto:${email}`} className="text-fg underline underline-offset-4 hover:text-accent">
             {email}
           </a>,
           part,

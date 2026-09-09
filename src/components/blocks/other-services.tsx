@@ -32,7 +32,7 @@ export async function OtherServices({ current }: { current?: "websites" | "websh
                 <span className="font-mono text-[0.7rem] tracking-[0.18em] text-muted">0{i + 1}</span>
                 <span className="flex items-end justify-between gap-4">
                   <span className="text-h4">{t(`services.${s.key}.title`)}</span>
-                  <ArrowUpRight className="size-5 shrink-0 text-muted transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-amber" />
+                  <ArrowUpRight className="size-5 shrink-0 text-muted transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                 </span>
               </Link>
             </RevealItem>

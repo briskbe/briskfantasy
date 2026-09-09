@@ -88,7 +88,7 @@ export function AppScreens({ screens }: { screens: AppScreen[] }) {
                 <motion.span className="text-fg">{counter}</motion.span> / {String(screens.length).padStart(2, "0")}
               </span>
               <div className="relative h-px flex-1 bg-line" aria-hidden>
-                <motion.div style={{ scaleX: barScale }} className="absolute inset-0 origin-left bg-amber" />
+                <motion.div style={{ scaleX: barScale }} className="absolute inset-0 origin-left bg-brand" />
               </div>
             </div>
           </div>

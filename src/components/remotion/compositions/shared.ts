@@ -6,23 +6,24 @@ import { Easing } from "remotion";
  * (mirrors `src/app/globals.css`).
  */
 export const brisk = {
-  ink: "#07080C",
-  ink2: "#0D0F15",
-  ink3: "#141721",
-  ink4: "#1D2130",
-  paper: "#F4F1EA",
-  paper2: "#E9E4D9",
-  paper3: "#D9D3C5",
-  muted: "#9A968E",
-  mutedLight: "#6B675F",
-  amber: "#FF9F4D",
-  amber2: "#FFC98A",
-  ember: "#D9662B",
-  sky: "#8BB4FF",
-  line: "rgba(244, 241, 234, 0.1)",
-  line2: "rgba(244, 241, 234, 0.18)",
-  lineLight: "rgba(7, 8, 12, 0.12)",
-  lineLight2: "rgba(7, 8, 12, 0.22)",
+  ink: "#0C1619",
+  ink2: "#142328",
+  ink3: "#1B2F36",
+  ink4: "#26424B",
+  paper: "#F2F4EE",
+  paper2: "#E6EBE0",
+  paper3: "#D5DCCD",
+  muted: "#8B9A97",
+  mutedLight: "#63736F",
+  /** The logo lime. Reels render on ink, so this is safe as text there. */
+  brand: "#D3F882",
+  brand2: "#E6FCB8",
+  brandDeep: "#A9D84F",
+  teal: "#5FB3A1",
+  line: "rgba(242, 244, 238, 0.11)",
+  line2: "rgba(242, 244, 238, 0.2)",
+  lineLight: "rgba(12, 22, 25, 0.12)",
+  lineLight2: "rgba(12, 22, 25, 0.22)",
 } as const;
 
 /** Font stacks. The CSS variables resolve inside the Next.js page DOM. */

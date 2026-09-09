@@ -41,7 +41,7 @@ export function Faq() {
                     onClick={() => setOpen(isOpen ? null : k)}
                     className="group flex w-full items-start gap-5 py-6 text-left sm:gap-8 sm:py-7"
                   >
-                    <span className="mt-1.5 w-6 shrink-0 font-mono text-[0.72rem] tracking-[0.18em] text-muted transition-colors group-hover:text-amber">
+                    <span className="mt-1.5 w-6 shrink-0 font-mono text-[0.72rem] tracking-[0.18em] text-muted transition-colors group-hover:text-accent">
                       0{k}
                     </span>
                     <span className="text-h4 flex-1 text-balance">

@@ -12,6 +12,7 @@ import { richTags } from "@/components/ui/rich";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 import { SiteShot } from "./site-shot";
 import type { Reference } from "@/data/references";
+import { siteConfig } from "@/data/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -56,7 +57,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
     >
       {/* atmosphere: one glow, well inside the frame so no edge can show */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="glow-amber absolute -right-[6%] top-[-18%] h-[70vh] w-[62vw] opacity-40 blur-[60px]" />
+        <div className="glow-brand absolute -right-[6%] top-[-18%] h-[70vh] w-[62vw] opacity-40 blur-[60px]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
@@ -187,7 +188,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
           {(["sites", "reply", "intro"] as const).map((k) => (
             <li key={k} className="flex items-center gap-3">
               <span className="size-1.5 shrink-0 rounded-full bg-fg/30" aria-hidden />
-              {t(`hero.facts.${k}`, { count: siteCount })}
+              {t(`hero.facts.${k}`, { count: siteCount, total: siteConfig.projectsDelivered })}
             </li>
           ))}
         </motion.ul>

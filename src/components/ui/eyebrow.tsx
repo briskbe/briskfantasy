@@ -6,18 +6,18 @@ export function Eyebrow({
   children,
   index,
   className,
-  tone = "amber",
+  tone = "accent",
 }: {
   children: ReactNode;
   index?: string | number;
   className?: string;
-  tone?: "amber" | "muted" | "fg";
+  tone?: "accent" | "muted" | "fg";
 }) {
   return (
     <p
       className={cn(
         "eyebrow inline-flex items-center gap-3",
-        tone === "amber" && "text-amber",
+        tone === "accent" && "text-accent",
         tone === "muted" && "text-muted",
         tone === "fg" && "text-fg",
         className,

@@ -61,7 +61,7 @@ function WorkCard({
               <h3 className="text-h3 text-fg">{r.name}</h3>
               <p className="mt-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted">{r.industry[locale]}</p>
             </div>
-            <span className="inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap text-[0.9rem] text-fg-2 transition-colors group-hover:text-amber">
+            <span className="inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap text-[0.9rem] text-fg-2 transition-colors group-hover:text-accent">
               {visit}
               <ArrowUpRight className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>

@@ -16,7 +16,7 @@ export function Numbers({ liveSites, screens }: { liveSites: number; screens: nu
   const t = useTranslations("About.numbers");
 
   const metrics = [
-    { key: "sites", value: liveSites, suffix: "" },
+    { key: "sites", value: liveSites, suffix: "+" },
     { key: "screens", value: screens, suffix: "+" },
     { key: "intro", value: 30, suffix: t("introSuffix") },
     { key: "reply", value: 24, suffix: t("replySuffix") },

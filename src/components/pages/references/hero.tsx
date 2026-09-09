@@ -13,6 +13,7 @@ import {
   type ShowreelShot,
 } from "@/components/remotion/compositions";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import { siteConfig } from "@/data/site";
 import { RemotionPlayer } from "@/components/remotion/remotion-player";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -24,11 +25,9 @@ const EASE = [0.16, 1, 0.3, 1] as const;
  * rail underneath. The two frames drift at different speeds on scroll.
  */
 export function ReferencesHero({
-  siteCount,
   screenCount,
   shots,
 }: {
-  siteCount: number;
   screenCount: number;
   shots: ShowreelShot[];
 }) {
@@ -55,7 +54,7 @@ export function ReferencesHero({
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         {/* One warm glow, kept high and left of the frame stack: the Remotion
             canvas paints flat ink, so any glow behind it would outline it. */}
-        <div className="glow-amber absolute left-[6%] top-[-48%] h-[62vh] w-[58vw] opacity-25" />
+        <div className="glow-brand absolute left-[6%] top-[-48%] h-[62vh] w-[58vw] opacity-25" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
@@ -84,7 +83,7 @@ export function ReferencesHero({
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
                 >
-                  {t.rich("hero.title", { ...richTags, count: siteCount })}
+                  {t.rich("hero.title", { ...richTags, total: siteConfig.projectsDelivered })}
                 </motion.span>
               </span>
             </h1>
@@ -196,7 +195,7 @@ export function ReferencesHero({
               className="size-1.5 shrink-0 rounded-full bg-fg/30"
               aria-hidden
             />
-            {t("hero.facts.sites", { count: siteCount })}
+            {t("hero.facts.sites", { total: siteConfig.projectsDelivered })}
           </li>
           <li className="flex items-center gap-3">
             <span

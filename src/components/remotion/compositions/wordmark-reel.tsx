@@ -26,7 +26,7 @@ const TAGLINE_AT = 58;
 
 /**
  * WordmarkReel: "Brisk." — letters rise with staggered smooth springs, the
- * amber period drops with a bounce and emits a ring, then the tagline types
+ * lime period drops with a bounce and emits a ring, then the tagline types
  * in mono. Fades out at the end so it loops seamlessly.
  */
 export function WordmarkReel({ tagline }: WordmarkReelProps) {
@@ -63,7 +63,7 @@ export function WordmarkReel({ tagline }: WordmarkReelProps) {
   return (
     <AbsoluteFill style={{ background: brisk.ink, overflow: "hidden" }}>
       <Glow x={W * 0.58 + Math.sin(glowT) * 80} y={H * 0.52 + Math.cos(glowT) * 40} size={1300} opacity={0.34 + flash * 0.5} />
-      <Glow x={W * 0.08} y={H * 0.95} size={700} color={brisk.sky} opacity={0.12} />
+      <Glow x={W * 0.08} y={H * 0.95} size={700} color={brisk.teal} opacity={0.12} />
       <Grain opacity={0.05} />
 
       <div
@@ -109,7 +109,7 @@ export function WordmarkReel({ tagline }: WordmarkReelProps) {
               </span>
             );
           })}
-          {/* Amber period */}
+          {/* Lime period */}
           <span style={{ position: "relative", display: "inline-block", width: "0.32em", height: "0.72em", marginLeft: "0.02em" }}>
             {/* Ring */}
             <span
@@ -122,8 +122,8 @@ export function WordmarkReel({ tagline }: WordmarkReelProps) {
                 marginLeft: "-0.13em",
                 marginTop: "-0.26em",
                 borderRadius: 999,
-                border: `2px solid ${brisk.amber}`,
-                boxShadow: `0 0 24px ${rgba(brisk.amber, 0.5)}`,
+                border: `2px solid ${brisk.brand}`,
+                boxShadow: `0 0 24px ${rgba(brisk.brand, 0.5)}`,
                 opacity: ringOpacity,
                 transform: `scale(${ringScale})`,
               }}
@@ -136,8 +136,8 @@ export function WordmarkReel({ tagline }: WordmarkReelProps) {
                 width: "0.26em",
                 height: "0.26em",
                 borderRadius: 999,
-                background: brisk.amber,
-                boxShadow: `0 0 ${24 + flash * 60}px ${rgba(brisk.amber, 0.55 + flash * 0.4)}`,
+                background: brisk.brand,
+                boxShadow: `0 0 ${24 + flash * 60}px ${rgba(brisk.brand, 0.55 + flash * 0.4)}`,
                 opacity: periodOpacity,
                 transform: `translateY(${periodY}px) scale(${1 / squash}, ${squash})`,
                 transformOrigin: "50% 100%",
@@ -166,7 +166,7 @@ export function WordmarkReel({ tagline }: WordmarkReelProps) {
           }}
         >
           <span>{tagline.slice(0, typed)}</span>
-          <span style={{ display: "inline-block", width: 12, height: 28, marginLeft: 8, background: brisk.amber, opacity: caretOn ? 1 : 0 }} />
+          <span style={{ display: "inline-block", width: 12, height: 28, marginLeft: 8, background: brisk.brand, opacity: caretOn ? 1 : 0 }} />
         </div>
       </div>
     </AbsoluteFill>

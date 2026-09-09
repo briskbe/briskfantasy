@@ -83,7 +83,7 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
     <section ref={ref} className="theme-dark relative overflow-hidden bg-ink text-paper grain" aria-labelledby="software-hero-title">
       {/* Screen stack, right half only, desktop only. */}
       <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden>
-        <div className="glow-amber absolute right-[6%] top-[18%] h-[56vh] w-[40vw] opacity-30 blur-[70px]" />
+        <div className="glow-brand absolute right-[6%] top-[18%] h-[56vh] w-[40vw] opacity-30 blur-[70px]" />
         <div className="absolute inset-y-0 right-0 w-[52%] [perspective:1800px]">
           {back && (
             <Screen
@@ -117,14 +117,14 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
           )}
         </div>
         {/* Scrims: copy side stays pure ink, the header line and the stats rule keep clear air. */}
-        <div className="absolute inset-y-0 left-0 w-[78%] bg-[linear-gradient(90deg,#07080c_0%,rgba(7,8,12,0.97)_40%,rgba(7,8,12,0.35)_78%,transparent_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-48 bg-[linear-gradient(180deg,#07080c_0%,rgba(7,8,12,0.8)_55%,transparent_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(0deg,#07080c_0%,rgba(7,8,12,0.85)_45%,transparent_100%)]" />
+        <div className="absolute inset-y-0 left-0 w-[78%] bg-[linear-gradient(90deg,#0c1619_0%,rgba(12,22,25,0.97)_40%,rgba(12,22,25,0.35)_78%,transparent_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-[linear-gradient(180deg,#0c1619_0%,rgba(12,22,25,0.8)_55%,transparent_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-[linear-gradient(0deg,#0c1619_0%,rgba(12,22,25,0.85)_45%,transparent_100%)]" />
       </div>
 
       {/* Mobile / tablet: no screens behind the type — one warm glow and the grain carry it. */}
       <div className="pointer-events-none absolute inset-0 lg:hidden" aria-hidden>
-        <div className="glow-amber absolute -left-[25%] bottom-[-18%] h-[55vh] w-[95vw] opacity-40 blur-[60px]" />
+        <div className="glow-brand absolute -left-[25%] bottom-[-18%] h-[55vh] w-[95vw] opacity-40 blur-[60px]" />
       </div>
 
       <div className="container-x relative flex min-h-[94svh] flex-col justify-end pt-40 pb-10 sm:pt-44 lg:min-h-[100svh] lg:pb-12">

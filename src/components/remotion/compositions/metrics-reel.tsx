@@ -82,9 +82,9 @@ function MetricCell({
           willChange: "transform, filter",
         }}
       >
-        {metric.prefix ? <span style={{ color: brisk.amber, fontSize: "0.6em", verticalAlign: "0.35em", marginRight: "0.05em" }}>{metric.prefix}</span> : null}
+        {metric.prefix ? <span style={{ color: brisk.brand, fontSize: "0.6em", verticalAlign: "0.35em", marginRight: "0.05em" }}>{metric.prefix}</span> : null}
         {number}
-        {metric.suffix ? <span style={{ color: brisk.amber, fontSize: "0.62em", marginLeft: "0.04em" }}>{metric.suffix}</span> : null}
+        {metric.suffix ? <span style={{ color: brisk.brand, fontSize: "0.62em", marginLeft: "0.04em" }}>{metric.suffix}</span> : null}
       </div>
       <div
         style={{
@@ -100,7 +100,7 @@ function MetricCell({
           textWrap: "balance",
         }}
       >
-        <span style={{ width: 7, height: 7, borderRadius: 999, background: brisk.amber, display: "block", flex: "none", marginTop: 8 }} />
+        <span style={{ width: 7, height: 7, borderRadius: 999, background: brisk.brand, display: "block", flex: "none", marginTop: 8 }} />
         <span>{metric.label}</span>
       </div>
     </div>

@@ -11,7 +11,7 @@
     "secondary": "See our webshops",
     "shotAlt": "{name}, a webshop designed and built by Brisk",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{total}+ projects delivered",
       "reply": "Reply within 24 hours",
       "intro": "Free 30-minute intro call"
     },
@@ -89,12 +89,30 @@
         "results": "Results",
         "fit": "Fits",
         "products": {
-          "1": { "name": "Euro 5 DPF", "price": "€ 189.00" },
-          "2": { "name": "Euro 6 DPF", "price": "€ 249.00" },
-          "3": { "name": "DPF with catalyst", "price": "€ 329.00" },
-          "4": { "name": "Euro 6 catalyst", "price": "€ 279.00" },
-          "5": { "name": "Pressure sensor", "price": "€ 59.00" },
-          "6": { "name": "Fitting kit", "price": "€ 34.00" }
+          "1": {
+            "name": "Euro 5 DPF",
+            "price": "€ 189.00"
+          },
+          "2": {
+            "name": "Euro 6 DPF",
+            "price": "€ 249.00"
+          },
+          "3": {
+            "name": "DPF with catalyst",
+            "price": "€ 329.00"
+          },
+          "4": {
+            "name": "Euro 6 catalyst",
+            "price": "€ 279.00"
+          },
+          "5": {
+            "name": "Pressure sensor",
+            "price": "€ 59.00"
+          },
+          "6": {
+            "name": "Fitting kit",
+            "price": "€ 34.00"
+          }
         }
       },
       "2": {
@@ -125,8 +143,14 @@
         "method2": "Apple Pay",
         "method3": "Credit card",
         "summary": {
-          "1": { "label": "Euro 6 DPF", "value": "€ 249.00" },
-          "2": { "label": "Shipping", "value": "Free" }
+          "1": {
+            "label": "Euro 6 DPF",
+            "value": "€ 249.00"
+          },
+          "2": {
+            "label": "Shipping",
+            "value": "Free"
+          }
         },
         "total": "Total",
         "totalValue": "€ 249.00",

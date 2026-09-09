@@ -108,8 +108,8 @@ export function AboutHero() {
     >
       {/* Backdrop: one warm glow, a cool counterweight, grain */}
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-        <div className="absolute -right-[10%] top-[5%] h-[70vh] w-[70vh] glow-amber opacity-35 blur-3xl" />
-        <div className="absolute -left-[15%] bottom-[-10%] h-[50vh] w-[50vh] glow-sky opacity-20 blur-3xl" />
+        <div className="absolute -right-[10%] top-[5%] h-[70vh] w-[70vh] glow-brand opacity-35 blur-3xl" />
+        <div className="absolute -left-[15%] bottom-[-10%] h-[50vh] w-[50vh] glow-teal opacity-20 blur-3xl" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 grain" aria-hidden />
@@ -119,7 +119,7 @@ export function AboutHero() {
           {/* Copy */}
           <motion.div className="lg:col-span-7" style={drift ? undefined : { y: textY, opacity: fade }}>
             <motion.p
-              className="eyebrow inline-flex items-center gap-3 text-amber"
+              className="eyebrow inline-flex items-center gap-3 text-accent"
               initial={{ opacity: 0, y: 12 }}
               animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               transition={reduced ? { duration: 0 } : { duration: 0.8, ease: EASE, delay }}

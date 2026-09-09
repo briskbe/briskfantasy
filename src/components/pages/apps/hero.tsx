@@ -55,7 +55,7 @@ function ScreenReel({ alt }: { alt: string }) {
 /**
  * Editorial hero: a display headline over seven columns, the lead, the call to
  * action and the facts row stacked underneath it, and two phones standing in
- * the right-hand columns over an amber glow — no card, no hairline box.
+ * the right-hand columns over an lime glow — no card, no hairline box.
  */
 export function AppsHero() {
   const t = useTranslations("Apps");
@@ -72,8 +72,8 @@ export function AppsHero() {
   return (
     <section ref={ref} className="theme-dark relative overflow-hidden bg-ink text-paper grain" aria-labelledby="apps-hero-title">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="glow-sky absolute -left-[20%] top-[-30%] h-[60vh] w-[60vw] opacity-20" />
-        <div className="glow-amber absolute right-[-6%] top-[16%] h-[70vh] w-[52vw] opacity-45" />
+        <div className="glow-teal absolute -left-[20%] top-[-30%] h-[60vh] w-[60vw] opacity-20" />
+        <div className="glow-brand absolute right-[-6%] top-[16%] h-[70vh] w-[52vw] opacity-45" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 

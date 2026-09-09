@@ -132,7 +132,7 @@ export function WorkGrid({ items }: { items: WorkCardData[] }) {
                     {active && (
                       <motion.span
                         layoutId="work-filter-pill"
-                        className="absolute inset-0 rounded-full bg-amber"
+                        className="absolute inset-0 rounded-full bg-brand"
                         transition={{
                           type: "spring",
                           stiffness: 380,
@@ -352,9 +352,9 @@ function NextProjectCard({ size }: { size: number }) {
       <Link
         href="/gesprek-inplannen"
         data-cursor-label="→"
-        className="group flex h-full min-h-[20rem] flex-col justify-between rounded-2xl border border-dashed border-line-2 p-6 transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-amber hover:bg-fg/[0.03] sm:p-8"
+        className="group flex h-full min-h-[20rem] flex-col justify-between rounded-2xl border border-dashed border-line-2 p-6 transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-accent hover:bg-fg/[0.03] sm:p-8"
       >
-        <span className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-amber">
+        <span className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-accent">
           {t("grid.next.eyebrow")}
         </span>
         <span className="mt-10">

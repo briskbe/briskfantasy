@@ -62,8 +62,8 @@
   "clients": {
     "eyebrow": "Vertrouwd door",
     "title": "Van overheden tot <em>Fortune 100</em> en startups.",
-    "lead": "Al meer dan {years} jaar bouwen we digitale producten voor organisaties waar het echt op aankomt. Dezelfde mensen, dezelfde zorg, of het nu om een nationale spoorwegmaatschappij gaat of om een startup van drie.",
-    "note": "Werk voor NMBS, De Watergroep, IDEWE, de Belgische Voetbalbond, museumPASSmusées, BMW, Nike en OpenAI. Logo's zijn eigendom van hun respectievelijke merken.",
-    "compactEyebrow": "{years}+ jaar werk voor overheden, Fortune 100-merken en startups"
+    "lead": "In {years} jaar bouwden we meer dan {total} websites, webshops en softwareprojecten op maat. Voor een nationale spoorwegmaatschappij net zo goed als voor een startup van drie.",
+    "note": "Alles wat je op deze site ziet is een selectie uit meer dan {total} projecten. Werk voor onder meer NMBS, De Watergroep, IDEWE, de Belgische Voetbalbond, museumPASSmusées, BMW, Nike en OpenAI. Logo's zijn eigendom van hun respectievelijke merken.",
+    "compactEyebrow": "{total}+ projecten in {years} jaar — voor overheden, Fortune 100-merken en startups"
   }
 }

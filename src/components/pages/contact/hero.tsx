@@ -72,7 +72,7 @@ export function ContactHero() {
         aria-hidden
         style={reduced ? undefined : { y: glowY }}
       >
-        <div className="absolute -right-[14%] top-[-8%] h-[78vh] w-[78vh] glow-amber opacity-30 blur-3xl" />
+        <div className="absolute -right-[14%] top-[-8%] h-[78vh] w-[78vh] glow-brand opacity-30 blur-3xl" />
       </motion.div>
       <div className="pointer-events-none absolute inset-0 -z-10 grain" aria-hidden />
 
@@ -104,14 +104,14 @@ export function ContactHero() {
                 {t("lead")}
               </motion.p>
 
-              {/* The one amber moment of this viewport: the promise of an answer */}
+              {/* The one lime moment of this viewport: the promise of an answer */}
               <motion.p
                 className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-line py-2 pl-3.5 pr-4.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-fg-2"
                 {...fade(0.55)}
               >
                 <span className="relative flex size-1.5" aria-hidden>
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber opacity-70 motion-reduce:hidden" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-amber" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70 motion-reduce:hidden" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
                 </span>
                 {t("responseBadge")}
               </motion.p>

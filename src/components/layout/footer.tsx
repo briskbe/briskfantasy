@@ -5,6 +5,7 @@ import { siteConfig } from "@/data/site";
 import { richTags } from "@/components/ui/rich";
 import { Button } from "@/components/ui/button";
 import { BackToTop } from "./back-to-top";
+import { Wordmark } from "./logo";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
@@ -13,7 +14,7 @@ export async function Footer() {
 
   return (
     <footer className="theme-dark relative overflow-hidden bg-ink text-paper">
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 glow-amber opacity-30" aria-hidden />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 glow-brand opacity-30" aria-hidden />
       <div className="container-x relative">
         <div className="grid gap-12 border-t border-line pt-20 pb-16 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-6">
@@ -37,31 +38,31 @@ export async function Footer() {
             <div>
               <p className="eyebrow text-muted mb-5">{t("columns.services")}</p>
               <ul className="space-y-3 text-[0.95rem]">
-                <li><Link className="hover:text-amber transition-colors" href="/website-op-maat">{t("links.websites")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/webshop-op-maat">{t("links.webshops")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/software-op-maat">{t("links.software")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/mobiele-apps">{t("links.apps")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/website-op-maat">{t("links.websites")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/webshop-op-maat">{t("links.webshops")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/software-op-maat">{t("links.software")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/mobiele-apps">{t("links.apps")}</Link></li>
               </ul>
             </div>
             <div>
               <p className="eyebrow text-muted mb-5">{t("columns.company")}</p>
               <ul className="space-y-3 text-[0.95rem]">
-                <li><Link className="hover:text-amber transition-colors" href="/referenties">{t("links.references")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/over-ons">{t("links.about")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/gesprek-inplannen">{t("links.contact")}</Link></li>
-                <li><Link className="hover:text-amber transition-colors" href="/privacy">{t("links.privacy")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/referenties">{t("links.references")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/over-ons">{t("links.about")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/gesprek-inplannen">{t("links.contact")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/privacy">{t("links.privacy")}</Link></li>
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
               <p className="eyebrow text-muted mb-5">{t("columns.contact")}</p>
               <ul className="space-y-3 text-[0.95rem]">
                 <li>
-                  <a className="hover:text-amber transition-colors" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+                  <a className="hover:text-accent transition-colors" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                 </li>
                 <li className="text-muted">{siteConfig.location[locale]}</li>
                 {siteConfig.socials.map((s) => (
                   <li key={s.label}>
-                    <a className="hover:text-amber transition-colors" href={s.href} target="_blank" rel="noreferrer noopener">
+                    <a className="hover:text-accent transition-colors" href={s.href} target="_blank" rel="noreferrer noopener">
                       {s.label}
                     </a>
                   </li>
@@ -87,9 +88,10 @@ export async function Footer() {
 
       <div className="container-x relative select-none" aria-hidden>
         <div className="mask-fade-b overflow-hidden">
-          <p className="translate-y-[18%] text-center text-[clamp(6rem,24vw,26rem)] font-medium leading-none tracking-[-0.06em] text-paper/[0.06]">
-            Brisk<span className="text-amber/40">.</span>
-          </p>
+          <Wordmark
+            className="translate-y-[18%] mx-auto block h-[clamp(4rem,15vw,16rem)] text-paper/[0.07]"
+            markClassName="fill-brand/25"
+          />
         </div>
       </div>
     </footer>

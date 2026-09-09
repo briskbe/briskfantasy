@@ -23,7 +23,7 @@ export async function Closing() {
         >
           <span className="relative">
             {siteConfig.email}
-            <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-amber transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100" />
+            <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-brand transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-x-100" />
           </span>
           <ArrowUpRight className="size-[0.5em] shrink-0 self-center text-muted transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-1 group-hover:translate-x-1" />
         </a>
@@ -35,7 +35,7 @@ export async function Closing() {
           <dt className="text-[1.05rem] font-medium tracking-[-0.01em] text-fg">{t("briefTitle")}</dt>
           <dd className="mt-2 text-[0.95rem] leading-relaxed text-muted text-pretty">
             {t("briefBody")}{" "}
-            <a href="#formulier" className="text-fg underline decoration-line-2 underline-offset-4 transition-colors hover:decoration-amber">
+            <a href="#formulier" className="text-fg underline decoration-line-2 underline-offset-4 transition-colors hover:decoration-accent">
               {t("briefLink")}
             </a>
           </dd>

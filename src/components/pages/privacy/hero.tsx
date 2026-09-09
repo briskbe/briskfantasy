@@ -9,7 +9,7 @@ export async function PrivacyHero() {
   return (
     <section className="theme-dark relative isolate overflow-hidden bg-ink text-paper" aria-labelledby="privacy-title">
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-        <div className="absolute -left-[10%] top-[10%] h-[60vh] w-[60vh] glow-amber opacity-25 blur-3xl" />
+        <div className="absolute -left-[10%] top-[10%] h-[60vh] w-[60vh] glow-brand opacity-25 blur-3xl" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10 grain" aria-hidden />
@@ -18,7 +18,7 @@ export async function PrivacyHero() {
         <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow inline-flex items-center gap-3 text-amber">
+              <p className="eyebrow inline-flex items-center gap-3 text-accent">
                 <span className="size-1.5 rounded-full bg-current" aria-hidden />
                 {t("eyebrow")}
               </p>

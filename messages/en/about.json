@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "About Brisk — A digital agency from Belgium",
-    "description": "Brisk designs and builds custom websites, webshops, software and mobile apps. You talk to the people who build it. {sites} live websites, a reply within 24 hours."
+    "description": "Brisk designs and builds custom websites, webshops, software and apps. You talk to the people who build it. More than {total} projects delivered, and we reply within 24 hours."
   },
   "hero": {
     "eyebrow": "About Brisk",
@@ -81,7 +81,7 @@
     "eyebrow": "In numbers",
     "title": "What's <em>live</em> today.",
     "items": {
-      "sites": "live websites",
+      "sites": "projects delivered",
       "screens": "product screens",
       "intro": "free intro call",
       "reply": "reply time"

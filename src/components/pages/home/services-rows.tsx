@@ -113,7 +113,7 @@ export function ServicesRows() {
                 animate={{ opacity: 1, scale: 1, rotate: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 0.9, rotate: 2, filter: "blur(6px)" }}
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                className="overflow-hidden rounded-2xl border border-line bg-bg-2 shadow-[0_40px_90px_-30px_rgba(7,8,12,0.55)]"
+                className="overflow-hidden rounded-2xl border border-line bg-bg-2 shadow-[0_40px_90px_-30px_rgba(12,22,25,0.55)]"
               >
                 <PreviewMedia preview={SERVICES[active].preview} alt="" />
               </motion.div>

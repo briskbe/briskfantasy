@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Brisk — Custom websites, webshops, software and apps",
-    "description": "Brisk is a digital agency in Belgium. We design and build custom websites, webshops, software and mobile apps. 17 live websites, replies within 24 hours."
+    "description": "Brisk is a digital agency from Belgium. More than {total} custom websites, webshops and software built over {years} years. We reply within 24 hours."
   },
   "hero": {
     "eyebrow": "Digital agency · Belgium",
@@ -21,7 +21,7 @@
     }
   },
   "trust": {
-    "liveLabel": "live websites",
+    "liveLabel": "projects delivered",
     "screensLabel": "product screens",
     "marqueeLabel": "Clients live today"
   },
@@ -51,7 +51,7 @@
   "work": {
     "eyebrow": "Selected work",
     "title": "Work that is <em>live</em> today.",
-    "lead": "Seventeen websites, webshops and platforms running right now for clients in Belgium and beyond. No concepts, no mockups.",
+    "lead": "A handful of the {total}+ websites, webshops and platforms we have built. What you see here is a selection, not concepts or mockups.",
     "visit": "View live",
     "cursor": "View",
     "all": "All references",
@@ -125,7 +125,7 @@
       }
     },
     "metrics": {
-      "sites": "Live websites",
+      "sites": "Projects delivered",
       "screens": "Product screens",
       "reply": "Response time",
       "intro": "Free intro call"

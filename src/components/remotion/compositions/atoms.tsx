@@ -3,13 +3,13 @@ import { brisk, rgba } from "./shared";
 
 /**
  * Soft radial glow. Position with `x`/`y` (px, centre) and `size` (diameter).
- * One amber glow per screen; sky only as a sparse secondary.
+ * One lime glow per screen; teal only as a sparse secondary.
  */
 export function Glow({
   x,
   y,
   size,
-  color = brisk.amber,
+  color = brisk.brand,
   opacity = 0.35,
   style,
 }: {

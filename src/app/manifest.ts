@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Websites, webshops, software en apps op maat.",
     start_url: "/",
     display: "standalone",
-    theme_color: "#07080C",
-    background_color: "#07080C",
+    theme_color: "#0C1619",
+    background_color: "#0C1619",
     icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

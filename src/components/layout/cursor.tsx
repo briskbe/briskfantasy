@@ -5,7 +5,7 @@ import { motion, useMotionValue, useSpring } from "motion/react";
 import { useFinePointer } from "@/hooks/use-media-query";
 
 /**
- * A quiet custom cursor: a small amber dot that follows the pointer and a
+ * A quiet custom cursor: a small lime dot that follows the pointer and a
  * larger ring that expands over interactive elements. Elements can request a
  * label with `data-cursor-label="Bekijk"` (shown inside the ring) or hide the
  * cursor with `data-cursor="hide"` (e.g. over video players).
@@ -66,14 +66,14 @@ export function Cursor() {
     <>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9999] size-2 rounded-full bg-amber"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] size-2 rounded-full bg-brand"
         style={{ x, y, translateX: "-50%", translateY: "-50%" }}
         animate={{ opacity: mode === "hide" ? 0 : 1, scale: mode === "link" ? 0 : 1 }}
         transition={{ duration: 0.2 }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9998] flex items-center justify-center rounded-full border border-amber/70 bg-amber/0 text-ink"
+        className="pointer-events-none fixed left-0 top-0 z-[9998] flex items-center justify-center rounded-full border border-accent/70 bg-brand/0 text-ink"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
         animate={{
           width: ringSize,

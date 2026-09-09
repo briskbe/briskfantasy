@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { Wordmark } from "./logo";
 
 const SESSION_KEY = "brisk:intro-seen";
 
@@ -66,9 +67,9 @@ export function Preloader() {
             <motion.div
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 } }}
-              className="text-display leading-none"
+              className="leading-none"
             >
-              Brisk<span className="text-amber">.</span>
+              <Wordmark className="h-[clamp(2.5rem,7vw,6rem)] text-paper" />
             </motion.div>
             <div className="font-mono text-[clamp(2rem,6vw,5rem)] leading-none tabular-nums text-muted">
               {String(count).padStart(3, "0")}

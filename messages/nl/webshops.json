@@ -11,7 +11,7 @@
     "secondary": "Bekijk webshops",
     "shotAlt": "{name}, een webshop ontworpen en gebouwd door Brisk",
     "facts": {
-      "sites": "{count} websites live",
+      "sites": "{total}+ projecten opgeleverd",
       "reply": "Antwoord binnen 24 uur",
       "intro": "Gratis kennismaking van 30 minuten"
     },
@@ -89,12 +89,30 @@
         "results": "Resultaten",
         "fit": "Past",
         "products": {
-          "1": { "name": "Roetfilter Euro 5", "price": "€ 189,00" },
-          "2": { "name": "Roetfilter Euro 6", "price": "€ 249,00" },
-          "3": { "name": "Roetfilter met kat", "price": "€ 329,00" },
-          "4": { "name": "Katalysator Euro 6", "price": "€ 279,00" },
-          "5": { "name": "Drukverschilsensor", "price": "€ 59,00" },
-          "6": { "name": "Montageset", "price": "€ 34,00" }
+          "1": {
+            "name": "Roetfilter Euro 5",
+            "price": "€ 189,00"
+          },
+          "2": {
+            "name": "Roetfilter Euro 6",
+            "price": "€ 249,00"
+          },
+          "3": {
+            "name": "Roetfilter met kat",
+            "price": "€ 329,00"
+          },
+          "4": {
+            "name": "Katalysator Euro 6",
+            "price": "€ 279,00"
+          },
+          "5": {
+            "name": "Drukverschilsensor",
+            "price": "€ 59,00"
+          },
+          "6": {
+            "name": "Montageset",
+            "price": "€ 34,00"
+          }
         }
       },
       "2": {
@@ -125,8 +143,14 @@
         "method2": "Apple Pay",
         "method3": "Kredietkaart",
         "summary": {
-          "1": { "label": "Roetfilter Euro 6", "value": "€ 249,00" },
-          "2": { "label": "Verzending", "value": "Gratis" }
+          "1": {
+            "label": "Roetfilter Euro 6",
+            "value": "€ 249,00"
+          },
+          "2": {
+            "label": "Verzending",
+            "value": "Gratis"
+          }
         },
         "total": "Totaal",
         "totalValue": "€ 249,00",

@@ -11,7 +11,7 @@
     "secondary": "Bekijk het werk",
     "shotAlt": "{name}, een website ontworpen en gebouwd door Brisk",
     "facts": {
-      "sites": "{count} sites live",
+      "sites": "{total}+ projecten opgeleverd",
       "reply": "Antwoord binnen 24 uur",
       "intro": "Gratis kennismaking van 30 minuten"
     }

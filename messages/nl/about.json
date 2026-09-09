@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Over Brisk — Digitaal bureau uit België",
-    "description": "Brisk ontwerpt en bouwt websites, webshops, software en apps op maat. Je praat rechtstreeks met wie het bouwt. {sites} live websites, antwoord binnen 24 uur."
+    "description": "Brisk ontwerpt en bouwt websites, webshops, software en apps op maat. Je praat rechtstreeks met wie het bouwt. Meer dan {total} projecten opgeleverd, antwoord binnen 24 uur."
   },
   "hero": {
     "eyebrow": "Over Brisk",
@@ -81,7 +81,7 @@
     "eyebrow": "In cijfers",
     "title": "Wat vandaag <em>live</em> staat.",
     "items": {
-      "sites": "live websites",
+      "sites": "projecten opgeleverd",
       "screens": "productschermen",
       "intro": "gratis kennismaking",
       "reply": "reactietijd"

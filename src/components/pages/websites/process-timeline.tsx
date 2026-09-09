@@ -11,8 +11,8 @@ import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 const STEPS = ["1", "2", "3", "4"] as const;
 
 function Dot({ progress, at }: { progress: MotionValue<number>; at: number }) {
-  const bg = useTransform(progress, [at - 0.02, at + 0.03], ["var(--bg)", "var(--color-amber)"]);
-  const border = useTransform(progress, [at - 0.02, at + 0.03], ["var(--line-2)", "var(--color-amber)"]);
+  const bg = useTransform(progress, [at - 0.02, at + 0.03], ["var(--bg)", "var(--color-brand)"]);
+  const border = useTransform(progress, [at - 0.02, at + 0.03], ["var(--line-2)", "var(--color-brand)"]);
   const scale = useTransform(progress, [at - 0.02, at + 0.03], [1, 1.25]);
   return (
     <motion.span
@@ -24,7 +24,7 @@ function Dot({ progress, at }: { progress: MotionValue<number>; at: number }) {
 }
 
 /**
- * Light section: four steps on a hairline. The amber line draws as the
+ * Light section: four steps on a hairline. The lime line draws as the
  * section scrolls through the viewport; dots light up as the line passes.
  */
 export function ProcessTimeline() {
@@ -61,11 +61,11 @@ export function ProcessTimeline() {
         <div ref={ref} className="relative mt-16 lg:mt-24">
           {/* horizontal track (md+) */}
           <div className="absolute inset-x-0 top-[5px] hidden h-px bg-line md:block" aria-hidden>
-            <motion.div style={{ scaleX }} className="h-full w-full origin-left bg-amber" />
+            <motion.div style={{ scaleX }} className="h-full w-full origin-left bg-brand" />
           </div>
           {/* vertical track (mobile) */}
           <div className="absolute bottom-0 left-[5px] top-0 w-px bg-line md:hidden" aria-hidden>
-            <motion.div style={{ scaleY }} className="h-full w-full origin-top bg-amber" />
+            <motion.div style={{ scaleY }} className="h-full w-full origin-top bg-brand" />
           </div>
 
           <ol className="grid gap-12 md:grid-cols-4 md:gap-6 lg:gap-8">

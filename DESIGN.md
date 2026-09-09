@@ -13,6 +13,15 @@ sunlit clouds, laptop glowing. Big sky, warm light, focus.
 
 Primary CTA everywhere: **"Gesprek inplannen"** (EN: "Book a call") → route `/gesprek-inplannen`.
 
+The logo is the lime pinwheel mark plus the wordmark, in `src/components/layout/logo.tsx`
+as inline SVG (`Logo` links home, `Wordmark` does not). The wordmark takes `currentColor`
+so one component works on the dark header and on a paper section; the mark stays lime.
+Source files are in `/public/logo.svg`, `logo-light.svg` and `logo-mark.svg`.
+
+**Scale of the work:** more than `siteConfig.projectsDelivered` (150) websites, webshops and
+software projects delivered in 17+ years. Everything shown on the site is a **selection**, so
+never present the 17 live reference sites or the 50+ product screens as the whole body of work.
+
 Tone of voice
 - NL: informeel-professioneel ("je/jij", nooit "u"), kort, concreet, zelfverzekerd. Geen buzzwords, geen uitroeptekens.
 - EN: confident, concise, human. No hype, no exclamation marks, no "leverage/unlock/elevate".
@@ -30,11 +39,14 @@ restraint, more motion craft.
 
 ## 3. Tokens (see `src/app/globals.css`)
 
-Colors (Tailwind classes)
-- `ink` #07080C page black · `ink-2` #0D0F15 raised · `ink-3` #141721 card · `ink-4` #1D2130
-- `paper` #F4F1EA warm off-white · `paper-2` #E9E4D9 · `paper-3` #D9D3C5
-- `amber` #FF9F4D **the** accent (CTAs, the logo period, one highlight per screen) · `amber-2` #FFC98A · `ember` #D9662B
-- `sky` #8BB4FF cool secondary glow, use sparingly (max one glow per section)
+Colors (Tailwind classes) — taken from the logo: a lime mark on a deep teal-charcoal.
+- `ink` #0C1619 page black · `ink-2` #142328 the logo's own dark, raised surfaces · `ink-3` #1B2F36 card · `ink-4` #26424B
+- `paper` #F2F4EE off-white with a faint green cast · `paper-2` #E6EBE0 · `paper-3` #D5DCCD
+- `brand` #D3F882 the logo lime. It is a **fill**: lime background, ink text. Never set it as
+  text on paper — lime on off-white is about 1.5:1 and unreadable. · `brand-2` #E6FCB8 (hover on dark) · `brand-deep` #A9D84F (hover on light fills)
+- `accent` is **theme-aware**: the lime on dark, a deep leaf green (#3F6212, ~6:1 on paper) on light.
+  Use it for text, dots and borders — `text-accent` on an eyebrow stays legible in either theme.
+- `teal` #5FB3A1 cool secondary glow, use sparingly (max one glow per section) · `teal-2` #A5D9CD
 - Runtime-themed: `bg-bg`, `bg-bg-2`, `bg-bg-3`, `text-fg`, `text-fg-2`, `text-muted`, `border-line`, `border-line-2`.
   These follow the nearest `.theme-dark` / `.theme-light` wrapper. **Prefer these** inside
   sections so a block can be dropped into a dark or light section unchanged.
@@ -43,11 +55,11 @@ Typography
 - Sans: Geist (`font-sans`, default). Mono: Geist Mono (`font-mono`). Serif accent: Instrument Serif italic (`font-serif` / `.serif` / `<em>` inside headline classes).
 - Scale classes: `.text-display` (hero only, 1 per page), `.text-h1`, `.text-h2`, `.text-h3`, `.text-h4`, `.text-lead`, `.text-body`, `.eyebrow`.
 - **Stepped hierarchy is binding.** `.text-display` belongs to the hero and nowhere else. Section headings are `.text-h2`; the shared `CtaBand` closes at `.text-h1`. Setting every section headline near hero scale flattens the page into a stack of repeated heroes — the most common failure the reviewers found. Give a section weight with space and a lead paragraph in the opposite column, not with a bigger headline.
-- **Amber budget: one accent moment per viewport.** Amber belongs to the primary CTA, the logo period, and one deliberate highlight per screen. When amber lands on eyebrow dots, caption dots, stat labels, marquee separators and arrows at once, the accent stops meaning anything. Everything else is `text-muted` / `text-fg`.
+- **Accent budget: one accent moment per viewport.** The lime belongs to the primary CTA, the logo mark, and one deliberate highlight per screen. When it lands on eyebrow dots, caption dots, stat labels, marquee separators and arrows at once, the accent stops meaning anything. Everything else is `text-muted` / `text-fg`. The header is the test case: the CTA is lime, so the language switcher is plain text.
 - Headlines: weight 500, tight tracking (already in the classes). Max ~12 words. Use `text-balance`.
 - Serif italic accent: one emphasized word per headline, via `<em>` in the message string and `t.rich(key, richTags)`. Example NL: `"Websites die <em>bewegen</em>."` Don't overuse: max one `<em>` per headline, not on every headline.
 - Body: `text-body text-muted` on dark, `text-fg-2` for emphasized paragraphs. Max width ~60ch (`max-w-xl`/`max-w-2xl`).
-- Eyebrows: `<Eyebrow index={1}>Strategie</Eyebrow>` mono, uppercase, amber dot or number.
+- Eyebrows: `<Eyebrow index={1}>Strategie</Eyebrow>` mono, uppercase, accent dot or number.
 
 Spacing & layout
 - Horizontal container: `container-x` (fluid gutter, max 112rem). Vertical rhythm: `section-y` (5–11rem), `section-y-sm`.
@@ -58,7 +70,7 @@ Spacing & layout
 - **No dead columns or vertical voids.** Every grid column earns its place. If a column would be empty, collapse the grid instead of leaving a hairline around emptiness, and never fill a void with filler copy.
 
 Texture
-- `.grain` (adds a subtle noise overlay to a `relative` parent), `.glow-amber`, `.glow-sky` (radial glows, absolutely positioned, `opacity-30..60`), `.glass` (blurred surface), `.browser-frame` (screenshot chrome), `.stroke-text` (outlined giant text), `.mask-fade-x/-b`.
+- `.grain` (adds a subtle noise overlay to a `relative` parent), `.glow-brand`, `.glow-teal` (radial glows, absolutely positioned, `opacity-30..60`), `.glass` (blurred surface), `.browser-frame` (screenshot chrome), `.stroke-text` (outlined giant text), `.mask-fade-x/-b`.
 
 ## 4. Motion principles
 
@@ -75,7 +87,7 @@ Texture
 Layout (already wired in `src/app/[locale]/layout.tsx`): `Header` (glass pill nav, hides on scroll down, fullscreen menu), `Footer`, `Preloader`, `Cursor`, `SmoothScroll`, `LanguageSwitcher`.
 
 UI (`src/components/ui`)
-- `Button` — `variant` primary (amber) | secondary (outline) | inverse | ghost; `size` sm|md|lg; `href` (internal localized route) or `external`; `icon` arrow|up-right|none. Magnetic by default.
+- `Button` — `variant` primary (lime fill, ink text) | secondary (outline) | inverse | ghost; `size` sm|md|lg; `href` (internal localized route) or `external`; `icon` arrow|up-right|none. Magnetic by default.
 - `Section` — `theme="dark|light"`, `padded`, wraps children in `container-x`. `Container`.
 - `Eyebrow` — mono label; `index` for numbered sections.
 - `Reveal`, `RevealGroup`, `RevealItem` — in-view entrances.
@@ -83,7 +95,7 @@ UI (`src/components/ui`)
 - `MarqueeBand` — CSS marquee, pass children (logos, words); `reverse`, `speed`.
 - `MicrolinkShot` — live website screenshot (Microlink) over the static capture, with browser chrome. Props: `url`, `slug`, `alt`, `frame`, `live`, `priority`.
 - `Magnetic` — pointer attraction wrapper.
-- `richTags` (`src/components/ui/rich.tsx`) — pass to `t.rich()`: `<em>`, `<amber>`, `<strong>`, `<nowrap>`, `<br>`.
+- `richTags` (`src/components/ui/rich.tsx`) — pass to `t.rich()`: `<em>`, `<accent>`, `<strong>`, `<nowrap>`, `<br>`.
 
 Blocks (`src/components/blocks`)
 - `CtaBand` — closing CTA (every page ends with it).

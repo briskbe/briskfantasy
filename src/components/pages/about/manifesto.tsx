@@ -35,10 +35,10 @@ export function Manifesto() {
       </Reveal>
 
       <div ref={ref} className="relative lg:col-span-7 lg:col-start-6">
-        {/* Reading progress line — the single amber moment on this screen */}
+        {/* Reading progress line — the single lime moment on this screen */}
         <div className="pointer-events-none absolute -left-8 top-0 bottom-0 hidden w-px bg-line lg:block" aria-hidden>
           <motion.span
-            className="absolute inset-x-0 top-0 h-full origin-top bg-amber"
+            className="absolute inset-x-0 top-0 h-full origin-top bg-brand"
             style={{ scaleY: reduced ? 1 : scaleY }}
           />
         </div>

@@ -27,11 +27,11 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-amber text-ink hover:bg-amber-2 shadow-[0_0_0_0_rgba(255,159,77,0)] hover:shadow-[0_12px_40px_-12px_rgba(255,159,77,0.65)]",
+    "bg-brand text-ink hover:bg-brand-2 shadow-[0_0_0_0_rgba(255,159,77,0)] hover:shadow-[0_12px_40px_-12px_rgba(255,159,77,0.65)]",
   secondary:
     "bg-transparent text-fg border border-line-2 hover:border-fg/60 hover:bg-fg/5",
   inverse: "bg-fg text-bg hover:bg-fg/90",
-  ghost: "bg-transparent text-fg px-0 hover:text-amber",
+  ghost: "bg-transparent text-fg px-0 hover:text-accent",
 };
 
 const sizes: Record<Size, string> = {

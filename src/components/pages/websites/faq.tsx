@@ -33,7 +33,7 @@ function Item({ q, a, open, onToggle, baseId }: { q: string; a: string; open: bo
           <span
             className={cn(
               "mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border transition-[transform,border-color,background-color,color] duration-500 ease-[var(--ease-out-expo)]",
-              open ? "rotate-45 border-amber bg-amber text-ink" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
+              open ? "rotate-45 border-accent bg-brand text-ink" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
             )}
             aria-hidden
           >

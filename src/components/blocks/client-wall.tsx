@@ -1,5 +1,6 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { clients, yearsOfExperience, type Client } from "@/data/clients";
+import { siteConfig } from "@/data/site";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { richTags } from "@/components/ui/rich";
@@ -70,13 +71,14 @@ export async function ClientWall({
   const t = await getTranslations("Common.clients");
   const locale = (await getLocale()) as "nl" | "en";
   const years = yearsOfExperience();
+  const total = siteConfig.projectsDelivered;
 
   if (variant === "compact") {
     return (
       <section className={cn("theme-light bg-bg text-fg", className)}>
         <div className="container-x section-y-sm">
           <Reveal>
-            <Eyebrow>{t("compactEyebrow", { years })}</Eyebrow>
+            <Eyebrow>{t("compactEyebrow", { years, total })}</Eyebrow>
           </Reveal>
           <RevealGroup className="mt-8 -ml-px -mt-px grid grid-cols-2 overflow-hidden rounded-2xl border border-line sm:grid-cols-4 2xl:grid-cols-8">
             {clients.map((c) => (
@@ -99,7 +101,7 @@ export async function ClientWall({
             <h2 className="text-h2 mt-5 text-balance">{t.rich("title", richTags)}</h2>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8">
-            <p className="text-body max-w-md text-muted text-pretty">{t("lead", { years })}</p>
+            <p className="text-body max-w-md text-muted text-pretty">{t("lead", { years, total })}</p>
           </Reveal>
         </div>
 
@@ -115,7 +117,7 @@ export async function ClientWall({
         </RevealGroup>
 
         <Reveal delay={0.1}>
-          <p className="mt-8 max-w-3xl text-[0.95rem] text-muted text-pretty">{t("note", { years })}</p>
+          <p className="mt-8 max-w-3xl text-[0.95rem] text-muted text-pretty">{t("note", { years, total })}</p>
         </Reveal>
       </div>
     </section>

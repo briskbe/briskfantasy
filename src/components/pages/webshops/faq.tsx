@@ -34,7 +34,7 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
           <span
             className={cn(
               "mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border transition-[transform,border-color,background-color,color] duration-500 ease-[var(--ease-out-expo)]",
-              open ? "rotate-45 border-amber bg-amber text-ink" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
+              open ? "rotate-45 border-accent bg-brand text-ink" : "border-line text-muted group-hover:border-fg/40 group-hover:text-fg",
             )}
             aria-hidden
           >
@@ -66,7 +66,7 @@ function Item({ q, a, open, onToggle, baseId, index }: { q: string; a: string; o
 /**
  * Light section: accessible accordion (button + aria-expanded, animated height).
  * Paper here keeps the page from ending in a long dark run before the shared
- * dark CtaBand and footer, and gives the open item's amber marker one clean
+ * dark CtaBand and footer, and gives the open item's lime marker one clean
  * accent to itself.
  */
 export function WebshopsFaq() {

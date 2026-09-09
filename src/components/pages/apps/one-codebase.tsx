@@ -41,7 +41,7 @@ export async function OneCodebase() {
             >
               <span
                 aria-hidden
-                className="font-mono text-[clamp(2.25rem,3.4vw,3.25rem)] leading-none tracking-[-0.05em] text-paper-3 transition-colors duration-700 ease-[var(--ease-out-expo)] group-hover:text-amber"
+                className="font-mono text-[clamp(2.25rem,3.4vw,3.25rem)] leading-none tracking-[-0.05em] text-paper-3 transition-colors duration-700 ease-[var(--ease-out-expo)] group-hover:text-accent"
               >
                 0{i + 1}
               </span>

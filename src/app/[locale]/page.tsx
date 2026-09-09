@@ -13,7 +13,8 @@ import { SelectedWork } from "@/components/pages/home/selected-work";
 import { ProductStrip } from "@/components/pages/home/product-strip";
 import { Process } from "@/components/pages/home/process";
 import { WhyBrisk } from "@/components/pages/home/why-brisk";
-import { references } from "@/data/references";
+import { siteConfig } from "@/data/site";
+import { yearsOfExperience } from "@/data/clients";
 import { portfolio } from "@/data/portfolio";
 
 /** 53 screens today -> "50+". Rounded down to the nearest ten so the claim can never overstate. */
@@ -22,7 +23,10 @@ const screenCount = Math.max(50, Math.floor(portfolio.length / 10) * 10);
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home" });
-  return { title: t("meta.title"), description: t("meta.description") };
+  return {
+    title: t("meta.title"),
+    description: t("meta.description", { total: siteConfig.projectsDelivered, years: yearsOfExperience() }),
+  };
 }
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
@@ -77,7 +81,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       {/* 8. Why Brisk — light, so the page does not end on a dark run into the CTA band */}
       <Section theme="light" id="why">
-        <WhyBrisk liveSites={references.length} screens={screenCount} />
+        <WhyBrisk liveSites={siteConfig.projectsDelivered} screens={screenCount} />
       </Section>
 
       {/* 9. Closing CTA */}

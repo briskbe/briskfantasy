@@ -2,23 +2,31 @@
 
 /* ------------------------------------------------------------------
    Brisk design tokens
-   Palette derived from the hero film: midnight sky, sunlit amber clouds,
-   a cool laptop glow. Dark is the default theme; sections can opt into a
+   Palette taken straight from the logo: a lime mark (#d3f882) on a deep
+   teal-charcoal (#142328). Dark is the default theme; sections opt into a
    light "paper" theme with the `theme-light` class.
+
+   Two accent tokens, and the difference matters:
+   - `brand`  is the fixed lime. It is a FILL: lime background, ink text.
+              Never set it as text on a light background — lime on paper is
+              about 1.5:1 and unreadable.
+   - `accent` is theme-aware (see the runtime block below): lime on dark,
+              a deep leaf green on light. Use it for text, dots and borders,
+              so an eyebrow stays legible in either theme.
 ------------------------------------------------------------------- */
 @theme {
-  --color-ink: #07080c;
-  --color-ink-2: #0d0f15;
-  --color-ink-3: #141721;
-  --color-ink-4: #1d2130;
-  --color-paper: #f4f1ea;
-  --color-paper-2: #e9e4d9;
-  --color-paper-3: #d9d3c5;
-  --color-amber: #ff9f4d;
-  --color-amber-2: #ffc98a;
-  --color-ember: #d9662b;
-  --color-sky: #8bb4ff;
-  --color-sky-2: #c9dbff;
+  --color-ink: #0c1619;
+  --color-ink-2: #142328;
+  --color-ink-3: #1b2f36;
+  --color-ink-4: #26424b;
+  --color-paper: #f2f4ee;
+  --color-paper-2: #e6ebe0;
+  --color-paper-3: #d5dccd;
+  --color-brand: #d3f882;
+  --color-brand-2: #e6fcb8;
+  --color-brand-deep: #a9d84f;
+  --color-teal: #5fb3a1;
+  --color-teal-2: #a5d9cd;
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -61,30 +69,36 @@
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-line-2: var(--line-2);
+  --color-accent: var(--accent);
 }
 
 :root,
 .theme-dark {
-  --bg: #07080c;
-  --bg-2: #0d0f15;
-  --bg-3: #141721;
-  --fg: #f4f1ea;
-  --fg-2: #d9d3c5;
-  --muted: #9a968e;
-  --line: rgba(244, 241, 234, 0.1);
-  --line-2: rgba(244, 241, 234, 0.18);
+  --bg: #0c1619;
+  --bg-2: #142328;
+  --bg-3: #1b2f36;
+  --fg: #f2f4ee;
+  --fg-2: #cdd6cd;
+  --muted: #8b9a97;
+  --line: rgba(242, 244, 238, 0.11);
+  --line-2: rgba(242, 244, 238, 0.2);
+  /* The lime carries the brand on ink at roughly 15:1. */
+  --accent: #d3f882;
   color-scheme: dark;
 }
 
 .theme-light {
-  --bg: #f4f1ea;
-  --bg-2: #ebe7de;
-  --bg-3: #e2ddd1;
-  --fg: #07080c;
-  --fg-2: #2a2d38;
-  --muted: #6b675f;
-  --line: rgba(7, 8, 12, 0.12);
-  --line-2: rgba(7, 8, 12, 0.22);
+  --bg: #f2f4ee;
+  --bg-2: #e8ece2;
+  --bg-3: #dee3d5;
+  --fg: #0c1619;
+  --fg-2: #2c3d40;
+  --muted: #63736f;
+  --line: rgba(12, 22, 25, 0.12);
+  --line-2: rgba(12, 22, 25, 0.22);
+  /* Lime is invisible on paper, so the accent role shifts to a deep leaf
+     green from the same family — about 6:1, legible at eyebrow sizes. */
+  --accent: #3f6212;
   color-scheme: light;
 }
 
@@ -120,11 +134,11 @@
     overflow-x: clip;
   }
   ::selection {
-    background: var(--color-amber);
+    background: var(--color-brand);
     color: var(--color-ink);
   }
   :focus-visible {
-    outline: 2px solid var(--color-amber);
+    outline: 2px solid var(--color-brand);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -136,7 +150,7 @@
   button {
     cursor: pointer;
   }
-  /* Custom cursor (fine pointers only): the amber dot replaces the native arrow,
+  /* Custom cursor (fine pointers only): the lime dot replaces the native arrow,
      text fields keep their I-beam. */
   html.has-cursor body,
   html.has-cursor a,
@@ -265,14 +279,14 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 160px 160px;
   }
-  .glow-amber {
-    background: radial-gradient(60% 60% at 50% 50%, rgba(255, 159, 77, 0.55) 0%, rgba(255, 159, 77, 0) 70%);
+  .glow-brand {
+    background: radial-gradient(60% 60% at 50% 50%, rgba(211, 248, 130, 0.4) 0%, rgba(211, 248, 130, 0) 70%);
   }
-  .glow-sky {
-    background: radial-gradient(60% 60% at 50% 50%, rgba(139, 180, 255, 0.45) 0%, rgba(139, 180, 255, 0) 70%);
+  .glow-teal {
+    background: radial-gradient(60% 60% at 50% 50%, rgba(95, 179, 161, 0.35) 0%, rgba(95, 179, 161, 0) 70%);
   }
-  .text-gradient-amber {
-    background: linear-gradient(92deg, #ffc98a 0%, #ff9f4d 45%, #ff7a2f 100%);
+  .text-gradient-brand {
+    background: linear-gradient(92deg, #e6fcb8 0%, #d3f882 45%, #a9d84f 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

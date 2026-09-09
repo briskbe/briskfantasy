@@ -49,7 +49,7 @@ export async function SoftwareOtherServices() {
                 </span>
                 <span className="text-h4 mt-6 block lg:mt-10">{tc(`services.${s.key}.title`)}</span>
                 <span className="mt-2 block max-w-sm text-[0.95rem] text-muted text-pretty">{t(`otherServices.${s.key}`)}</span>
-                <span className="mt-5 block h-px w-0 bg-amber transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover:w-full" aria-hidden />
+                <span className="mt-5 block h-px w-0 bg-brand transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover:w-full" aria-hidden />
               </Link>
             </RevealItem>
           ))}

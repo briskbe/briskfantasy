@@ -12,6 +12,7 @@ import { richTags } from "@/components/ui/rich";
 import { useMediaQuery, usePrefersReducedMotion } from "@/hooks/use-media-query";
 import type { Reference } from "@/data/references";
 import { ProductCard } from "./product-card";
+import { siteConfig } from "@/data/site";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -40,8 +41,8 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
     <section ref={ref} className="theme-dark relative overflow-hidden bg-ink text-paper grain" aria-labelledby="webshops-hero-title">
       {/* atmosphere */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="glow-amber absolute -right-[12%] top-[-25%] h-[75vh] w-[70vw] opacity-40" />
-        <div className="glow-sky absolute -left-[20%] bottom-[-30%] h-[60vh] w-[50vw] opacity-20" />
+        <div className="glow-brand absolute -right-[12%] top-[-25%] h-[75vh] w-[70vw] opacity-40" />
+        <div className="glow-teal absolute -left-[20%] bottom-[-30%] h-[60vh] w-[50vw] opacity-20" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
       </div>
 
@@ -147,7 +148,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
           {(["sites", "reply", "intro"] as const).map((k) => (
             <li key={k} className="flex items-center gap-3">
               <span className="size-1.5 shrink-0 rounded-full bg-fg/25" aria-hidden />
-              {t(`hero.facts.${k}`, { count: siteCount })}
+              {t(`hero.facts.${k}`, { count: siteCount, total: siteConfig.projectsDelivered })}
             </li>
           ))}
         </motion.ul>

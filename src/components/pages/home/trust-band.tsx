@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { MarqueeBand } from "@/components/ui/marquee-band";
 import { references } from "@/data/references";
+import { siteConfig } from "@/data/site";
 import { StatNumber } from "./stat";
 
 function Stat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
@@ -22,7 +23,7 @@ export async function TrustBand({ screens }: { screens: number }) {
     <section className="theme-dark relative overflow-hidden border-y border-line bg-ink text-paper" aria-label={t("marqueeLabel")}>
       <div className="container-x grid items-center gap-y-5 py-6 lg:grid-cols-12 lg:gap-8 lg:py-0">
         <dl className="flex gap-12 lg:col-span-4 lg:h-24 lg:items-center lg:border-r lg:border-line xl:col-span-3">
-          <Stat value={references.length} label={t("liveLabel")} />
+          <Stat value={siteConfig.projectsDelivered} suffix="+" label={t("liveLabel")} />
           <Stat value={screens} suffix="+" label={t("screensLabel")} />
         </dl>
         <div className="-mx-[clamp(1.25rem,4vw,4rem)] min-w-0 border-t border-line pt-5 lg:mx-0 lg:col-span-8 lg:border-0 lg:pt-0 xl:col-span-9">

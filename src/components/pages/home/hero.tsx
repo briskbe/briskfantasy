@@ -67,10 +67,14 @@ export function HomeHero() {
       <motion.div className="absolute inset-0 -z-10 will-change-transform" style={reduced ? undefined : { scale: videoScale }} aria-hidden>
         {reduced ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={siteConfig.heroPoster} alt="" className="h-full w-full object-cover object-[68%_center] sm:object-center" />
+          <img
+            src={siteConfig.heroPoster}
+            alt=""
+            className="h-full w-full object-cover object-[68%_center] brightness-95 saturate-[0.42] sm:object-center"
+          />
         ) : (
           <video
-            className="h-full w-full object-cover object-[68%_center] sm:object-center"
+            className="h-full w-full object-cover object-[68%_center] brightness-95 saturate-[0.42] sm:object-center"
             autoPlay
             muted
             loop
@@ -87,6 +91,7 @@ export function HomeHero() {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34%] bg-gradient-to-b from-ink/80 via-ink/30 to-transparent" aria-hidden />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[55%] bg-gradient-to-t from-ink via-ink/60 to-transparent" aria-hidden />
       <motion.div className="pointer-events-none absolute inset-0 -z-10 bg-ink" style={{ opacity: reduced ? 0 : videoDim }} aria-hidden />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-ink-2/30 mix-blend-color" aria-hidden />
       <div className="pointer-events-none absolute inset-0 -z-10 grain" aria-hidden />
 
       {/* Content */}

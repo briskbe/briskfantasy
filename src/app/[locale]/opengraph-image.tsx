@@ -29,8 +29,8 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#07080C",
-          color: "#F4F1EA",
+          background: "#0C1619",
+          color: "#F2F4EE",
           fontFamily: "Inter, Helvetica, Arial, sans-serif",
           position: "relative",
         }}
@@ -43,12 +43,14 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
             width: 820,
             height: 820,
             borderRadius: 9999,
-            background: "radial-gradient(circle, rgba(255,159,77,0.38) 0%, rgba(255,159,77,0.12) 38%, rgba(7,8,12,0) 70%)",
+            background: "radial-gradient(circle, rgba(211,248,130,0.30) 0%, rgba(211,248,130,0.09) 38%, rgba(12,22,25,0) 70%)",
           }}
         />
-        <div style={{ display: "flex", fontSize: 72, fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 1 }}>
-          <span>Brisk</span>
-          <span style={{ color: "#FF9F4D" }}>.</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+          <svg width="74" height="74" viewBox="0 0 1336 1336" xmlns="http://www.w3.org/2000/svg">
+            <path d="M670.082 631.613C670.302 607.416 674.846 579.177 678.895 555.165C733.325 232.337 1011.62 3.73696 1335.74 0C1336.26 26.6124 1334.23 45.1437 1331.31 71.4731C1318.31 194.066 1271.9 310.736 1197.14 408.754C1111.28 521.766 975.191 610.692 837.783 646.113C811.552 652.842 784.965 658.093 758.146 661.841C744.45 663.692 730.823 664.41 716.876 666.308C749.64 669.083 781.876 668.524 814.746 668.635L944.122 668.926L1335.87 668.647C1338.27 755.668 1336.11 852.766 1336.07 940.425L1335.9 1336C1182.55 1331.45 1052.05 1291.04 929.269 1196.83C805.778 1102.02 719.516 966.841 685.556 814.892C676.213 772.973 674.543 741.505 669.043 699.625C665.989 717.956 664.948 737.833 662.619 756.316C627.758 1033 413.911 1262.9 141.783 1320.59C94.2811 1330.66 48.9982 1334.85 0.474836 1336C1.54617 1079.52 148.383 844.26 379.696 733.424C447.26 701.051 541.477 675.816 615.641 671.369C597.249 667.178 562.017 668.546 541.651 668.597L444.386 668.623L161.181 668.653C108.006 668.655 53.0336 669.318 0 668.299L0.0634918 0.519834C112.653 -1.21173 231.963 32.0955 329.638 87.3906C484.586 174.986 598.22 320.754 645.369 492.408C652.408 518.564 657.884 545.117 661.769 571.924C664.439 591.484 664.073 610.365 669.479 629.514L670.082 631.613Z" fill="#D3F882" />
+          </svg>
+          <span style={{ fontSize: 72, fontWeight: 600, letterSpacing: "-0.04em", lineHeight: 1 }}>Brisk</span>
         </div>
         <div
           style={{
@@ -68,7 +70,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
             fontFamily: "ui-monospace, Menlo, Consolas, monospace",
             fontSize: 22,
             letterSpacing: "0.02em",
-            color: "#9A968E",
+            color: "#8B9A97",
           }}
         >
           {t.tagline}

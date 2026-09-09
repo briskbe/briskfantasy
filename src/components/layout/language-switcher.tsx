@@ -2,14 +2,18 @@
 
 import { useParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { motion } from "motion/react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 /**
- * NL / EN pill with a sliding amber thumb. Switching keeps the visitor on the
- * same page (localized pathnames are resolved by next-intl).
+ * NL / EN as a plain text toggle.
+ *
+ * It deliberately has no pill and no lime: it sits beside the primary call to
+ * action, and a second filled pill there competed with it and spent the accent
+ * twice in one corner. The active language is simply solid, the other muted,
+ * separated by a hairline. Switching keeps the visitor on the same page —
+ * next-intl resolves the localized pathname.
  */
 export function LanguageSwitcher({ size = "sm", className }: { size?: "sm" | "lg"; className?: string }) {
   const locale = useLocale() as AppLocale;
@@ -32,37 +36,35 @@ export function LanguageSwitcher({ size = "sm", className }: { size?: "sm" | "lg
       role="radiogroup"
       aria-label={t("lang.label")}
       className={cn(
-        "relative inline-flex items-center rounded-full border border-line-2 bg-fg/[0.04] p-1 font-mono uppercase tracking-[0.14em]",
-        size === "sm" ? "text-[0.68rem]" : "text-[0.8rem]",
+        "inline-flex items-center",
+        size === "sm" ? "gap-1.5 text-[0.78rem]" : "gap-2 text-[0.95rem]",
         className,
       )}
     >
-      {routing.locales.map((l) => {
+      {routing.locales.map((l, i) => {
         const active = l === locale;
         return (
-          <button
-            key={l}
-            type="button"
-            role="radio"
-            aria-checked={active}
-            aria-label={t("lang.switchTo", { lang: t(`lang.${l}`) })}
-            onClick={() => switchTo(l)}
-            data-cursor="link"
-            className={cn(
-              "relative z-10 rounded-full transition-colors duration-500",
-              size === "sm" ? "px-3 py-1.5" : "px-5 py-2.5",
-              active ? "text-ink" : "text-muted hover:text-fg",
+          <span key={l} className="inline-flex items-center">
+            {i > 0 && (
+              <span aria-hidden className={cn("mr-1.5 w-px bg-current opacity-20", size === "sm" ? "h-3" : "h-4")} />
             )}
-          >
-            {active && (
-              <motion.span
-                layoutId={`lang-thumb-${size}`}
-                className="absolute inset-0 -z-10 rounded-full bg-amber"
-                transition={{ type: "spring", stiffness: 420, damping: 34 }}
-              />
-            )}
-            {l}
-          </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={active}
+              aria-label={t("lang.switchTo", { lang: t(`lang.${l}`) })}
+              onClick={() => switchTo(l)}
+              data-cursor="link"
+              className={cn(
+                // The visible label stays compact; the padding keeps the tap
+                // target at 44px without making the control look chunky.
+                "inline-flex min-h-11 items-center px-2 font-medium uppercase tracking-[0.06em] transition-colors duration-300",
+                active ? "text-fg" : "text-fg/40 hover:text-fg/80",
+              )}
+            >
+              {l}
+            </button>
+          </span>
         );
       })}
     </div>

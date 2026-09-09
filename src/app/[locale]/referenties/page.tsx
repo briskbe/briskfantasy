@@ -145,7 +145,6 @@ export default async function Page({
   return (
     <>
       <ReferencesHero
-        siteCount={references.length}
         screenCount={Math.floor(portfolio.length / 10) * 10}
         shots={reelShots}
       />

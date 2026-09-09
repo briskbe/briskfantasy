@@ -55,7 +55,7 @@ export function Header() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10001] focus:rounded-full focus:bg-amber focus:px-4 focus:py-2 focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10001] focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-ink"
       >
         {useTranslations("Common")("skip")}
       </a>
@@ -90,7 +90,7 @@ export function Header() {
                     {t(item.key)}
                     <span
                       className={cn(
-                        "absolute inset-x-3.5 -bottom-0.5 h-px origin-left scale-x-0 bg-amber transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100",
+                        "absolute inset-x-3.5 -bottom-0.5 h-px origin-left scale-x-0 bg-brand transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:scale-x-100",
                         active && "scale-x-100",
                       )}
                     />
@@ -162,7 +162,7 @@ export function Header() {
                         onClick={() => setOpen(false)}
                         className={cn(
                           "group flex items-baseline gap-4 text-[clamp(2.25rem,8vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.04em] transition-colors",
-                          pathname === item.href ? "text-amber" : "text-paper hover:text-amber",
+                          pathname === item.href ? "text-accent" : "text-paper hover:text-accent",
                         )}
                       >
                         <span className="font-mono text-[0.7rem] tracking-[0.18em] text-muted">0{i + 1}</span>
