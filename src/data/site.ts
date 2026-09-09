@@ -8,10 +8,14 @@ export const siteConfig = {
   heroVideo:
     "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4",
   heroPoster: "/hero-poster.jpg",
+  /**
+   * Real profiles only. These are also emitted as `sameAs` in the organisation
+   * structured data, where a link to a platform's home page instead of the
+   * actual account is worse than no link at all.
+   */
   socials: [
-    { label: "LinkedIn", href: "https://www.linkedin.com/" },
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "Dribbble", href: "https://dribbble.com/" },
+    { label: "Instagram", href: "https://www.instagram.com/brisk.be/" },
+    { label: "TikTok", href: "https://www.tiktok.com/@brisk.be" },
   ],
   /** Optional external booking link (Cal.com / Calendly). Empty = hidden, form is used instead. */
   bookingUrl: "",
