@@ -81,13 +81,13 @@ export function AppsHero() {
         <div className="grid flex-1 items-end gap-10 lg:grid-cols-12 lg:gap-10">
           {/* copy */}
           <motion.div style={{ opacity: fade, y: rise }} className="lg:col-span-7 lg:pr-6">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
+            <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
               <Eyebrow tone="muted">{t("hero.eyebrow")}</Eyebrow>
             </motion.div>
 
             <h1 id="apps-hero-title" className="text-display mt-5 max-w-[13ch] text-[clamp(2.75rem,min(9vw,12.5vh),9.5rem)]">
               <span className="block overflow-hidden pb-[0.08em]">
-                <motion.span className="block" initial={{ y: "104%" }} animate={{ y: 0 }} transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}>
+                <motion.span className="block" initial={false} animate={{ y: 0 }} transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}>
                   {t.rich("hero.title", richTags)}
                 </motion.span>
               </span>
@@ -95,7 +95,7 @@ export function AppsHero() {
 
             <motion.p
               className="text-lead mt-6 max-w-lg text-muted text-pretty"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.7 }}
             >
@@ -104,7 +104,7 @@ export function AppsHero() {
 
             <motion.div
               className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 1 }}
             >
@@ -133,7 +133,7 @@ export function AppsHero() {
             {/* facts */}
             <motion.dl
               className="mt-10 grid gap-x-8 gap-y-3 border-t border-line pt-6 sm:gap-y-6 sm:grid-cols-3 lg:mt-12"
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 1.25 }}
             >
@@ -153,7 +153,7 @@ export function AppsHero() {
             <motion.div
               style={{ y: deviceY, rotate: deviceRotate }}
               className="relative"
-              initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+              initial={false}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.3, ease: EASE, delay: 0.5 }}
             >

@@ -37,7 +37,7 @@ function Screen({
     <motion.div style={{ y }} className={className}>
       <motion.div
         className="overflow-hidden rounded-xl border border-paper/10 bg-ink-2 shadow-[0_50px_90px_-30px_rgba(0,0,0,0.9)]"
-        initial={{ opacity: 0, y: 48 }}
+        initial={false}
         animate={{ opacity, y: 0 }}
         transition={{ duration: 1.3, ease: EASE, delay }}
       >
@@ -129,13 +129,13 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
 
       <div className="container-x relative flex min-h-[94svh] flex-col justify-end pt-40 pb-10 sm:pt-44 lg:min-h-[100svh] lg:pb-12">
         <motion.div style={{ opacity: fade, y: rise }} className="max-w-2xl lg:max-w-3xl">
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
+          <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
             <Eyebrow tone="muted">{t("hero.eyebrow")}</Eyebrow>
           </motion.div>
 
           <h1 id="software-hero-title" className="text-display mt-6 max-w-[11ch] text-balance">
             <span className="block overflow-hidden pb-[0.1em]">
-              <motion.span className="block" initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}>
+              <motion.span className="block" initial={false} animate={{ y: 0 }} transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}>
                 {t.rich("hero.title", richTags)}
               </motion.span>
             </span>
@@ -143,7 +143,7 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
 
           <motion.p
             className="text-lead mt-7 max-w-xl text-fg-2 text-pretty"
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE, delay: 0.55 }}
           >
@@ -152,7 +152,7 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
 
           <motion.div
             className="mt-10 flex flex-wrap items-center gap-3"
-            initial={{ opacity: 0, y: 16 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.75 }}
           >
@@ -175,7 +175,7 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
 
         <motion.ul
           className="mt-14 grid gap-4 border-t border-line pt-6 font-mono text-[0.78rem] uppercase tracking-[0.16em] text-muted sm:grid-cols-3 lg:mt-20"
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.95 }}
           aria-label={t("hero.gridLabel")}

@@ -71,7 +71,7 @@ export function AppScreens({ screens }: { screens: AppScreen[] }) {
           {/* header, beside the track on large screens */}
           <div className="px-[clamp(1.25rem,4vw,4rem)] lg:motion-safe:w-[34%] lg:motion-safe:max-w-[30rem] lg:motion-safe:shrink-0 lg:motion-safe:pr-14">
             <Reveal>
-              <Eyebrow index={2}>{t("screens.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("screens.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="apps-screens-title" className="text-h2 mt-5 max-w-[14ch] text-balance">
@@ -100,7 +100,7 @@ export function AppScreens({ screens }: { screens: AppScreen[] }) {
               style={{ x }}
               className="flex snap-x snap-proximity items-start gap-6 overflow-x-auto px-[clamp(1.25rem,4vw,4rem)] no-scrollbar [--ph:min(112vw,520px)] sm:gap-10 lg:[--ph:min(68vh,640px)] lg:motion-safe:w-max lg:motion-safe:snap-none lg:motion-safe:gap-10 lg:motion-safe:overflow-visible lg:motion-safe:px-0 lg:motion-safe:pr-[clamp(1.25rem,4vw,4rem)]"
             >
-              {screens.map((s, i) => (
+              {screens.map((s) => (
                 <motion.li
                   key={s.id}
                   className="w-[calc(var(--ph)*0.4615)] shrink-0 snap-center lg:motion-safe:[&:nth-child(even)]:mt-12"
@@ -114,7 +114,6 @@ export function AppScreens({ screens }: { screens: AppScreen[] }) {
                       <PhoneScreen rect={s.rect} alt={s.alt} sizes={SIZES} />
                     </PhoneFrame>
                     <figcaption className="mt-5 flex gap-3 font-mono text-[0.7rem] uppercase leading-relaxed tracking-[0.16em] text-muted">
-                      <span className="text-fg/50">{String(i + 1).padStart(2, "0")}</span>
                       <span className="text-pretty">{s.caption}</span>
                     </figcaption>
                   </figure>

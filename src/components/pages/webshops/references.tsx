@@ -18,7 +18,7 @@ export async function ShopReferences({ items }: { items: Reference[] }) {
 
   return (
     <Section theme="light" id="referenties" className="scroll-mt-24">
-      <SectionIntro index={3} eyebrow={t("references.eyebrow")} title={t("references.title")} lead={t("references.intro")}>
+      <SectionIntro eyebrow={t("references.eyebrow")} title={t("references.title")} lead={t("references.intro")}>
         <Link href="/referenties" data-cursor="link" className="group inline-flex min-h-11 items-center gap-2 text-[0.95rem] text-fg">
           <span className="relative">
             {t("references.all")}

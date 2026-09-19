@@ -40,7 +40,7 @@ export const websiteClusterContent: ClusterContentMap = {
         {
           heading: "Je hebt al een WordPress site",
           body: [
-            "Veel projecten beginnen niet bij nul. Een site die vijf jaar geleden goed werkte, is intussen een stapel plug-ins geworden, laadt traag op mobiel en heeft een beheerscherm waar niemand nog durft te klikken. We kijken dan eerst wat blijft: de content, de posities in Google, de koppelingen die hun werk doen.",
+            "Veel projecten beginnen niet bij nul. Een site die vijf jaar geleden goed werkte, is intussen een stapel plug-ins geworden, laadt traag op mobiel en heeft een beheerscherm waar niemand nog durft te klikken. We bekijken eerst de bestaande content, zoekprestaties en koppelingen om te bepalen wat de nieuwe website moet ondersteunen.",
             "Daarna kiezen we tussen opknappen en herbouwen. Opknappen gaat verder dan je denkt: de zwaarste plug-ins vervangen door eigen code, templates herschrijven, beelden en lettertypes aanpakken. Herbouwen wordt de betere keuze zodra het onderhoud van de oude basis meer tijd kost dan een nieuwe.",
             "Zoek je een WordPress webdesign bureau dat een site van iemand anders durft over te nemen, dan doen we dat. We vragen wel eerst toegang tot hosting, DNS en het beheerdersaccount, want zonder die drie is elke belofte over planning giswerk.",
           ],
@@ -124,7 +124,7 @@ export const websiteClusterContent: ClusterContentMap = {
           body: [
             "Plenty of the work that reaches a WordPress agency is inherited: forty plug-ins, an unrecognisable admin, a homepage that takes several seconds to appear on a phone. We audit before we advise. Plug-in count, page weight, PHP version, security exposure, hosting setup and where the traffic currently lands.",
             "The audit ends in one of two recommendations. Repair, when the foundation is sound and a handful of heavy components are doing the damage. Rebuild, when keeping the old structure alive costs more every quarter than replacing it once. We show the reasoning, including the cheaper option, and you decide.",
-            "Either way the existing rankings come with us: URLs mapped, redirects written before launch, structured data preserved. A redesign that quietly loses your best-performing pages is not a redesign, it is a setback with a new colour palette.",
+            "Either way, search performance informs the migration plan: URLs are mapped, relevant redirects are prepared before launch and structured data is reviewed. These steps reduce avoidable migration problems, but search rankings can still change. We retain useful content and monitor the transition so unexpected changes can be investigated.",
           ],
         },
         {
@@ -237,7 +237,7 @@ export const websiteClusterContent: ClusterContentMap = {
         {
           question: "Kunnen jullie een bestaande WordPress site naar Webflow migreren?",
           answer:
-            "Dat doen we regelmatig. We zetten de content over, hertekenen waar nodig de structuur en schrijven de redirects zodat je bestaande posities in Google mee verhuizen. Voor sites met zware koppelingen of duizenden producten bespreken we eerst of Webflow wel het juiste eindpunt is.",
+            "Dat doen we regelmatig. We zetten de content over, hertekenen waar nodig de structuur en bereiden relevante redirects voor om vermijdbare migratieproblemen te beperken. Posities in Google kunnen bij een overstap veranderen. Voor sites met zware koppelingen of duizenden producten bespreken we eerst of Webflow wel het juiste eindpunt is.",
         },
         {
           question: "Wat kost een Webflow website?",
@@ -303,7 +303,7 @@ export const websiteClusterContent: ClusterContentMap = {
         {
           question: "Can you move our existing site to Webflow?",
           answer:
-            "We migrate sites to Webflow regularly, including from WordPress. Content is transferred, the structure is revisited where it needs to be, and redirects are written before launch so existing search rankings follow the move. For catalogue-heavy or integration-heavy sites we first check that Webflow is the right destination at all.",
+            "We migrate sites to Webflow regularly, including from WordPress. Content is transferred, the structure is revisited where needed and relevant redirects are prepared before launch to reduce avoidable migration problems. Search rankings can still change. For catalogue-heavy or integration-heavy sites we first check that Webflow is the right destination at all.",
         },
         {
           question: "What does a Webflow project cost?",
@@ -326,7 +326,7 @@ export const websiteClusterContent: ClusterContentMap = {
     nl: {
       metaTitle: "Website laten vernieuwen",
       metaDescription:
-        "Je website laten vernieuwen zonder posities in Google te verliezen. Brisk meet eerst wat werkt, herontwerpt de structuur en verhuist je content met redirects.",
+        "Je website laten vernieuwen met een zorgvuldig migratieplan. Brisk onderzoekt wat werkt, verbetert de structuur en plant content, redirects en opvolging.",
       h1: "Je website laten vernieuwen zonder opnieuw te beginnen",
       lead: "Een website laten vernieuwen is zelden een kwestie van smaak. Meestal is er iets concreets: mobiel loopt stroef, je aanbod is veranderd, je team kan niets zelf aanpassen, of de site haalt geen bezoekers meer binnen. We beginnen dus niet bij het ontwerp, maar bij de vraag wat er precies stuk is.",
       sections: [
@@ -347,7 +347,7 @@ export const websiteClusterContent: ClusterContentMap = {
           ],
         },
         {
-          heading: "Je posities in Google verhuizen mee",
+          heading: "Een migratieplan met aandacht voor je vindbaarheid",
           body: [
             "Het grootste risico bij vernieuwen is niet het ontwerp, maar de verhuis. Een website redesign laten uitvoeren zonder plan voor URL's is de snelste manier om jaren opgebouwde vindbaarheid kwijt te spelen op de dag van de lancering.",
             "Daarom maken we voor de lancering een lijst van elke bestaande URL, koppelen die aan zijn nieuwe adres en zetten permanente redirects klaar. Titels, beschrijvingen en gestructureerde data gaan mee. Na de livegang volgen we een aantal weken de indexering en de foutmeldingen op, zodat we een probleem zien voor jij het merkt.",
@@ -377,7 +377,7 @@ export const websiteClusterContent: ClusterContentMap = {
         {
           question: "Verlies ik mijn plaats in Google als ik mijn website laat vernieuwen?",
           answer:
-            "Niet als de verhuis goed wordt voorbereid. Brisk maakt voor de lancering een overzicht van alle bestaande URL's, koppelt elke oude pagina aan haar nieuwe adres met een permanente redirect en behoudt titels, beschrijvingen en gestructureerde data. Na de livegang volgen we de indexering enkele weken op.",
+            "Zoekposities kunnen veranderen, ook bij een zorgvuldig voorbereide migratie. Brisk inventariseert bestaande URL's, plant permanente redirects naar relevante nieuwe pagina's en controleert titels, beschrijvingen en gestructureerde data. Na de livegang volgen we de indexering enkele weken op. Zo beperken we vermijdbare fouten en kunnen we veranderingen onderzoeken.",
         },
         {
           question: "Kunnen jullie alleen het ontwerp vernieuwen en de rest laten staan?",
@@ -409,7 +409,7 @@ export const websiteClusterContent: ClusterContentMap = {
     en: {
       metaTitle: "Website redesign",
       metaDescription:
-        "A website redesign that keeps the rankings you already have. Brisk audits what works, rebuilds the structure and maps every URL before launch day.",
+        "Plan a website redesign with a careful migration. Brisk reviews existing content, improves the structure and prepares URL mapping and post-launch checks.",
       h1: "A website redesign that keeps what already works",
       lead: "Nobody commissions a website redesign because they are bored. Something specific has gone wrong: the site is slow on a phone, the offer has changed, nobody internally can edit a page, or enquiries have quietly dried up. So the first week is spent diagnosing, not decorating.",
       sections: [
@@ -428,7 +428,7 @@ export const websiteClusterContent: ClusterContentMap = {
           ],
         },
         {
-          heading: "Launch day without a traffic cliff",
+          heading: "Plan the migration before launch day",
           body: [
             "The riskiest part of a redesign is the move, not the design. Change every URL without a plan and you can lose years of accumulated visibility in an afternoon, which is a strange price to pay for a nicer typeface.",
             "Before launch we inventory every existing URL, map each one to its new address and prepare permanent redirects. Page titles, meta descriptions and structured data travel with them. For the first weeks after go-live we watch indexing and crawl errors, so problems surface on our side rather than in your sales figures.",
@@ -458,7 +458,7 @@ export const websiteClusterContent: ClusterContentMap = {
         {
           question: "Will a redesign hurt our search rankings?",
           answer:
-            "Not when the migration is planned properly. Brisk inventories every existing URL, maps each to its new address with a permanent redirect and carries over titles, descriptions and structured data. Indexing and crawl errors are monitored for several weeks after launch so anything unexpected is caught early.",
+            "Search rankings can change even when a migration is carefully planned. Brisk inventories existing URLs, prepares permanent redirects to relevant replacement pages and reviews titles, descriptions and structured data. We monitor indexing and crawl errors for several weeks after launch to reduce avoidable problems and investigate unexpected changes.",
         },
         {
           question: "Can you redesign an existing website without rebuilding it?",

@@ -51,7 +51,8 @@ export function SiteShot({
           alt={alt}
           fill
           sizes={sizes}
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
           className={cn(
             "object-cover object-top",
             hoverZoom &&

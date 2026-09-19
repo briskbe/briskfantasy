@@ -84,7 +84,7 @@ export function WorkGrid({ items }: { items: WorkCardData[] }) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={1} tone="muted">
+              <Eyebrow tone="muted">
                 {t("grid.eyebrow")}
               </Eyebrow>
             </Reveal>

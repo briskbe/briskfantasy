@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import type { StaticAppPathname } from "@/i18n/routing";
 import { siteConfig } from "@/data/site";
@@ -101,7 +100,7 @@ export function Header() {
 
             <div className="flex items-center gap-2 sm:gap-3">
               <LanguageSwitcher className="hidden sm:inline-flex" />
-              <Button href="/gesprek-inplannen" size="sm" className="hidden md:inline-flex" magnetic={false}>
+              <Button href="/gesprek-inplannen" size="sm" className="hidden md:inline-flex" magnetic={false} icon="none">
                 {t("cta")}
               </Button>
               <button
@@ -139,59 +138,47 @@ export function Header() {
           <motion.div
             id="site-menu"
             key="menu"
-            className="fixed inset-0 z-[90] theme-dark bg-ink text-paper"
-            initial={{ clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={{ clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[90] overflow-y-auto theme-dark bg-ink text-paper"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="absolute inset-0 grain" aria-hidden />
-            <div className="container-x relative flex h-full flex-col pt-28 pb-8">
+            <div className="container-x relative flex min-h-full flex-col pt-28 pb-8">
               <nav className="flex flex-1 flex-col justify-center" aria-label="Menu">
-                <p className="eyebrow text-muted mb-6">{t("servicesLabel")}</p>
                 <ul className="space-y-1">
-                  {NAV.map((item, i) => (
-                    <motion.li
-                      key={item.key}
-                      initial={{ y: 40, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1, transition: { delay: 0.25 + i * 0.05, duration: 0.7, ease: [0.16, 1, 0.3, 1] } }}
-                      exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                    >
+                  {NAV.map((item) => (
+                    <li key={item.key}>
                       <Link
                         href={item.href}
                         onClick={() => setOpen(false)}
+                        aria-current={pathname === item.href ? "page" : undefined}
                         className={cn(
-                          "group flex items-baseline gap-4 text-[clamp(2.25rem,8vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.04em] transition-colors",
+                          "block py-1 text-[clamp(2.25rem,8vw,4.5rem)] font-medium leading-[1.05] tracking-[-0.04em] transition-colors",
                           pathname === item.href ? "text-accent" : "text-paper hover:text-accent",
                         )}
                       >
-                        <span className="font-mono text-[0.7rem] tracking-[0.18em] text-muted">0{i + 1}</span>
                         {t(item.key)}
-                        <ArrowUpRight className="size-6 -translate-x-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100" />
                       </Link>
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </nav>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.6, duration: 0.6 } }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                className="grid gap-6 border-t border-line pt-6 sm:grid-cols-[1fr_auto] sm:items-end"
+              <div
+                className="mt-8 grid gap-6 border-t border-line pt-6 sm:grid-cols-[1fr_auto] sm:items-end"
               >
                 <div>
-                  <p className="eyebrow text-muted mb-2">{t("menuEmailLabel")}</p>
                   <a href={`mailto:${siteConfig.email}`} className="text-lg underline-offset-6 hover:underline">
                     {siteConfig.email}
                   </a>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
                   <LanguageSwitcher size="lg" />
-                  <Button href="/gesprek-inplannen" size="md" magnetic={false} onClick={() => setOpen(false)}>
+                  <Link href="/gesprek-inplannen" onClick={() => setOpen(false)} className="inline-flex h-12 items-center justify-center rounded-full bg-brand px-6 text-[0.95rem] font-medium text-ink transition-colors hover:bg-brand-2">
                     {t("cta")}
-                  </Button>
+                  </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         )}

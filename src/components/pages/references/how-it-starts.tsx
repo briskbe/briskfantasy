@@ -24,7 +24,7 @@ export async function HowItStarts() {
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <Reveal>
-                <Eyebrow index={3} tone="muted">
+                <Eyebrow tone="muted">
                   {t("start.eyebrow")}
                 </Eyebrow>
               </Reveal>

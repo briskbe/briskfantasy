@@ -1,9 +1,10 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { Reveal } from "@/components/ui/reveal";
 import { siteConfig } from "@/data/site";
+import { AnalyticsPreferencesButton } from "@/components/analytics/google-analytics";
 import { Toc } from "./toc";
 
-export const PRIVACY_SECTIONS = ["who", "collect", "use", "retain", "third", "rights", "contact"] as const;
+export const PRIVACY_SECTIONS = ["who", "collect", "use", "analytics", "retain", "third", "rights", "contact"] as const;
 export type PrivacySection = (typeof PRIVACY_SECTIONS)[number];
 
 /** Replaces {email} / {location} in plain paragraphs read via t.raw(). */
@@ -56,6 +57,14 @@ export async function PrivacyBody() {
                   ))}
                 </ul>
               ) : null}
+              {s.key === "analytics" && (
+                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <AnalyticsPreferencesButton locale={locale} className="min-h-11 rounded-lg border border-line-2 px-5 py-2 text-sm font-medium hover:bg-bg-2" />
+                  <a href="https://policies.google.com/technologies/partner-sites" className="text-sm text-fg underline underline-offset-4 hover:text-accent">
+                    {t("sections.analytics.sourceLabel")}
+                  </a>
+                </div>
+              )}
             </div>
           </Reveal>
         ))}

@@ -1,32 +1,108 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { createElement, useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import styles from "./reveal.module.css";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+type EntryCallback = (entry: IntersectionObserverEntry) => boolean;
+type ObserverPool = { observer: IntersectionObserver; callbacks: Map<Element, EntryCallback> };
+const observers = new Map<number, ObserverPool>();
 
-export const revealVariants: Variants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(10px)" },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.9, ease: EASE, delay },
-  }),
-};
+/** Share observers across the page; a completed reveal releases its subscription. */
+function observe(element: HTMLElement, amount: number, callback: EntryCallback) {
+  let pool = observers.get(amount);
+  if (!pool) {
+    const callbacks = new Map<Element, EntryCallback>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (callbacks.get(entry.target)?.(entry)) {
+          callbacks.delete(entry.target);
+          observer.unobserve(entry.target);
+        }
+      }
+      if (!callbacks.size) {
+        observer.disconnect();
+        observers.delete(amount);
+      }
+    }, { threshold: amount === 0 ? [0] : [0, amount] });
+    pool = { observer, callbacks };
+    observers.set(amount, pool);
+  }
+  pool.callbacks.set(element, callback);
+  pool.observer.observe(element);
+  return () => {
+    pool.callbacks.delete(element);
+    pool.observer.unobserve(element);
+    if (!pool.callbacks.size) {
+      pool.observer.disconnect();
+      if (observers.get(amount) === pool) observers.delete(amount);
+    }
+  };
+}
 
-/**
- * Fade + rise + un-blur when scrolled into view. Use `delay` for manual
- * stagger, or wrap several in <RevealGroup> for automatic stagger.
- */
+function useReveal<T extends HTMLElement>({
+  once,
+  amount,
+  delay,
+  stagger,
+}: { once: boolean; amount: number; delay: number; stagger?: number }) {
+  const ref = useRef<T>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!element || reduced.matches || !("IntersectionObserver" in window)) return;
+    const threshold = Math.max(0, Math.min(1, amount));
+    // A group's own items are staggered. Nested groups control their own items.
+    const targets = stagger === undefined ? [element] : Array.from(element.querySelectorAll<HTMLElement>("[data-reveal-item]"))
+      .filter((item) => item.closest("[data-reveal-group]") === element);
+    let firstEntry = true;
+    const setState = (state: "pending" | "visible") => {
+      targets.forEach((target, index) => {
+        target.style.setProperty("--reveal-delay", `${Math.max(0, delay + index * (stagger ?? 0))}s`);
+        target.dataset.revealState = state;
+      });
+    };
+    const stop = observe(element, threshold, (entry) => {
+      const bounds = entry.boundingClientRect;
+      const root = entry.rootBounds;
+      const inViewport = bounds.bottom > (root?.top ?? 0) && bounds.top < (root?.bottom ?? window.innerHeight)
+        && bounds.right > (root?.left ?? 0) && bounds.left < (root?.right ?? window.innerWidth);
+      if (reduced.matches) {
+        setState("visible");
+        return true;
+      }
+      if (firstEntry) {
+        firstEntry = false;
+        // Never hide content already painted in the viewport. No-JS and SSR
+        // content is visible; only genuinely off-screen content is armed.
+        if (inViewport) return once;
+        setState("pending");
+      }
+      // Very tall groups cannot reach a ratio larger than the viewport allows.
+      const oversized = bounds.height > (root?.height ?? window.innerHeight);
+      if (entry.isIntersecting && (entry.intersectionRatio >= threshold || oversized)) {
+        setState("visible");
+        return once;
+      }
+      if (!entry.isIntersecting && !once) setState("pending");
+      return false;
+    });
+    return () => {
+      stop();
+      targets.forEach((target) => {
+        delete target.dataset.revealState;
+        target.style.removeProperty("--reveal-delay");
+      });
+    };
+  }, [once, amount, delay, stagger]);
+
+  return ref;
+}
+
+/** Native fade + rise for off-screen content, with no hydration-time hiding. */
 export function Reveal({
-  children,
-  delay = 0,
-  className,
-  as = "div",
-  once = true,
-  amount = 0.25,
+  children, delay = 0, className, as = "div", once = true, amount = 0.25,
 }: {
   children: ReactNode;
   delay?: number;
@@ -35,29 +111,13 @@ export function Reveal({
   once?: boolean;
   amount?: number;
 }) {
-  const Tag = motion[as];
-  return (
-    <Tag
-      className={cn("will-change-[transform,opacity,filter]", className)}
-      variants={revealVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
-      custom={delay}
-    >
-      {children}
-    </Tag>
-  );
+  const ref = useReveal<HTMLElement>({ once, amount, delay });
+  return createElement(as, { ref, className: cn(styles.reveal, className) }, children);
 }
 
-/** Container that staggers any nested <RevealItem>. */
+/** Container that staggers its own nested RevealItems, excluding nested groups. */
 export function RevealGroup({
-  children,
-  className,
-  stagger = 0.08,
-  delay = 0,
-  once = true,
-  amount = 0.2,
+  children, className, stagger = 0.08, delay = 0, once = true, amount = 0.2,
 }: {
   children: ReactNode;
   className?: string;
@@ -66,32 +126,14 @@ export function RevealGroup({
   once?: boolean;
   amount?: number;
 }) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, amount }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: stagger, delayChildren: delay } } }}
-    >
-      {children}
-    </motion.div>
-  );
+  const ref = useReveal<HTMLDivElement>({ once, amount, delay, stagger });
+  return <div ref={ref} className={className} data-reveal-group="">{children}</div>;
 }
 
-export function RevealItem({
-  children,
-  className,
-  as = "div",
-}: {
+export function RevealItem({ children, className, as = "div" }: {
   children: ReactNode;
   className?: string;
   as?: "div" | "li" | "p" | "span" | "figure" | "article";
 }) {
-  const Tag = motion[as];
-  return (
-    <Tag className={cn("will-change-[transform,opacity,filter]", className)} variants={revealVariants}>
-      {children}
-    </Tag>
-  );
+  return createElement(as, { className: cn(styles.reveal, className), "data-reveal-item": "" }, children);
 }

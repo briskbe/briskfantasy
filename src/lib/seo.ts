@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPathname } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
 import { siteConfig } from "@/data/site";
+import { marketAlternates, marketPageForLegacyPath } from "@/data/markets";
 
 /**
  * SEO helpers.
@@ -30,7 +31,9 @@ const resolveHref = (href: LocalisedHref, locale: AppLocale): Href =>
 
 /** Absolute URL for an internal route in one locale. Route params are for dynamic segments. */
 export function absoluteUrl(href: LocalisedHref, locale: AppLocale): string {
-  return siteConfig.url + getPathname({ href: resolveHref(href, locale), locale });
+  const path = getPathname({ href: resolveHref(href, locale), locale });
+  // Match Next's metadata serialization for the origin URL (no trailing slash).
+  return siteConfig.url + (path === "/" ? "" : path);
 }
 
 /**
@@ -38,8 +41,12 @@ export function absoluteUrl(href: LocalisedHref, locale: AppLocale): string {
  * for a dynamic route) exactly as you would to `Link`.
  */
 export function alternates(href: LocalisedHref, locale: AppLocale): NonNullable<Metadata["alternates"]> {
+  const canonical = absoluteUrl(href, locale);
+  const marketPage = marketPageForLegacyPath(new URL(canonical).pathname);
+  if (marketPage) return { canonical, languages: marketAlternates(marketPage) };
   const languages: Record<string, string> = {};
   for (const l of routing.locales) languages[l] = absoluteUrl(href, l);
+  languages["nl-BE"] = absoluteUrl(href, "nl");
   // The Dutch page is the default for anyone Google cannot place by language.
   languages["x-default"] = absoluteUrl(href, routing.defaultLocale);
   return { canonical: absoluteUrl(href, locale), languages };
@@ -79,10 +86,10 @@ export function pageMetadata({
       title,
       description,
       siteName: siteConfig.name,
-      locale: locale === "nl" ? "nl_BE" : "en_US",
-      images: images?.map((u) => ({ url: u })),
+      locale: locale === "nl" ? "nl_BE" : "en_GB",
+      images: (images ?? ["/hero-poster.jpg"]).map((u) => ({ url: u })),
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: { card: "summary_large_image", title, description, images: images ?? ["/hero-poster.jpg"] },
     robots: noIndex
       ? { index: false, follow: true }
       : { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
@@ -109,7 +116,7 @@ export function organizationSchema(locale: AppLocale): Json {
     "@type": "ProfessionalService",
     "@id": ORG_ID,
     name: siteConfig.name,
-    url: absoluteUrl("/", locale),
+    url: siteConfig.url,
     email: siteConfig.email,
     description:
       locale === "nl"
@@ -117,24 +124,27 @@ export function organizationSchema(locale: AppLocale): Json {
         : "Digital agency from Belgium. Custom websites, webshops, software and mobile apps.",
     logo: `${siteConfig.url}/logo.svg`,
     image: `${siteConfig.url}/hero-poster.jpg`,
-    priceRange: "$$$",
-    address: { "@type": "PostalAddress", addressRegion: "Limburg", addressCountry: "BE" },
+    address: { "@type": "PostalAddress", ...siteConfig.address },
+    hasMap: siteConfig.googleBusinessUrl,
     areaServed: [
       { "@type": "Country", name: "Belgium" },
       { "@type": "Country", name: "Netherlands" },
+      { "@type": "Country", name: "France" },
+      { "@type": "Country", name: "Germany" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "United States" },
     ],
-    knowsLanguage: ["nl-BE", "nl-NL", "en"],
-    sameAs: siteConfig.socials.map((s) => s.href),
+    sameAs: [...siteConfig.socials.map((s) => s.href), siteConfig.googleBusinessUrl],
   };
 }
 
-export function websiteSchema(locale: AppLocale): Json {
+export function websiteSchema(): Json {
   return {
     "@type": "WebSite",
     "@id": SITE_ID,
-    url: absoluteUrl("/", locale),
+    url: siteConfig.url,
     name: siteConfig.name,
-    inLanguage: locale === "nl" ? "nl-BE" : "en",
+    inLanguage: ["nl-BE", "nl-NL", "en", "fr-FR", "de-DE", "en-GB", "en-US"],
     publisher: { "@id": ORG_ID },
   };
 }

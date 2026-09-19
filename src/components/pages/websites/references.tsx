@@ -67,7 +67,7 @@ export async function WebsiteReferences() {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
           <div className="lg:col-span-5">
             <Reveal>
-              <Eyebrow index={3} className="text-xs">
+              <Eyebrow className="text-xs">
                 {t("references.eyebrow")}
               </Eyebrow>
             </Reveal>

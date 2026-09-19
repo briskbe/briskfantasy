@@ -95,7 +95,7 @@ export function AppsFaq() {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={5}>{t("faq.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("faq.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="apps-faq-title" className="text-h2 mt-5 text-balance">

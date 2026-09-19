@@ -5,63 +5,38 @@ import { siteConfig } from "@/data/site";
 import { clusters, clusterSlugFor } from "@/data/seo/clusters";
 import { regions } from "@/data/seo/regions";
 import { hasClusterContent, hasRegionContent } from "@/data/seo/content";
+import { guides, guideHrefFor } from "@/data/seo/guides";
+import { caseStudies, caseHrefFor } from "@/data/seo/cases";
+import { markets, marketPath, marketAlternates } from "@/data/markets";
+import { alternates, type LocalisedHref } from "@/lib/seo";
 
 type Href = Parameters<typeof getPathname>[0]["href"];
-type LocalisedHref = Href | ((locale: (typeof routing.locales)[number]) => Href);
 
-/**
- * Every indexable URL, each with its hreflang alternates.
- *
- * The alternates are the important part on a bilingual site: without them the
- * Dutch and English versions of a page compete as duplicates and Google picks
- * one, often for the wrong market.
+/** List each canonical URL, including every language, as its own sitemap entry.
+ * No lastModified is emitted without a real editorial modification date.
  */
-function entry(href: LocalisedHref, priority: number, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]) {
-  const at = (locale: (typeof routing.locales)[number]) => (typeof href === "function" ? href(locale) : href);
-  const languages = Object.fromEntries(
-    routing.locales.map((locale) => [locale, siteConfig.url + getPathname({ href: at(locale), locale })]),
-  );
-  return {
-    url: siteConfig.url + getPathname({ href: at(routing.defaultLocale), locale: routing.defaultLocale }),
-    lastModified: new Date(),
-    changeFrequency,
-    priority,
-    alternates: { languages },
-  };
+function entries(href: LocalisedHref): MetadataRoute.Sitemap {
+  return routing.locales.map((locale) => {
+    const links = alternates(href, locale);
+    return { url: String(links.canonical), alternates: { languages: links.languages as Record<string, string> } };
+  });
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPriority: Record<string, number> = {
-    "/": 1,
-    "/gesprek-inplannen": 0.9,
-    "/website-op-maat": 0.9,
-    "/webshop-op-maat": 0.9,
-    "/software-op-maat": 0.9,
-    "/mobiele-apps": 0.9,
-    "/referenties": 0.8,
-    "/diensten": 0.8,
-    "/regio": 0.8,
-    "/over-ons": 0.6,
-    "/privacy": 0.2,
-  };
-
   const staticPages = (Object.keys(routing.pathnames) as Href[])
-    // Dynamic routes are expanded from their data below, not listed as templates.
-    .filter((href): href is Exclude<Href, { pathname: string }> => typeof href === "string" && !href.includes("["))
-    .map((href) => entry(href, staticPriority[href as string] ?? 0.5, href === "/" ? "weekly" : "monthly"));
-
-  const clusterPages = clusters.filter((c) => hasClusterContent(c.slug)).map((c) =>
-    entry(
-      // The English pages use English slugs, so each locale has to resolve its
-      // own — a fixed slug would emit an alternate pointing at a 404.
-      (locale) => ({ pathname: "/diensten/[slug]" as const, params: { slug: clusterSlugFor(c, locale) } }),
-      // Cost and quote pages carry the highest commercial intent.
-      c.intent === "pricing" ? 0.8 : 0.7,
-      "monthly",
-    ),
+    .filter((href): href is Extract<Href, string> => typeof href === "string" && !href.includes("["))
+    .flatMap((href) => entries(href));
+  const clusterPages = clusters.filter((c) => hasClusterContent(c.slug)).flatMap((c) => entries(
+    (locale) => ({ pathname: "/diensten/[slug]", params: { slug: clusterSlugFor(c, locale) } }),
+  ));
+  const regionPages = regions.filter((r) => hasRegionContent(r.slug)).flatMap((r) =>
+    entries({ pathname: "/regio/[slug]", params: { slug: r.slug } }),
   );
-
-  const regionPages = regions.filter((r) => hasRegionContent(r.slug)).map((r) => entry({ pathname: "/regio/[slug]", params: { slug: r.slug } }, 0.6, "monthly"));
-
-  return [...staticPages, ...clusterPages, ...regionPages];
+  const guidePages = guides.flatMap((guide) => entries(guideHrefFor(guide)));
+  const casePages = caseStudies.flatMap((caseStudy) => entries(caseHrefFor(caseStudy)));
+  const marketPages = markets.flatMap((market) => market.pages.map((page) => ({
+    url: siteConfig.url + marketPath(market, page.id),
+    alternates: { languages: marketAlternates(page.id) },
+  })));
+  return [...staticPages, ...clusterPages, ...regionPages, ...guidePages, ...casePages, ...marketPages];
 }

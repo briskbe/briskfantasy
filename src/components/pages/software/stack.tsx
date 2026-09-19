@@ -24,7 +24,7 @@ export async function StackPrinciples() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={5}>{t("stack.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("stack.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="software-stack-title" className="text-h2 mt-5 max-w-[16ch] text-balance">
@@ -61,11 +61,10 @@ export async function StackPrinciples() {
 
       <div className="container-x">
         <RevealGroup className="mt-16 grid gap-10 lg:mt-24 lg:grid-cols-3 lg:gap-x-8" stagger={0.1}>
-          {PRINCIPLES.map((k, i) => (
+          {PRINCIPLES.map((k) => (
             <RevealItem key={k} as="article" className="border-t border-line pt-6">
-              <span className="font-mono text-[0.78rem] tracking-[0.18em] text-muted">0{i + 1}</span>
               {/* Two-line box so all three bodies start on the same baseline. */}
-              <h3 className="text-h3 mt-8 text-pretty lg:mt-10 lg:min-h-[2.2em]">{t(`stack.principles.${k}.title`)}</h3>
+              <h3 className="text-h3 text-pretty lg:min-h-[2.2em]">{t(`stack.principles.${k}.title`)}</h3>
               <p className="text-body mt-4 max-w-sm text-muted text-pretty">{t(`stack.principles.${k}.body`)}</p>
             </RevealItem>
           ))}

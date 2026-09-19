@@ -26,7 +26,7 @@ export async function SpeedStandard() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <Reveal>
-              <Eyebrow index={2} className="text-xs">
+              <Eyebrow className="text-xs">
                 {t("speed.eyebrow")}
               </Eyebrow>
             </Reveal>
@@ -42,10 +42,9 @@ export async function SpeedStandard() {
         </div>
 
         <RevealGroup className="mt-16 grid gap-10 md:grid-cols-3 md:gap-8 lg:mt-24 lg:gap-12" stagger={0.09}>
-          {ARGS.map((k, i) => (
+          {ARGS.map((k) => (
             <RevealItem key={k} className="border-t border-line pt-6">
-              <span className="font-mono text-xs tracking-[0.18em] text-muted">0{i + 1}</span>
-              <h3 className="text-h3 mt-5 text-balance">{t(`speed.args.${k}.title`)}</h3>
+              <h3 className="text-h3 text-balance">{t(`speed.args.${k}.title`)}</h3>
               <p className="text-body mt-4 text-muted text-pretty">{t(`speed.args.${k}.body`)}</p>
             </RevealItem>
           ))}

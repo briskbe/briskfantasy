@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 const ITEMS = ["1", "2", "3", "4", "5"] as const;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-function Item({ q, a, open, onToggle, baseId, index, reduced }: { q: string; a: string; open: boolean; onToggle: () => void; baseId: string; index: number; reduced: boolean }) {
+function Item({ q, a, open, onToggle, baseId, reduced }: { q: string; a: string; open: boolean; onToggle: () => void; baseId: string; reduced: boolean }) {
   const btnId = `${baseId}-btn`;
   const panelId = `${baseId}-panel`;
   return (
@@ -28,9 +28,6 @@ function Item({ q, a, open, onToggle, baseId, index, reduced }: { q: string; a: 
           data-cursor="link"
           className="group flex w-full items-start gap-5 py-6 text-left sm:gap-8 lg:py-7"
         >
-          <span className="hidden pt-2 font-mono text-[0.7rem] tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-fg sm:block">
-            0{index + 1}
-          </span>
           <span className={cn("text-h4 flex-1 transition-colors duration-300", open ? "text-fg" : "text-fg/80 group-hover:text-fg")}>{q}</span>
           <span
             className={cn(
@@ -56,7 +53,7 @@ function Item({ q, a, open, onToggle, baseId, index, reduced }: { q: string; a: 
             transition={reduced ? { duration: 0.15 } : { height: { duration: 0.6, ease: EASE }, opacity: { duration: 0.35 } }}
             className="overflow-hidden"
           >
-            <p className="text-body max-w-2xl pb-7 text-muted text-pretty sm:pl-[calc(1.75rem+2rem)]">{a}</p>
+            <p className="text-body max-w-2xl pb-7 text-muted text-pretty">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -77,7 +74,7 @@ export function SoftwareFaq() {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={6}>{t("faq.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("faq.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="software-faq-title" className="text-h2 mt-5 text-balance">
@@ -93,11 +90,10 @@ export function SoftwareFaq() {
           </div>
         </div>
         <RevealGroup className="border-t border-line lg:col-span-7 lg:col-start-6" stagger={0.06}>
-          {ITEMS.map((k, i) => (
+          {ITEMS.map((k) => (
             <RevealItem key={k}>
               <Item
                 baseId={`${id}-${k}`}
-                index={i}
                 reduced={reduced}
                 q={t(`faq.items.${k}.q`)}
                 a={t(`faq.items.${k}.a`)}

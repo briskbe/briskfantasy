@@ -8,6 +8,7 @@ import { richTags } from "@/components/ui/rich";
 import { references, type Reference } from "@/data/references";
 import { cn } from "@/lib/utils";
 import { InMotion } from "./in-motion";
+import { siteConfig } from "@/data/site";
 
 /** One hero card (browser chrome), two stacked secondaries, then a 6/6 pair. */
 const PICKS = ["landelijkglas-be", "legacycristal-com", "city-housing-be", "fileservicechiptuning-com", "priveglas-be"] as const;
@@ -105,7 +106,7 @@ export async function SelectedWork() {
           <h2 className="text-h2 mt-5 text-balance">{t.rich("title", richTags)}</h2>
         </Reveal>
         <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9">
-          <p className="text-body max-w-md text-muted text-pretty">{t("lead")}</p>
+          <p className="text-body max-w-md text-muted text-pretty">{t("lead", { total: siteConfig.projectsDelivered })}</p>
         </Reveal>
       </div>
 

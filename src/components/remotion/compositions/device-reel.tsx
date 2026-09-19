@@ -79,6 +79,7 @@ function Screen({ src, fit, zoom, focus, isLast }: { src: string; fit: "cover" |
     >
       <Img
         src={src}
+        alt=""
         style={{
           position: "absolute",
           inset: 0,

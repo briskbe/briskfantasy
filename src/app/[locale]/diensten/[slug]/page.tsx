@@ -32,10 +32,10 @@ const PARENT_ROUTE = {
  * `dynamicParams = false` means anything not in this list is a 404 rather than
  * a rendered-on-demand page, so no stray URL can become indexable.
  */
-export function generateStaticParams() {
+export function generateStaticParams({ params }: { params: { locale: string } }) {
   return clusters
     .filter((c) => hasClusterContent(c.slug))
-    .flatMap((c) => [{ slug: c.slug }, ...(c.slugEn ? [{ slug: c.slugEn }] : [])]);
+    .map((c) => ({ slug: clusterSlugFor(c, params.locale) }));
 }
 export const dynamicParams = false;
 
@@ -72,8 +72,7 @@ export default async function ClusterPage({ params }: PageProps<"/[locale]/diens
   if (!cluster) notFound();
   const copy = clusterContent[cluster.slug]?.[locale as AppLocale];
   if (!copy) notFound();
-  // `generateStaticParams` yields both spellings across both locales; the pair
-  // that does not belong together is a 404 rather than a duplicate page.
+  // Reject another language’s slug even if this route is requested directly.
   if (clusterSlugFor(cluster, locale) !== slug) notFound();
 
   const t = await getTranslations("Common");

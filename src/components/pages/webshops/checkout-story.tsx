@@ -337,7 +337,7 @@ export function CheckoutStory() {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={2}>{t("story.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("story.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="webshops-story-title" className="text-h2 mt-5 max-w-[14ch] text-balance">

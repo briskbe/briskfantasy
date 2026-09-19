@@ -9,9 +9,9 @@
     "updated": "Laatst bijgewerkt: september 2026",
     "summaryTitle": "In het kort",
     "summary": {
-      "1": "We verzamelen alleen wat we nodig hebben om je te antwoorden.",
-      "2": "We plaatsen standaard geen tracking cookies.",
-      "3": "We verkopen of delen je gegevens niet, met niemand."
+      "1": "We gebruiken je contactgegevens om je vraag te beantwoorden.",
+      "2": "Google Analytics en analytische cookies laden alleen met jouw toestemming.",
+      "3": "Je kunt statistieken weigeren en je keuze op ieder moment wijzigen."
     }
   },
   "toc": "Inhoud",
@@ -27,21 +27,34 @@
     "collect": {
       "title": "Welke gegevens we verzamelen",
       "body": [
-        "We houden het bij het minimum. Op deze website verzamelen we gegevens op drie manieren."
+        "We verwerken de gegevens die nodig zijn voor je aanvraag en de werking van de website. Statistieken verzamelen we alleen als je daarvoor kiest."
       ],
       "list": [
         "Contactformulier: je naam, e-mailadres, eventueel je bedrijfsnaam, het type project, een budgetindicatie en je bericht. Alleen naam, e-mail en bericht zijn verplicht.",
         "Serverlogs: onze hostingpartner registreert technische gegevens zoals IP-adres, browser, tijdstip en opgevraagde pagina. Dat gebeurt om de site veilig en stabiel te houden.",
-        "Cookies: we plaatsen standaard geen tracking- of advertentiecookies. Enkel wat technisch nodig is om de site te laten werken, zoals je taalkeuze."
+        "Google Analytics: alleen na toestemming verzamelen we gebruiksgegevens, zoals bezochte pagina’s, interacties en informatie over browser en apparaat. De Google-tag kan hiervoor analytische cookies plaatsen.",
+        "Je cookievoorkeur bewaren we in de lokale opslag van je browser, zodat je niet bij ieder bezoek opnieuw hoeft te kiezen. Als je browser die opslag blokkeert, geldt je keuze alleen voor het huidige document."
       ]
     },
     "use": {
       "title": "Waarvoor we ze gebruiken",
       "body": [
         "Je formuliergegevens gebruiken we om je bericht te beantwoorden en, als je dat wil, een gesprek in te plannen en een voorstel op te maken. Serverlogs gebruiken we om storingen op te sporen en misbruik tegen te gaan.",
-        "We gebruiken je gegevens niet voor nieuwsbrieven of andere marketing, tenzij je daar zelf om vraagt."
+        "Als je statistieken toestaat, gebruiken we Google Analytics om te begrijpen welke pagina’s worden gebruikt en waar we de website kunnen verbeteren. Advertentiepersonalisatie en Google-signalen zijn in deze integratie uitgeschakeld.",
+        "We gebruiken je contactgegevens niet voor nieuwsbrieven of andere marketing, tenzij je daar zelf om vraagt."
       ],
       "list": []
+    },
+    "analytics": {
+      "title": "Google Analytics en je cookievoorkeur",
+      "body": [
+        "We gebruiken Google Analytics 4 voor bezoekersstatistieken. Zolang je geen toestemming geeft, laden we de Google-tag niet en verzendt deze integratie geen statistieken naar Google. Toestaan en weigeren zijn allebei mogelijk in het venster met cookie-instellingen.",
+        "Na toestemming kan Google Analytics onder meer de cookies _ga en _ga_4TBZ9KYGCS gebruiken om bezoeken te onderscheiden en sessie-informatie bij te houden. We sturen geen ingevulde contactformuliergegevens mee in eigen analytische events.",
+        "Via de knop hieronder of de cookie-instellingen onderaan iedere pagina kun je je keuze bekijken en wijzigen. Als je weigert na eerdere toestemming, schakelen we verdere meting voor deze Google Analytics-property uit en verwijderen we de bijbehorende cookies die deze website kan benaderen. Dit verwijdert niet automatisch gegevens die eerder al zijn verwerkt.",
+        "Google verwerkt de gebruiksgegevens die na jouw toestemming worden verzonden. Raadpleeg ook Googles uitleg over gegevens van websites die zijn diensten gebruiken. Voor vragen over eerder verzamelde gegevens kun je mailen naar {email}."
+      ],
+      "list": [],
+      "sourceLabel": "Hoe Google gegevens van websites gebruikt"
     },
     "retain": {
       "title": "Hoe lang we ze bewaren",
@@ -54,12 +67,13 @@
     "third": {
       "title": "Derde partijen",
       "body": [
-        "We delen je gegevens alleen met de dienstverleners die we nodig hebben om deze site te laten draaien. Zij verwerken ze uitsluitend in onze opdracht."
+        "Dienstverleners helpen ons de website te laten werken en berichten te bezorgen. Als je statistieken toestaat, ontvangt ook Google gebruiksgegevens via Google Analytics."
       ],
       "list": [
         "Hosting: de website en het contactformulier draaien bij een hostingpartner die de serverlogs bijhoudt.",
         "E-mailbezorging: berichten uit het contactformulier worden via een e-maildienst naar onze mailbox gestuurd.",
-        "Microlink: op enkele pagina's tonen we live screenshots van publieke websites van onze klanten. Die worden opgehaald via Microlink. Daarbij worden geen gegevens over jou doorgegeven, behalve wat een browser standaard meestuurt bij het laden van een afbeelding."
+        "Microlink: op enkele pagina's tonen we live screenshots van publieke websites van onze klanten. Die worden opgehaald via Microlink. Daarbij worden geen gegevens over jou doorgegeven, behalve wat een browser standaard meestuurt bij het laden van een afbeelding.",
+        "Google Analytics: verwerkt na jouw toestemming gebruiksgegevens voor bezoekersstatistieken. Meer uitleg en de mogelijkheid om je keuze aan te passen staan in het onderdeel over Google Analytics."
       ]
     },
     "rights": {

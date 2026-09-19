@@ -44,7 +44,7 @@ export function SoftwarePhases() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <Reveal>
-              <Eyebrow index={3}>{t("phases.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("phases.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="software-phases-title" className="text-h2 mt-5 max-w-[14ch] text-balance">

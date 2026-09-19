@@ -38,7 +38,7 @@ export default async function ServicesHub({ params }: PageProps<"/[locale]/diens
       <JsonLd
         data={jsonLdGraph([
           organizationSchema(loc),
-          websiteSchema(loc),
+          websiteSchema(),
           breadcrumbSchema([
             { name: t("seo.home"), url: absoluteUrl("/", loc) },
             { name: t("seo.servicesHub.eyebrow"), url: absoluteUrl("/diensten", loc) },

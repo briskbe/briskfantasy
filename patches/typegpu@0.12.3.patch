@@ -1,0 +1,31 @@
+diff --git a/tgsl/consoleLog/deserializers.js b/tgsl/consoleLog/deserializers.js
+index 203b8d6bb78910f898385840944492fb7fe5b04d..429e9d6f217d201056d421cef387577bc1542752 100644
+--- a/tgsl/consoleLog/deserializers.js
++++ b/tgsl/consoleLog/deserializers.js
+@@ -19,18 +19,21 @@ const deserializerMap = {
+     vec2f: (d) => vec2f(toF(d[0]), toF(d[1])),
+     vec3f: (d) => vec3f(toF(d[0]), toF(d[1]), toF(d[2])),
+     vec4f: (d) => vec4f(toF(d[0]), toF(d[1]), toF(d[2]), toF(d[3])),
++    // Call the underlying helper directly to avoid a Next 16.3.4 SWC inlining
++    // collision that emits duplicate lexical bindings when minifying unpack().
++    // unpack(n) is exactly unpack2x16float(n ?? 0); decoding remains unchanged.
+     vec2h(d) {
+-        const xyVec = unpack(d[0]);
++        const xyVec = unpack2x16float(d[0] ?? 0);
+         return vec2h(xyVec.x, xyVec.y);
+     },
+     vec3h(d) {
+-        const xyVec = unpack(d[0]);
+-        const zVec = unpack(d[1]);
++        const xyVec = unpack2x16float(d[0] ?? 0);
++        const zVec = unpack2x16float(d[1] ?? 0);
+         return vec3h(xyVec.x, xyVec.y, zVec.x);
+     },
+     vec4h(d) {
+-        const xyVec = unpack(d[0]);
+-        const zwVec = unpack(d[1]);
++        const xyVec = unpack2x16float(d[0] ?? 0);
++        const zwVec = unpack2x16float(d[1] ?? 0);
+         return vec4h(xyVec.x, xyVec.y, zwVec.x, zwVec.y);
+     },
+     vec2i: (d) => vec2i(toI(d[0]), toI(d[1])),

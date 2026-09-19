@@ -13,13 +13,12 @@ export async function Growth() {
 
   return (
     <Section theme="dark" id="groei">
-      <SectionIntro index={4} eyebrow={t("growth.eyebrow")} title={t.rich("growth.title", richTags)} lead={t("growth.intro")} />
+      <SectionIntro eyebrow={t("growth.eyebrow")} title={t.rich("growth.title", richTags)} lead={t("growth.intro")} />
 
       <RevealGroup className="mt-16 grid gap-10 border-t border-line pt-10 md:grid-cols-3 md:gap-8 lg:mt-20" stagger={0.1}>
-        {ITEMS.map((k, i) => (
+        {ITEMS.map((k) => (
           <RevealItem key={k} as="article" className="flex flex-col">
-            <span className="font-mono text-[0.72rem] tracking-[0.18em] text-muted">0{i + 1}</span>
-            <h3 className="text-h4 mt-6 max-w-[16ch] text-balance">{t(`growth.items.${k}.title`)}</h3>
+            <h3 className="text-h4 max-w-[16ch] text-balance">{t(`growth.items.${k}.title`)}</h3>
             <p className="text-body mt-4 max-w-sm text-muted text-pretty">{t(`growth.items.${k}.body`)}</p>
           </RevealItem>
         ))}

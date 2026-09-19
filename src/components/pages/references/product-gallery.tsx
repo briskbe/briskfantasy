@@ -86,7 +86,7 @@ export function ProductGallery({
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={2} tone="muted">
+              <Eyebrow tone="muted">
                 {t("product.eyebrow")}
               </Eyebrow>
             </Reveal>

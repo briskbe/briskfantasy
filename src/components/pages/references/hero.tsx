@@ -1,20 +1,14 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { richTags } from "@/components/ui/rich";
-import { WordsStagger } from "@/components/spell/words-stagger";
-import {
-  ShowreelBrowser,
-  SHOWREEL_BROWSER_META,
-  showreelDuration,
-  type ShowreelShot,
-} from "@/components/remotion/compositions";
+import { LazyShowreel, type ShowreelShot } from "@/components/remotion/lazy-showreel";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 import { siteConfig } from "@/data/site";
-import { RemotionPlayer } from "@/components/remotion/remotion-player";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -65,7 +59,7 @@ export function ReferencesHero({
             className="lg:col-span-7 lg:pb-2"
           >
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}
             >
@@ -79,7 +73,7 @@ export function ReferencesHero({
               <span className="block overflow-hidden pb-[0.08em]">
                 <motion.span
                   className="block"
-                  initial={{ y: "105%" }}
+                  initial={false}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
                 >
@@ -88,30 +82,10 @@ export function ReferencesHero({
               </span>
             </h1>
 
-            <WordsStagger
-              className="text-lead mt-8 max-w-lg text-muted text-pretty"
-              delay={0.7}
-              stagger={0.02}
-              speed={0.6}
-            >
+            <p className="text-lead mt-8 max-w-lg text-muted text-pretty">
               {t("hero.lead")}
-            </WordsStagger>
+            </p>
 
-            <motion.p
-              className="mt-7 inline-flex items-center gap-3 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
-            >
-              <span
-                className="relative flex size-2 items-center justify-center"
-                aria-hidden
-              >
-                <span className="absolute inset-0 rounded-full bg-emerald-400/60 animate-pulse-soft" />
-                <span className="size-1.5 rounded-full bg-emerald-400" />
-              </span>
-              {t("hero.note")}
-            </motion.p>
           </motion.div>
 
           {/* Below lg the reel bleeds to both gutters so the showreel reads as
@@ -121,7 +95,7 @@ export function ReferencesHero({
             <motion.div
               style={{ y: backY }}
               className="pointer-events-none absolute -top-[16%] right-[-16%] hidden w-[64%] rotate-[3deg] opacity-60 lg:block"
-              initial={{ opacity: 0, y: 40 }}
+              initial={false}
               animate={{ opacity: 0.6, y: 0 }}
               transition={{ duration: 1.4, ease: EASE, delay: 0.75 }}
               aria-hidden
@@ -137,10 +111,12 @@ export function ReferencesHero({
                     {back.domain}
                   </span>
                 </div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={back.src}
                   alt=""
+                  width={1440}
+                  height={900}
+                  sizes="(min-width: 1024px) 27vw, 50vw"
                   className="aspect-[16/10] w-full object-cover object-top"
                   decoding="async"
                 />
@@ -150,7 +126,7 @@ export function ReferencesHero({
             <motion.div
               style={{ y: reelY }}
               className="relative"
-              initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
+              initial={false}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.3, ease: EASE, delay: 0.55 }}
             >
@@ -161,24 +137,20 @@ export function ReferencesHero({
                   aria-hidden
                 >
                   <div className="browser-frame">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={shots[0].src}
                       alt=""
+                      width={1440}
+                      height={900}
+                      sizes="(min-width: 1024px) 40vw, 90vw"
+                      loading="eager"
+                      fetchPriority="high"
                       className="aspect-[16/10] w-full object-cover object-top"
                       decoding="async"
                     />
                   </div>
                 </div>
-                <RemotionPlayer
-                  component={ShowreelBrowser}
-                  inputProps={{ shots }}
-                  durationInFrames={showreelDuration(shots.length)}
-                  fps={SHOWREEL_BROWSER_META.fps}
-                  width={SHOWREEL_BROWSER_META.width}
-                  height={SHOWREEL_BROWSER_META.height}
-                  className="relative"
-                />
+                <LazyShowreel shots={shots} className="relative" />
               </figure>
             </motion.div>
           </div>
@@ -186,7 +158,7 @@ export function ReferencesHero({
 
         <motion.ul
           className="mt-12 grid gap-4 border-t border-line pt-6 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted sm:grid-cols-3 lg:mt-14"
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.3 }}
         >

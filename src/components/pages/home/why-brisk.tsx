@@ -33,10 +33,7 @@ export function WhyBrisk({ liveSites, screens }: { liveSites: number; screens: n
       <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-3 lg:mt-20" stagger={0.1}>
         {ITEM_KEYS.map((k) => (
           <RevealItem key={k} as="article" className="bg-bg p-8 sm:p-9">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-muted" aria-hidden>
-              {t(`items.${k}.index`)}
-            </p>
-            <h3 className="text-h4 mt-7 text-balance md:min-h-[2.4em]">{t(`items.${k}.title`)}</h3>
+            <h3 className="text-h4 text-balance md:min-h-[2.4em]">{t(`items.${k}.title`)}</h3>
             <p className="text-body mt-4 text-muted text-pretty">{t(`items.${k}.body`)}</p>
           </RevealItem>
         ))}

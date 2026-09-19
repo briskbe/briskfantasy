@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
  * link 24px under the paragraph.
  */
 export function SectionIntro({
-  index,
   eyebrow,
   title,
   titleId,
@@ -18,7 +17,6 @@ export function SectionIntro({
   children,
   className,
 }: {
-  index?: number;
   eyebrow: string;
   title: ReactNode;
   titleId?: string;
@@ -30,7 +28,7 @@ export function SectionIntro({
     <div className={cn("grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-8", className)}>
       <div className="lg:col-span-6">
         <Reveal>
-          <Eyebrow index={index}>{eyebrow}</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
         </Reveal>
         <Reveal delay={0.08}>
           <h2 id={titleId} className="text-h2 mt-5 max-w-[15ch] text-balance">

@@ -11,6 +11,7 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { richTags } from "@/components/ui/rich";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
 import { SiteShot } from "./site-shot";
+import { PixelInkBackground } from "./pixel-ink-background";
 import type { Reference } from "@/data/references";
 import { siteConfig } from "@/data/site";
 
@@ -55,17 +56,13 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
       className="theme-dark relative overflow-hidden bg-ink text-paper grain"
       aria-labelledby="websites-hero-title"
     >
-      {/* atmosphere: one glow, well inside the frame so no edge can show */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="glow-brand absolute -right-[6%] top-[-18%] h-[70vh] w-[62vw] opacity-40 blur-[60px]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
-      </div>
+      <PixelInkBackground />
 
       <div className="container-x relative flex min-h-[100svh] flex-col pt-36 pb-10 sm:pt-40 lg:pb-12">
         <div className="grid flex-1 items-end gap-12 lg:grid-cols-12 lg:gap-8">
           {/* copy */}
           <motion.div style={{ opacity: fade, y: rise }} className="lg:col-span-6 lg:pr-10">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
+            <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: EASE, delay: 0.1 }}>
               <Eyebrow tone="muted" className="text-xs">
                 {t("hero.eyebrow")}
               </Eyebrow>
@@ -75,7 +72,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
               <span className="block overflow-hidden pb-[0.08em]">
                 <motion.span
                   className="block"
-                  initial={{ y: "105%" }}
+                  initial={false}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
                 >
@@ -86,7 +83,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
 
             <motion.p
               className="text-lead mt-7 max-w-xl text-muted text-pretty"
-              initial={{ opacity: 0, y: 14 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
             >
@@ -95,7 +92,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
 
             <motion.div
               className="mt-10 flex flex-wrap items-center gap-3"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
             >
@@ -125,7 +122,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
                 aria-hidden
               >
                 <motion.div
-                  initial={{ opacity: 0, y: 60, rotate: -1.5, filter: reduced ? "none" : "blur(8px)" }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0, rotate: -3, filter: reduced ? "none" : "blur(0px)" }}
                   transition={{ duration: 1.2, ease: EASE, delay: 0.55 }}
                 >
@@ -142,7 +139,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
 
               <motion.div style={{ y: yFront }} className="absolute bottom-[4%] left-0 z-20 w-[92%]">
                 <motion.div
-                  initial={{ opacity: 0, y: 70, filter: reduced ? "none" : "blur(8px)" }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0, filter: reduced ? "none" : "blur(0px)" }}
                   transition={{ duration: 1.3, ease: EASE, delay: 0.7 }}
                 >
@@ -163,7 +160,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
           {front && (
             <motion.div
               className="lg:hidden"
-              initial={{ opacity: 0, y: 40 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.7 }}
             >
@@ -181,7 +178,7 @@ export function WebsitesHero({ shots, siteCount }: { shots: HeroShot[]; siteCoun
         {/* facts row */}
         <motion.ul
           className="mt-14 grid gap-4 border-t border-line pt-6 font-mono text-xs uppercase tracking-[0.18em] text-muted sm:grid-cols-3 lg:mt-16"
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.1 }}
         >

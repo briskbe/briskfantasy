@@ -11,6 +11,8 @@ export const routing = defineRouting({
   // URL is the single source of truth: no Accept-Language / cookie redirects.
   // Many Belgian visitors browse with English UI; they should still land on NL.
   localeDetection: false,
+  // Metadata and sitemap own the complete country/language alternate set.
+  alternateLinks: false,
   pathnames: {
     "/": "/",
     "/website-op-maat": { nl: "/website-op-maat", en: "/custom-websites" },
@@ -18,6 +20,7 @@ export const routing = defineRouting({
     "/software-op-maat": { nl: "/software-op-maat", en: "/custom-software" },
     "/mobiele-apps": { nl: "/mobiele-apps", en: "/mobile-apps" },
     "/referenties": { nl: "/referenties", en: "/work" },
+    "/referenties/[slug]": { nl: "/referenties/[slug]", en: "/work/[slug]" },
     "/over-ons": { nl: "/over-ons", en: "/about" },
     "/gesprek-inplannen": { nl: "/gesprek-inplannen", en: "/book-a-call" },
     "/privacy": { nl: "/privacy", en: "/privacy" },
@@ -27,6 +30,8 @@ export const routing = defineRouting({
     "/diensten/[slug]": { nl: "/diensten/[slug]", en: "/services/[slug]" },
     "/regio": { nl: "/regio", en: "/regions" },
     "/regio/[slug]": { nl: "/regio/[slug]", en: "/regions/[slug]" },
+    "/kennisbank": { nl: "/kennisbank", en: "/guides" },
+    "/kennisbank/[slug]": { nl: "/kennisbank/[slug]", en: "/guides/[slug]" },
   },
 });
 

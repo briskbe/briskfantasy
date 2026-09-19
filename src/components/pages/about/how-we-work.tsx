@@ -43,16 +43,13 @@ export function HowWeWork() {
       </div>
 
       <RevealGroup className="mt-16 grid border-t border-line lg:mt-24 lg:grid-cols-3" stagger={0.1}>
-        {ITEMS.map((k, i) => (
+        {ITEMS.map((k) => (
           <RevealItem
             key={k}
             as="article"
             className="border-b border-line py-10 lg:border-b-0 lg:border-r lg:px-10 lg:py-14 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0"
           >
-            <span className="font-mono text-[0.8rem] tracking-[0.18em] text-muted" aria-hidden>
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <h3 className="text-h3 mt-7 text-balance">{t(`items.${k}.title`)}</h3>
+            <h3 className="text-h3 text-balance">{t(`items.${k}.title`)}</h3>
             <p className="text-body mt-4 max-w-xs text-muted text-pretty">{t(`items.${k}.body`)}</p>
           </RevealItem>
         ))}

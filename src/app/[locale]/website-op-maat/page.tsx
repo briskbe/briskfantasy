@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ServiceSupport } from "@/components/seo/service-support";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaBand } from "@/components/blocks/cta-band";
 import { ClientWall } from "@/components/blocks/client-wall";
@@ -45,6 +46,7 @@ export default async function Page({ params }: PageProps<"/[locale]/website-op-m
       <SpeedStandard />
       <WebsiteReferences />
       <ProcessTimeline />
+      <ServiceSupport locale={locale as AppLocale} kind="websites" />
       <WebsitesFaq />
       <ClientWall variant="compact" />
       <OtherServices current="websites" />

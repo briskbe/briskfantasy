@@ -5,7 +5,7 @@ import { richTags } from "@/components/ui/rich";
 
 const ITEMS = ["1", "2", "3", "4", "5"] as const;
 
-/** Light section: sticky intro on the left, an editorial numbered list on the right. */
+/** Light section: sticky intro on the left, a feature list on the right. */
 export async function WhatYouGet() {
   const t = await getTranslations("Websites");
   return (
@@ -14,7 +14,7 @@ export async function WhatYouGet() {
         <div className="lg:col-span-5">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={1} className="text-xs">
+              <Eyebrow className="text-xs">
                 {t("whatYouGet.eyebrow")}
               </Eyebrow>
             </Reveal>
@@ -29,13 +29,10 @@ export async function WhatYouGet() {
           </div>
         </div>
 
-        <ol className="lg:col-span-6 lg:col-start-7" aria-label={t("whatYouGet.eyebrow")}>
-          {ITEMS.map((k, i) => (
+        <ul className="lg:col-span-6 lg:col-start-7" aria-label={t("whatYouGet.eyebrow")}>
+          {ITEMS.map((k) => (
             <Reveal key={k} as="li" amount={0.3} className="group border-t border-line last:border-b">
-              <div className="grid gap-4 py-8 sm:grid-cols-[4.5rem_1fr] sm:gap-6 lg:grid-cols-[6rem_1fr] lg:py-10">
-                <span className="font-mono text-xs tracking-[0.18em] text-muted transition-colors duration-500 group-hover:text-fg">
-                  0{i + 1}
-                </span>
+              <div className="py-8 lg:py-10">
                 <div>
                   <h3 className="text-h3 text-balance">{t(`whatYouGet.items.${k}.title`)}</h3>
                   <p className="text-body mt-4 max-w-xl text-fg-2 text-pretty">{t(`whatYouGet.items.${k}.body`)}</p>
@@ -46,7 +43,7 @@ export async function WhatYouGet() {
               </div>
             </Reveal>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   );

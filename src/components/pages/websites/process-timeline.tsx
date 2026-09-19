@@ -43,7 +43,7 @@ export function ProcessTimeline() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={4} tone="muted" className="text-xs">
+              <Eyebrow tone="muted" className="text-xs">
                 {t("process.eyebrow")}
               </Eyebrow>
             </Reveal>

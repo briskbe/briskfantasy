@@ -37,7 +37,7 @@ export default async function RegionsHub({ params }: PageProps<"/[locale]/regio"
       <JsonLd
         data={jsonLdGraph([
           organizationSchema(loc),
-          websiteSchema(loc),
+          websiteSchema(),
           breadcrumbSchema([
             { name: t("seo.home"), url: absoluteUrl("/", loc) },
             { name: t("seo.regionsHub.eyebrow"), url: absoluteUrl("/regio", loc) },

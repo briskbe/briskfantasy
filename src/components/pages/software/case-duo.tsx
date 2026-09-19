@@ -28,7 +28,7 @@ export async function CaseDuo({ items }: { items: Reference[] }) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Reveal>
-              <Eyebrow index={2}>{t("cases.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("cases.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="software-case-title" className="text-h2 mt-5 max-w-[16ch] text-balance">

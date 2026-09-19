@@ -36,7 +36,7 @@ function Line({
     <span className="block overflow-hidden pb-[0.1em] -mb-[0.1em]">
       <motion.span
         className="block"
-        initial={{ y: "110%" }}
+        initial={false}
         animate={show ? { y: "0%" } : { y: "110%" }}
         transition={reduced ? { duration: 0 } : { duration: 1.1, ease: EASE, delay }}
       >
@@ -120,7 +120,7 @@ export function AboutHero() {
           <motion.div className="lg:col-span-7" style={drift ? undefined : { y: textY, opacity: fade }}>
             <motion.p
               className="eyebrow inline-flex items-center gap-3 text-accent"
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               transition={reduced ? { duration: 0 } : { duration: 0.8, ease: EASE, delay }}
             >
@@ -137,7 +137,7 @@ export function AboutHero() {
             </h1>
             <motion.p
               className="text-lead mt-8 max-w-lg text-paper/80 text-pretty"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={reduced ? { duration: 0 } : { duration: 0.9, ease: EASE, delay: delay + 0.45 }}
             >
@@ -145,7 +145,7 @@ export function AboutHero() {
             </motion.p>
             <motion.div
               className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               transition={reduced ? { duration: 0 } : { duration: 0.9, ease: EASE, delay: delay + 0.58 }}
             >
@@ -163,7 +163,7 @@ export function AboutHero() {
           <motion.figure
             className="hidden lg:col-span-5 lg:col-start-8 lg:block"
             // No `y` here: the scroll drift below already owns that channel.
-            initial={{ opacity: 0, scale: 0.97, filter: "blur(12px)" }}
+            initial={false}
             animate={show ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0 }}
             transition={reduced ? { duration: 0 } : { duration: 1.2, ease: EASE, delay: delay + 0.35 }}
             style={drift ? undefined : { y: stackY }}

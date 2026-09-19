@@ -71,6 +71,7 @@ function Shot({ shot, isLast }: { shot: ShowreelShot; isLast: boolean }) {
     >
       <Img
         src={shot.src}
+        alt={shot.name}
         style={{
           position: "absolute",
           left: 0,

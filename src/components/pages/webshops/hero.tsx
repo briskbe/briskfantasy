@@ -50,7 +50,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
         <div className="grid flex-1 items-end gap-14 lg:grid-cols-12 lg:gap-8">
           {/* copy */}
           <motion.div style={{ opacity: fade, y: rise }} className="lg:col-span-6 lg:pr-8">
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.05 }}>
+            <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.05 }}>
               <Eyebrow>{t("hero.eyebrow")}</Eyebrow>
             </motion.div>
 
@@ -58,7 +58,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
               <span className="block overflow-hidden pb-[0.1em]">
                 <motion.span
                   className="block"
-                  initial={{ y: "105%" }}
+                  initial={false}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
                 >
@@ -69,7 +69,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
 
             <motion.p
               className="text-lead mt-7 max-w-xl text-muted text-pretty"
-              initial={{ opacity: 0, y: 14 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
             >
@@ -78,7 +78,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
 
             <motion.div
               className="mt-10 flex flex-wrap items-center gap-3"
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE, delay: 0.75 }}
             >
@@ -103,7 +103,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
             <div className="relative lg:pl-[16%] lg:pb-16">
               <motion.div
                 style={{ y: yShot }}
-                initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+                initial={false}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 1.2, ease: EASE, delay: 0.35 }}
                 className="relative lg:w-[111%] lg:will-change-transform"
@@ -127,7 +127,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
               {/* product card: overlaps the bottom-left corner on desktop, sits below on mobile */}
               <motion.div
                 style={{ y: yCard }}
-                initial={{ opacity: 0, y: 40, rotate: 2 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ duration: 1, ease: EASE, delay: 0.8 }}
                 className="relative z-10 -mt-16 ml-auto w-[min(20rem,88%)] sm:-mt-20 lg:absolute lg:bottom-0 lg:left-0 lg:ml-0 lg:mt-0 lg:will-change-transform"
@@ -141,7 +141,7 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
         {/* facts row */}
         <motion.ul
           className="mt-14 grid gap-4 border-t border-line pt-6 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-muted sm:grid-cols-3 lg:mt-16"
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
         >

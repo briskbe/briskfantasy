@@ -14,10 +14,8 @@ const SERVICES: { key: "websites" | "webshops" | "apps"; href: StaticAppPathname
 /**
  * Page-local variant of the shared `OtherServices` block.
  *
- * The shared version renders three `min-h-40` boxes that hold a number and a
- * title, which leaves ~100px of empty card on every viewport, and it is dark —
- * which would put four dark sections (FAQ, this, CtaBand, Footer) back to back.
- * This one is light, content-sized, and each row carries a one-line descriptor.
+ * This version uses a light background between dark sections and gives each
+ * service link a short description.
  */
 export async function SoftwareOtherServices() {
   const tc = await getTranslations("Common");
@@ -36,7 +34,7 @@ export async function SoftwareOtherServices() {
         </div>
 
         <RevealGroup className="mt-10 grid lg:grid-cols-3 lg:gap-x-8" stagger={0.08}>
-          {SERVICES.map((s, i) => (
+          {SERVICES.map((s) => (
             <RevealItem key={s.key}>
               <Link
                 href={s.href}
@@ -44,10 +42,9 @@ export async function SoftwareOtherServices() {
                 className="group block border-t border-line py-6 lg:py-8 lg:pr-8"
               >
                 <span className="flex items-center justify-between gap-4">
-                  <span className="font-mono text-[0.7rem] tracking-[0.18em] text-muted">0{i + 1}</span>
+                  <span className="text-h4">{tc(`services.${s.key}.title`)}</span>
                   <ArrowUpRight className="size-5 shrink-0 text-muted transition-all duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
                 </span>
-                <span className="text-h4 mt-6 block lg:mt-10">{tc(`services.${s.key}.title`)}</span>
                 <span className="mt-2 block max-w-sm text-[0.95rem] text-muted text-pretty">{t(`otherServices.${s.key}`)}</span>
                 <span className="mt-5 block h-px w-0 bg-brand transition-[width] duration-700 ease-[var(--ease-out-expo)] group-hover:w-full" aria-hidden />
               </Link>

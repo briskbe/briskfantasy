@@ -52,7 +52,7 @@ export function AppsProcess() {
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index={4}>{t("process.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("process.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="apps-process-title" className="text-h2 mt-5 max-w-[12ch] text-balance">

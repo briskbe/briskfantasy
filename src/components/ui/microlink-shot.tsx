@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
@@ -55,14 +56,15 @@ export function MicrolinkShot({
 
   const image = (
     <div className={cn("relative aspect-[16/10] w-full overflow-hidden bg-ink-3", imgClassName)}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={staticSrc}
         alt={alt}
+        fill
         className="absolute inset-0 h-full w-full object-cover object-top"
         loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
         decoding="async"
-        sizes={sizes}
+        sizes={sizes ?? "100vw"}
       />
       {live && !liveFailed && (
         // eslint-disable-next-line @next/next/no-img-element

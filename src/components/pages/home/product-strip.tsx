@@ -26,7 +26,7 @@ const CARD_W = "w-[78vw] shrink-0 snap-start sm:w-[24rem] lg:w-[min(26rem,46vh)]
  * `tilt` is only ever true where there is a real pointer — a swiping finger
  * must not tilt cards.
  */
-function ProductCard({ item, index, locale, tilt }: { item: PortfolioItem; index: number; locale: "nl" | "en"; tilt: boolean }) {
+function ProductCard({ item, locale, tilt }: { item: PortfolioItem; locale: "nl" | "en"; tilt: boolean }) {
   const shot = (
     <div className="overflow-hidden rounded-xl bg-bg-3">
       <Image
@@ -50,7 +50,6 @@ function ProductCard({ item, index, locale, tilt }: { item: PortfolioItem; index
         <div className="rounded-2xl border border-line bg-bg-2 p-2">{shot}</div>
       )}
       <figcaption className="mt-4 flex items-baseline gap-3">
-        <span className="font-mono text-[0.68rem] tracking-[0.18em] text-muted">{String(index + 1).padStart(2, "0")}</span>
         <span className="text-[0.95rem] text-fg-2">{item.title[locale]}</span>
       </figcaption>
     </figure>
@@ -110,8 +109,8 @@ function ScrollDriven({ locale }: { locale: "nl" | "en" }) {
         </div>
         <div className="container-x mt-8 xl:mt-10">
           <motion.div ref={track} className="flex w-max gap-6 will-change-transform xl:gap-8" style={{ x }}>
-            {ITEMS.map((item, i) => (
-              <ProductCard key={item.id} item={item} index={i} locale={locale} tilt />
+            {ITEMS.map((item) => (
+              <ProductCard key={item.id} item={item} locale={locale} tilt />
             ))}
           </motion.div>
         </div>
@@ -135,8 +134,8 @@ function NativeRow({ locale }: { locale: "nl" | "en" }) {
         <Heading />
       </div>
       <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(1.25rem,4vw,4rem)] pb-4" data-lenis-prevent>
-        {ITEMS.map((item, i) => (
-          <ProductCard key={item.id} item={item} index={i} locale={locale} tilt={false} />
+        {ITEMS.map((item) => (
+          <ProductCard key={item.id} item={item} locale={locale} tilt={false} />
         ))}
         <span className="w-px shrink-0" aria-hidden />
       </div>

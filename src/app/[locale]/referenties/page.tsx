@@ -17,6 +17,8 @@ import {
 import { HowItStarts } from "@/components/pages/references/how-it-starts";
 import { flattenRows, planRows } from "@/components/pages/references/layout";
 import { pageMetadata } from "@/lib/seo";
+import { caseStudies, caseHrefFor } from "@/data/seo/cases";
+import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({
   params,
@@ -157,6 +159,13 @@ export default async function Page({
       {/* Who the work was for, before the work itself. */}
       <ClientWall />
       <WorkGrid items={cards} />
+      <section className="theme-light bg-bg text-fg section-y">
+        <div className="container-x">
+          <p className="eyebrow text-muted">{locale === "nl" ? "Een project van dichterbij" : "A closer look at the work"}</p>
+          <h2 className="text-h2 mt-5">{locale === "nl" ? "Van hotelwebsite tot webshop." : "From hotel websites to ecommerce."}</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">{caseStudies.map((caseStudy) => <article key={caseStudy.slug} className="rounded-xl border border-line p-7"><h3 className="text-h4"><Link href={caseHrefFor(caseStudy)} className="hover:text-accent">{caseStudy.copy[locale].title}</Link></h3><p className="mt-5 text-body text-fg-2">{caseStudy.copy[locale].description}</p></article>)}</div>
+        </div>
+      </section>
       <ProductGallery items={gallery} rows={galleryRows} />
       <HowItStarts />
       <CtaBand />

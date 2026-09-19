@@ -17,7 +17,7 @@ function Line({ children, delay, ready, reduced }: { children: ReactNode; delay:
     <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
       <motion.span
         className="block will-change-transform"
-        initial={reduced ? false : { y: "110%" }}
+        initial={false}
         animate={reduced ? { y: "0%" } : ready ? { y: "0%" } : { y: "110%" }}
         transition={{ duration: reduced ? 0 : 1.1, ease: EASE, delay }}
       >
@@ -83,7 +83,7 @@ export function ContactHero() {
             <div className="order-1">
               <motion.p
                 className="eyebrow inline-flex items-center gap-3 text-muted"
-                initial={{ opacity: 0, y: 12 }}
+                initial={false}
                 animate={ready ? { opacity: 1, y: 0 } : undefined}
                 transition={{ duration: 0.8, ease: EASE, delay }}
               >
@@ -104,15 +104,10 @@ export function ContactHero() {
                 {t("lead")}
               </motion.p>
 
-              {/* The one lime moment of this viewport: the promise of an answer */}
               <motion.p
-                className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-line py-2 pl-3.5 pr-4.5 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-fg-2"
+                className="mt-6 text-sm text-fg-2"
                 {...fade(0.55)}
               >
-                <span className="relative flex size-1.5" aria-hidden>
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-70 motion-reduce:hidden" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-brand" />
-                </span>
                 {t("responseBadge")}
               </motion.p>
             </div>
@@ -158,7 +153,7 @@ export function ContactHero() {
           <motion.div
             id="formulier"
             className="relative order-2 scroll-mt-28 lg:col-span-6 lg:col-start-7"
-            initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
+            initial={false}
             animate={ready ? { opacity: 1, y: 0, filter: "blur(0px)" } : undefined}
             transition={{ duration: 1.2, ease: EASE, delay: delay + 0.35 }}
           >

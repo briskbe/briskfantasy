@@ -43,6 +43,7 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
   const wrapRef = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const [inView, setInView] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const attach = useCallback((p: PlayerRef | null) => {
     playerRef.current = p;
@@ -53,8 +54,15 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
     const el = wrapRef.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.15 });
+    const preload = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setMounted(true);
+        preload.disconnect();
+      }
+    }, { rootMargin: "400px" });
     io.observe(el);
-    return () => io.disconnect();
+    preload.observe(el);
+    return () => { io.disconnect(); preload.disconnect(); };
   }, []);
 
   useEffect(() => {
@@ -66,7 +74,7 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
 
   return (
     <div ref={wrapRef} className={cn("relative w-full", className)} style={{ aspectRatio: `${width} / ${height}` }} data-cursor="hide">
-      <Player
+      {mounted && <Player
         ref={attach}
         component={component as FC<Record<string, unknown>>}
         inputProps={inputProps}
@@ -83,7 +91,7 @@ export function RemotionPlayer<T extends Record<string, unknown>>({
         playbackRate={playbackRate}
         acknowledgeRemotionLicense
         style={{ width: "100%", height: "100%" }}
-      />
+      />}
     </div>
   );
 }

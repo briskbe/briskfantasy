@@ -22,15 +22,14 @@ export async function OtherServices({ current }: { current?: "websites" | "websh
         <Eyebrow>{t("otherServices.eyebrow")}</Eyebrow>
         <h2 className="text-h3 mt-4">{t("otherServices.title")}</h2>
         <RevealGroup className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
-          {items.map((s, i) => (
+          {items.map((s) => (
             <RevealItem key={s.key}>
               <Link
                 href={s.href}
                 data-cursor-label="→"
-                className="group flex h-full min-h-40 flex-col justify-between bg-ink-2 p-6 transition-colors hover:bg-ink-3"
+                className="group flex h-full min-h-28 items-center bg-ink-2 p-6 transition-colors hover:bg-ink-3"
               >
-                <span className="font-mono text-[0.7rem] tracking-[0.18em] text-muted">0{i + 1}</span>
-                <span className="flex items-end justify-between gap-4">
+                <span className="flex w-full items-center justify-between gap-4">
                   <span className="text-h4">{t(`services.${s.key}.title`)}</span>
                   <ArrowUpRight className="size-5 shrink-0 text-muted transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                 </span>

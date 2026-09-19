@@ -6,6 +6,8 @@ import { richTags } from "@/components/ui/rich";
 import { Button } from "@/components/ui/button";
 import { BackToTop } from "./back-to-top";
 import { Wordmark } from "./logo";
+import { MarketLinks } from "@/components/pages/markets/market-page";
+import { AnalyticsPreferencesButton } from "@/components/analytics/google-analytics";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
@@ -52,6 +54,7 @@ export async function Footer() {
                 <li><Link className="hover:text-accent transition-colors" href="/over-ons">{t("links.about")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/gesprek-inplannen">{t("links.contact")}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/regio">{t("links.regionsHub")}</Link></li>
+                <li><Link className="hover:text-accent transition-colors" href="/kennisbank">{locale === "nl" ? "Kennisbank" : "Website guides"}</Link></li>
                 <li><Link className="hover:text-accent transition-colors" href="/privacy">{t("links.privacy")}</Link></li>
               </ul>
             </div>
@@ -62,6 +65,7 @@ export async function Footer() {
                   <a className="hover:text-accent transition-colors" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
                 </li>
                 <li className="text-muted">{siteConfig.location[locale]}</li>
+                <li><a className="hover:text-accent transition-colors" href={siteConfig.googleBusinessUrl} target="_blank" rel="noopener noreferrer">Google Maps · Brisk Genk</a></li>
                 {siteConfig.socials.map((s) => (
                   <li key={s.label}>
                     <a className="hover:text-accent transition-colors" href={s.href} target="_blank" rel="noreferrer noopener">
@@ -70,20 +74,15 @@ export async function Footer() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 inline-flex items-center gap-2 text-[0.8rem] text-muted">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                  <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
-                </span>
-                {t("status")}
-              </p>
             </div>
           </div>
         </div>
 
+        <div className="border-t border-line py-8"><p className="eyebrow mb-5 text-muted">{locale === "nl" ? "Brisk internationaal" : "Brisk internationally"}</p><MarketLinks label={locale === "nl" ? "Kies je markt" : "Choose your market"} /></div>
         <div className="flex flex-col gap-4 border-t border-line py-6 text-[0.8rem] text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>{t("legal", { year })}</p>
           <p>{t("madeIn")}</p>
+          <AnalyticsPreferencesButton locale={locale} className="hover:text-accent" />
           <BackToTop label={t("backToTop")} />
         </div>
       </div>

@@ -47,19 +47,12 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 export function WhatsAppWidget() {
   const t = useTranslations("Common");
   const reduced = usePrefersReducedMotion();
-  const [ready, setReady] = useState(false);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const rootRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const sendRef = useRef<HTMLAnchorElement>(null);
-
-  // Held back until the intro curtain has lifted, so it does not slide in over it.
-  useEffect(() => {
-    const id = window.setTimeout(() => setReady(true), 1400);
-    return () => window.clearTimeout(id);
-  }, []);
 
   // Escape closes and hands focus back to the button; a click anywhere else
   // just closes. This is a popover, not a modal, so focus is never trapped.
@@ -189,7 +182,7 @@ export function WhatsAppWidget() {
 
       {/* Deliberately no data-cursor-label: the custom cursor's label ring is
           88px and would swallow this 56px button exactly while it is aimed at. */}
-      <motion.button
+      <button
         ref={toggleRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -197,9 +190,6 @@ export function WhatsAppWidget() {
         aria-controls="whatsapp-panel"
         aria-label={open ? t("whatsapp.close") : t("whatsapp.open")}
         data-cursor="link"
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-        transition={{ duration: reduced ? 0.15 : 0.6, ease: EASE }}
         className="group relative flex size-14 items-center justify-center rounded-full text-white shadow-[0_16px_40px_-12px_rgba(37,211,102,0.75)] transition-transform duration-500 ease-[var(--ease-out-expo)] hover:scale-105 active:scale-95"
         style={{ backgroundColor: WA_GREEN }}
       >
@@ -234,7 +224,7 @@ export function WhatsAppWidget() {
             </motion.span>
           )}
         </AnimatePresence>
-      </motion.button>
+      </button>
     </div>
   );
 }

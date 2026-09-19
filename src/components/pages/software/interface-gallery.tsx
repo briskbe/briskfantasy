@@ -38,7 +38,7 @@ const SIZES = [
  * Dark section: the product screens as an edited wall. Below `lg` the same DOM
  * becomes a horizontal snap scroller so the section stays roughly one viewport
  * on a phone instead of ten stacked cards; from `lg` up it is a 12-column
- * editorial grid, numbered in reading order.
+ * editorial grid with a descriptive caption for each screen.
  */
 export async function InterfaceGallery({ items }: { items: PortfolioItem[] }) {
   const t = await getTranslations("Software");
@@ -50,7 +50,7 @@ export async function InterfaceGallery({ items }: { items: PortfolioItem[] }) {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
             <Reveal>
-              <Eyebrow index={4}>{t("gallery.eyebrow")}</Eyebrow>
+              <Eyebrow>{t("gallery.eyebrow")}</Eyebrow>
             </Reveal>
             <Reveal delay={0.08}>
               <h2 id="software-gallery-title" className="text-h2 mt-5 max-w-[15ch] text-balance">
@@ -82,9 +82,8 @@ export async function InterfaceGallery({ items }: { items: PortfolioItem[] }) {
                   className="block h-auto w-full"
                 />
               </div>
-              <figcaption className="mt-3 flex items-start justify-between gap-4 font-mono text-[0.72rem] uppercase leading-[1.35] tracking-[0.12em] text-muted">
+              <figcaption className="mt-3 font-mono text-[0.72rem] uppercase leading-[1.35] tracking-[0.12em] text-muted">
                 <span className="line-clamp-2">{p.title[locale]}</span>
-                <span className="shrink-0 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
               </figcaption>
             </Reveal>
           ))}

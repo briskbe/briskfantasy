@@ -1,0 +1,26 @@
+.reveal[data-reveal-state="pending"] {
+  opacity: 0;
+  translate: 0 28px;
+}
+
+.reveal[data-reveal-state="visible"] {
+  opacity: 1;
+  translate: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
+    translate 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
+}
+
+/* Keyboard navigation and a changed motion preference must never conceal content. */
+.reveal[data-reveal-state="pending"]:focus-within {
+  opacity: 1;
+  translate: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal[data-reveal-state] {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+}

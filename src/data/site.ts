@@ -4,9 +4,10 @@ export const siteConfig = {
   url: "https://www.brisk.be",
   email: "info@brisk.be",
   phone: "",
-  location: { nl: "Limburg, België", en: "Limburg, Belgium" },
-  heroVideo:
-    "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_171521_25968ba2-b594-4b32-aab7-f6b69398a6fa.mp4",
+  location: { nl: "Herenstraat 15, 3600 Genk, België", en: "Herenstraat 15, 3600 Genk, Belgium" },
+  address: { streetAddress: "Herenstraat 15", postalCode: "3600", addressLocality: "Genk", addressRegion: "Limburg", addressCountry: "BE" },
+  googleBusinessUrl: "https://share.google/Tkmzs3bYo20H0FaJP",
+  heroVideo: "/hero-video.mp4",
   heroPoster: "/hero-poster.jpg",
   /**
    * Real profiles only. These are also emitted as `sameAs` in the organisation
@@ -32,11 +33,11 @@ export const siteConfig = {
    * reviews page and the badge becomes a link; leave it empty and it renders as
    * plain text. Update both numbers together when the profile changes.
    */
-  googleRating: { score: 5, reviews: 49, url: "" },
+  googleRating: { score: 5, reviews: 49, url: "https://share.google/Tkmzs3bYo20H0FaJP" },
   /**
    * WhatsApp number in the format wa.me expects: country code first, digits
    * only, no `+`, no spaces and no leading zero. `display` is the same number
    * written for people. Empty `number` hides the chat widget entirely.
    */
-  whatsapp: { number: "32470070981", display: "+32 470 07 09 81" },
+  whatsapp: { number: "31645045527", display: "+31 6 45045527" },
 } as const;

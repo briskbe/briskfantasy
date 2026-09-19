@@ -43,19 +43,11 @@ function Principle({
   return (
     <li ref={ref} className="border-b border-line py-10 lg:py-14">
       <Reveal amount={0.4}>
-        <div className="grid gap-4 sm:grid-cols-[4.5rem_1fr] sm:gap-8">
-          <span
-            className={`font-mono text-[0.8rem] tracking-[0.18em] transition-colors duration-500 sm:pt-2 ${active ? "text-accent" : "text-muted"}`}
-            aria-hidden
-          >
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div>
+        <div>
             <h3 className={`text-h3 text-balance transition-colors duration-500 ${active ? "text-fg" : "text-fg/70"}`}>
               {t(`${k}.title`)}
             </h3>
             <p className="text-body mt-4 max-w-lg text-muted text-pretty">{t(`${k}.body`)}</p>
-          </div>
         </div>
       </Reveal>
     </li>
@@ -63,9 +55,8 @@ function Principle({
 }
 
 /**
- * Numbered principles on the left; on the right a tall sticky window onto our
- * own work that scrolls a roll of shipped screens past as you read. The
- * active number lights up and drives the progress ticks under the window.
+ * Principles beside a sticky reel of shipped screens. The active principle
+ * drives the progress ticks under the window.
  */
 export function Principles() {
   const t = useTranslations("About.principles");

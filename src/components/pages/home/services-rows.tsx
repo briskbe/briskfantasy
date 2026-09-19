@@ -77,11 +77,10 @@ export function ServicesRows() {
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
                 className={cn(
-                  "group grid grid-cols-[auto_1fr_auto] items-start gap-x-4 border-b border-line py-6 transition-opacity duration-500 sm:gap-x-8 lg:grid-cols-[5rem_1fr_minmax(0,22rem)_auto] lg:items-center lg:py-9",
+                  "group grid grid-cols-[1fr_auto] items-start gap-x-4 border-b border-line py-6 transition-opacity duration-500 sm:gap-x-8 lg:grid-cols-[1fr_minmax(0,22rem)_auto] lg:items-center lg:py-9",
                   dimmed && "opacity-35",
                 )}
               >
-                <span className="pt-1.5 font-mono text-[0.72rem] tracking-[0.18em] text-muted lg:pt-0 lg:text-[0.8rem]">0{i + 1}</span>
                 <span className="min-w-0">
                   <span className="text-h3 block text-fg transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2 lg:text-[clamp(1.875rem,3.4vw,3.25rem)] lg:leading-[1.04] lg:tracking-[-0.03em]">
                     {title}
