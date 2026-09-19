@@ -7,6 +7,27 @@ const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 const KEY = 'brisk:analytics-consent:v1';
 const ID = 'G-4TBZ9KYGCS';
 const DISABLE = `ga-disable-${ID}`;
+// Lenis may still be settling the previous route's scroll position. Wait for
+// the real pointer target to settle so a click cannot land on nearby content.
+async function openSettings(page, name) {
+  const button = page.getByRole('button', { name, exact: true }).first();
+  await button.scrollIntoViewIfNeeded();
+  await button.evaluate(element => new Promise((resolve, reject) => {
+    const started = performance.now();
+    let stableSince = started;
+    let previous = element.getBoundingClientRect();
+    function frame(now) {
+      const current = element.getBoundingClientRect();
+      if (Math.abs(current.top - previous.top) > 0.1 || Math.abs(current.left - previous.left) > 0.1) stableSince = now;
+      previous = current;
+      if (now - stableSince >= 200) return resolve();
+      if (now - started > 5000) return reject(new Error('Cookie settings button did not stop moving'));
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }));
+  await button.click();
+}
 const stub = `
 window.__analyticsStubLoads = (window.__analyticsStubLoads || 0) + 1;
 window.__analyticsCommands = [];
@@ -67,28 +88,29 @@ let browser;
   await page.getByRole('button', {name:'Cookie-instellingen',exact:true}).first().waitFor();
   assert.equal(await page.locator('#analytics-preferences').count(),0);
   assert.equal(googleRequests, 0, 'Rejection remains script-free after reload');
-  await page.getByRole('button', {name:'Cookie-instellingen',exact:true}).first().click();
+  await openSettings(page, 'Cookie-instellingen');
   await page.getByRole('button', {name:'Sluiten',exact:true}).click();
   assert.equal(await page.evaluate(key=>localStorage.getItem(key), KEY), 'rejected');
   assert.equal(googleRequests, 0, 'Cancel does not opt in');
-  await page.getByRole('button', {name:'Cookie-instellingen',exact:true}).first().click();
+  await openSettings(page, 'Cookie-instellingen');
   await page.getByRole('button', {name:'Toestaan',exact:true}).click();
   await page.waitForFunction(()=>window.__briskAnalyticsInitialized);
   assert.equal(googleRequests,1);
   assert.equal(await page.evaluate(()=>window.__analyticsCommands.filter(c=>c[0]==='config').length),1);
   await page.locator('footer a[href="/privacy"]').first().click();
   await page.waitForURL('**/privacy');
+  await page.waitForFunction(() => document.querySelector('h1')?.textContent?.toLowerCase().includes('privacy'));
   assert.equal(await page.evaluate(()=>window.__analyticsStubLoads),1);
   assert.equal(await page.evaluate(()=>window.__analyticsCommands.filter(c=>c[0]==='config').length),1);
   assert.equal(await page.evaluate(()=>window.__analyticsCommands.filter(c=>c[0]==='event'&&c[1]==='page_view').length),0);
-  await page.getByRole('button', {name:'Cookie-instellingen',exact:true}).first().click();
+  await openSettings(page, 'Cookie-instellingen');
   await page.getByRole('button', {name:'Sluiten',exact:true}).click();
   assert.equal(await page.evaluate(key=>localStorage.getItem(key), KEY),'accepted');
   const second = await primary.ctx.newPage();
   await second.goto(BASE+'/en/privacy');
   await second.waitForFunction(()=>window.__briskAnalyticsInitialized);
   assert.ok((await primary.ctx.cookies()).some(c=>c.name==='_ga'));
-  await page.getByRole('button', {name:'Cookie-instellingen',exact:true}).first().click();
+  await openSettings(page, 'Cookie-instellingen');
   await page.getByRole('button', {name:'Weigeren',exact:true}).click();
   assert.equal(await page.evaluate(key=>window[key],DISABLE),true);
   await second.waitForFunction(key=>window[key]===true,DISABLE);
