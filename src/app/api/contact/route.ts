@@ -15,8 +15,10 @@ import { siteConfig } from "@/data/site";
  * confirmation is logged and swallowed: the lead is already safe, and telling
  * the visitor their message did not arrive would be a lie.
  *
- * Env: RESEND_API_KEY, CONTACT_TO, CONTACT_FROM. Without the key the lead is
- * logged so the form still works on a local checkout.
+ * Env: RESEND_API_KEY, CONTACT_TO, CONTACT_FROM. The Resend integration sets the
+ * verified sender as RESEND_FROM, so that is honoured when CONTACT_FROM is not
+ * set. Without the key the lead is logged so the form still works on a local
+ * checkout.
  */
 
 interface Payload {
@@ -75,7 +77,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const from = process.env.CONTACT_FROM ?? `Brisk <noreply@${new URL(siteConfig.url).hostname.replace(/^www\./, "")}>`;
+  // The From domain must be verified in Resend, so prefer what the integration
+  // says is verified over a guess from the site URL.
+  const from =
+    process.env.CONTACT_FROM ??
+    process.env.RESEND_FROM ??
+    `Brisk <noreply@${new URL(siteConfig.url).hostname.replace(/^www\./, "")}>`;
   const to = process.env.CONTACT_TO ?? siteConfig.email;
 
   // The lead first: everything else is optional next to this.
