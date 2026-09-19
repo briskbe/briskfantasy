@@ -133,7 +133,7 @@ function NativeRow({ locale }: { locale: "nl" | "en" }) {
       <div className="container-x">
         <Heading />
       </div>
-      <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(1.25rem,4vw,4rem)] pb-4" data-lenis-prevent>
+      <div className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[clamp(1.25rem,4vw,4rem)] pb-4">
         {ITEMS.map((item) => (
           <ProductCard key={item.id} item={item} locale={locale} tilt={false} />
         ))}

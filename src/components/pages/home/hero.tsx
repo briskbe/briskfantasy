@@ -51,10 +51,10 @@ export async function HomeHero() {
             </h1>
             <p className="text-lead mt-8 max-w-xl text-paper/80 text-pretty">{t("lead")}</p>
             <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Button href="/gesprek-inplannen" size="lg" magnetic={false} className="min-w-[13.5rem] sm:min-w-0">
+              <Button href="/gesprek-inplannen" size="lg" className="min-w-[13.5rem] sm:min-w-0">
                 {t("ctaPrimary")}
               </Button>
-              <Button href="/referenties" variant="secondary" size="lg" icon="up-right" magnetic={false} className="min-w-[13.5rem] sm:min-w-0">
+              <Button href="/referenties" variant="secondary" size="lg" icon="up-right" className="min-w-[13.5rem] sm:min-w-0">
                 {t("ctaSecondary")}
               </Button>
             </div>

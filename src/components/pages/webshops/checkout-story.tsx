@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useInView, useScroll, useSpring, useTransform } from "motion/react";
-import { useLenis } from "lenis/react";
 import { Check, Search } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
@@ -307,7 +306,6 @@ function StoryCard({
 export function CheckoutStory() {
   const t = useTranslations("Webshops");
   const reduced = usePrefersReducedMotion();
-  const lenis = useLenis();
   const [seen, setSeen] = useState<Record<Step, boolean>>({ "1": false, "2": false, "3": false });
   const trackRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start 60%", "end 60%"] });
@@ -324,8 +322,7 @@ export function CheckoutStory() {
   const jumpTo = (s: Step) => {
     const el = document.getElementById(`webshops-story-${s}`);
     if (!el) return;
-    if (lenis) lenis.scrollTo(el, { offset: -140, duration: 1.2 });
-    else el.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top - 140, behavior: "instant" });
   };
 
   return (

@@ -110,19 +110,6 @@
     scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
   }
-  html.lenis,
-  html.lenis body {
-    height: auto;
-  }
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
   body {
     background: var(--color-ink);
     color: var(--color-paper);
@@ -149,20 +136,6 @@
   }
   button {
     cursor: pointer;
-  }
-  /* Custom cursor (fine pointers only): the lime dot replaces the native arrow,
-     text fields keep their I-beam. */
-  html.has-cursor body,
-  html.has-cursor a,
-  html.has-cursor button,
-  html.has-cursor [role="button"],
-  html.has-cursor label,
-  html.has-cursor select {
-    cursor: none;
-  }
-  html.has-cursor input:not([type="checkbox"]):not([type="radio"]),
-  html.has-cursor textarea {
-    cursor: text;
   }
 }
 

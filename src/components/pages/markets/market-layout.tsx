@@ -7,6 +7,7 @@ import { siteConfig } from "@/data/site";
 import { fontVariables } from "@/lib/fonts";
 import { JsonLd } from "@/components/seo/json-ld";
 import { GoogleAnalytics, AnalyticsPreferencesButton } from "@/components/analytics/google-analytics";
+import { ScrollReset } from "@/components/layout/scroll-reset";
 import { jsonLdGraph, organizationSchema, websiteSchema } from "@/lib/seo";
 import "@/app/globals.css";
 
@@ -19,6 +20,7 @@ export function MarketLayout({ market, children }: { market: MarketContent; chil
   return (
     <html lang={market.language} className={`${fontVariables} theme-dark`}>
       <body className="min-h-dvh bg-ink text-paper">
+        <ScrollReset />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-brand focus:p-4 focus:text-ink">{market.labels.skipToContent}</a>
         <JsonLd data={jsonLdGraph([{ ...organizationSchema("en"), description: market.labels.basedIn }, websiteSchema()])} />
         <header className="border-b border-line">

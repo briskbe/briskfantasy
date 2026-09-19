@@ -183,7 +183,7 @@ export function GuideNextSteps({ guide, locale }: { guide: Guide; locale: AppLoc
               </li>
             ))}
           </ul>
-          <div className="mt-7"><Button href="/gesprek-inplannen" magnetic={false}>{isNl ? "Bespreek je project" : "Discuss your project"}</Button></div>
+          <div className="mt-7"><Button href="/gesprek-inplannen">{isNl ? "Bespreek je project" : "Discuss your project"}</Button></div>
         </div>
       </div>
     </Section>

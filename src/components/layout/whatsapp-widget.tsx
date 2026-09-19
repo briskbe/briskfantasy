@@ -180,8 +180,6 @@ export function WhatsAppWidget() {
         )}
       </AnimatePresence>
 
-      {/* Deliberately no data-cursor-label: the custom cursor's label ring is
-          88px and would swallow this 56px button exactly while it is aimed at. */}
       <button
         ref={toggleRef}
         type="button"

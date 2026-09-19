@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import { useLenis } from "lenis/react";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { richTags } from "@/components/ui/rich";
@@ -60,7 +59,6 @@ function ScreenReel({ alt }: { alt: string }) {
 export function AppsHero() {
   const t = useTranslations("Apps");
   const reduced = useReducedMotion();
-  const lenis = useLenis();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
@@ -118,8 +116,7 @@ export function AppsHero() {
                   const el = document.getElementById("screens");
                   if (!el) return;
                   e.preventDefault();
-                  if (lenis) lenis.scrollTo(el);
-                  else el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top, behavior: "instant" });
                 }}
                 className="group inline-flex min-h-11 items-center gap-2.5 text-base font-medium tracking-[-0.01em] text-fg"
               >

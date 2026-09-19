@@ -38,10 +38,14 @@ export function Header() {
 
   // Lock scroll while the menu is open (links close it on click).
   useEffect(() => {
-    document.documentElement.classList.toggle("lenis-stopped", open);
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const htmlOverflow = document.documentElement.style.overflow;
+    const bodyOverflow = document.body.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = htmlOverflow;
+      document.body.style.overflow = bodyOverflow;
     };
   }, [open]);
   useEffect(() => {
@@ -100,7 +104,7 @@ export function Header() {
 
             <div className="flex items-center gap-2 sm:gap-3">
               <LanguageSwitcher className="hidden sm:inline-flex" />
-              <Button href="/gesprek-inplannen" size="sm" className="hidden md:inline-flex" magnetic={false} icon="none">
+              <Button href="/gesprek-inplannen" size="sm" className="hidden md:inline-flex" icon="none">
                 {t("cta")}
               </Button>
               <button

@@ -8,7 +8,6 @@ import { Play, Plus } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { richTags } from "@/components/ui/rich";
-import { Magnetic } from "@/components/ui/magnetic";
 import { TiltCard } from "@/components/spell/tilt-card";
 import {
   useFinePointer,
@@ -134,19 +133,17 @@ export function ProductGallery({
             })}
           </p>
           {remaining > 0 && (
-            <Magnetic strength={0.3}>
-              <button
-                type="button"
-                onClick={() =>
-                  setShownRows((r) => Math.min(rows.length, r + ROW_BATCH))
-                }
-                data-cursor="link"
-                className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-line-2 px-6 text-[0.95rem] font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
-              >
-                {t("product.moreCount", { count: Math.max(1, nextChunk) })}
-                <Plus className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-90" />
-              </button>
-            </Magnetic>
+            <button
+              type="button"
+              onClick={() =>
+                setShownRows((r) => Math.min(rows.length, r + ROW_BATCH))
+              }
+              data-cursor="link"
+              className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-line-2 px-6 text-[0.95rem] font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
+            >
+              {t("product.moreCount", { count: Math.max(1, nextChunk) })}
+              <Plus className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-90" />
+            </button>
           )}
         </div>
       </div>

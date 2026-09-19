@@ -5,9 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { ArrowDown } from "lucide-react";
-import { useLenis } from "lenis/react";
 import { Button } from "@/components/ui/button";
-import { Magnetic } from "@/components/ui/magnetic";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { richTags } from "@/components/ui/rich";
 import { usePrefersReducedMotion } from "@/hooks/use-media-query";
@@ -57,7 +55,6 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
   const t = useTranslations("Software");
   const reduced = usePrefersReducedMotion();
   const ref = useRef<HTMLElement>(null);
-  const lenis = useLenis();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
   const yLead = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -110]);
@@ -73,10 +70,9 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
       const el = document.getElementById("interfaces");
       if (!el) return;
       e.preventDefault();
-      if (lenis) lenis.scrollTo(el, { offset: 0 });
-      else el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      window.scrollTo({ top: window.scrollY + el.getBoundingClientRect().top, behavior: "instant" });
     },
-    [lenis, reduced],
+    [],
   );
 
   return (
@@ -159,17 +155,15 @@ export function SoftwareHero({ screens }: { screens: HeroTile[] }) {
             <Button href="/gesprek-inplannen" size="lg">
               {t("hero.primary")}
             </Button>
-            <Magnetic strength={0.35}>
-              <a
-                href="#interfaces"
-                onClick={jumpToInterfaces}
-                data-cursor="link"
-                className="group inline-flex h-14 items-center gap-2.5 rounded-full border border-line-2 px-7 text-base font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
-              >
-                {t("hero.secondary")}
-                <ArrowDown className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-1" />
-              </a>
-            </Magnetic>
+            <a
+              href="#interfaces"
+              onClick={jumpToInterfaces}
+              data-cursor="link"
+              className="group inline-flex h-14 items-center gap-2.5 rounded-full border border-line-2 px-7 text-base font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
+            >
+              {t("hero.secondary")}
+              <ArrowDown className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-1" />
+            </a>
           </motion.div>
         </motion.div>
 

@@ -5,7 +5,6 @@ import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { StaticAppPathname } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { Magnetic } from "./magnetic";
 
 type Variant = "primary" | "secondary" | "ghost" | "inverse";
 type Size = "sm" | "md" | "lg";
@@ -17,7 +16,6 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   href?: StaticAppPathname;
   external?: string;
   icon?: "arrow" | "up-right" | "none";
-  magnetic?: boolean;
   children: ReactNode;
   className?: string;
 }
@@ -51,7 +49,7 @@ function Icon({ icon, variant }: { icon: ButtonProps["icon"]; variant: Variant }
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "primary", size = "md", href, external, icon = "arrow", magnetic = true, className, children, ...rest },
+  { variant = "primary", size = "md", href, external, icon = "arrow", className, children, ...rest },
   ref,
 ) {
   const classes = cn(base, variants[variant], variant !== "ghost" && sizes[size], className);
@@ -83,6 +81,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     );
   }
 
-  if (!magnetic || variant === "ghost") return el;
-  return <Magnetic strength={0.35}>{el}</Magnetic>;
+  return el;
 });

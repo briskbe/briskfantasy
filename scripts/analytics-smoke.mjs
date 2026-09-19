@@ -7,8 +7,8 @@ const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
 const KEY = 'brisk:analytics-consent:v1';
 const ID = 'G-4TBZ9KYGCS';
 const DISABLE = `ga-disable-${ID}`;
-// Lenis may still be settling the previous route's scroll position. Wait for
-// the real pointer target to settle so a click cannot land on nearby content.
+// Wait for navigation and automatic scrolling to settle before clicking the
+// real pointer target, so a click cannot land on nearby content.
 async function openSettings(page, name) {
   const button = page.getByRole('button', { name, exact: true }).first();
   await button.scrollIntoViewIfNeeded();

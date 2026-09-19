@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Magnetic } from "@/components/ui/magnetic";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { MicrolinkShot } from "@/components/ui/microlink-shot";
 import { richTags } from "@/components/ui/rich";
@@ -85,16 +84,14 @@ export function WebshopsHero({ shot, siteCount }: { shot: Shot; siteCount: numbe
               <Button href="/gesprek-inplannen" size="lg">
                 {t("hero.primary")}
               </Button>
-              <Magnetic strength={0.35}>
-                <a
-                  href="#referenties"
-                  data-cursor="link"
-                  className="group inline-flex h-14 items-center gap-2.5 rounded-full border border-line-2 px-7 text-base font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
-                >
-                  {t("hero.secondary")}
-                  <ArrowDown className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-1" />
-                </a>
-              </Magnetic>
+              <a
+                href="#referenties"
+                data-cursor="link"
+                className="group inline-flex h-14 items-center gap-2.5 rounded-full border border-line-2 px-7 text-base font-medium tracking-[-0.01em] text-fg transition-[border-color,background-color] duration-500 ease-[var(--ease-out-expo)] hover:border-fg/60 hover:bg-fg/5"
+              >
+                {t("hero.secondary")}
+                <ArrowDown className="size-4 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-y-1" />
+              </a>
             </motion.div>
           </motion.div>
 

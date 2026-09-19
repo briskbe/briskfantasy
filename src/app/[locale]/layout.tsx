@@ -4,10 +4,9 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { SmoothScroll } from "@/components/layout/smooth-scroll";
+import { ScrollReset } from "@/components/layout/scroll-reset";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Cursor } from "@/components/layout/cursor";
 import { WhatsAppWidget } from "@/components/layout/whatsapp-widget";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { getClientMessages } from "@/components/i18n/messages";
@@ -66,17 +65,15 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             and FAQ nodes, all pointing back at this organisation's @id. */}
         <JsonLd data={jsonLdGraph([organizationSchema(locale as AppLocale), websiteSchema()])} />
         <NextIntlClientProvider messages={clientMessages}>
-          <SmoothScroll>
-            <Cursor />
-            <Header />
-            <main id="main" className="flex-1">
-              {children}
-            </main>
-            <Footer />
-            {/* Last in the DOM so it is last in the tab order, not a detour on
-                the way into the page. */}
-            <WhatsAppWidget />
-          </SmoothScroll>
+          <ScrollReset />
+          <Header />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          {/* Last in the DOM so it is last in the tab order, not a detour on
+              the way into the page. */}
+          <WhatsAppWidget />
         </NextIntlClientProvider>
         <GoogleAnalytics locale={locale} />
       </body>

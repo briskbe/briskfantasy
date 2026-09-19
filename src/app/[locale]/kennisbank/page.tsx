@@ -107,7 +107,7 @@ export default async function KnowledgeHub({ params }: Props) {
             </p>
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
-            <Button href="/gesprek-inplannen" size="lg" magnetic={false}>{isNl ? "Bespreek je website" : "Discuss your website"}</Button>
+            <Button href="/gesprek-inplannen" size="lg">{isNl ? "Bespreek je website" : "Discuss your website"}</Button>
           </div>
         </div>
       </Section>
