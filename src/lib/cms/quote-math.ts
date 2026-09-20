@@ -9,7 +9,7 @@ export function quoteTotals(items: QuoteItem[], discountCents: number) {
   const lines = items.map((item) => round(BigInt(item.unitPriceCents) * BigInt(Math.round(item.quantity * 1000)), BigInt(1000)));
   const subtotal = lines.reduce((sum, value) => sum + value, BigInt(0));
   const discount = BigInt(discountCents);
-  if (discount > subtotal) throw new CmsError("The discount cannot exceed the subtotal.", 422, { discountCents: "Reduce the discount." });
+  if (discount > subtotal) throw new CmsError("De korting mag niet hoger zijn dan het subtotaal.", 422, { discountCents: "Verlaag de korting." });
   // Proportional discount allocation, with largest remainders getting the final
   // cents. This preserves the exact discount even when items have mixed VAT rates.
   const allocations = lines.map((value, index) => ({ index, discount: subtotal ? discount * value / subtotal : BigInt(0), remainder: subtotal ? discount * value % subtotal : BigInt(0) }));
@@ -21,6 +21,6 @@ export function quoteTotals(items: QuoteItem[], discountCents: number) {
   }
   const vat = items.reduce((sum, item, index) => sum + round((lines[index] - allocations[index].discount) * BigInt(Math.round(item.vatRate * 100)), BigInt(10_000)), BigInt(0));
   const total = subtotal - discount + vat;
-  if (subtotal > BigInt(MAX_CENTS) || total > BigInt(MAX_CENTS)) throw new CmsError("The quote total exceeds the supported amount.", 422, { items: "Reduce the quantity or unit prices." });
+  if (subtotal > BigInt(MAX_CENTS) || total > BigInt(MAX_CENTS)) throw new CmsError("Het offertetotaal overschrijdt het toegestane bedrag.", 422, { items: "Verlaag de aantallen of eenheidsprijzen." });
   return { subtotalCents: Number(subtotal), vatCents: Number(vat), totalCents: Number(total) };
 }

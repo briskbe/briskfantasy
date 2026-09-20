@@ -21,6 +21,12 @@ export async function cmsApi<T>(
       ...(init.body ? { "Content-Type": "application/json" } : {}),
       ...init.headers,
     },
+  }).catch((cause: unknown) => {
+    if (cause instanceof Error && cause.name === "AbortError") throw cause;
+    throw new CmsApiError(
+      "Geen verbinding met de server. Controleer je internetverbinding en probeer het opnieuw.",
+      0,
+    );
   });
   const body = await response.json().catch(() => null);
   if (!response.ok) {
@@ -30,7 +36,7 @@ export async function cmsApi<T>(
       window.location.assign("/cms/login");
     }
     throw new CmsApiError(
-      body?.error || "Something went wrong. Please try again.",
+      body?.error || "Er is iets misgegaan. Probeer het opnieuw.",
       response.status,
       body?.fields,
     );

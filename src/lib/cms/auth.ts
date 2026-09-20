@@ -11,7 +11,7 @@ import { CmsUnavailableError, getDb } from "@/lib/cms/db";
 import { CmsError } from "@/lib/cms/errors";
 import { isEmailConfigured, sendEmail } from "@/lib/resend";
 
-const unavailableMessage = "Sign-in is temporarily unavailable. Please try again shortly.";
+const unavailableMessage = "Inloggen is tijdelijk niet beschikbaar. Probeer het straks opnieuw.";
 
 export function getCmsOwnerEmail(): string {
   const email = (process.env.CMS_OWNER_EMAIL || "info@brisk.be").trim().toLowerCase();
@@ -40,7 +40,7 @@ export function assertCmsMutationOrigin(request: Request): void {
   if (["GET", "HEAD", "OPTIONS"].includes(request.method)) return;
   const origin = request.headers.get("origin");
   if (!origin || origin !== new URL(request.url).origin || request.headers.get("sec-fetch-site") === "cross-site") {
-    throw new CmsError("This request is not permitted.", 403);
+    throw new CmsError("Dit verzoek is niet toegestaan.", 403);
   }
 }
 
@@ -95,9 +95,9 @@ function createCmsAuth() {
               const result = await sendEmail({
                 from: process.env.CONTACT_FROM || process.env.RESEND_FROM || "BRISK <info@brisk.be>",
                 to: getCmsOwnerEmail(),
-                subject: "Reset your BRISK CMS password",
-                html: `<p>A password reset was requested for your BRISK CMS account.</p><p><a href="${safeUrl}">Choose a new password</a></p><p>This link expires in 30 minutes. If you did not request this, you can ignore this email.</p>`,
-                text: `A password reset was requested for your BRISK CMS account. Choose a new password: ${url}\n\nThis link expires in 30 minutes. If you did not request this, you can ignore this email.`,
+                subject: "Je BRISK CMS-wachtwoord herstellen",
+                html: `<p>Er is een nieuw wachtwoord aangevraagd voor je BRISK CMS-account.</p><p><a href="${safeUrl}">Kies een nieuw wachtwoord</a></p><p>Deze link is 30 minuten geldig. Heb je dit niet aangevraagd? Dan kun je deze e-mail negeren.</p>`,
+                text: `Er is een nieuw wachtwoord aangevraagd voor je BRISK CMS-account. Kies een nieuw wachtwoord: ${url}\n\nDeze link is 30 minuten geldig. Heb je dit niet aangevraagd? Dan kun je deze e-mail negeren.`,
               });
               if (!result.ok) console.error("[CMS auth] Password reset email could not be delivered.");
             } catch {
@@ -150,7 +150,7 @@ function createCmsAuth() {
           before: async (session) => {
             const result = await database.query<{ email: string }>('SELECT email FROM "user" WHERE id = $1', [session.userId]);
             if (!result.rows[0] || !isCmsOwner(result.rows[0].email)) {
-              throw new APIError("UNAUTHORIZED", { message: "Invalid email or password." });
+              throw new APIError("UNAUTHORIZED", { message: "Onjuist e-mailadres of wachtwoord." });
             }
           },
         },

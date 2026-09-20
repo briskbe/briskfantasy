@@ -66,25 +66,25 @@ function QuotesContent() {
   return (
     <>
       <PageHeading
-        eyebrow="Clear proposals. Confident decisions."
-        title="Put it in writing."
-        description="Build a quote, share a private link, and keep track of the response."
+        eyebrow="Offertes"
+        title="Offertes"
+        description="Maak offertes, deel ze met je klant en volg de reactie op."
       >
         <ActionLink href="/cms/quotes/new">
           <Plus size={16} />
-          Create quote
+          Offerte maken
         </ActionLink>
       </PageHeading>
       <div className="mb-6 grid gap-4 sm:grid-cols-3">
         {[
           {
-            label: "In draft",
+            label: "Concepten",
             count: data.quotes.filter((quote) => quote.status === "draft")
               .length,
-            value: "Ready when you are",
+            value: "Nog niet gedeeld",
           },
           {
-            label: "Awaiting a decision",
+            label: "In afwachting",
             count: data.quotes.filter((quote) => quote.status === "shared")
               .length,
             value: money(
@@ -94,7 +94,7 @@ function QuotesContent() {
             ),
           },
           {
-            label: "Accepted",
+            label: "Goedgekeurd",
             count: data.quotes.filter((quote) => quote.status === "accepted")
               .length,
             value: money(
@@ -106,7 +106,7 @@ function QuotesContent() {
         ].map((metric) => (
           <Card
             key={metric.label}
-            className="border border-border p-5 shadow-none"
+            className="p-5"
           >
             <p className="text-xs font-medium text-muted">{metric.label}</p>
             <div className="mt-3 flex items-baseline justify-between gap-3">
@@ -118,12 +118,12 @@ function QuotesContent() {
           </Card>
         ))}
       </div>
-      <Card className="border border-border p-0 shadow-none">
+      <Card className="p-0">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border p-5">
           <SearchBox
             value={query}
             onChange={setQuery}
-            placeholder="Search quotes…"
+            placeholder="Offertes zoeken…"
           />
           <div className="w-44">
             <Choice
@@ -131,7 +131,7 @@ function QuotesContent() {
               value={status}
               onChange={setStatus}
               options={[
-                { value: "all", label: "All quotes" },
+                { value: "all", label: "Alle offertes" },
                 ...quoteStatuses.map((value) => ({
                   value,
                   label: titleCase(value),
@@ -143,14 +143,14 @@ function QuotesContent() {
         {quotes.length ? (
           <Table>
             <Table.ScrollContainer>
-              <Table.Content aria-label="Quotes" className="min-w-[760px]">
+              <Table.Content aria-label="Offertes" className="min-w-[760px]">
                 <Table.Header>
-                  <Table.Column isRowHeader>Quote</Table.Column>
-                  <Table.Column>Client</Table.Column>
+                  <Table.Column isRowHeader>Offerte</Table.Column>
+                  <Table.Column>Klant</Table.Column>
                   <Table.Column>Status</Table.Column>
-                  <Table.Column>Valid until</Table.Column>
-                  <Table.Column>Total incl. VAT</Table.Column>
-                  <Table.Column aria-label="Open quote"> </Table.Column>
+                  <Table.Column>Geldig tot</Table.Column>
+                  <Table.Column>Totaal incl. btw</Table.Column>
+                  <Table.Column aria-label="Offerte openen"> </Table.Column>
                 </Table.Header>
                 <Table.Body>
                   {quotes.map((quote) => (
@@ -199,7 +199,7 @@ function QuotesContent() {
                       <Table.Cell>
                         <Link
                           href={`/cms/quotes/${quote.id}`}
-                          aria-label={`Open ${quote.title}`}
+                          aria-label={`Open offerte ${quote.title}`}
                         >
                           <ExternalLink size={15} />
                         </Link>
@@ -215,17 +215,17 @@ function QuotesContent() {
             icon={<FileText size={25} />}
             title={
               query || status !== "all"
-                ? "No quotes match this view."
-                : "Make the next yes easy."
+                ? "Geen offertes gevonden"
+                : "Nog geen offertes"
             }
             description={
               query || status !== "all"
-                ? "Try another search or status filter."
-                : "Create a clear, professional proposal with line items, VAT and a private link your client can respond to."
+                ? "Probeer een andere zoekterm of status."
+                : "Maak je eerste offerte met diensten, prijzen en btw. Je klant kan via een persoonlijke link reageren."
             }
             action={
               <ActionLink href="/cms/quotes/new">
-                Create your first quote
+                Eerste offerte maken
               </ActionLink>
             }
           />
@@ -287,23 +287,23 @@ function QuoteEditorLoader({
   if (id && !quote)
     return (
       <EmptyState
-        title="Quote not found."
-        description="This quote is not available in your workspace."
-        action={<ActionLink href="/cms/quotes">Back to quotes</ActionLink>}
+        title="Offerte niet gevonden"
+        description="Deze offerte is niet beschikbaar."
+        action={<ActionLink href="/cms/quotes">Terug naar offertes</ActionLink>}
       />
     );
   if (!data.clients.length)
     return (
       <>
         <PageHeading
-          title="Create a quote."
-          back={{ href: "/cms/quotes", label: "All quotes" }}
+          title="Offerte maken"
+          back={{ href: "/cms/quotes", label: "Alle offertes" }}
         />
-        <Card className="border border-border shadow-none">
+        <Card>
           <EmptyState
-            title="Who is this proposal for?"
-            description="Add a client first so your quote has the right contact and billing details."
-            action={<ActionLink href="/cms/clients">Add a client</ActionLink>}
+            title="Voor welke klant is de offerte?"
+            description="Voeg eerst een klant toe om de juiste contact- en facturatiegegevens op je offerte te gebruiken."
+            action={<ActionLink href="/cms/clients">Klant toevoegen</ActionLink>}
           />
         </Card>
       </>
@@ -380,11 +380,11 @@ function QuoteEditor({
       !Number.isSafeInteger(toCents(form.discount)) ||
       toCents(form.discount) < 0
     )
-      throw new Error("Use valid positive amounts for your quote.");
+      throw new Error("Vul geldige bedragen in. Negatieve bedragen zijn niet toegestaan.");
     totals = quoteTotals(parsedItems, toCents(form.discount || "0"));
   } catch (cause) {
     calculationError =
-      cause instanceof Error ? cause.message : "Check your line item amounts.";
+      cause instanceof Error ? cause.message : "Controleer de bedragen op je offerteregels.";
   }
   const set = (key: keyof typeof form) => (value: string) => {
     setForm((previous) => ({ ...previous, [key]: value }));
@@ -419,12 +419,12 @@ function QuoteEditor({
       )
     ) {
       setLocalError(
-        "Choose a client and add a title, dates and a description with a positive quantity for every line item.",
+        "Kies een klant en vul een titel en datums in. Geef elke offerteregel een omschrijving en een aantal groter dan nul.",
       );
       return null;
     }
     if (form.validUntil < form.issueDate) {
-      setLocalError("The valid-until date must be on or after the issue date.");
+      setLocalError("De geldigheidsdatum mag niet vóór de offertedatum liggen.");
       return null;
     }
     const { discount, ...fields } = form;
@@ -466,7 +466,7 @@ function QuoteEditor({
       window.setTimeout(() => setCopied(false), 2500);
     } catch {
       setLocalError(
-        "Your browser could not copy the link. Select and copy it from the field below.",
+        "De link kon niet worden gekopieerd. Selecteer en kopieer de link in het veld hieronder.",
       );
     }
   }
@@ -485,19 +485,19 @@ function QuoteEditor({
   return (
     <>
       <PageHeading
-        back={{ href: "/cms/quotes", label: "All quotes" }}
-        eyebrow={saved?.number || "New proposal"}
+        back={{ href: "/cms/quotes", label: "Alle offertes" }}
+        eyebrow={saved?.number || "Nieuwe offerte"}
         title={
           locked
             ? saved.title
             : saved
-              ? "Refine your proposal."
-              : "A good idea, well presented."
+              ? "Offerte bewerken"
+              : "Offerte maken"
         }
         description={
           locked
-            ? "Your shared proposal and its latest response."
-            : "Build your quote on the left. See the client’s view on the right."
+            ? "Bekijk de gedeelde offerte en de reactie van je klant."
+            : "Vul de gegevens in en bekijk direct hoe je offerte eruitziet."
         }
       >
         {saved && <StatusBadge status={saved.status} />}
@@ -508,13 +508,13 @@ function QuoteEditor({
             onPress={() => void duplicate()}
           >
             <Copy size={15} />
-            Duplicate
+            Dupliceren
           </Button>
         )}
         {locked && (
           <Button variant="secondary" onPress={() => window.print()}>
             <Printer size={15} />
-            Print
+            Afdrukken
           </Button>
         )}
       </PageHeading>
@@ -525,42 +525,42 @@ function QuoteEditor({
           className="mb-5 flex items-center gap-2 text-sm text-success"
         >
           <Check size={16} />
-          Draft saved.
+          Concept opgeslagen.
         </p>
       )}
       {locked && (
-        <Card className="mb-6 border border-border p-5 shadow-none">
+        <Card className="mb-6 p-5">
           <div className="flex items-start gap-3">
             <LockKeyhole size={19} className="mt-0.5 shrink-0 text-muted" />
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium">
                 {saved.status === "accepted"
-                  ? "This quote has been accepted."
-                  : "This version is locked while shared."}
+                  ? "Deze offerte is goedgekeurd."
+                  : "Deze versie is gedeeld en kan niet worden bewerkt."}
               </p>
               <p className="mt-1 text-xs leading-5 text-muted">
                 {saved.status === "accepted"
-                  ? `Accepted by ${saved.acceptedName || "the client"}${saved.acceptedAt ? ` on ${date(saved.acceptedAt, true)}` : ""}. Duplicate it to prepare a new proposal.`
-                  : "Your client sees a snapshot of this quote. Revoke the link to make changes, then share the updated version."}
+                  ? `Goedgekeurd door ${saved.acceptedName || "de klant"}${saved.acceptedAt ? ` op ${date(saved.acceptedAt, true)}` : ""}. Dupliceer de offerte om een nieuwe versie te maken.`
+                  : "Je klant ziet deze vastgelegde versie. Trek de link in om de offerte te wijzigen en deel daarna de nieuwe versie."}
               </p>
               {shareUrl && (
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Input
-                    aria-label="Private quote link"
+                    aria-label="Persoonlijke offertelink"
                     value={shareUrl}
                     readOnly
                     className="min-w-0 flex-1 text-xs"
                   />
                   <Button variant="secondary" onPress={() => void copyLink()}>
                     <Copy size={15} />
-                    {copied ? "Copied" : "Copy link"}
+                    {copied ? "Gekopieerd" : "Link kopiëren"}
                   </Button>
                   <a
                     href={shareUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex size-10 items-center justify-center rounded-full border border-border"
-                    aria-label="Open shared quote"
+                    aria-label="Gedeelde offerte openen"
                   >
                     <ExternalLink size={16} />
                   </a>
@@ -569,10 +569,10 @@ function QuoteEditor({
               <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-xs text-muted">
                   {saved.viewedAt
-                    ? `First opened ${date(saved.viewedAt, true)}`
-                    : "Not opened yet"}
+                    ? `Voor het eerst bekeken op ${date(saved.viewedAt, true)}`
+                    : "Nog niet bekeken"}
                   {saved.validUntil < localDate() && saved.status === "shared"
-                    ? " · Expired"
+                    ? " · Verlopen"
                     : ""}
                 </p>
                 {saved.status !== "accepted" && (
@@ -581,7 +581,7 @@ function QuoteEditor({
                     size="sm"
                     onPress={() => setRevokeOpen(true)}
                   >
-                    Revoke link & edit
+                    Link intrekken en bewerken
                   </Button>
                 )}
               </div>
@@ -599,16 +599,16 @@ function QuoteEditor({
         {!locked && (
           <form onSubmit={submit} className="space-y-5">
             <fieldset disabled={mutation.busy} className="space-y-5">
-              <Card className="border border-border p-6 shadow-none">
+              <Card className="p-6">
                 <Card.Header>
-                  <Card.Title className="text-base">The essentials</Card.Title>
+                  <Card.Title className="text-base">Offertegegevens</Card.Title>
                   <Card.Description className="text-xs">
-                    Who it’s for, and what you’re proposing.
+                    Kies een klant en beschrijf je voorstel.
                   </Card.Description>
                 </Card.Header>
                 <Card.Content className="mt-5 space-y-5">
                   <Choice
-                    label="Client"
+                    label="Klant"
                     value={form.clientId}
                     onChange={set("clientId")}
                     required
@@ -624,23 +624,23 @@ function QuoteEditor({
                       }))}
                   />
                   <Field
-                    label="Quote title"
+                    label="Offertetitel"
                     value={form.title}
                     onChange={set("title")}
                     required
                     maxLength={200}
-                    placeholder="Describe the project or service"
+                    placeholder="Beschrijf het project of de dienst"
                   />
                   <div className="grid gap-4 sm:grid-cols-2">
                     <Field
-                      label="Issue date"
+                      label="Offertedatum"
                       value={form.issueDate}
                       onChange={set("issueDate")}
                       type="date"
                       required
                     />
                     <Field
-                      label="Valid until"
+                      label="Geldig tot"
                       value={form.validUntil}
                       onChange={set("validUntil")}
                       type="date"
@@ -649,20 +649,20 @@ function QuoteEditor({
                     />
                   </div>
                   <Field
-                    label="Introduction"
+                    label="Inleiding"
                     value={form.introduction}
                     onChange={set("introduction")}
                     multiline
-                    placeholder="Set the scene. What will you help this client achieve?"
+                    placeholder="Beschrijf de vraag van je klant en je aanpak."
                   />
                 </Card.Content>
               </Card>
-              <Card className="border border-border p-6 shadow-none">
+              <Card className="p-6">
                 <Card.Header>
-                  <Card.Title className="text-base">Scope & pricing</Card.Title>
+                  <Card.Title className="text-base">Diensten en prijzen</Card.Title>
                   <Card.Description className="text-xs">
-                    Prices in EUR, excluding VAT. Quantity supports three
-                    decimal places.
+                    Prijzen in euro, exclusief btw. Aantallen kunnen maximaal
+                    drie decimalen bevatten.
                   </Card.Description>
                 </Card.Header>
                 <Card.Content className="mt-5 space-y-5">
@@ -673,13 +673,13 @@ function QuoteEditor({
                     >
                       <div className="mb-3 flex items-center justify-between">
                         <p className="text-xs font-medium text-muted">
-                          Line item {index + 1}
+                          Offerteregel {index + 1}
                         </p>
                         <Button
                           isIconOnly
                           variant="ghost"
                           size="sm"
-                          aria-label={`Remove line item ${index + 1}`}
+                          aria-label={`Offerteregel ${index + 1} verwijderen`}
                           isDisabled={items.length <= 1}
                           onPress={() => {
                             setItems((previous) =>
@@ -692,18 +692,18 @@ function QuoteEditor({
                         </Button>
                       </div>
                       <Field
-                        label={`Description ${index + 1}`}
+                        label={`Omschrijving ${index + 1}`}
                         value={item.description}
                         onChange={(value) =>
                           changeItem(item.id, "description", value)
                         }
                         required
                         maxLength={2000}
-                        placeholder="Service, deliverable or product"
+                        placeholder="Dienst, resultaat of product"
                       />
                       <div className="mt-4 grid grid-cols-3 gap-3">
                         <Field
-                          label="Quantity"
+                          label="Aantal"
                           value={item.quantity}
                           onChange={(value) =>
                             changeItem(item.id, "quantity", value)
@@ -715,7 +715,7 @@ function QuoteEditor({
                           required
                         />
                         <Field
-                          label="Unit price"
+                          label="Eenheidsprijs"
                           value={item.price}
                           onChange={(value) =>
                             changeItem(item.id, "price", value)
@@ -727,7 +727,7 @@ function QuoteEditor({
                           placeholder="0.00"
                         />
                         <Field
-                          label="VAT (%)"
+                          label="Btw (%)"
                           value={item.vat}
                           onChange={(value) =>
                             changeItem(item.id, "vat", value)
@@ -749,31 +749,31 @@ function QuoteEditor({
                     isDisabled={items.length >= 100}
                   >
                     <Plus size={15} />
-                    Add line item
+                    Regel toevoegen
                   </Button>
                   <Field
-                    label="Discount (EUR)"
+                    label="Korting (EUR)"
                     value={form.discount}
                     onChange={set("discount")}
                     type="number"
                     min="0"
                     step="0.01"
-                    description="Applied proportionally before VAT, across all line items."
+                    description="Evenredig verdeeld over alle offerteregels, vóór de btw-berekening."
                   />
                   <ErrorNotice message={calculationError} />
                 </Card.Content>
               </Card>
-              <Card className="border border-border p-6 shadow-none">
+              <Card className="p-6">
                 <Card.Header>
-                  <Card.Title className="text-base">Terms & details</Card.Title>
+                  <Card.Title className="text-base">Voorwaarden</Card.Title>
                 </Card.Header>
                 <Card.Content className="mt-5">
                   <Field
-                    label="Payment terms and conditions"
+                    label="Betalings- en leveringsvoorwaarden"
                     value={form.terms}
                     onChange={set("terms")}
                     multiline
-                    placeholder="Payment schedule, delivery details and any conditions for this proposal."
+                    placeholder="Betalingstermijnen, oplevering en overige voorwaarden van deze offerte."
                   />
                 </Card.Content>
               </Card>
@@ -785,7 +785,7 @@ function QuoteEditor({
                 isPending={mutation.busy}
               >
                 <Save size={15} />
-                Save draft
+                Concept opslaan
               </Button>
               <Button
                 type="button"
@@ -793,12 +793,12 @@ function QuoteEditor({
                 isDisabled={mutation.busy || Boolean(calculationError)}
               >
                 <Link2 size={15} />
-                Save & create link
+                Opslaan en link maken
               </Button>
             </div>
             <p className="text-xs leading-5 text-muted">
-              Creating a link saves and locks the current version. Copy the link
-              to share it with your client.
+              Door een link te maken, sla je de huidige versie op en zet je deze vast.
+              Kopieer de link om de offerte met je klant te delen.
             </p>
           </form>
         )}
@@ -806,12 +806,12 @@ function QuoteEditor({
           {!locked && (
             <p className="mb-3 flex items-center gap-2 text-xs font-medium text-muted">
               <FileText size={14} />
-              Client preview
+              Voorbeeld voor de klant
             </p>
           )}
           <QuotePreview
             quote={{
-              number: saved?.number || "Draft quote",
+              number: saved?.number || "Conceptofferte",
               title: locked ? saved.title : form.title,
               issueDate: locked ? saved.issueDate : form.issueDate,
               validUntil: locked ? saved.validUntil : form.validUntil,
@@ -833,23 +833,23 @@ function QuoteEditor({
           />
           <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted">
             <ShieldCheck size={13} />
-            Private link. No account needed for your client.
+            Je klant kan de offerte via de link bekijken zonder account.
           </p>
         </div>
       </div>
       <EditorModal
         open={revokeOpen}
         onClose={() => setRevokeOpen(false)}
-        title="Revoke the shared link?"
+        title="Gedeelde link intrekken?"
       >
         <p className="text-sm leading-6 text-muted">
-          The current link will stop working immediately. You can edit this
-          quote and generate a new link when it’s ready.
+          De huidige link werkt daarna niet meer. Je kunt de offerte bewerken
+          en een nieuwe link maken zodra deze klaar is.
         </p>
         <ErrorNotice message={mutation.error} />
         <div className="mt-6 flex justify-end gap-2">
           <Button variant="tertiary" onPress={() => setRevokeOpen(false)}>
-            Keep link
+            Link behouden
           </Button>
           <Button
             variant="danger"
@@ -866,7 +866,7 @@ function QuoteEditor({
               )
             }
           >
-            Revoke & edit
+            Intrekken en bewerken
           </Button>
         </div>
       </EditorModal>
@@ -896,7 +896,7 @@ export function QuotePreview({
   client?: QuoteClient | null;
 }) {
   return (
-    <article className="cms-quote-paper overflow-hidden rounded-2xl border border-border bg-surface shadow-sm">
+    <Card className="cms-quote-paper overflow-hidden p-0">
       <div className="cms-quote-stripe h-2 bg-accent" />
       <div className="p-6 sm:p-9">
         <header className="flex flex-wrap justify-between gap-6">
@@ -907,30 +907,30 @@ export function QuotePreview({
             <p className="mt-3 text-xs leading-5 text-muted">
               Herenstraat 15
               <br />
-              3600 Genk, Belgium
+              3600 Genk, België
               <br />
               info@brisk.be
             </p>
           </div>
           <div className="text-right">
             <p className="text-xs font-medium uppercase tracking-widest text-muted">
-              Proposal
+              Offerte
             </p>
             <p className="mt-2 text-sm font-medium">{quote.number}</p>
             <p className="mt-2 text-xs text-muted">
-              Issued {date(quote.issueDate)}
+              Offertedatum {date(quote.issueDate)}
             </p>
             <p className="mt-1 text-xs text-muted">
-              Valid until {date(quote.validUntil)}
+              Geldig tot {date(quote.validUntil)}
             </p>
           </div>
         </header>
         <div className="mt-9 border-t border-border pt-7">
           <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
-            Prepared for
+            Voor
           </p>
           <p className="mt-2 text-base font-semibold">
-            {client?.company || client?.name || "Select a client"}
+            {client?.company || client?.name || "Selecteer een klant"}
           </p>
           {client?.company && (
             <p className="mt-1 text-sm text-muted">{client.name}</p>
@@ -941,10 +941,10 @@ export function QuotePreview({
             </p>
           )}
           {client?.vatNumber && (
-            <p className="mt-1 text-xs text-muted">VAT {client.vatNumber}</p>
+            <p className="mt-1 text-xs text-muted">Btw {client.vatNumber}</p>
           )}
           <h2 className="mt-8 text-2xl font-semibold leading-tight tracking-tight">
-            {quote.title || "Your proposal title"}
+            {quote.title || "Titel van je offerte"}
           </h2>
           {quote.introduction && (
             <p className="mt-4 whitespace-pre-line text-sm leading-7 text-muted">
@@ -957,19 +957,19 @@ export function QuotePreview({
             <thead>
               <tr className="border-y border-border">
                 <th className="py-3 pr-3 font-medium text-muted">
-                  Description
+                  Omschrijving
                 </th>
                 <th className="px-2 py-3 text-right font-medium text-muted">
-                  Qty
+                  Aantal
                 </th>
                 <th className="px-2 py-3 text-right font-medium text-muted">
-                  Price
+                  Prijs
                 </th>
                 <th className="px-2 py-3 text-right font-medium text-muted">
-                  VAT
+                  Btw
                 </th>
                 <th className="py-3 pl-2 text-right font-medium text-muted">
-                  Amount
+                  Bedrag
                 </th>
               </tr>
             </thead>
@@ -977,10 +977,10 @@ export function QuotePreview({
               {quote.items.map((item) => (
                 <tr key={item.id} className="border-b border-border">
                   <td className="max-w-64 py-4 pr-3 whitespace-pre-line leading-5">
-                    {item.description || "Line item description"}
+                    {item.description || "Omschrijving van de dienst"}
                   </td>
                   <td className="px-2 py-4 text-right tabular-nums">
-                    {Number.isFinite(item.quantity) ? item.quantity : "—"}
+                    {Number.isFinite(item.quantity) ? item.quantity.toLocaleString("nl-BE", { maximumFractionDigits: 3 }) : "—"}
                   </td>
                   <td className="px-2 py-4 text-right whitespace-nowrap tabular-nums">
                     {Number.isFinite(item.unitPriceCents)
@@ -988,7 +988,7 @@ export function QuotePreview({
                       : "—"}
                   </td>
                   <td className="px-2 py-4 text-right tabular-nums">
-                    {Number.isFinite(item.vatRate) ? `${item.vatRate}%` : "—"}
+                    {Number.isFinite(item.vatRate) ? `${item.vatRate.toLocaleString("nl-BE", { maximumFractionDigits: 2 })}%` : "—"}
                   </td>
                   <td className="py-4 pl-2 text-right whitespace-nowrap font-medium tabular-nums">
                     {Number.isFinite(item.unitPriceCents * item.quantity)
@@ -1002,36 +1002,36 @@ export function QuotePreview({
         </div>
         <dl className="ml-auto mt-6 max-w-xs space-y-3 text-sm">
           <div className="flex justify-between gap-5">
-            <dt className="text-muted">Subtotal</dt>
+            <dt className="text-muted">Subtotaal</dt>
             <dd className="tabular-nums">{money(quote.subtotalCents)}</dd>
           </div>
           {quote.discountCents > 0 && (
             <div className="flex justify-between gap-5">
-              <dt className="text-muted">Discount</dt>
+              <dt className="text-muted">Korting</dt>
               <dd className="tabular-nums">−{money(quote.discountCents)}</dd>
             </div>
           )}
           <div className="flex justify-between gap-5">
-            <dt className="text-muted">VAT</dt>
+            <dt className="text-muted">Btw</dt>
             <dd className="tabular-nums">{money(quote.vatCents)}</dd>
           </div>
           <div className="flex justify-between gap-5 border-t border-border pt-4 text-lg font-semibold">
-            <dt>Total</dt>
+            <dt>Totaal</dt>
             <dd className="tabular-nums">{money(quote.totalCents)}</dd>
           </div>
         </dl>
         {quote.terms && (
           <section className="mt-9 border-t border-border pt-6">
-            <h3 className="text-xs font-semibold">Terms & conditions</h3>
+            <h3 className="text-xs font-semibold">Voorwaarden</h3>
             <p className="mt-3 whitespace-pre-line text-xs leading-6 text-muted">
               {quote.terms}
             </p>
           </section>
         )}
         <footer className="mt-9 border-t border-border pt-5 text-[11px] text-muted">
-          Thank you for considering Brisk. Let’s make something that works.
+          Vragen over deze offerte? Neem contact op via info@brisk.be.
         </footer>
       </div>
-    </article>
+    </Card>
   );
 }

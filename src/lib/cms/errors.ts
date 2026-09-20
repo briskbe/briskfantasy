@@ -6,7 +6,7 @@ export class CmsError extends Error {
 }
 
 export class CmsUnavailableError extends CmsError {
-  constructor(message = "The workspace is temporarily unavailable. Please try again shortly.") {
+  constructor(message = "Het beheerportaal is tijdelijk niet beschikbaar. Probeer het straks opnieuw.") {
     super(message, 503);
     this.name = "CmsUnavailableError";
   }

@@ -1,12 +1,13 @@
 "use client";
 
+import { DutchFieldError } from "./field-error";
 import Link from "next/link";
 import { useRef, useState, type ComponentProps, type ReactNode } from "react";
 import {
   Button,
+  buttonVariants,
   Card,
   Chip,
-  FieldError,
   Input,
   Label,
   ListBox,
@@ -27,20 +28,87 @@ import { useCms } from "./cms-provider";
 import { cmsApi, CmsApiError } from "./api";
 
 export const money = (cents: number) =>
-  new Intl.NumberFormat("en-BE", { style: "currency", currency: "EUR" }).format(
+  new Intl.NumberFormat("nl-BE", { style: "currency", currency: "EUR" }).format(
     cents / 100,
   );
 export const date = (value: string | null, withTime = false) =>
   value
-    ? new Intl.DateTimeFormat("en-GB", {
+    ? new Intl.DateTimeFormat("nl-BE", {
         day: "numeric",
         month: "short",
         year: "numeric",
         ...(withTime ? { hour: "2-digit", minute: "2-digit" } : {}),
       }).format(new Date(value.length === 10 ? `${value}T12:00:00` : value))
-    : "Not set";
-export const titleCase = (value: string) =>
-  value.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+    : "Niet ingesteld";
+const labels: Record<string, string> = {
+  lead: "Potentiële klant",
+  active: "Actief",
+  archived: "Gearchiveerd",
+  planned: "Gepland",
+  in_progress: "In uitvoering",
+  review: "Ter beoordeling",
+  completed: "Afgerond",
+  on_hold: "Gepauzeerd",
+  draft: "Concept",
+  shared: "Gedeeld",
+  accepted: "Goedgekeurd",
+  declined: "Afgewezen",
+  open: "Openstaand",
+  done: "Afgerond",
+  low: "Laag",
+  normal: "Normaal",
+  high: "Hoog",
+  task: "Taak",
+  call: "Telefoongesprek",
+  email: "E-mail",
+  meeting: "Afspraak",
+  today: "Vandaag",
+  overdue: "Te laat",
+  upcoming: "Binnenkort",
+  all: "Alles",
+  overview: "Overzicht",
+  projects: "Projecten",
+  quotes: "Offertes",
+  "follow-ups": "Opvolging",
+  name: "Naam",
+  company: "Bedrijf",
+  phone: "Telefoonnummer",
+  vatNumber: "Btw-nummer",
+  address: "Adres",
+  notes: "Notities",
+  clientId: "Klant",
+  projectId: "Project",
+  title: "Titel",
+  description: "Omschrijving",
+  status: "Status",
+  service: "Dienst",
+  budgetCents: "Budget",
+  progress: "Voortgang",
+  startDate: "Startdatum",
+  dueDate: "Einddatum",
+  dueAt: "Datum en tijd",
+  priority: "Prioriteit",
+  type: "Type",
+  issueDate: "Offertedatum",
+  validUntil: "Geldig tot",
+  introduction: "Inleiding",
+  terms: "Voorwaarden",
+  items: "Offerteposten",
+  discountCents: "Korting",
+  quantity: "Aantal",
+  unitPriceCents: "Eenheidsprijs",
+  vatRate: "Btw-percentage",
+  form: "Formulier",
+  consent: "Akkoord",
+  decision: "Reactie",
+};
+export const titleCase = (value: string) => {
+  const itemField = /^items\.(\d+)\.(\w+)$/.exec(value);
+  if (itemField) {
+    return `Offertepost ${Number(itemField[1]) + 1} · ${labels[itemField[2]] ?? "Veld"}`;
+  }
+  return labels[value] ?? value;
+};
 export const toCents = (value: string) => Math.round(Number(value) * 100);
 export const localDate = (value = new Date()) =>
   `${value.getFullYear()}-${String(value.getMonth() + 1).padStart(2, "0")}-${String(value.getDate()).padStart(2, "0")}`;
@@ -83,7 +151,7 @@ export function PageHeading({
             {eyebrow}
           </p>
         )}
-        <h1 className="text-[clamp(1.9rem,3vw,2.5rem)] font-semibold leading-tight tracking-[-0.045em]">
+        <h1 className="text-3xl font-semibold tracking-tight">
           {title}
         </h1>
         {description && (
@@ -145,16 +213,16 @@ export function WorkspaceGate({ children }: { children: ReactNode }) {
         className="flex min-h-96 items-center justify-center gap-3 text-sm text-muted"
         role="status"
       >
-        <Spinner size="sm" />
-        Loading your workspace…
+        <Spinner size="sm" aria-label="Laden" />
+        Beheerportaal laden…
       </div>
     );
   if (!data)
     return (
       <Card className="p-8">
-        <ErrorNotice message={error || "Your workspace could not be loaded."} />
+        <ErrorNotice message={error || "Het beheerportaal kon niet worden geladen."} />
         <Button variant="secondary" onPress={() => void refresh()}>
-          Try again
+          Opnieuw proberen
         </Button>
       </Card>
     );
@@ -224,7 +292,7 @@ export function Field({
       {description && (
         <p className="text-xs leading-5 text-muted">{description}</p>
       )}
-      <FieldError />
+      <DutchFieldError type={props.type} min={props.min} max={props.max} minLength={props.minLength} maxLength={props.maxLength} />
     </TextField>
   );
 }
@@ -251,7 +319,7 @@ export function Choice({
       isRequired={required}
       isDisabled={disabled}
       fullWidth
-      placeholder={`Choose ${label.toLowerCase()}`}
+      placeholder={`Kies ${label.toLowerCase()}`}
       className="gap-2"
     >
       <Label className="text-sm font-medium">
@@ -276,7 +344,7 @@ export function Choice({
           ))}
         </ListBox>
       </Select.Popover>
-      <FieldError />
+      <DutchFieldError />
     </Select>
   );
 }
@@ -284,7 +352,7 @@ export function Choice({
 export function SearchBox({
   value,
   onChange,
-  placeholder = "Search…",
+  placeholder = "Zoeken…",
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -328,7 +396,7 @@ export function EditorModal({
     >
       <Modal.Container size="lg" scroll="inside">
         <Modal.Dialog className="cms-editor-dialog">
-          <Modal.CloseTrigger />
+          <Modal.CloseTrigger aria-label="Sluiten" />
           <Modal.Header className="pb-5">
             <Modal.Heading className="text-xl tracking-tight">
               {title}
@@ -347,7 +415,7 @@ export function EditorModal({
 export function FormActions({
   busy,
   onCancel,
-  label = "Save changes",
+  label = "Wijzigingen opslaan",
 }: {
   busy: boolean;
   onCancel: () => void;
@@ -356,10 +424,10 @@ export function FormActions({
   return (
     <div className="mt-7 flex justify-end gap-2 border-t border-border pt-5">
       <Button variant="tertiary" onPress={onCancel} isDisabled={busy}>
-        Cancel
+        Annuleren
       </Button>
       <Button type="submit" isPending={busy}>
-        {busy ? "Saving…" : label}
+        {busy ? "Opslaan…" : label}
       </Button>
     </div>
   );
@@ -380,7 +448,7 @@ export function ActionLink({
       className={
         subtle
           ? "inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:underline"
-          : "cms-action-link inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-accent px-5 text-sm font-medium text-accent-foreground transition-opacity hover:opacity-85"
+          : buttonVariants({ variant: "primary" })
       }
     >
       {children}
@@ -416,7 +484,7 @@ export function useCmsMutation() {
               .join(" ")
           : cause instanceof Error
             ? cause.message
-            : "Unable to save. Please try again.",
+            : "Opslaan is niet gelukt. Probeer het opnieuw.",
       );
       return null;
     } finally {

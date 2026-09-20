@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { Button, Card, Table } from "@heroui/react";
+import { Button, Card, Label, ProgressBar, Table } from "@heroui/react";
 import {
   ArrowUpRight,
   CalendarDays,
@@ -79,15 +79,15 @@ function ProjectEditor({
     <form onSubmit={submit}>
       <div className="space-y-5">
         <Field
-          label="Project name"
+          label="Projectnaam"
           value={form.title}
           onChange={set("title")}
           required
           maxLength={200}
-          placeholder="A clear name for the next big thing"
+          placeholder="Bijvoorbeeld: nieuwe bedrijfswebsite"
         />
         <Choice
-          label="Client"
+          label="Klant"
           value={form.clientId}
           onChange={set("clientId")}
           required
@@ -103,10 +103,10 @@ function ProjectEditor({
         />
         <div className="grid gap-5 sm:grid-cols-2">
           <Field
-            label="Service"
+            label="Dienst"
             value={form.service}
             onChange={set("service")}
-            placeholder="Website, branding, app…"
+            placeholder="Website, huisstijl, app…"
           />
           <Choice
             label="Status"
@@ -124,10 +124,10 @@ function ProjectEditor({
             type="number"
             min="0"
             step="0.01"
-            placeholder="0.00"
+            placeholder="0,00"
           />
           <Field
-            label="Progress (%)"
+            label="Voortgang (%)"
             value={form.progress}
             onChange={set("progress")}
             type="number"
@@ -136,13 +136,13 @@ function ProjectEditor({
             step="1"
           />
           <Field
-            label="Start date"
+            label="Startdatum"
             value={form.startDate}
             onChange={set("startDate")}
             type="date"
           />
           <Field
-            label="Due date"
+            label="Einddatum"
             value={form.dueDate}
             onChange={set("dueDate")}
             type="date"
@@ -150,18 +150,18 @@ function ProjectEditor({
           />
         </div>
         <Field
-          label="Project description"
+          label="Projectomschrijving"
           value={form.description}
           onChange={set("description")}
           multiline
-          placeholder="Scope, deliverables, and anything worth keeping in mind."
+          placeholder="Beschrijf de opdracht, het resultaat en de gemaakte afspraken."
         />
       </div>
       <ErrorNotice message={mutation.error} />
       <FormActions
         busy={mutation.busy}
         onCancel={onClose}
-        label={project ? "Save project" : "Create project"}
+        label={project ? "Project opslaan" : "Project aanmaken"}
       />
     </form>
   );
@@ -210,23 +210,22 @@ function ProjectsContent({
   return (
     <>
       <PageHeading
-        eyebrow="From idea to delivery"
-        title="Work in progress."
-        description="See what’s moving, what’s next, and what’s ready to ship."
+        title="Projecten"
+        description="Volg de planning, voortgang en oplevering van je projecten."
       >
         <Button
           onPress={() => setEditor("new")}
           isDisabled={!data.clients.length}
         >
           <Plus size={16} />
-          New project
+          Nieuw project
         </Button>
       </PageHeading>
       <div className="mb-6 flex flex-wrap items-end gap-4">
         <SearchBox
           value={query}
           onChange={setQuery}
-          placeholder="Search projects…"
+          placeholder="Projecten zoeken…"
         />
         <div className="w-44">
           <Choice
@@ -234,7 +233,7 @@ function ProjectsContent({
             value={status}
             onChange={setStatus}
             options={[
-              { value: "all", label: "All statuses" },
+              { value: "all", label: "Alle statussen" },
               ...projectStatuses.map((value) => ({
                 value,
                 label: titleCase(value),
@@ -244,11 +243,11 @@ function ProjectsContent({
         </div>
         <div className="w-48">
           <Choice
-            label="Client"
+            label="Klant"
             value={selectedClient}
             onChange={setSelectedClient}
             options={[
-              { value: "all", label: "All clients" },
+              { value: "all", label: "Alle klanten" },
               ...data.clients.map((client) => ({
                 value: client.id,
                 label: client.company || client.name,
@@ -259,13 +258,13 @@ function ProjectsContent({
         <div
           className="ml-auto flex gap-1 rounded-xl border border-border bg-surface p-1"
           role="group"
-          aria-label="Project view"
+          aria-label="Projectweergave"
         >
           <Button
             isIconOnly
             size="sm"
             variant={view === "board" ? "secondary" : "ghost"}
-            aria-label="Board view"
+            aria-label="Bordweergave"
             aria-pressed={view === "board"}
             onPress={() => setView("board")}
           >
@@ -275,7 +274,7 @@ function ProjectsContent({
             isIconOnly
             size="sm"
             variant={view === "list" ? "secondary" : "ghost"}
-            aria-label="List view"
+            aria-label="Lijstweergave"
             aria-pressed={view === "list"}
             onPress={() => setView("list")}
           >
@@ -284,12 +283,12 @@ function ProjectsContent({
         </div>
       </div>
       {!data.clients.length ? (
-        <Card className="border border-border shadow-none">
+        <Card>
           <EmptyState
-            title="Start with a client."
-            description="Connect every project to the person or company you’re creating it for."
+            title="Voeg eerst een klant toe"
+            description="Elk project wordt gekoppeld aan een klant."
             action={
-              <ActionLink href="/cms/clients">Add your first client</ActionLink>
+              <ActionLink href="/cms/clients">Klant toevoegen</ActionLink>
             }
           />
         </Card>
@@ -321,7 +320,7 @@ function ProjectsContent({
                     .map((project) => (
                       <Card
                         key={project.id}
-                        className="border border-border p-4 shadow-none"
+                        className="p-4"
                       >
                         <div className="flex items-start justify-between gap-2">
                           <span className="text-[11px] font-medium uppercase tracking-wider text-muted">
@@ -332,7 +331,7 @@ function ProjectsContent({
                             isIconOnly
                             variant="ghost"
                             className="-mr-2 -mt-2"
-                            aria-label={`Edit ${project.title}`}
+                            aria-label={`Bewerk ${project.title}`}
                             onPress={() => setEditor(project)}
                           >
                             <Pencil size={14} />
@@ -352,22 +351,19 @@ function ProjectsContent({
                               (client) => client.id === project.clientId,
                             )?.name}
                         </p>
-                        <div className="mt-6 flex items-center justify-between text-xs">
-                          <span className="text-muted">Progress</span>
-                          <span>{project.progress}%</span>
-                        </div>
-                        <div className="mt-2 h-1 overflow-hidden rounded-full bg-surface-secondary">
-                          <div
-                            className="h-full rounded-full bg-accent"
-                            style={{ width: `${project.progress}%` }}
-                          />
-                        </div>
+                        <ProgressBar value={project.progress} size="sm" className="mt-6">
+                          <Label>Voortgang</Label>
+                          <ProgressBar.Output />
+                          <ProgressBar.Track>
+                            <ProgressBar.Fill />
+                          </ProgressBar.Track>
+                        </ProgressBar>
                         <div className="mt-4 flex items-center justify-between gap-2 border-t border-border pt-3 text-[11px] text-muted">
                           <span className="flex items-center gap-1.5">
                             <CalendarDays size={12} />
                             {project.dueDate
                               ? date(project.dueDate)
-                              : "No due date"}
+                              : "Geen einddatum"}
                           </span>
                           <span>{money(project.budgetCents)}</span>
                         </div>
@@ -375,7 +371,7 @@ function ProjectsContent({
                     ))}
                   {!projects.some((project) => project.status === column) && (
                     <div className="flex min-h-28 items-center justify-center rounded-xl border border-dashed border-border p-5 text-center text-xs text-muted">
-                      No projects here yet
+                      Nog geen projecten
                     </div>
                   )}
                 </div>
@@ -384,19 +380,19 @@ function ProjectsContent({
           </div>
         </div>
       ) : (
-        <Card className="border border-border p-0 shadow-none">
+        <Card className="p-0">
           {projects.length ? (
             <Table>
               <Table.ScrollContainer>
-                <Table.Content aria-label="Projects" className="min-w-[760px]">
+                <Table.Content aria-label="Projecten" className="min-w-[760px]">
                   <Table.Header>
                     <Table.Column isRowHeader>Project</Table.Column>
-                    <Table.Column>Client</Table.Column>
+                    <Table.Column>Klant</Table.Column>
                     <Table.Column>Status</Table.Column>
                     <Table.Column>Budget</Table.Column>
-                    <Table.Column>Due date</Table.Column>
-                    <Table.Column>Progress</Table.Column>
-                    <Table.Column aria-label="Actions"> </Table.Column>
+                    <Table.Column>Einddatum</Table.Column>
+                    <Table.Column>Voortgang</Table.Column>
+                    <Table.Column aria-label="Acties"> </Table.Column>
                   </Table.Header>
                   <Table.Body>
                     {projects.map((project) => (
@@ -431,7 +427,7 @@ function ProjectsContent({
                             size="sm"
                             variant="ghost"
                             isIconOnly
-                            aria-label={`Edit ${project.title}`}
+                            aria-label={`Bewerk ${project.title}`}
                             onPress={() => setEditor(project)}
                           >
                             <Pencil size={15} />
@@ -446,11 +442,11 @@ function ProjectsContent({
           ) : (
             <EmptyState
               icon={<FolderKanban size={24} />}
-              title="No projects in this view."
-              description="Try another filter, or make a start on something new."
+              title="Geen projecten gevonden"
+              description="Pas de filters aan of maak een project aan."
               action={
                 <Button variant="secondary" onPress={() => setEditor("new")}>
-                  New project
+                  Nieuw project
                 </Button>
               }
             />
@@ -460,7 +456,7 @@ function ProjectsContent({
       <EditorModal
         open={editor !== null}
         onClose={() => setEditor(null)}
-        title={editor === "new" ? "Start a project" : "Edit project"}
+        title={editor === "new" ? "Project aanmaken" : "Project bewerken"}
       >
         {editor && (
           <ProjectEditor
@@ -490,9 +486,9 @@ function ProjectDetailContent({ id }: { id: string }) {
   if (!project)
     return (
       <EmptyState
-        title="Project not found."
-        description="This project is no longer available."
-        action={<ActionLink href="/cms/projects">Back to projects</ActionLink>}
+        title="Project niet gevonden"
+        description="Dit project is niet meer beschikbaar."
+        action={<ActionLink href="/cms/projects">Terug naar projecten</ActionLink>}
       />
     );
   const client = data.clients.find((item) => item.id === project.clientId);
@@ -500,47 +496,44 @@ function ProjectDetailContent({ id }: { id: string }) {
   return (
     <>
       <PageHeading
-        back={{ href: "/cms/projects", label: "All projects" }}
+        back={{ href: "/cms/projects", label: "Alle projecten" }}
         title={project.title}
         description={project.service}
       >
         <StatusBadge status={project.status} />
         <Button onPress={() => setEditing(true)} variant="secondary">
           <Pencil size={16} />
-          Edit project
+          Project bewerken
         </Button>
       </PageHeading>
       <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
         <div>
-          <Card className="border border-border p-6 shadow-none">
+          <Card className="p-6">
             <Card.Header>
-              <Card.Title className="text-base">Project overview</Card.Title>
+              <Card.Title className="text-base">Projectoverzicht</Card.Title>
             </Card.Header>
             <Card.Content>
               <p className="mt-4 whitespace-pre-line text-sm leading-7 text-muted">
                 {project.description ||
-                  "Add a description to keep the scope and deliverables clear."}
+                  "Voeg een omschrijving toe met de opdracht en het verwachte resultaat."}
               </p>
-              <div className="mt-8 flex justify-between text-sm">
-                <span>Progress</span>
-                <span className="font-medium">{project.progress}%</span>
-              </div>
-              <div className="mt-3 h-2 overflow-hidden rounded-full bg-surface-secondary">
-                <div
-                  className="h-full rounded-full bg-accent"
-                  style={{ width: `${project.progress}%` }}
-                />
-              </div>
+              <ProgressBar value={project.progress} className="mt-8">
+                <Label>Voortgang</Label>
+                <ProgressBar.Output />
+                <ProgressBar.Track>
+                  <ProgressBar.Fill />
+                </ProgressBar.Track>
+              </ProgressBar>
             </Card.Content>
           </Card>
-          <Card className="mt-6 border border-border p-0 shadow-none">
+          <Card className="mt-6 p-0">
             <Card.Header className="flex-row items-center justify-between border-b border-border p-5">
-              <Card.Title className="text-base">Project follow-ups</Card.Title>
+              <Card.Title className="text-base">Opvolging van dit project</Card.Title>
               <ActionLink
                 href={`/cms/follow-ups?clientId=${project.clientId}&projectId=${id}&new=1`}
                 subtle
               >
-                Add follow-up
+                Opvolging toevoegen
               </ActionLink>
             </Card.Header>
             <Card.Content>
@@ -562,21 +555,21 @@ function ProjectDetailContent({ id }: { id: string }) {
                 ))
               ) : (
                 <EmptyState
-                  title="Your next step starts here."
-                  description="Add a task, meeting, call or email to keep the project moving."
+                  title="Nog geen opvolging"
+                  description="Plan een taak, afspraak, telefoongesprek of e-mail voor dit project."
                 />
               )}
             </Card.Content>
           </Card>
         </div>
-        <Card className="h-fit border border-border p-6 shadow-none">
+        <Card className="h-fit p-6">
           <Card.Header>
-            <Card.Title className="text-base">The details</Card.Title>
+            <Card.Title className="text-base">Projectgegevens</Card.Title>
           </Card.Header>
           <Card.Content className="mt-5">
             <dl className="space-y-5 text-sm">
               <div>
-                <dt className="text-xs text-muted">Client</dt>
+                <dt className="text-xs text-muted">Klant</dt>
                 <dd className="mt-1.5">
                   <Link
                     href={`/cms/clients/${project.clientId}`}
@@ -588,21 +581,21 @@ function ProjectDetailContent({ id }: { id: string }) {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs text-muted">Project budget</dt>
+                <dt className="text-xs text-muted">Projectbudget</dt>
                 <dd className="mt-1.5 font-medium">
                   {money(project.budgetCents)}
                 </dd>
               </div>
               <div>
-                <dt className="text-xs text-muted">Start date</dt>
+                <dt className="text-xs text-muted">Startdatum</dt>
                 <dd className="mt-1.5">{date(project.startDate)}</dd>
               </div>
               <div>
-                <dt className="text-xs text-muted">Due date</dt>
+                <dt className="text-xs text-muted">Einddatum</dt>
                 <dd className="mt-1.5">{date(project.dueDate)}</dd>
               </div>
               <div>
-                <dt className="text-xs text-muted">Last updated</dt>
+                <dt className="text-xs text-muted">Laatst bijgewerkt</dt>
                 <dd className="mt-1.5">{date(project.updatedAt)}</dd>
               </div>
             </dl>
@@ -612,7 +605,7 @@ function ProjectDetailContent({ id }: { id: string }) {
       <EditorModal
         open={editing}
         onClose={() => setEditing(false)}
-        title="Edit project"
+        title="Project bewerken"
       >
         {editing && (
           <ProjectEditor project={project} onClose={() => setEditing(false)} />

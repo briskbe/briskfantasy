@@ -16,3 +16,7 @@ The `heroui-react` MCP server is configured in `.codex/config.toml` and `.mcp.js
 Documentation index: https://heroui.com/react/llms.txt
 Full React reference: https://heroui.com/react/llms-full.txt
 Use v3 compound components and keep portal styles isolated from the public website.
+
+The CMS and public quote interface are Dutch (`nl-BE`). Use HeroUI's packaged
+default light/dark themes and blue accent; retain default component styling.
+The workspace uses header navigation, not a sidebar.

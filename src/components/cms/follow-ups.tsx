@@ -92,20 +92,20 @@ function FollowUpEditor({
     <form onSubmit={submit}>
       <div className="space-y-5">
         <Field
-          label="What needs to happen?"
+          label="Onderwerp"
           value={form.title}
           onChange={set("title")}
           required
           maxLength={200}
-          placeholder="Send the proposal, check in, review feedback…"
+          placeholder="Bijvoorbeeld: offerte versturen of feedback bespreken"
         />
         <div className="grid gap-5 sm:grid-cols-2">
           <Choice
-            label="Client"
+            label="Klant"
             value={form.clientId}
             onChange={set("clientId")}
             options={[
-              { value: "none", label: "General follow-up" },
+              { value: "none", label: "Algemene opvolging" },
               ...(data?.clients || []).map((client) => ({
                 value: client.id,
                 label: client.company || client.name,
@@ -117,7 +117,7 @@ function FollowUpEditor({
             value={form.projectId}
             onChange={set("projectId")}
             options={[
-              { value: "none", label: "No project" },
+              { value: "none", label: "Geen project" },
               ...(data?.projects || [])
                 .filter(
                   (project) =>
@@ -140,7 +140,7 @@ function FollowUpEditor({
             }))}
           />
           <Choice
-            label="Priority"
+            label="Prioriteit"
             value={form.priority}
             onChange={set("priority")}
             options={followUpPriorities.map((value) => ({
@@ -149,7 +149,7 @@ function FollowUpEditor({
             }))}
           />
           <Field
-            label="Due date and time"
+            label="Datum en tijd"
             value={form.dueAt}
             onChange={set("dueAt")}
             type="datetime-local"
@@ -161,23 +161,23 @@ function FollowUpEditor({
             onChange={set("status")}
             options={[
               { value: "open", label: "Open" },
-              { value: "done", label: "Done" },
+              { value: "done", label: "Afgerond" },
             ]}
           />
         </div>
         <Field
-          label="Notes"
+          label="Notities"
           value={form.notes}
           onChange={set("notes")}
           multiline
-          placeholder="The details you’ll want to remember."
+          placeholder="Afspraken en aandachtspunten…"
         />
       </div>
       <ErrorNotice message={mutation.error} />
       <FormActions
         busy={mutation.busy}
         onCancel={onClose}
-        label={item ? "Save follow-up" : "Add follow-up"}
+        label={item ? "Opvolging opslaan" : "Opvolging toevoegen"}
       />
     </form>
   );
@@ -256,19 +256,18 @@ function FollowUpsContent({
   return (
     <>
       <PageHeading
-        eyebrow="Keep the conversation going"
-        title="The next small step."
-        description="Calls, tasks, meetings and little things that make a big difference."
+        title="Opvolging"
+        description="Plan taken, telefoongesprekken, e-mails en afspraken."
       >
         <Button onPress={() => setEditor("new")}>
           <Plus size={16} />
-          Add follow-up
+          Opvolging toevoegen
         </Button>
       </PageHeading>
       <div
         className="mb-5 flex flex-wrap gap-2"
         role="group"
-        aria-label="Due date filter"
+        aria-label="Filter op datum"
       >
         {["open", "today", "overdue", "upcoming", "done", "all"].map(
           (value) => (
@@ -279,28 +278,28 @@ function FollowUpsContent({
               aria-pressed={filter === value}
               onPress={() => setFilter(value)}
             >
-              {value === "open" ? "All open" : titleCase(value)}
+              {value === "open" ? "Alle openstaande" : titleCase(value)}
             </Button>
           ),
         )}
       </div>
-      <Card className="border border-border p-0 shadow-none">
+      <Card className="p-0">
         <div className="flex flex-wrap items-end gap-4 border-b border-border p-5">
           <SearchBox
             value={query}
             onChange={setQuery}
-            placeholder="Search follow-ups…"
+            placeholder="Opvolging zoeken…"
           />
           <div className="w-48">
             <Choice
-              label="Client"
+              label="Klant"
               value={client}
               onChange={(value) => {
                 setClient(value);
                 setProject("all");
               }}
               options={[
-                { value: "all", label: "All clients" },
+                { value: "all", label: "Alle klanten" },
                 ...data.clients.map((item) => ({
                   value: item.id,
                   label: item.company || item.name,
@@ -314,7 +313,7 @@ function FollowUpsContent({
               value={project}
               onChange={setProject}
               options={[
-                { value: "all", label: "All projects" },
+                { value: "all", label: "Alle projecten" },
                 ...data.projects
                   .filter(
                     (item) => client === "all" || item.clientId === client,
@@ -342,11 +341,11 @@ function FollowUpsContent({
                     size="sm"
                     variant={item.status === "done" ? "secondary" : "outline"}
                     isIconOnly
-                    className="mt-0.5 rounded-full"
+                    className="mt-0.5"
                     aria-label={
                       item.status === "done"
-                        ? `Reopen ${item.title}`
-                        : `Complete ${item.title}`
+                        ? `Heropen ${item.title}`
+                        : `Rond af: ${item.title}`
                     }
                     isDisabled={mutation.busy}
                     onPress={() =>
@@ -393,7 +392,7 @@ function FollowUpsContent({
                           data.clients.find(
                             (entry) => entry.id === item.clientId,
                           )?.name ||
-                          "General"}
+                          "Algemeen"}
                       </span>
                       {item.projectId && (
                         <span>
@@ -405,7 +404,7 @@ function FollowUpsContent({
                         </span>
                       )}
                       <span className={overdue ? "text-danger" : ""}>
-                        {overdue ? "Overdue · " : ""}
+                        {overdue ? "Te laat · " : ""}
                         {date(item.dueAt, true)}
                       </span>
                     </div>
@@ -415,7 +414,7 @@ function FollowUpsContent({
                       size="sm"
                       isIconOnly
                       variant="ghost"
-                      aria-label={`Edit ${item.title}`}
+                      aria-label={`Bewerk ${item.title}`}
                       onPress={() => setEditor(item)}
                     >
                       <Pencil size={14} />
@@ -424,7 +423,7 @@ function FollowUpsContent({
                       size="sm"
                       isIconOnly
                       variant="ghost"
-                      aria-label={`Delete ${item.title}`}
+                      aria-label={`Verwijder ${item.title}`}
                       onPress={() => setRemoving(item)}
                     >
                       <Trash2 size={14} />
@@ -438,14 +437,14 @@ function FollowUpsContent({
           <EmptyState
             title={
               filter === "done"
-                ? "Completed tasks will appear here."
-                : "Nothing on this list."
+                ? "Nog geen afgeronde taken"
+                : "Geen opvolging gevonden"
             }
-            description="Add a follow-up or adjust your filters to see what’s next."
+            description="Voeg opvolging toe of pas de filters aan."
             icon={<CalendarCheck2 size={25} />}
             action={
               <Button variant="secondary" onPress={() => setEditor("new")}>
-                Add follow-up
+                Opvolging toevoegen
               </Button>
             }
           />
@@ -454,7 +453,7 @@ function FollowUpsContent({
       <EditorModal
         open={editor !== null}
         onClose={() => setEditor(null)}
-        title={editor === "new" ? "Plan a follow-up" : "Edit follow-up"}
+        title={editor === "new" ? "Opvolging plannen" : "Opvolging bewerken"}
       >
         {editor && (
           <FollowUpEditor
@@ -469,16 +468,16 @@ function FollowUpsContent({
       <EditorModal
         open={removing !== null}
         onClose={() => setRemoving(null)}
-        title="Delete this follow-up?"
+        title="Deze opvolging verwijderen?"
       >
         <p className="text-sm text-muted">
-          “{removing?.title}” will be permanently removed. Completed tasks can
-          be kept in your history instead.
+          “{removing?.title}” wordt definitief verwijderd. Je kunt een afgewerkte taak ook
+          markeren als afgerond om deze in de historiek te bewaren.
         </p>
         <ErrorNotice message={mutation.error} />
         <div className="mt-6 flex justify-end gap-2">
           <Button variant="tertiary" onPress={() => setRemoving(null)}>
-            Keep it
+            Behouden
           </Button>
           <Button
             variant="danger"
@@ -492,7 +491,7 @@ function FollowUpsContent({
               )
             }
           >
-            Delete follow-up
+            Opvolging verwijderen
           </Button>
         </div>
       </EditorModal>

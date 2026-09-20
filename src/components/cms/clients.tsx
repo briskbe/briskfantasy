@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
-import { Button, Card, Table, Tabs } from "@heroui/react";
+import { Avatar, Button, Card, Table, Tabs } from "@heroui/react";
 import {
   Archive,
   Building2,
@@ -66,7 +66,7 @@ function ClientEditor({
     <form onSubmit={submit}>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
-          label="Contact name"
+          label="Contactpersoon"
           value={form.name}
           onChange={set("name")}
           required
@@ -74,34 +74,34 @@ function ClientEditor({
           autoComplete="name"
         />
         <Field
-          label="Company"
+          label="Bedrijf"
           value={form.company}
           onChange={set("company")}
           maxLength={160}
           autoComplete="organization"
         />
         <Field
-          label="Email address"
+          label="E-mailadres"
           value={form.email}
           onChange={set("email")}
           type="email"
           autoComplete="email"
         />
         <Field
-          label="Phone number"
+          label="Telefoonnummer"
           value={form.phone}
           onChange={set("phone")}
           type="tel"
           autoComplete="tel"
         />
         <Field
-          label="VAT number"
+          label="Btw-nummer"
           value={form.vatNumber}
           onChange={set("vatNumber")}
           placeholder="BE 0123.456.789"
         />
         <Choice
-          label="Relationship"
+          label="Klantstatus"
           value={form.status}
           onChange={set("status")}
           options={clientStatuses.map((value) => ({
@@ -112,26 +112,26 @@ function ClientEditor({
       </div>
       <div className="mt-5 space-y-5">
         <Field
-          label="Billing address"
+          label="Factuuradres"
           value={form.address}
           onChange={set("address")}
           multiline
-          placeholder="Street, postcode, city and country"
+          placeholder="Straat, postcode, gemeente en land"
         />
         <Field
-          label="Private notes"
+          label="Interne notities"
           value={form.notes}
           onChange={set("notes")}
           multiline
-          placeholder="A little context for your next conversation…"
-          description="Only visible in your workspace. Never included on shared quotes."
+          placeholder="Afspraken en informatie over deze klant…"
+          description="Alleen zichtbaar in het beheerportaal. Deze notities staan niet op gedeelde offertes."
         />
       </div>
       <ErrorNotice message={mutation.error} />
       <FormActions
         busy={mutation.busy}
         onCancel={onClose}
-        label={client ? "Save client" : "Add client"}
+        label={client ? "Klant opslaan" : "Klant toevoegen"}
       />
     </form>
   );
@@ -162,29 +162,28 @@ function ClientsContent() {
   return (
     <>
       <PageHeading
-        eyebrow="Relationships"
-        title="Your client book."
-        description="The people behind the projects. All their details, in one place."
+        title="Klanten"
+        description="Beheer contactgegevens, projecten en offertes per klant."
       >
         <Button onPress={() => setEditor("new")}>
           <Plus size={16} />
-          Add client
+          Klant toevoegen
         </Button>
       </PageHeading>
-      <Card className="border border-border p-0 shadow-none">
+      <Card className="p-0">
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border p-5">
           <SearchBox
             value={query}
             onChange={setQuery}
-            placeholder="Search clients…"
+            placeholder="Klanten zoeken…"
           />
           <div className="w-44">
             <Choice
-              label="Show clients"
+              label="Klantstatus"
               value={status}
               onChange={setStatus}
               options={[
-                { value: "all", label: "All current clients" },
+                { value: "all", label: "Alle huidige klanten" },
                 ...clientStatuses.map((value) => ({
                   value,
                   label: titleCase(value),
@@ -194,16 +193,16 @@ function ClientsContent() {
           </div>
         </div>
         {clients.length ? (
-          <Table className="rounded-none shadow-none">
+          <Table>
             <Table.ScrollContainer>
-              <Table.Content aria-label="Clients" className="min-w-[740px]">
+              <Table.Content aria-label="Klanten" className="min-w-[740px]">
                 <Table.Header>
-                  <Table.Column isRowHeader>Client</Table.Column>
+                  <Table.Column isRowHeader>Klant</Table.Column>
                   <Table.Column>Contact</Table.Column>
                   <Table.Column>Status</Table.Column>
-                  <Table.Column>Projects</Table.Column>
-                  <Table.Column>Added</Table.Column>
-                  <Table.Column aria-label="Actions"> </Table.Column>
+                  <Table.Column>Projecten</Table.Column>
+                  <Table.Column>Toegevoegd</Table.Column>
+                  <Table.Column aria-label="Acties"> </Table.Column>
                 </Table.Header>
                 <Table.Body>
                   {clients.map((client) => (
@@ -213,9 +212,11 @@ function ClientsContent() {
                           href={`/cms/clients/${client.id}`}
                           className="flex items-center gap-3 py-1"
                         >
-                          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-surface-secondary text-xs font-semibold">
-                            {initials(client.company || client.name)}
-                          </span>
+                          <Avatar className="shrink-0">
+                            <Avatar.Fallback>
+                              {initials(client.company || client.name)}
+                            </Avatar.Fallback>
+                          </Avatar>
                           <span>
                             <span className="block font-medium">
                               {client.company || client.name}
@@ -223,14 +224,14 @@ function ClientsContent() {
                             <span className="mt-0.5 block text-xs text-muted">
                               {client.company
                                 ? client.name
-                                : "Individual client"}
+                                : "Particuliere klant"}
                             </span>
                           </span>
                         </Link>
                       </Table.Cell>
                       <Table.Cell>
                         <span className="text-sm text-muted">
-                          {client.email || "No email added"}
+                          {client.email || "Geen e-mailadres"}
                         </span>
                       </Table.Cell>
                       <Table.Cell>
@@ -253,7 +254,7 @@ function ClientsContent() {
                           variant="ghost"
                           size="sm"
                           isIconOnly
-                          aria-label={`Edit ${client.name}`}
+                          aria-label={`Bewerk ${client.name}`}
                           onPress={() => setEditor(client)}
                         >
                           <Pencil size={15} />
@@ -265,7 +266,7 @@ function ClientsContent() {
               </Table.Content>
             </Table.ScrollContainer>
             <Table.Footer className="border-t border-border px-5 py-3 text-xs text-muted">
-              {clients.length} {clients.length === 1 ? "client" : "clients"}
+              {clients.length} {clients.length === 1 ? "klant" : "klanten"}
             </Table.Footer>
           </Table>
         ) : (
@@ -273,18 +274,18 @@ function ClientsContent() {
             icon={<Users size={25} />}
             title={
               query || status !== "all"
-                ? "No clients match this view."
-                : "Every good project starts here."
+                ? "Geen klanten gevonden"
+                : "Nog geen klanten"
             }
             description={
               query || status !== "all"
-                ? "Try a different search or relationship filter."
-                : "Add your first client and keep their projects, quotes and follow-ups connected."
+                ? "Pas je zoekopdracht of het statusfilter aan."
+                : "Voeg een klant toe om projecten, offertes en opvolging te beheren."
             }
             action={
               <Button variant="secondary" onPress={() => setEditor("new")}>
                 <Plus size={16} />
-                Add client
+                Klant toevoegen
               </Button>
             }
           />
@@ -293,8 +294,8 @@ function ClientsContent() {
       <EditorModal
         open={editor !== null}
         onClose={() => setEditor(null)}
-        title={editor === "new" ? "Add a client" : "Edit client"}
-        description="Keep the essentials close, and the details organised."
+        title={editor === "new" ? "Klant toevoegen" : "Klant bewerken"}
+        description="Vul de contact- en factuurgegevens in."
       >
         {editor && (
           <ClientEditor
@@ -325,9 +326,9 @@ function ClientDetailContent({ id }: { id: string }) {
   if (!client)
     return (
       <EmptyState
-        title="Client not found."
-        description="This client is no longer available in your workspace."
-        action={<ActionLink href="/cms/clients">Back to clients</ActionLink>}
+        title="Klant niet gevonden"
+        description="Deze klant is niet beschikbaar in het beheerportaal."
+        action={<ActionLink href="/cms/clients">Terug naar klanten</ActionLink>}
       />
     );
   const projects = data.projects.filter((item) => item.clientId === id);
@@ -336,20 +337,20 @@ function ClientDetailContent({ id }: { id: string }) {
   return (
     <>
       <PageHeading
-        back={{ href: "/cms/clients", label: "All clients" }}
+        back={{ href: "/cms/clients", label: "Alle klanten" }}
         title={client.company || client.name}
-        description={client.company ? client.name : "Client profile"}
+        description={client.company ? client.name : "Klantgegevens"}
       >
         <StatusBadge status={client.status} />
         <Button variant="secondary" onPress={() => setEditing(true)}>
           <Pencil size={15} />
-          Edit client
+          Klant bewerken
         </Button>
         <Button
           variant="ghost"
           isIconOnly
           aria-label={
-            client.status === "archived" ? "Restore client" : "Archive client"
+            client.status === "archived" ? "Klant herstellen" : "Klant archiveren"
           }
           onPress={() => setArchiveOpen(true)}
         >
@@ -358,14 +359,16 @@ function ClientDetailContent({ id }: { id: string }) {
       </PageHeading>
       <ErrorNotice message={mutation.error} />
       <div className="grid items-start gap-6 lg:grid-cols-[300px_1fr]">
-        <Card className="border border-border p-6 shadow-none">
-          <span className="mb-4 flex size-16 items-center justify-center rounded-2xl bg-surface-secondary text-xl font-semibold">
-            {initials(client.company || client.name)}
-          </span>
+        <Card className="p-6">
+          <Avatar size="lg" className="mb-4">
+            <Avatar.Fallback>
+              {initials(client.company || client.name)}
+            </Avatar.Fallback>
+          </Avatar>
           <Card.Header>
             <Card.Title>{client.name}</Card.Title>
             <Card.Description>
-              {client.company || "Individual client"}
+              {client.company || "Particuliere klant"}
             </Card.Description>
           </Card.Header>
           <Card.Content className="mt-5 space-y-4 text-sm">
@@ -400,25 +403,25 @@ function ClientDetailContent({ id }: { id: string }) {
                 ),
             )}
             <p className="border-t border-border pt-5 text-xs text-muted">
-              Client since {date(client.createdAt)}
+              Klant sinds {date(client.createdAt)}
             </p>
           </Card.Content>
           <Card.Footer className="mt-5 flex-col items-stretch gap-2">
             <ActionLink href={`/cms/quotes/new?clientId=${id}`}>
-              Create quote
+              Offerte maken
             </ActionLink>
             <ActionLink href={`/cms/projects?clientId=${id}&new=1`} subtle>
-              Add project
+              Project toevoegen
             </ActionLink>
             <ActionLink href={`/cms/follow-ups?clientId=${id}&new=1`} subtle>
-              Plan follow-up
+              Opvolging plannen
             </ActionLink>
           </Card.Footer>
         </Card>
         <div className="min-w-0">
           <Tabs defaultSelectedKey="overview">
-            <Tabs.ListContainer className="mb-5">
-              <Tabs.List aria-label="Client information">
+            <div className="tabs__list-container mb-5 overflow-x-auto">
+              <Tabs.List aria-label="Klantinformatie">
                 {["overview", "projects", "quotes", "follow-ups"].map((tab) => (
                   <Tabs.Tab key={tab} id={tab}>
                     {titleCase(tab)}
@@ -426,13 +429,13 @@ function ClientDetailContent({ id }: { id: string }) {
                   </Tabs.Tab>
                 ))}
               </Tabs.List>
-            </Tabs.ListContainer>
+            </div>
             <Tabs.Panel id="overview">
               <div className="grid gap-4 sm:grid-cols-3">
                 {[
-                  { label: "Projects", value: projects.length },
+                  { label: "Projecten", value: projects.length },
                   {
-                    label: "Accepted quotes",
+                    label: "Goedgekeurde offertes",
                     value: money(
                       quotes
                         .filter((quote) => quote.status === "accepted")
@@ -440,14 +443,14 @@ function ClientDetailContent({ id }: { id: string }) {
                     ),
                   },
                   {
-                    label: "Open follow-ups",
+                    label: "Openstaande opvolging",
                     value: followUps.filter((item) => item.status === "open")
                       .length,
                   },
                 ].map((item) => (
                   <Card
                     key={item.label}
-                    className="border border-border p-5 shadow-none"
+                    className="p-5"
                   >
                     <p className="text-xs text-muted">{item.label}</p>
                     <p className="mt-2 text-2xl font-semibold tracking-tight">
@@ -456,21 +459,21 @@ function ClientDetailContent({ id }: { id: string }) {
                   </Card>
                 ))}
               </div>
-              <Card className="mt-5 border border-border p-6 shadow-none">
+              <Card className="mt-5 p-6">
                 <Card.Header>
-                  <Card.Title className="text-base">Private notes</Card.Title>
+                  <Card.Title className="text-base">Interne notities</Card.Title>
                   <Card.Description className="text-xs">
-                    A little context for the next conversation.
+                    Afspraken en informatie voor intern gebruik.
                   </Card.Description>
                 </Card.Header>
                 <Card.Content className="mt-4 whitespace-pre-line text-sm leading-7 text-muted">
                   {client.notes ||
-                    "No notes yet. Add useful details about this client using Edit client."}
+                    "Nog geen notities. Voeg ze toe via Klant bewerken."}
                 </Card.Content>
               </Card>
             </Tabs.Panel>
             <Tabs.Panel id="projects">
-              <Card className="border border-border p-0 shadow-none">
+              <Card className="p-0">
                 {projects.length ? (
                   projects.map((project) => (
                     <Link
@@ -489,11 +492,11 @@ function ClientDetailContent({ id }: { id: string }) {
                   ))
                 ) : (
                   <EmptyState
-                    title="No projects yet."
-                    description="Start the next chapter with a project for this client."
+                    title="Nog geen projecten"
+                    description="Voeg een project toe voor deze klant."
                     action={
                       <ActionLink href={`/cms/projects?clientId=${id}&new=1`}>
-                        Add project
+                        Project toevoegen
                       </ActionLink>
                     }
                   />
@@ -501,7 +504,7 @@ function ClientDetailContent({ id }: { id: string }) {
               </Card>
             </Tabs.Panel>
             <Tabs.Panel id="quotes">
-              <Card className="border border-border p-0 shadow-none">
+              <Card className="p-0">
                 {quotes.length ? (
                   quotes.map((quote) => (
                     <Link
@@ -520,11 +523,11 @@ function ClientDetailContent({ id }: { id: string }) {
                   ))
                 ) : (
                   <EmptyState
-                    title="No quotes yet."
-                    description="Turn the next conversation into a clear proposal."
+                    title="Nog geen offertes"
+                    description="Maak een offerte voor deze klant."
                     action={
                       <ActionLink href={`/cms/quotes/new?clientId=${id}`}>
-                        Create quote
+                        Offerte maken
                       </ActionLink>
                     }
                   />
@@ -532,7 +535,7 @@ function ClientDetailContent({ id }: { id: string }) {
               </Card>
             </Tabs.Panel>
             <Tabs.Panel id="follow-ups">
-              <Card className="border border-border p-0 shadow-none">
+              <Card className="p-0">
                 {followUps.length ? (
                   followUps.map((item) => (
                     <Link
@@ -551,11 +554,11 @@ function ClientDetailContent({ id }: { id: string }) {
                   ))
                 ) : (
                   <EmptyState
-                    title="Nothing on the list yet."
-                    description="Set a reminder for your next call, task or email."
+                    title="Nog geen opvolging"
+                    description="Plan een telefoongesprek, taak of e-mail voor deze klant."
                     action={
                       <ActionLink href={`/cms/follow-ups?clientId=${id}&new=1`}>
-                        Plan follow-up
+                        Opvolging plannen
                       </ActionLink>
                     }
                   />
@@ -568,7 +571,7 @@ function ClientDetailContent({ id }: { id: string }) {
       <EditorModal
         open={editing}
         onClose={() => setEditing(false)}
-        title="Edit client"
+        title="Klant bewerken"
       >
         {editing && (
           <ClientEditor client={client} onClose={() => setEditing(false)} />
@@ -579,19 +582,19 @@ function ClientDetailContent({ id }: { id: string }) {
         onClose={() => setArchiveOpen(false)}
         title={
           client.status === "archived"
-            ? "Restore this client?"
-            : "Archive this client?"
+            ? "Deze klant herstellen?"
+            : "Deze klant archiveren?"
         }
       >
         <p className="text-sm leading-6 text-muted">
           {client.status === "archived"
-            ? "The client will return to your active client book."
-            : "Their projects, quotes and history stay available. You can restore this client at any time."}
+            ? "Deze klant verschijnt opnieuw bij je actieve klanten."
+            : "Projecten, offertes en historiek blijven beschikbaar. Je kunt deze klant later herstellen."}
         </p>
         <ErrorNotice message={mutation.error} />
         <div className="mt-6 flex justify-end gap-2">
           <Button variant="tertiary" onPress={() => setArchiveOpen(false)}>
-            Cancel
+            Annuleren
           </Button>
           <Button
             isPending={mutation.busy}
@@ -609,7 +612,7 @@ function ClientDetailContent({ id }: { id: string }) {
               )
             }
           >
-            {client.status === "archived" ? "Restore client" : "Archive client"}
+            {client.status === "archived" ? "Klant herstellen" : "Klant archiveren"}
           </Button>
         </div>
       </EditorModal>

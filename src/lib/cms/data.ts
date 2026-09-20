@@ -27,7 +27,34 @@ const asQuote = (row: Row): Quote => ({
   clientSnapshot: row.client_snapshot as QuoteClient | null, shareToken: row.share_token as string | null, sharedAt: nullableTimestamp(row.shared_at),
   viewedAt: nullableTimestamp(row.viewed_at), acceptedAt: nullableTimestamp(row.accepted_at), acceptedName: row.accepted_name as string | null, acceptedEmail: row.accepted_email as string | null,
 });
-const asActivity = (row: Row): Activity => ({ id: String(row.id), description: String(row.description), href: row.href as string | null, createdAt: timestamp(row.created_at) });
+// Translate the original system-generated templates when reading older events.
+// The captured client names and project titles remain unchanged in the activity log.
+const legacyActivityTemplates: [RegExp, string, string][] = [
+  [/^Added client ([\s\S]*)\.$/, "Klant", "toegevoegd"],
+  [/^Archived client ([\s\S]*)\.$/, "Klant", "gearchiveerd"],
+  [/^Updated client ([\s\S]*)\.$/, "Klant", "bijgewerkt"],
+  [/^Created project ([\s\S]*)\.$/, "Project", "aangemaakt"],
+  [/^Updated project ([\s\S]*)\.$/, "Project", "bijgewerkt"],
+  [/^Added follow-up ([\s\S]*)\.$/, "Opvolging", "toegevoegd"],
+  [/^Completed follow-up ([\s\S]*)\.$/, "Opvolging", "afgerond"],
+  [/^Updated follow-up ([\s\S]*)\.$/, "Opvolging", "bijgewerkt"],
+  [/^Deleted follow-up ([\s\S]*)\.$/, "Opvolging", "verwijderd"],
+  [/^Created quote ([\s\S]*)\.$/, "Offerte", "aangemaakt"],
+  [/^Updated quote ([\s\S]*)\.$/, "Offerte", "bijgewerkt"],
+  [/^Shared quote ([\s\S]*)\.$/, "Offerte", "gedeeld"],
+  [/^Revoked the share link for quote ([\s\S]*)\.$/, "Link voor offerte", "ingetrokken"],
+  [/^Accepted quote ([\s\S]*)\.$/, "Offerte", "goedgekeurd"],
+  [/^Declined quote ([\s\S]*)\.$/, "Offerte", "afgewezen"],
+];
+function activityDescription(value: unknown) {
+  const description = String(value);
+  for (const [pattern, subject, action] of legacyActivityTemplates) {
+    const match = pattern.exec(description);
+    if (match) return `${subject} ${match[1]} ${action}.`;
+  }
+  return description;
+}
+const asActivity = (row: Row): Activity => ({ id: String(row.id), description: activityDescription(row.description), href: row.href as string | null, createdAt: timestamp(row.created_at) });
 const publicQuote = (quote: Quote): PublicQuote => {
   // Use an explicit allowlist: newly added private fields never leak publicly.
   return {
@@ -62,12 +89,12 @@ async function update(db: PoolClient, table: Table, id: string, values: Record<s
 async function locked(db: PoolClient, table: Table, id: string): Promise<Row> {
   validate(idSchema, id);
   const result = await db.query(`SELECT * FROM ${table} WHERE id=$1 FOR UPDATE`, [id]);
-  if (!result.rowCount) throw new CmsError("This record could not be found.", 404);
+  if (!result.rowCount) throw new CmsError("Deze gegevens zijn niet gevonden.", 404);
   return result.rows[0];
 }
 async function requireClient(db: PoolClient, id: string): Promise<Client> {
   const result = await db.query("SELECT * FROM cms_clients WHERE id=$1", [id]);
-  if (!result.rowCount) throw new CmsError("Choose an existing client.", 422, { clientId: "Client not found." });
+  if (!result.rowCount) throw new CmsError("Kies een bestaande klant.", 422, { clientId: "Klant niet gevonden." });
   return asClient(result.rows[0]);
 }
 async function logActivity(db: PoolClient, description: string, href: string) {
@@ -88,7 +115,7 @@ export async function createClient(input: unknown): Promise<Client> {
   const values = validate(clientSchema, input);
   return transaction(async (db) => {
     const client = asClient(await insert(db, "cms_clients", values, clientColumns));
-    await logActivity(db, `Added client ${client.name}.`, `/cms/clients/${client.id}`);
+    await logActivity(db, `Klant ${client.name} toegevoegd.`, `/cms/clients/${client.id}`);
     return client;
   });
 }
@@ -97,7 +124,7 @@ export async function updateClient(id: string, input: unknown): Promise<Client> 
   return transaction(async (db) => {
     await locked(db, "cms_clients", id);
     const client = asClient(await update(db, "cms_clients", id, values, clientColumns));
-    await logActivity(db, values.status === "archived" ? `Archived client ${client.name}.` : `Updated client ${client.name}.`, `/cms/clients/${id}`);
+    await logActivity(db, values.status === "archived" ? `Klant ${client.name} gearchiveerd.` : `Klant ${client.name} bijgewerkt.`, `/cms/clients/${id}`);
     return client;
   });
 }
@@ -107,7 +134,7 @@ export async function createProject(input: unknown): Promise<Project> {
   return transaction(async (db) => {
     await requireClient(db, values.clientId);
     const project = asProject(await insert(db, "cms_projects", values, projectColumns));
-    await logActivity(db, `Created project ${project.title}.`, `/cms/projects/${project.id}`);
+    await logActivity(db, `Project ${project.title} aangemaakt.`, `/cms/projects/${project.id}`);
     return project;
   });
 }
@@ -120,10 +147,10 @@ export async function updateProject(id: string, input: unknown): Promise<Project
     await requireClient(db, merged.clientId);
     if (merged.clientId !== previous.clientId) {
       const linked = await db.query("SELECT 1 FROM cms_follow_ups WHERE project_id=$1 LIMIT 1", [id]);
-      if (linked.rowCount) throw new CmsError("This project has follow-ups. Keep its client or move those follow-ups first.", 409);
+      if (linked.rowCount) throw new CmsError("Aan dit project zijn opvolgingen gekoppeld. Behoud de huidige klant of verplaats eerst de opvolgingen.", 409);
     }
     const project = asProject(await update(db, "cms_projects", id, values, projectColumns));
-    await logActivity(db, `Updated project ${project.title}.`, `/cms/projects/${id}`);
+    await logActivity(db, `Project ${project.title} bijgewerkt.`, `/cms/projects/${id}`);
     return project;
   });
 }
@@ -132,7 +159,7 @@ async function validateFollowUpLinks(db: PoolClient, values: { clientId: string 
   if (values.projectId) {
     // Serialize project reassignment with creating/updating a linked follow-up.
     const project = await locked(db, "cms_projects", values.projectId);
-    if (values.clientId && values.clientId !== project.client_id) throw new CmsError("The project belongs to a different client.", 422, { projectId: "Choose a project for this client." });
+    if (values.clientId && values.clientId !== project.client_id) throw new CmsError("Dit project hoort bij een andere klant.", 422, { projectId: "Kies een project van deze klant." });
     values.clientId = String(project.client_id);
   }
 }
@@ -141,7 +168,7 @@ export async function createFollowUp(input: unknown): Promise<FollowUp> {
   return transaction(async (db) => {
     await validateFollowUpLinks(db, values);
     const followUp = asFollowUp(await insert(db, "cms_follow_ups", values, followUpColumns));
-    await logActivity(db, `Added follow-up ${followUp.title}.`, "/cms/follow-ups");
+    await logActivity(db, `Opvolging ${followUp.title} toegevoegd.`, "/cms/follow-ups");
     return followUp;
   });
 }
@@ -152,7 +179,7 @@ export async function updateFollowUp(id: string, input: unknown): Promise<Follow
     const merged = { ...previous, ...values };
     await validateFollowUpLinks(db, merged);
     const followUp = asFollowUp(await update(db, "cms_follow_ups", id, { ...values, clientId: merged.clientId }, followUpColumns));
-    await logActivity(db, values.status === "done" ? `Completed follow-up ${followUp.title}.` : `Updated follow-up ${followUp.title}.`, "/cms/follow-ups");
+    await logActivity(db, values.status === "done" ? `Opvolging ${followUp.title} afgerond.` : `Opvolging ${followUp.title} bijgewerkt.`, "/cms/follow-ups");
     return followUp;
   });
 }
@@ -160,7 +187,7 @@ export async function deleteFollowUp(id: string) {
   return transaction(async (db) => {
     const followUp = asFollowUp(await locked(db, "cms_follow_ups", id));
     await db.query("DELETE FROM cms_follow_ups WHERE id=$1", [id]);
-    await logActivity(db, `Deleted follow-up ${followUp.title}.`, "/cms/follow-ups");
+    await logActivity(db, `Opvolging ${followUp.title} verwijderd.`, "/cms/follow-ups");
     return { ok: true as const };
   });
 }
@@ -176,7 +203,7 @@ async function insertQuote(db: PoolClient, input: unknown): Promise<Quote> {
   await requireClient(db, values.clientId);
   const number = await nextQuoteNumber(db, values.issueDate);
   const quote = asQuote(await insert(db, "cms_quotes", { ...values, ...quoteTotals(values.items, values.discountCents) }, quoteColumns, { number }));
-  await logActivity(db, `Created quote ${number}.`, `/cms/quotes/${quote.id}`);
+  await logActivity(db, `Offerte ${number} aangemaakt.`, `/cms/quotes/${quote.id}`);
   return quote;
 }
 export function createQuote(input: unknown): Promise<Quote> { return transaction((db) => insertQuote(db, input)); }
@@ -184,12 +211,12 @@ export async function updateQuote(id: string, input: unknown): Promise<Quote> {
   const patch = validate(quotePatchSchema, input);
   return transaction(async (db) => {
     const previous = asQuote(await locked(db, "cms_quotes", id));
-    if (previous.status !== "draft") throw new CmsError("Only draft quotes can be edited. Revoke the share link first, or duplicate this quote.", 409);
+    if (previous.status !== "draft") throw new CmsError("Je kunt alleen conceptoffertes bewerken. Trek eerst de gedeelde link in of dupliceer deze offerte.", 409);
     const merged = { ...previous, ...patch };
     assertDateOrder(merged.issueDate, merged.validUntil, "validUntil");
     await requireClient(db, merged.clientId);
     const quote = asQuote(await update(db, "cms_quotes", id, { ...patch, ...quoteTotals(merged.items, merged.discountCents) }, quoteColumns));
-    await logActivity(db, `Updated quote ${quote.number}.`, `/cms/quotes/${id}`);
+    await logActivity(db, `Offerte ${quote.number} bijgewerkt.`, `/cms/quotes/${id}`);
     return quote;
   });
 }
@@ -200,21 +227,21 @@ export async function shareQuote(id: string): Promise<Quote> {
     const quote = asQuote(row);
     if (quote.shareToken) return quote;
     const valid = await db.query(`SELECT 1 FROM cms_quotes WHERE id=$1 AND ${unexpiredSql}`, [id]);
-    if (!valid.rowCount) throw new CmsError("Update the validity date before sharing this quote.", 422, { validUntil: "This quote has expired." });
+    if (!valid.rowCount) throw new CmsError("Pas de geldigheidsdatum aan voordat je deze offerte deelt.", 422, { validUntil: "Deze offerte is verlopen." });
     const client = await requireClient(db, quote.clientId);
     const snapshot: QuoteClient = { name: client.name, company: client.company, email: client.email, address: client.address, vatNumber: client.vatNumber };
     const result = await db.query("UPDATE cms_quotes SET status='shared',client_snapshot=$2::jsonb,share_token=$3,shared_at=now(),viewed_at=NULL,accepted_at=NULL,accepted_name=NULL,accepted_email=NULL,response_ip_hash=NULL,response_consent_at=NULL,updated_at=now() WHERE id=$1 RETURNING *", [id, JSON.stringify(snapshot), randomBytes(32).toString("base64url")]);
-    await logActivity(db, `Shared quote ${quote.number}.`, `/cms/quotes/${id}`);
+    await logActivity(db, `Offerte ${quote.number} gedeeld.`, `/cms/quotes/${id}`);
     return asQuote(result.rows[0]);
   });
 }
 export async function revokeQuote(id: string): Promise<Quote> {
   return transaction(async (db) => {
     const quote = asQuote(await locked(db, "cms_quotes", id));
-    if (quote.status === "accepted") throw new CmsError("Accepted quotes are immutable. Duplicate the quote to prepare a revision.", 409);
+    if (quote.status === "accepted") throw new CmsError("Goedgekeurde offertes kunnen niet worden gewijzigd. Dupliceer de offerte om een nieuwe versie te maken.", 409);
     if (quote.status === "draft") return quote;
     const result = await db.query("UPDATE cms_quotes SET status='draft',share_token=NULL,client_snapshot=NULL,shared_at=NULL,viewed_at=NULL,accepted_at=NULL,accepted_name=NULL,accepted_email=NULL,response_ip_hash=NULL,response_consent_at=NULL,updated_at=now() WHERE id=$1 RETURNING *", [id]);
-    await logActivity(db, `Revoked the share link for quote ${quote.number}.`, `/cms/quotes/${id}`);
+    await logActivity(db, `Link voor offerte ${quote.number} ingetrokken.`, `/cms/quotes/${id}`);
     return asQuote(result.rows[0]);
   });
 }
@@ -242,25 +269,25 @@ export async function consumeRateLimit(key: string, limit: number, windowSeconds
       window_start=CASE WHEN cms_rate_limits.window_start <= now()-make_interval(secs=>$2) THEN now() ELSE cms_rate_limits.window_start END
     RETURNING count`, [key, windowSeconds, limit]);
   if (Number(result.rows[0].count) === 1) await getDb().query("DELETE FROM cms_rate_limits WHERE window_start < now()-interval '1 day'");
-  if (Number(result.rows[0].count) > limit) throw new CmsError("Too many attempts. Please wait a few minutes and try again.", 429);
+  if (Number(result.rows[0].count) > limit) throw new CmsError("Te veel pogingen. Wacht enkele minuten en probeer het opnieuw.", 429);
 }
 export function privateFingerprint(value: string) {
   if (!process.env.BETTER_AUTH_SECRET) throw new CmsUnavailableError();
   return createHmac("sha256", process.env.BETTER_AUTH_SECRET).update(value).digest("hex");
 }
 export async function respondToQuote(token: string, input: unknown, ipHash: string): Promise<PublicQuote> {
-  if (!tokenSchema.safeParse(token).success) throw new CmsError("This quote link is unavailable.", 404);
+  if (!tokenSchema.safeParse(token).success) throw new CmsError("Deze offertelink is niet beschikbaar.", 404);
   const values = validate(responseSchema, input);
   return transaction(async (db) => {
     const found = await db.query("SELECT * FROM cms_quotes WHERE share_token=$1 FOR UPDATE", [token]);
-    if (!found.rowCount) throw new CmsError("This quote link is unavailable.", 404);
+    if (!found.rowCount) throw new CmsError("Deze offertelink is niet beschikbaar.", 404);
     const quote = asQuote(found.rows[0]);
-    if (quote.status !== "shared") throw new CmsError("A response has already been recorded for this quote.", 409);
+    if (quote.status !== "shared") throw new CmsError("Er is al een reactie op deze offerte opgeslagen.", 409);
     const valid = await db.query(`SELECT 1 FROM cms_quotes WHERE id=$1 AND ${unexpiredSql}`, [quote.id]);
-    if (!valid.rowCount) throw new CmsError("This quote has expired. Please contact Brisk for an updated quote.", 410);
+    if (!valid.rowCount) throw new CmsError("Deze offerte is verlopen. Neem contact op met Brisk voor een bijgewerkte offerte.", 410);
     const result = await db.query("UPDATE cms_quotes SET status=$2,accepted_at=CASE WHEN $2='accepted' THEN now() ELSE NULL END,accepted_name=$3,accepted_email=$4,response_ip_hash=$5,response_consent_at=now(),updated_at=now() WHERE id=$1 AND status='shared' RETURNING *", [quote.id, values.decision, values.name, values.email.toLowerCase(), ipHash]);
-    if (!result.rowCount) throw new CmsError("A response has already been recorded for this quote.", 409);
-    await logActivity(db, `${values.decision === "accepted" ? "Accepted" : "Declined"} quote ${quote.number}.`, `/cms/quotes/${quote.id}`);
+    if (!result.rowCount) throw new CmsError("Er is al een reactie op deze offerte opgeslagen.", 409);
+    await logActivity(db, `Offerte ${quote.number} ${values.decision === "accepted" ? "goedgekeurd" : "afgewezen"}.`, `/cms/quotes/${quote.id}`);
     return publicQuote(asQuote(result.rows[0]));
   });
 }

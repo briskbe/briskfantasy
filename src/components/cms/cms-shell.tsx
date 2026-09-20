@@ -1,218 +1,88 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
-import { Button, Modal } from "@heroui/react";
-import {
-  ArrowUpRight,
-  CalendarCheck2,
-  ChevronRight,
-  FileText,
-  FolderKanban,
-  LayoutDashboard,
-  LogOut,
-  Menu,
-  Settings2,
-  Users,
-} from "lucide-react";
+import { Button, Dropdown, Label, Separator, Tabs } from "@heroui/react";
+import { ArrowUpRight, CalendarCheck2, ChevronDown, CircleUserRound, FileText, FolderKanban, LayoutDashboard, LogOut, Menu, Settings2, Users } from "lucide-react";
 import { authClient } from "@/lib/cms/auth-client";
 import { CmsProvider, useCms } from "./cms-provider";
-import { ErrorNotice, initials } from "./ui";
+import { ErrorNotice } from "./ui";
+import { ThemeToggle } from "./appearance";
 
 const navigation = [
-  { href: "/cms", label: "Overview", icon: LayoutDashboard },
-  { href: "/cms/clients", label: "Clients", icon: Users },
-  { href: "/cms/projects", label: "Projects", icon: FolderKanban },
-  { href: "/cms/follow-ups", label: "Follow-ups", icon: CalendarCheck2 },
-  { href: "/cms/quotes", label: "Quotes", icon: FileText },
+  { href: "/cms", label: "Overzicht", icon: LayoutDashboard },
+  { href: "/cms/clients", label: "Klanten", icon: Users },
+  { href: "/cms/projects", label: "Projecten", icon: FolderKanban },
+  { href: "/cms/follow-ups", label: "Opvolging", icon: CalendarCheck2 },
+  { href: "/cms/quotes", label: "Offertes", icon: FileText },
+  { href: "/cms/settings", label: "Instellingen", icon: Settings2 },
 ];
 
-function Navigation({ close }: { close?: () => void }) {
-  const pathname = usePathname();
-  const { data } = useCms();
-  const openFollowUps =
-    data?.followUps.filter((item) => item.status === "open").length || 0;
-  return (
-    <nav aria-label="Workspace navigation" className="cms-navigation">
-      <p className="cms-nav-label">Workspace</p>
-      {navigation.map(({ href, label, icon: Icon }) => {
-        const active =
-          href === "/cms" ? pathname === href : pathname.startsWith(href);
-        return (
-          <Link
-            key={href}
-            href={href}
-            onClick={close}
-            className={`cms-nav-link ${active ? "is-active" : ""}`}
-            aria-current={active ? "page" : undefined}
-          >
-            <Icon size={18} strokeWidth={1.6} />
-            <span>{label}</span>
-            {href === "/cms/follow-ups" && openFollowUps > 0 && (
-              <span className="cms-nav-count">{openFollowUps}</span>
-            )}
-          </Link>
-        );
-      })}
-    </nav>
-  );
-}
-
-function Shell({
-  children,
-  user,
-}: {
-  children: ReactNode;
-  user?: { name?: string; email?: string };
-}) {
+function Shell({ children, user }: { children: ReactNode; user?: { name?: string; email?: string } }) {
   const { data } = useCms();
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const profile = data?.user || user;
-  const pageName = pathname.startsWith("/cms/settings")
-    ? "Settings"
-    : [...navigation].reverse().find((entry) => pathname.startsWith(entry.href))
-        ?.label || "Workspace";
+  const current = [...navigation].reverse().find((item) => pathname.startsWith(item.href))?.href || "/cms";
   async function signOut() {
-    setSigningOut(true);
-    setError(null);
+    setSigningOut(true); setError(null);
     try {
       const result = await authClient.signOut();
-      if (result.error)
-        throw new Error("Could not sign out. Please try again.");
-      // Clear the authenticated React tree and router cache after signing out.
+      if (result.error) throw new Error("Uitloggen is niet gelukt. Probeer het opnieuw.");
+      // Clear private data and the router cache after the session is revoked.
       // eslint-disable-next-line @next/next/no-location-assign-relative-destination
       window.location.assign("/cms/login");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "Could not sign out.");
+      setError(cause instanceof Error && !(cause instanceof TypeError) && !(cause instanceof SyntaxError) ? cause.message : "Uitloggen is niet gelukt.");
       setSigningOut(false);
     }
   }
-  const sidebarContent = (
-    <>
-      <Link
-        href="/cms"
-        className="cms-wordmark"
-        onClick={() => setMenuOpen(false)}
-        aria-label="Brisk workspace"
-      >
-        brisk<span>.</span>
-      </Link>
-      <div className="cms-workspace-label">
-        <span className="cms-workspace-symbol">b.</span>
-        <div>
-          <strong>Brisk studio</strong>
-          <span>Business workspace</span>
+  return <div className="cms-shell">
+    <a href="#cms-main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-surface focus:p-4">Naar de inhoud</a>
+    <header className="cms-header">
+      <div className="cms-header-inner">
+        <div className="flex min-w-0 items-center gap-5">
+          <Link href="/cms" aria-label="Brisk overzicht" className="shrink-0">
+            <Image className="cms-light-logo" src="/logo.svg" alt="Brisk" width={104} height={32} priority />
+            <Image className="cms-dark-logo" src="/logo-light.svg" alt="Brisk" width={104} height={32} priority />
+          </Link>
+          <span className="hidden border-l border-separator pl-5 text-sm text-muted sm:block">Beheer</span>
+        </div>
+        <div className="flex items-center gap-1 sm:gap-2">
+          <div className="sm:hidden"><Dropdown>
+            <Button variant="ghost" isIconOnly aria-label="Navigatie openen"><Menu size={20} /></Button>
+            <Dropdown.Popover><Dropdown.Menu aria-label="Hoofdnavigatie">
+              {navigation.map(({ href, label, icon: Icon }) => <Dropdown.Item key={href} id={href} href={href} textValue={label} aria-current={current === href ? "page" : undefined}><Icon size={17} /><Label>{label}</Label></Dropdown.Item>)}
+            </Dropdown.Menu></Dropdown.Popover>
+          </Dropdown></div>
+          <ThemeToggle />
+          <Dropdown>
+            <Button variant="tertiary" aria-label="Accountmenu" isPending={signingOut}><CircleUserRound size={19} /><span className="hidden text-sm sm:inline">{profile?.email || "Mijn account"}</span><ChevronDown size={14} /></Button>
+            <Dropdown.Popover><Dropdown.Menu aria-label="Mijn account" onAction={(key) => { if (key === "sign-out") void signOut(); }}>
+              <Dropdown.Item id="settings" href="/cms/settings" textValue="Instellingen"><Settings2 size={17} /><Label>Instellingen</Label></Dropdown.Item>
+              <Dropdown.Item id="website" href="/" target="_blank" rel="noopener noreferrer" textValue="Website bekijken"><ArrowUpRight size={17} /><Label>Website bekijken</Label></Dropdown.Item>
+              <Separator />
+              <Dropdown.Item id="sign-out" textValue="Uitloggen" isDisabled={signingOut}><LogOut size={17} /><Label>Uitloggen</Label></Dropdown.Item>
+            </Dropdown.Menu></Dropdown.Popover>
+          </Dropdown>
         </div>
       </div>
-      <Navigation close={() => setMenuOpen(false)} />
-      <div className="cms-sidebar-bottom">
-        <Link
-          href="/cms/settings"
-          className={`cms-nav-link ${pathname.startsWith("/cms/settings") ? "is-active" : ""}`}
-          onClick={() => setMenuOpen(false)}
-        >
-          <Settings2 size={18} strokeWidth={1.6} />
-          Settings
-        </Link>
-        <a
-          href="/"
-          className="cms-nav-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <ArrowUpRight size={18} strokeWidth={1.6} />
-          Visit website
-        </a>
-        <div className="cms-profile">
-          <span className="cms-profile-avatar">
-            {initials(profile?.name || "Brisk")}
-          </span>
-          <div>
-            <strong>{profile?.name || "Brisk"}</strong>
-            <span>{profile?.email || "Owner"}</span>
-          </div>
-          <Button
-            aria-label="Sign out"
-            isIconOnly
-            size="sm"
-            variant="ghost"
-            className="cms-signout"
-            onPress={() => void signOut()}
-            isPending={signingOut}
-          >
-            <LogOut size={17} />
-          </Button>
-        </div>
-      </div>
-    </>
-  );
-  return (
-    <div className="cms-shell">
-      <a
-        href="#cms-main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-surface focus:p-4"
-      >
-        Skip to content
-      </a>
-      <aside className="cms-sidebar">{sidebarContent}</aside>
-      <div className="cms-workspace">
-        <header className="cms-topbar">
-          <div className="flex min-w-0 items-center gap-3">
-            <Button
-              aria-label="Open workspace menu"
-              className="cms-mobile-menu"
-              variant="ghost"
-              isIconOnly
-              onPress={() => setMenuOpen(true)}
-            >
-              <Menu size={20} />
-            </Button>
-            <span className="text-sm text-muted">Workspace</span>
-            <ChevronRight size={14} className="text-muted" />
-            <span className="text-sm font-medium">{pageName}</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="cms-owner-label text-xs text-muted">
-              Owner workspace
-            </span>
-            <span className="cms-topbar-avatar">
-              {initials(profile?.name || "Brisk")}
-            </span>
-          </div>
-        </header>
-        <main id="cms-main" className="cms-main">
-          <ErrorNotice message={error} />
-          {children}
-        </main>
-        <footer className="cms-workspace-footer">
-          <span>Brisk studio</span>
-          <span>A little clarity. A lot of progress.</span>
-        </footer>
-      </div>
-      <Modal.Backdrop isOpen={menuOpen} onOpenChange={setMenuOpen}>
-        <Modal.Container placement="top" size="sm">
-          <Modal.Dialog className="cms-mobile-sidebar">
-            <Modal.CloseTrigger aria-label="Close workspace menu" />
-            <Modal.Heading className="sr-only">Workspace menu</Modal.Heading>
-            {sidebarContent}
-          </Modal.Dialog>
-        </Modal.Container>
-      </Modal.Backdrop>
-    </div>
-  );
+      <nav aria-label="Hoofdnavigatie" className="cms-desktop-navigation hidden sm:block">
+        <Tabs selectedKey={current} variant="secondary">
+          <div className="tabs__list-container overflow-x-auto"><Tabs.List aria-label="Beheeronderdelen">
+            {navigation.map(({ href, label, icon: Icon }) => <Tabs.Tab key={href} id={href} href={href} className="gap-2"><Icon size={16} />{label}<Tabs.Indicator /></Tabs.Tab>)}
+          </Tabs.List></div>
+        </Tabs>
+      </nav>
+    </header>
+    <main id="cms-main" className="cms-main"><ErrorNotice message={error} />{children}</main>
+    <footer className="cms-workspace-footer"><span>Brisk</span><a href="mailto:info@brisk.be">info@brisk.be</a></footer>
+  </div>;
 }
 
-export function CmsShell(props: {
-  children: ReactNode;
-  user?: { name?: string; email?: string };
-}) {
-  return (
-    <CmsProvider>
-      <Shell {...props} />
-    </CmsProvider>
-  );
+export function CmsShell(props: { children: ReactNode; user?: { name?: string; email?: string } }) {
+  return <CmsProvider><Shell {...props} /></CmsProvider>;
 }

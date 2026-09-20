@@ -1,7 +1,15 @@
 # HeroUI workspace tooling
 
-The CMS uses HeroUI React v3 with React 19 and Tailwind CSS v4. Its theme and
-component styles live in `src/app/cms/cms.css`, separate from the marketing site.
+The CMS uses HeroUI React v3 with React 19 and Tailwind CSS v4. It imports the
+packaged default light and dark themes, including the standard blue accent
+`oklch(0.6204 0.195 253.83)`. Keep its default component styling; do not add
+portal-wide Card, Button, Input or theme-token overrides. The layout and print
+styles in `src/app/cms/cms.css` remain separate from the marketing site.
+
+The CMS and public proposals use Dutch (`nl-BE`). `CmsAppearance` provides
+React Aria localization and routing, and remembers the light/dark preference
+in local storage. The header uses HeroUI tabs on desktop and a dropdown menu
+on mobile; there is no sidebar.
 
 The official React MCP server is configured for Codex in `.codex/config.toml`
 and for compatible agents in `.mcp.json`. Start a new agent session after changing

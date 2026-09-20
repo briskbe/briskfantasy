@@ -1,9 +1,10 @@
 "use client";
 
+import { DutchFieldError } from "./field-error";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { Button, Card, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, Card, Form, Input, Label, TextField } from "@heroui/react";
 import { Check, LockKeyhole } from "lucide-react";
 import { authClient } from "@/lib/cms/auth-client";
 
@@ -17,17 +18,17 @@ export function ResetPasswordScreen() {
   const [done, setDone] = useState(false);
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); setError("");
-    if (password !== confirm) { setError("Your passwords don’t match."); return; }
+    if (password !== confirm) { setError("Je wachtwoorden komen niet overeen."); return; }
     setPending(true);
     try {
       const result = await authClient.resetPassword({ token: token || "", newPassword: password });
-      if (result.error) throw new Error("This reset link has expired or is invalid. Please request a new link.");
+      if (result.error) throw new Error("Deze herstellink is verlopen of ongeldig. Vraag een nieuwe link aan.");
       setDone(true); setPassword(""); setConfirm("");
-    } catch (cause) { setError(cause instanceof Error ? cause.message : "Unable to reset your password."); }
+    } catch (cause) { setError(cause instanceof Error && !(cause instanceof TypeError) && !(cause instanceof SyntaxError) ? cause.message : "Je wachtwoord kon niet opnieuw worden ingesteld."); }
     finally { setPending(false); }
   }
-  return <main className="flex min-h-dvh items-center justify-center px-5 py-12"><Card className="w-full max-w-md p-8"><Card.Header><LockKeyhole className="mb-5" size={28} /><Card.Title className="text-2xl tracking-tight">A fresh start.</Card.Title><Card.Description>Set a new password for your Brisk workspace.</Card.Description></Card.Header><Card.Content>
-    {!token || search.has("error") ? <p className="my-5 text-sm text-danger">This link is invalid or has expired. Request a new one from the sign-in page.</p> : done ? <div role="status" className="my-5 flex items-center gap-3 text-sm"><Check className="text-success" />Your password has been updated.</div> : <Form onSubmit={submit} className="mt-5 space-y-5"><TextField name="password" type="password" value={password} onChange={setPassword} isRequired minLength={8} maxLength={128} autoComplete="new-password"><Label>New password</Label><Input /><FieldError /></TextField><TextField name="confirm" type="password" value={confirm} onChange={setConfirm} isRequired minLength={8} maxLength={128} autoComplete="new-password"><Label>Confirm new password</Label><Input /><FieldError /></TextField>{error && <p role="alert" className="text-sm text-danger">{error}</p>}<Button type="submit" isPending={pending} fullWidth>Update password</Button></Form>}
-    <Link href="/cms/login" className="mt-6 inline-block text-sm font-medium underline underline-offset-4">Back to sign in</Link>
+  return <main className="flex min-h-dvh items-center justify-center px-5 py-12"><Card className="w-full max-w-md p-8"><Card.Header><LockKeyhole className="mb-5" size={28} /><Card.Title className="text-2xl tracking-tight">Nieuw wachtwoord</Card.Title><Card.Description>Stel een nieuw wachtwoord in voor je Brisk-account.</Card.Description></Card.Header><Card.Content>
+    {!token || search.has("error") ? <p className="my-5 text-sm text-danger">Deze link is ongeldig of verlopen. Vraag een nieuwe link aan op de inlogpagina.</p> : done ? <div role="status" className="my-5 flex items-center gap-3 text-sm"><Check className="text-success" />Je wachtwoord is gewijzigd.</div> : <Form onSubmit={submit} className="mt-5 space-y-5"><TextField name="password" type="password" value={password} onChange={setPassword} isRequired minLength={8} maxLength={128} autoComplete="new-password"><Label>Nieuw wachtwoord</Label><Input /><DutchFieldError type="password" minLength={8} maxLength={128} /></TextField><TextField name="confirm" type="password" value={confirm} onChange={setConfirm} isRequired minLength={8} maxLength={128} autoComplete="new-password"><Label>Nieuw wachtwoord bevestigen</Label><Input /><DutchFieldError type="password" minLength={8} maxLength={128} /></TextField>{error && <p role="alert" className="text-sm text-danger">{error}</p>}<Button type="submit" isPending={pending} fullWidth>Wachtwoord opslaan</Button></Form>}
+    <Link href="/cms/login" className="mt-6 inline-block text-sm font-medium underline underline-offset-4">Terug naar inloggen</Link>
   </Card.Content></Card></main>;
 }

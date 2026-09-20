@@ -3,7 +3,7 @@ import { getCmsSession } from "@/lib/cms/auth";
 import { LoginScreen } from "@/components/cms/login-screen";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Sign in" };
+export const metadata = { title: "Inloggen" };
 
 export default async function LoginPage() {
   const session = await getCmsSession().catch(() => null);

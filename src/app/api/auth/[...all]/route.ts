@@ -8,12 +8,12 @@ const publicPostPaths = new Set(["/sign-in/email", "/sign-out", "/request-passwo
 const privatePostPaths = new Set(["/change-password", "/revoke-session", "/revoke-sessions", "/revoke-other-sessions"]);
 
 function safeError(status: number, retryAfter?: string | null) {
-  const message = status === 429 ? "Too many attempts. Please wait and try again."
-    : status === 401 ? "Invalid email or password."
-    : status === 403 ? "This request is not permitted."
-    : status === 404 ? "This endpoint is unavailable."
-    : status >= 500 ? "Sign-in is temporarily unavailable. Please try again shortly."
-    : "Unable to complete this request. Check your details and try again.";
+  const message = status === 429 ? "Te veel pogingen. Wacht even en probeer het opnieuw."
+    : status === 401 ? "Onjuist e-mailadres of wachtwoord."
+    : status === 403 ? "Dit verzoek is niet toegestaan."
+    : status === 404 ? "Deze functie is niet beschikbaar."
+    : status >= 500 ? "Inloggen is tijdelijk niet beschikbaar. Probeer het straks opnieuw."
+    : "Het verzoek kon niet worden uitgevoerd. Controleer je gegevens en probeer het opnieuw.";
   return Response.json({ error: message, message }, {
     status,
     headers: { "Cache-Control": "no-store", ...(retryAfter ? { "Retry-After": retryAfter, "X-Retry-After": retryAfter } : {}) },

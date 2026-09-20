@@ -38,7 +38,7 @@ export function CmsProvider({ children }: { children: ReactNode }) {
         setError(
           cause instanceof Error
             ? cause.message
-            : "Unable to load your workspace.",
+            : "Het beheerportaal kon niet worden geladen.",
         );
     } finally {
       if (request === sequence.current) setLoading(false);
@@ -60,7 +60,7 @@ export function CmsProvider({ children }: { children: ReactNode }) {
           setError(
             cause instanceof Error
               ? cause.message
-              : "Unable to load your workspace.",
+              : "Het beheerportaal kon niet worden geladen.",
           );
       })
       .finally(() => {
