@@ -19,4 +19,4 @@ Use v3 compound components and keep portal styles isolated from the public websi
 
 The CMS and public quote interface are Dutch (`nl-BE`). Use HeroUI's packaged
 default light/dark themes and blue accent; retain default component styling.
-The workspace uses header navigation, not a sidebar.
+The workspace uses a collapsible sidebar on desktop and a HeroUI Drawer on mobile.

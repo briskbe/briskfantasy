@@ -8,8 +8,10 @@ styles in `src/app/cms/cms.css` remain separate from the marketing site.
 
 The CMS and public proposals use Dutch (`nl-BE`). `CmsAppearance` provides
 React Aria localization and routing, and remembers the light/dark preference
-in local storage. The header uses HeroUI tabs on desktop and a dropdown menu
-on mobile; there is no sidebar.
+in local storage. Navigation follows the HeroUI CRM template: a collapsible desktop sidebar with
+grouped links and an account menu at the bottom, plus a HeroUI Drawer on mobile.
+The sidebar uses the packaged button variants, Avatar, Dropdown and Tooltip; the
+Drawer handles focus trapping, Escape dismissal and scroll locking.
 
 The official React MCP server is configured for Codex in `.codex/config.toml`
 and for compatible agents in `.mcp.json`. Start a new agent session after changing
