@@ -110,3 +110,13 @@
   .quote-cover { padding: 24px 0; }.quote-body { padding: 28px 0; }.quote-business-footer { padding: 20px 0; }
   .quote-totals, .quote-terms { break-inside: avoid; }
 }
+
+/* Compact list screens on phones */
+.cms-chip-row { scrollbar-width: none; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
+.cms-chip-row::-webkit-scrollbar { display: none; }
+.cms-chip-row > * { scroll-snap-align: start; }
+@media (max-width: 639px) {
+  .cms-page-actions > * { flex: 1 1 auto; justify-content: center; }
+  .cms-main { padding-block: 20px 32px; }
+  .cms-main, .cms-workspace-footer { width: calc(100% - 24px); }
+}
