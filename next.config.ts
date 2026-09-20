@@ -19,9 +19,17 @@ const nextConfig: NextConfig = {
     ];
   },
   async headers() {
-    return process.env.VERCEL_ENV === "preview"
-      ? [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }]
-      : [];
+    const privateHeaders = [
+      { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+      { key: "Cache-Control", value: "private, no-store" },
+      { key: "Referrer-Policy", value: "no-referrer" },
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "X-Frame-Options", value: "DENY" },
+    ];
+    return [
+      ...(process.env.VERCEL_ENV === "preview" ? [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] }] : []),
+      ...["/cms/:path*", "/quote/:path*", "/api/cms/:path*", "/api/quotes/:path*", "/api/auth/:path*"].map((source) => ({ source, headers: privateHeaders })),
+    ];
   },
   images: {
     formats: ["image/avif", "image/webp"],
