@@ -2,6 +2,16 @@ export const clientStatuses = ["lead", "active", "archived"] as const;
 export const projectStatuses = ["planned", "in_progress", "review", "completed", "on_hold"] as const;
 export const followUpPriorities = ["low", "normal", "high"] as const;
 export const followUpTypes = ["task", "call", "email", "meeting"] as const;
+export const followUpStatuses = ["open", "won", "waiting", "done"] as const;
+export const followUpStatusLabels: Record<typeof followUpStatuses[number], string> = {
+  open: "In gesprek",
+  won: "Gewonnen",
+  waiting: "Gaat later contact opnemen",
+  done: "Afgerond",
+};
+export function isOpenFollowUp(status: typeof followUpStatuses[number]): boolean {
+  return status === "open" || status === "waiting";
+}
 export const quoteStatuses = ["draft", "shared", "accepted", "declined"] as const;
 
 export type Client = {
@@ -17,7 +27,7 @@ export type Project = {
 };
 export type FollowUp = {
   id: string; clientId: string | null; projectId: string | null; title: string; notes: string;
-  dueAt: string; status: "open" | "done"; priority: typeof followUpPriorities[number];
+  dueAt: string; status: typeof followUpStatuses[number]; priority: typeof followUpPriorities[number];
   type: typeof followUpTypes[number]; createdAt: string; updatedAt: string;
 };
 export type QuoteItem = { id: string; description: string; quantity: number; unitPriceCents: number; vatRate: number };

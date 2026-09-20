@@ -13,7 +13,7 @@ import {
   Plus,
   Users,
 } from "lucide-react";
-import { clientStatuses, type Client } from "@/lib/cms/types";
+import { clientStatuses, isOpenFollowUp, type Client } from "@/lib/cms/types";
 import { useCms } from "./cms-provider";
 import {
   ActionLink,
@@ -444,7 +444,7 @@ function ClientDetailContent({ id }: { id: string }) {
                   },
                   {
                     label: "Openstaande opvolging",
-                    value: followUps.filter((item) => item.status === "open")
+                    value: followUps.filter((item) => isOpenFollowUp(item.status))
                       .length,
                   },
                 ].map((item) => (
@@ -541,9 +541,9 @@ function ClientDetailContent({ id }: { id: string }) {
                     <Link
                       key={item.id}
                       href={`/cms/follow-ups?clientId=${id}`}
-                      className="flex items-center justify-between gap-4 border-b border-border p-5 last:border-0"
+                      className="flex flex-col items-start gap-3 border-b border-border p-5 last:border-0 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div>
+                      <div className="min-w-0 [overflow-wrap:anywhere]">
                         <p className="font-medium">{item.title}</p>
                         <p className="mt-1 text-xs text-muted">
                           {date(item.dueAt, true)}

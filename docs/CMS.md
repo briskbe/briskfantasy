@@ -37,7 +37,7 @@ node scripts/cms-bootstrap.mjs
 
 ## Migrations and owner bootstrap
 
-`migrations/cms/001-auth.sql` creates Better Auth's user, credential, session, verification and rate-limit tables. `002-workspace.sql` creates the business records, quote sequence, activity log and public-response rate limits.
+`migrations/cms/001-auth.sql` creates Better Auth's user, credential, session, verification and rate-limit tables. `002-workspace.sql` creates the business records, quote sequence, activity log and public-response rate limits. `003-follow-up-statuses.sql` expands follow-up statuses without rewriting existing records.
 
 The migration runner serializes concurrent runs with a PostgreSQL transaction advisory lock. All pending migrations and their SHA-256 checksums commit together; failure rolls back the batch. This lock is compatible with transaction pooling. Applied files must not be edited: add a new numbered migration instead. Repeated runs verify the checksums and leave existing data intact.
 
@@ -84,6 +84,18 @@ All private endpoints below require the owner session. Dates are ISO strings, da
 | `POST /api/cms/quotes/:id/duplicate` | Creates a fresh draft with a new number, item IDs and validity dates. |
 
 Errors use `{ "error": "...", "fields": { "fieldName": "..." } }` when field details are available. Missing sessions return 401, rejected origins 403, missing records 404, conflicting changes 409, validation failures 422, rate limits 429 and service failures 503.
+
+## Follow-up statuses
+
+Follow-ups use four Dutch statuses in this order: **In gesprek** (`open`),
+**Gewonnen** (`won`), **Gaat later contact opnemen** (`waiting`), and **Afgerond**
+(`done`). The original `open` and `done` values remain valid, so existing rows and
+older clients remain compatible. The editor, inline status menu and status filters
+share the same labels. Date filters are separate from the status filter.
+
+Dashboard and client open-follow-up counts include `open` and `waiting`.
+`won` and `done` do not appear in upcoming reminders or overdue counts. Changing a
+follow-up status does not automatically change its client, project or quote.
 
 ## Quotes and client responses
 

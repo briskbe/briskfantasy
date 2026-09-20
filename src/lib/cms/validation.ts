@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { nl } from "zod/locales";
 import { randomUUID } from "node:crypto";
-import { clientStatuses, followUpPriorities, followUpTypes, projectStatuses } from "./types";
+import { clientStatuses, followUpPriorities, followUpStatuses, followUpTypes, projectStatuses } from "./types";
 import { CmsError } from "./errors";
 import { MAX_CENTS } from "./constants";
 
@@ -32,7 +32,7 @@ export const projectPatchSchema = projectSchema.partial().refine((value) => Obje
 export const followUpSchema = z.object({
   clientId: idSchema.nullable(), projectId: idSchema.nullable(), title, notes: text(20_000),
   dueAt: z.iso.datetime({ offset: true }).transform((value) => new Date(value).toISOString()),
-  status: z.enum(["open", "done"]), priority: z.enum(followUpPriorities), type: z.enum(followUpTypes),
+  status: z.enum(followUpStatuses), priority: z.enum(followUpPriorities), type: z.enum(followUpTypes),
 }).strict();
 export const followUpPatchSchema = followUpSchema.partial().refine((value) => Object.keys(value).length > 0, "Vul minstens één veld in om te wijzigen.");
 const decimalPlaces = (value: number, scale: number) => value === Number(value.toFixed(Math.log10(scale)));

@@ -542,9 +542,9 @@ function ProjectDetailContent({ id }: { id: string }) {
                   <Link
                     key={item.id}
                     href={`/cms/follow-ups?projectId=${id}`}
-                    className="flex items-center justify-between gap-3 border-b border-border p-5 last:border-0"
+                    className="flex flex-col items-start gap-3 border-b border-border p-5 last:border-0 sm:flex-row sm:items-center sm:justify-between"
                   >
-                    <div>
+                    <div className="min-w-0 [overflow-wrap:anywhere]">
                       <p className="text-sm font-medium">{item.title}</p>
                       <p className="mt-1 text-xs text-muted">
                         {date(item.dueAt, true)}

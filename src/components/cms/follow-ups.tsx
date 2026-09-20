@@ -1,20 +1,22 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Button, Card } from "@heroui/react";
+import { Button, Card, Dropdown, Label } from "@heroui/react";
 import {
   CalendarCheck2,
-  Check,
+  ChevronDown,
   Mail,
   Pencil,
   Phone,
   Plus,
-  RotateCcw,
   Trash2,
   Users,
 } from "lucide-react";
 import {
   followUpPriorities,
+  followUpStatuses,
+  followUpStatusLabels,
+  isOpenFollowUp,
   followUpTypes,
   type FollowUp,
 } from "@/lib/cms/types";
@@ -159,10 +161,7 @@ function FollowUpEditor({
             label="Status"
             value={form.status}
             onChange={set("status")}
-            options={[
-              { value: "open", label: "Open" },
-              { value: "done", label: "Afgerond" },
-            ]}
+            options={followUpStatuses.map((value) => ({ value, label: followUpStatusLabels[value] }))}
           />
         </div>
         <Field
@@ -213,7 +212,8 @@ function FollowUpsContent({
 }) {
   const { data } = useCms();
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState("open");
+  const [filter, setFilter] = useState<FollowUp["status"] | "all">("all");
+  const [period, setPeriod] = useState("all");
   const [client, setClient] = useState(clientId || "all");
   const [project, setProject] = useState(projectId || "all");
   const [editor, setEditor] = useState<FollowUp | "new" | null>(
@@ -227,17 +227,12 @@ function FollowUpsContent({
   const items = data.followUps
     .filter((item) => {
       const matchesTime =
-        filter === "all" ||
-        (filter === "done"
-          ? item.status === "done"
-          : item.status === "open" &&
-            (filter === "open" ||
-              (filter === "overdue" && new Date(item.dueAt) < now) ||
-              (filter === "today" &&
-                localDate(new Date(item.dueAt)) === today) ||
-              (filter === "upcoming" &&
-                localDate(new Date(item.dueAt)) > today)));
+        period === "all" ||
+        (period === "overdue" && isOpenFollowUp(item.status) && new Date(item.dueAt) < now) ||
+        (period === "today" && localDate(new Date(item.dueAt)) === today) ||
+        (period === "upcoming" && localDate(new Date(item.dueAt)) > today);
       return (
+        (filter === "all" || item.status === filter) &&
         matchesTime &&
         (client === "all" || item.clientId === client) &&
         (project === "all" || item.projectId === project) &&
@@ -267,9 +262,9 @@ function FollowUpsContent({
       <div
         className="mb-5 flex flex-wrap gap-2"
         role="group"
-        aria-label="Filter op datum"
+        aria-label="Filter op status"
       >
-        {["open", "today", "overdue", "upcoming", "done", "all"].map(
+        {([...followUpStatuses, "all"] as const).map(
           (value) => (
             <Button
               key={value}
@@ -278,7 +273,7 @@ function FollowUpsContent({
               aria-pressed={filter === value}
               onPress={() => setFilter(value)}
             >
-              {value === "open" ? "Alle openstaande" : titleCase(value)}
+              {value === "all" ? "Alles" : followUpStatusLabels[value]}
             </Button>
           ),
         )}
@@ -290,7 +285,20 @@ function FollowUpsContent({
             onChange={setQuery}
             placeholder="Opvolging zoeken…"
           />
-          <div className="w-48">
+          <div className="w-full sm:w-44">
+            <Choice
+              label="Periode"
+              value={period}
+              onChange={setPeriod}
+              options={[
+                { value: "all", label: "Alle datums" },
+                { value: "today", label: "Vandaag" },
+                { value: "overdue", label: "Te laat" },
+                { value: "upcoming", label: "Binnenkort" },
+              ]}
+            />
+          </div>
+          <div className="w-full sm:w-48">
             <Choice
               label="Klant"
               value={client}
@@ -307,7 +315,7 @@ function FollowUpsContent({
               ]}
             />
           </div>
-          <div className="w-48">
+          <div className="w-full sm:w-48">
             <Choice
               label="Project"
               value={project}
@@ -331,38 +339,15 @@ function FollowUpsContent({
             {items.map((item) => {
               const Icon = typeIcon[item.type];
               const overdue =
-                item.status === "open" && new Date(item.dueAt) < now;
+                isOpenFollowUp(item.status) && new Date(item.dueAt) < now;
               return (
                 <li
                   key={item.id}
                   className="flex items-start gap-3 p-5 sm:gap-4"
                 >
-                  <Button
-                    size="sm"
-                    variant={item.status === "done" ? "secondary" : "outline"}
-                    isIconOnly
-                    className="mt-0.5"
-                    aria-label={
-                      item.status === "done"
-                        ? `Heropen ${item.title}`
-                        : `Rond af: ${item.title}`
-                    }
-                    isDisabled={mutation.busy}
-                    onPress={() =>
-                      void mutation.run(`/api/cms/follow-ups/${item.id}`, {
-                        method: "PATCH",
-                        body: JSON.stringify({
-                          status: item.status === "done" ? "open" : "done",
-                        }),
-                      })
-                    }
-                  >
-                    {item.status === "done" ? (
-                      <RotateCcw size={14} />
-                    ) : (
-                      <Check size={14} />
-                    )}
-                  </Button>
+                  <div className="mt-1 hidden size-8 shrink-0 items-center justify-center rounded-lg bg-default text-muted sm:flex" aria-hidden="true">
+                    <Icon size={16} />
+                  </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <button
@@ -374,6 +359,22 @@ function FollowUpsContent({
                       {item.priority === "high" && (
                         <StatusBadge status="high" />
                       )}
+                    </div>
+                    <div className="mt-2">
+                      <Dropdown>
+                        <Button size="sm" variant="ghost" className="max-w-full gap-1 px-0" isDisabled={mutation.busy}
+                          aria-label={`Status wijzigen: ${item.title}. Huidige status: ${followUpStatusLabels[item.status]}`}>
+                          <StatusBadge status={item.status} /><ChevronDown size={13} className="shrink-0 text-muted" aria-hidden="true" />
+                        </Button>
+                        <Dropdown.Popover>
+                          <Dropdown.Menu aria-label="Opvolgstatus" selectionMode="single" selectedKeys={[item.status]}
+                            onAction={(key) => { if (key !== item.status) void mutation.run(`/api/cms/follow-ups/${item.id}`, { method: "PATCH", body: JSON.stringify({ status: key }) }); }}>
+                            {followUpStatuses.map((status) => <Dropdown.Item key={status} id={status} textValue={followUpStatusLabels[status]}>
+                              <Label>{followUpStatusLabels[status]}</Label><Dropdown.ItemIndicator />
+                            </Dropdown.Item>)}
+                          </Dropdown.Menu>
+                        </Dropdown.Popover>
+                      </Dropdown>
                     </div>
                     {item.notes && (
                       <p className="mt-1.5 line-clamp-2 text-xs leading-5 text-muted">

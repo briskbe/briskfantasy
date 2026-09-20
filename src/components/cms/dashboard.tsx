@@ -11,6 +11,7 @@ import {
   Plus,
   Users,
 } from "lucide-react";
+import { isOpenFollowUp } from "@/lib/cms/types";
 import { useCms } from "./cms-provider";
 import {
   ActionLink,
@@ -41,7 +42,7 @@ function DashboardContent() {
     ["planned", "in_progress", "review"].includes(project.status),
   );
   const followUps = data.followUps
-    .filter((item) => item.status === "open")
+    .filter((item) => isOpenFollowUp(item.status))
     .sort((a, b) => a.dueAt.localeCompare(b.dueAt));
   const pendingQuotes = data.quotes.filter(
     (quote) => quote.status === "shared",
@@ -134,7 +135,7 @@ function DashboardContent() {
                 {followUps.slice(0, 5).map((item) => (
                   <li
                     key={item.id}
-                    className="flex items-center gap-4 px-6 py-5"
+                    className="grid grid-cols-[32px_minmax(0,1fr)] items-start gap-x-4 gap-y-2 px-6 py-5 sm:flex sm:items-center"
                   >
                     <Button
                       aria-label={`Rond af: ${item.title}`}
@@ -167,14 +168,15 @@ function DashboardContent() {
                           )?.name ||
                           "Algemene opvolging"}
                       </p>
+                      <div className="mt-2"><StatusBadge status={item.status} /></div>
                     </div>
-                    <div className="shrink-0 text-right">
+                    <div className="col-start-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-left sm:block sm:shrink-0 sm:text-right">
                       <p
                         className={`text-xs ${new Date(item.dueAt) < new Date() ? "text-danger" : "text-muted"}`}
                       >
                         {date(item.dueAt)}
                       </p>
-                      <p className="mt-1 text-[11px] capitalize text-muted">
+                      <p className="text-[11px] capitalize text-muted sm:mt-1">
                         {titleCase(item.type)}
                       </p>
                     </div>

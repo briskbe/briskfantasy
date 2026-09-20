@@ -10,6 +10,7 @@ import {
   responseSchema, tokenSchema, validate,
 } from "./validation";
 import type { Activity, Client, CmsData, FollowUp, Project, PublicQuote, Quote, QuoteClient } from "./types";
+import { followUpStatusLabels } from "./types";
 
 type Row = Record<string, unknown>;
 type Table = "cms_clients" | "cms_projects" | "cms_follow_ups" | "cms_quotes";
@@ -179,7 +180,9 @@ export async function updateFollowUp(id: string, input: unknown): Promise<Follow
     const merged = { ...previous, ...values };
     await validateFollowUpLinks(db, merged);
     const followUp = asFollowUp(await update(db, "cms_follow_ups", id, { ...values, clientId: merged.clientId }, followUpColumns));
-    await logActivity(db, values.status === "done" ? `Opvolging ${followUp.title} afgerond.` : `Opvolging ${followUp.title} bijgewerkt.`, "/cms/follow-ups");
+    await logActivity(db, previous.status !== followUp.status
+      ? `Opvolging ${followUp.title}: status gewijzigd naar ${followUpStatusLabels[followUp.status]}.`
+      : `Opvolging ${followUp.title} bijgewerkt.`, "/cms/follow-ups");
     return followUp;
   });
 }

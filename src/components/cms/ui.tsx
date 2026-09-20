@@ -1,5 +1,6 @@
 "use client";
 
+import { followUpStatusLabels } from "@/lib/cms/types";
 import { DutchFieldError } from "./field-error";
 import Link from "next/link";
 import { useRef, useState, type ComponentProps, type ReactNode } from "react";
@@ -53,8 +54,7 @@ const labels: Record<string, string> = {
   shared: "Gedeeld",
   accepted: "Goedgekeurd",
   declined: "Afgewezen",
-  open: "Openstaand",
-  done: "Afgerond",
+  ...followUpStatusLabels,
   low: "Laag",
   normal: "Normaal",
   high: "Hoog",
@@ -235,11 +235,11 @@ export function WorkspaceGate({ children }: { children: ReactNode }) {
 }
 
 export function StatusBadge({ status }: { status: string }) {
-  const color = ["active", "completed", "accepted", "done"].includes(status)
+  const color = ["active", "completed", "accepted", "done", "won"].includes(status)
     ? "success"
-    : ["in_progress", "shared", "lead"].includes(status)
+    : ["in_progress", "shared", "lead", "open"].includes(status)
       ? "accent"
-      : ["review", "on_hold", "high"].includes(status)
+      : ["review", "on_hold", "high", "waiting"].includes(status)
         ? "warning"
         : status === "declined"
           ? "danger"

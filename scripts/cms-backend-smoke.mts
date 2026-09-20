@@ -3,8 +3,10 @@
 import assert from "node:assert/strict";
 import { randomBytes, randomUUID } from "node:crypto";
 import { execFile, execFileSync } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import { promisify } from "node:util";
 import { Pool } from "pg";
+import type { FollowUp } from "../src/lib/cms/types";
 
 if (!process.env.TEST_DATABASE_URL) throw new Error("Set TEST_DATABASE_URL to an isolated PostgreSQL test server.");
 if (!["localhost", "127.0.0.1", "[::1]"].includes(new URL(process.env.TEST_DATABASE_URL).hostname)) throw new Error("This destructive test suite only runs on a local PostgreSQL server.");
@@ -24,15 +26,33 @@ delete process.env.RESEND_API_KEY;
 const origin = process.env.BETTER_AUTH_URL;
 let pool: Pool | undefined;
 try {
-  // Two release jobs must serialize schema creation through the transaction lock.
-  await Promise.all(Array.from({ length: 2 }, () => promisify(execFile)(process.execPath, ["scripts/cms-migrate.mjs"], { env: process.env })));
-  execFileSync(process.execPath, ["scripts/cms-migrate.mjs"], { stdio: "pipe", env: process.env });
+  // Exercise an upgrade from the original two-status schema with real records.
+  const upgradeDb = new Pool({ connectionString: url.href, max: 1 });
+  try {
+    await upgradeDb.query(await readFile(new URL("../migrations/cms/002-workspace.sql", import.meta.url), "utf8"));
+    for (const status of ["open", "done"]) {
+      await upgradeDb.query("INSERT INTO cms_follow_ups (id,title,notes,due_at,status,priority,type) VALUES ($1,$2,$3,$4,$5,'normal','call')", [randomUUID(), `Bestaande opvolging ${status}`, "Bestaande notities blijven behouden", "2030-01-01T08:00:00.000Z", status]);
+    }
+    const existingRows = (await upgradeDb.query("SELECT * FROM cms_follow_ups ORDER BY id")).rows;
+    await assert.rejects(upgradeDb.query("UPDATE cms_follow_ups SET status='won' WHERE id=$1", [existingRows[0].id]), { code: "23514" });
+
+    // Two release jobs must serialize schema creation through the transaction lock.
+    await Promise.all(Array.from({ length: 2 }, () => promisify(execFile)(process.execPath, ["scripts/cms-migrate.mjs"], { env: process.env })));
+    execFileSync(process.execPath, ["scripts/cms-migrate.mjs"], { stdio: "pipe", env: process.env });
+    assert.deepEqual((await upgradeDb.query("SELECT * FROM cms_follow_ups ORDER BY id")).rows, existingRows);
+    await assert.rejects(upgradeDb.query("UPDATE cms_follow_ups SET status='invalid' WHERE id=$1", [existingRows[0].id]), { code: "23514" });
+    await upgradeDb.query("DELETE FROM cms_follow_ups");
+    console.log("PASS: follow-up status migration preserves all existing open/done records and the database still rejects invalid statuses.");
+  } finally {
+    await upgradeDb.end();
+  }
   execFileSync(process.execPath, ["scripts/cms-bootstrap.mjs"], { stdio: "pipe", env: process.env });
   const data = await import("../src/lib/cms/data");
   const { getDb } = await import("../src/lib/cms/db");
   const { CmsError } = await import("../src/lib/cms/errors");
   const { validate, quoteSchema } = await import("../src/lib/cms/validation");
   const { quoteTotals } = await import("../src/lib/cms/quote-math");
+  const { followUpStatuses, followUpStatusLabels, isOpenFollowUp } = await import("../src/lib/cms/types");
   const authRoute = await import("../src/app/api/auth/[...all]/route");
   pool = getDb();
   const request = (path: string, method = "GET", body?: unknown, cookie?: string, requestOrigin = origin) => new Request(origin + path, {
@@ -65,15 +85,58 @@ try {
   const project = await data.createProject(projectInput);
   await assert.rejects(data.updateProject(project.id, { startDate: "2026-03-01" }), (error) => error instanceof CmsError && error.status === 422);
   await assert.rejects(data.createProject({ ...projectInput, clientId: randomUUID() }), (error) => error instanceof CmsError && error.status === 422);
-  const followUp = await data.createFollowUp({ clientId: null, projectId: project.id, title: "Call client", notes: "Private", dueAt: "2030-01-01T09:00:00+01:00", status: "open", priority: "high", type: "call" });
+  const followUpInput = { clientId: null, projectId: project.id, title: "Klant bellen", notes: "Private", dueAt: "2030-01-01T09:00:00+01:00", status: "open", priority: "high", type: "call" };
+  const followUp = await data.createFollowUp(followUpInput);
   assert.equal(followUp.clientId, client.id);
   assert.equal(followUp.dueAt, "2030-01-01T08:00:00.000Z");
-  assert.equal((await data.updateFollowUp(followUp.id, { status: "done" })).status, "done");
+  assert.deepEqual(followUpStatuses, ["open", "won", "waiting", "done"]);
+  assert.deepEqual(followUpStatusLabels, { open: "In gesprek", won: "Gewonnen", waiting: "Gaat later contact opnemen", done: "Afgerond" });
+  assert.deepEqual(followUpStatuses.filter(isOpenFollowUp), ["open", "waiting"]);
+  for (const status of ["waiting", "won", "open", "done"] as const) {
+    const changed = await data.updateFollowUp(followUp.id, { status });
+    assert.equal(changed.status, status);
+    assert.equal(changed.clientId, client.id);
+    assert.equal(changed.notes, followUpInput.notes);
+    assert.equal((await pool.query("SELECT description FROM cms_activity ORDER BY created_at DESC LIMIT 1")).rows[0].description, `Opvolging Klant bellen: status gewijzigd naar ${followUpStatusLabels[status]}.`);
+  }
+  await data.updateFollowUp(followUp.id, { status: "done", notes: "Bijgewerkte notities" });
+  assert.equal((await pool.query("SELECT description FROM cms_activity ORDER BY created_at DESC LIMIT 1")).rows[0].description, "Opvolging Klant bellen bijgewerkt.");
   const otherClient = await data.createClient({ ...clientInput, name: "Other client" });
   await assert.rejects(data.updateProject(project.id, { clientId: otherClient.id }), (error) => error instanceof CmsError && error.status === 409);
   await assert.rejects(data.updateFollowUp(followUp.id, { clientId: otherClient.id }), (error) => error instanceof CmsError && error.status === 422);
   await data.deleteFollowUp(followUp.id);
   assert.deepEqual((await pool.query("SELECT id FROM cms_follow_ups")).rows, []);
+
+  // Exercise every status through the authenticated HTTP boundary and data feed.
+  const followUpsRoute = await import("../src/app/api/cms/follow-ups/route");
+  const followUpRoute = await import("../src/app/api/cms/follow-ups/[id]/route");
+  const invalidCreate = await followUpsRoute.POST(request("/api/cms/follow-ups", "POST", { ...followUpInput, status: "invalid" }, cookie));
+  assert.equal(invalidCreate.status, 422);
+  assert((await invalidCreate.json()).fields.status);
+  for (const [index, status] of followUpStatuses.entries()) {
+    const response = await followUpsRoute.POST(request("/api/cms/follow-ups", "POST", { ...followUpInput, status }, cookie));
+    assert.equal(response.status, 201);
+    const entry = await response.json();
+    assert.equal(entry.status, status);
+    const routePath = `/api/cms/follow-ups/${entry.id}`;
+    const context = { params: Promise.resolve({ id: entry.id }) };
+    const currentData = await (await dataRoute.GET(request("/api/cms/data", "GET", undefined, cookie))).json();
+    assert.equal(currentData.followUps.find((row: { id: string }) => row.id === entry.id).status, status);
+    const notesUpdate = await followUpRoute.PATCH(request(routePath, "PATCH", { notes: "Notities gewijzigd" }, cookie), context);
+    assert.equal(notesUpdate.status, 200);
+    assert.equal((await notesUpdate.json()).status, status);
+    const invalidUpdate = await followUpRoute.PATCH(request(routePath, "PATCH", { status: "invalid" }, cookie), context);
+    assert.equal(invalidUpdate.status, 422);
+    assert((await invalidUpdate.json()).fields.status);
+    assert.equal((await pool.query("SELECT status FROM cms_follow_ups WHERE id=$1", [entry.id])).rows[0].status, status);
+    const nextStatus: FollowUp["status"] = followUpStatuses[(index + 1) % followUpStatuses.length];
+    const statusUpdate = await followUpRoute.PATCH(request(routePath, "PATCH", { status: nextStatus }, cookie), context);
+    assert.equal(statusUpdate.status, 200);
+    assert.equal((await statusUpdate.json()).status, nextStatus);
+    assert.equal((await followUpRoute.DELETE(request(routePath, "DELETE", undefined, cookie), context)).status, 200);
+    assert.equal((await pool.query("SELECT id FROM cms_follow_ups WHERE id=$1", [entry.id])).rowCount, 0);
+  }
+  console.log("PASS: all four Dutch follow-up statuses support authenticated CRUD, state changes, persisted reads, accurate activity and invalid-status rejection.");
   console.log("PASS: client/project/follow-up CRUD, archival, foreign keys, partial-update dates, linked-client consistency, origin enforcement.");
 
   const item = { id: randomUUID(), description: "Design", quantity: 2.5, unitPriceCents: 1999, vatRate: 21 };
