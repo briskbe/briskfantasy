@@ -21,6 +21,7 @@ import {
   date,
   EditorModal,
   EmptyState,
+  FilterBar,
   ErrorNotice,
   Field,
   FormActions,
@@ -171,13 +172,18 @@ function ClientsContent() {
         </Button>
       </PageHeading>
       <Card className="p-0">
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border p-5">
-          <SearchBox
-            value={query}
-            onChange={setQuery}
-            placeholder="Klanten zoeken…"
-          />
-          <div className="w-44">
+        <FilterBar
+          className="border-b border-border p-3 sm:p-5"
+          activeCount={status === "all" ? 0 : 1}
+          search={
+            <SearchBox
+              value={query}
+              onChange={setQuery}
+              placeholder="Klanten zoeken…"
+            />
+          }
+        >
+          <div className="col-span-2 sm:w-44">
             <Choice
               label="Klantstatus"
               value={status}
@@ -191,7 +197,7 @@ function ClientsContent() {
               ]}
             />
           </div>
-        </div>
+        </FilterBar>
         {clients.length ? (
           <Table>
             <Table.ScrollContainer>

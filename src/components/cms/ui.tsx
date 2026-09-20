@@ -21,9 +21,11 @@ import {
 import {
   ArrowLeft,
   ArrowUpRight,
+  ChevronDown,
   CircleAlert,
   Inbox,
   Search,
+  SlidersHorizontal,
 } from "lucide-react";
 import { useCms } from "./cms-provider";
 import { cmsApi, CmsApiError } from "./api";
@@ -135,12 +137,12 @@ export function PageHeading({
   back?: { href: string; label: string };
 }) {
   return (
-    <header className="cms-page-heading mb-8 flex flex-wrap items-end justify-between gap-5">
+    <header className="cms-page-heading mb-5 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-5">
       <div className="min-w-0">
         {back && (
           <Link
             href={back.href}
-            className="mb-5 inline-flex items-center gap-2 text-sm text-muted hover:text-foreground"
+            className="mb-3 inline-flex items-center gap-2 text-sm text-muted hover:text-foreground sm:mb-5"
           >
             <ArrowLeft size={15} />
             {back.label}
@@ -151,17 +153,19 @@ export function PageHeading({
             {eyebrow}
           </p>
         )}
-        <h1 className="text-3xl font-semibold tracking-tight">
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           {title}
         </h1>
         {description && (
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+          <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-muted sm:mt-2">
             {description}
           </p>
         )}
       </div>
       {children && (
-        <div className="flex flex-wrap items-center gap-2">{children}</div>
+        <div className="cms-page-actions flex flex-wrap items-center gap-2">
+          {children}
+        </div>
       )}
     </header>
   );
@@ -346,6 +350,105 @@ export function Choice({
       </Select.Popover>
       <DutchFieldError />
     </Select>
+  );
+}
+
+/** Single-row chip filter that scrolls horizontally on small screens. */
+export function ChipRow<T extends string>({
+  label,
+  value,
+  onChange,
+  options,
+  className = "",
+}: {
+  label: string;
+  value: T;
+  onChange: (value: T) => void;
+  options: { value: T; label: string }[];
+  className?: string;
+}) {
+  return (
+    <div
+      className={`cms-chip-row -mx-1 flex gap-2 overflow-x-auto px-1 py-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:py-0 ${className}`}
+      role="group"
+      aria-label={label}
+    >
+      {options.map((option) => (
+        <Button
+          key={option.value}
+          size="sm"
+          variant={value === option.value ? "primary" : "secondary"}
+          aria-pressed={value === option.value}
+          className="shrink-0 whitespace-nowrap"
+          onPress={() => onChange(option.value)}
+        >
+          {option.label}
+        </Button>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Toolbar with a search box always visible; extra filters collapse behind a
+ * "Filters" toggle on small screens and stay inline on larger ones.
+ */
+export function FilterBar({
+  search,
+  activeCount = 0,
+  children,
+  trailing,
+  className = "",
+}: {
+  search: ReactNode;
+  activeCount?: number;
+  children?: ReactNode;
+  trailing?: ReactNode;
+  className?: string;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`cms-filter-bar ${className}`}>
+      <div className="flex items-center gap-2 sm:hidden">
+        <div className="min-w-0 flex-1">{search}</div>
+        {children && (
+          <Button
+            variant={activeCount ? "primary" : "secondary"}
+            aria-expanded={open}
+            aria-controls="cms-filter-panel"
+            className="shrink-0"
+            onPress={() => setOpen((value) => !value)}
+          >
+            <SlidersHorizontal size={16} />
+            Filters
+            {activeCount ? (
+              <span className="rounded-full bg-background/20 px-1.5 text-xs leading-5">
+                {activeCount}
+              </span>
+            ) : null}
+            <ChevronDown
+              size={14}
+              className={`transition-transform ${open ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            />
+          </Button>
+        )}
+      </div>
+      {children && (
+        <div
+          id="cms-filter-panel"
+          className={`${open ? "mt-3 grid" : "hidden"} grid-cols-2 gap-3 sm:hidden`}
+        >
+          {children}
+        </div>
+      )}
+      <div className="hidden sm:flex sm:flex-wrap sm:items-end sm:gap-4">
+        {search}
+        {children}
+        {trailing && <div className="ml-auto">{trailing}</div>}
+      </div>
+      {trailing && <div className="mt-3 sm:hidden">{trailing}</div>}
+    </div>
   );
 }
 

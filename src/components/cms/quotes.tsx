@@ -31,6 +31,7 @@ import {
   date,
   EditorModal,
   EmptyState,
+  FilterBar,
   ErrorNotice,
   Field,
   localDate,
@@ -75,7 +76,7 @@ function QuotesContent() {
           Offerte maken
         </ActionLink>
       </PageHeading>
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
+      <div className="mb-4 grid grid-cols-3 gap-2 sm:mb-6 sm:gap-4">
         {[
           {
             label: "Concepten",
@@ -106,26 +107,31 @@ function QuotesContent() {
         ].map((metric) => (
           <Card
             key={metric.label}
-            className="p-5"
+            className="p-3 sm:p-5"
           >
-            <p className="text-xs font-medium text-muted">{metric.label}</p>
-            <div className="mt-3 flex items-baseline justify-between gap-3">
-              <span className="text-3xl font-semibold tracking-tight">
+            <p className="truncate text-xs font-medium text-muted">{metric.label}</p>
+            <div className="mt-2 flex flex-col gap-0.5 sm:mt-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
+              <span className="text-2xl font-semibold tracking-tight sm:text-3xl">
                 {metric.count}
               </span>
-              <span className="text-xs text-muted">{metric.value}</span>
+              <span className="truncate text-xs text-muted">{metric.value}</span>
             </div>
           </Card>
         ))}
       </div>
       <Card className="p-0">
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border p-5">
-          <SearchBox
-            value={query}
-            onChange={setQuery}
-            placeholder="Offertes zoeken…"
-          />
-          <div className="w-44">
+        <FilterBar
+          className="border-b border-border p-3 sm:p-5"
+          activeCount={status === "all" ? 0 : 1}
+          search={
+            <SearchBox
+              value={query}
+              onChange={setQuery}
+              placeholder="Offertes zoeken…"
+            />
+          }
+        >
+          <div className="col-span-2 sm:w-44">
             <Choice
               label="Status"
               value={status}
@@ -139,7 +145,7 @@ function QuotesContent() {
               ]}
             />
           </div>
-        </div>
+        </FilterBar>
         {quotes.length ? (
           <Table>
             <Table.ScrollContainer>

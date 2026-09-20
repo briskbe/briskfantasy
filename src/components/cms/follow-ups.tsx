@@ -22,9 +22,11 @@ import {
 } from "@/lib/cms/types";
 import { useCms } from "./cms-provider";
 import {
+  ChipRow,
   Choice,
   date,
   EditorModal,
+  FilterBar,
   EmptyState,
   ErrorNotice,
   Field,
@@ -259,33 +261,33 @@ function FollowUpsContent({
           Opvolging toevoegen
         </Button>
       </PageHeading>
-      <div
-        className="mb-5 flex flex-wrap gap-2"
-        role="group"
-        aria-label="Filter op status"
-      >
-        {([...followUpStatuses, "all"] as const).map(
-          (value) => (
-            <Button
-              key={value}
-              size="sm"
-              variant={filter === value ? "primary" : "secondary"}
-              aria-pressed={filter === value}
-              onPress={() => setFilter(value)}
-            >
-              {value === "all" ? "Alles" : followUpStatusLabels[value]}
-            </Button>
-          ),
-        )}
-      </div>
+      <ChipRow
+        label="Filter op status"
+        value={filter}
+        onChange={setFilter}
+        className="mb-4 sm:mb-5"
+        options={([...followUpStatuses, "all"] as const).map((value) => ({
+          value,
+          label: value === "all" ? "Alles" : followUpStatusLabels[value],
+        }))}
+      />
       <Card className="p-0">
-        <div className="flex flex-wrap items-end gap-4 border-b border-border p-5">
-          <SearchBox
-            value={query}
-            onChange={setQuery}
-            placeholder="Opvolging zoeken…"
-          />
-          <div className="w-full sm:w-44">
+        <FilterBar
+          className="border-b border-border p-3 sm:p-5"
+          activeCount={
+            [period !== "all", client !== "all", project !== "all"].filter(
+              Boolean,
+            ).length
+          }
+          search={
+            <SearchBox
+              value={query}
+              onChange={setQuery}
+              placeholder="Opvolging zoeken…"
+            />
+          }
+        >
+          <div className="col-span-2 sm:w-44">
             <Choice
               label="Periode"
               value={period}
@@ -298,7 +300,7 @@ function FollowUpsContent({
               ]}
             />
           </div>
-          <div className="w-full sm:w-48">
+          <div className="sm:w-48">
             <Choice
               label="Klant"
               value={client}
@@ -315,7 +317,7 @@ function FollowUpsContent({
               ]}
             />
           </div>
-          <div className="w-full sm:w-48">
+          <div className="sm:w-48">
             <Choice
               label="Project"
               value={project}
@@ -330,8 +332,8 @@ function FollowUpsContent({
               ]}
             />
           </div>
-        </div>
-        <div className="px-5">
+        </FilterBar>
+        <div className="px-3 sm:px-5">
           <ErrorNotice message={mutation.error} />
         </div>
         {items.length ? (
@@ -343,7 +345,7 @@ function FollowUpsContent({
               return (
                 <li
                   key={item.id}
-                  className="flex items-start gap-3 p-5 sm:gap-4"
+                  className="flex items-start gap-2 p-3 sm:gap-4 sm:p-5"
                 >
                   <div className="mt-1 hidden size-8 shrink-0 items-center justify-center rounded-lg bg-default text-muted sm:flex" aria-hidden="true">
                     <Icon size={16} />
@@ -381,7 +383,7 @@ function FollowUpsContent({
                         {item.notes}
                       </p>
                     )}
-                    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted">
+                    <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted sm:mt-3">
                       <span className="flex items-center gap-1.5">
                         <Icon size={13} />
                         {titleCase(item.type)}
@@ -410,7 +412,7 @@ function FollowUpsContent({
                       </span>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-1 sm:flex-row">
+                  <div className="flex shrink-0 flex-col gap-1 sm:flex-row">
                     <Button
                       size="sm"
                       isIconOnly

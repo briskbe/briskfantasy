@@ -20,6 +20,7 @@ import {
   date,
   EditorModal,
   EmptyState,
+  FilterBar,
   ErrorNotice,
   Field,
   FormActions,
@@ -221,13 +222,48 @@ function ProjectsContent({
           Nieuw project
         </Button>
       </PageHeading>
-      <div className="mb-6 flex flex-wrap items-end gap-4">
-        <SearchBox
-          value={query}
-          onChange={setQuery}
-          placeholder="Projecten zoeken…"
-        />
-        <div className="w-44">
+      <FilterBar
+        className="mb-4 sm:mb-6"
+        activeCount={
+          [status !== "all", selectedClient !== "all"].filter(Boolean).length
+        }
+        search={
+          <SearchBox
+            value={query}
+            onChange={setQuery}
+            placeholder="Projecten zoeken…"
+          />
+        }
+        trailing={
+          <div
+            className="flex w-fit gap-1 rounded-xl border border-border bg-surface p-1"
+            role="group"
+            aria-label="Projectweergave"
+          >
+            <Button
+              isIconOnly
+              size="sm"
+              variant={view === "board" ? "secondary" : "ghost"}
+              aria-label="Bordweergave"
+              aria-pressed={view === "board"}
+              onPress={() => setView("board")}
+            >
+              <LayoutGrid size={17} />
+            </Button>
+            <Button
+              isIconOnly
+              size="sm"
+              variant={view === "list" ? "secondary" : "ghost"}
+              aria-label="Lijstweergave"
+              aria-pressed={view === "list"}
+              onPress={() => setView("list")}
+            >
+              <List size={17} />
+            </Button>
+          </div>
+        }
+      >
+        <div className="sm:w-44">
           <Choice
             label="Status"
             value={status}
@@ -241,7 +277,7 @@ function ProjectsContent({
             ]}
           />
         </div>
-        <div className="w-48">
+        <div className="sm:w-48">
           <Choice
             label="Klant"
             value={selectedClient}
@@ -255,33 +291,7 @@ function ProjectsContent({
             ]}
           />
         </div>
-        <div
-          className="ml-auto flex gap-1 rounded-xl border border-border bg-surface p-1"
-          role="group"
-          aria-label="Projectweergave"
-        >
-          <Button
-            isIconOnly
-            size="sm"
-            variant={view === "board" ? "secondary" : "ghost"}
-            aria-label="Bordweergave"
-            aria-pressed={view === "board"}
-            onPress={() => setView("board")}
-          >
-            <LayoutGrid size={17} />
-          </Button>
-          <Button
-            isIconOnly
-            size="sm"
-            variant={view === "list" ? "secondary" : "ghost"}
-            aria-label="Lijstweergave"
-            aria-pressed={view === "list"}
-            onPress={() => setView("list")}
-          >
-            <List size={17} />
-          </Button>
-        </div>
-      </div>
+      </FilterBar>
       {!data.clients.length ? (
         <Card>
           <EmptyState
